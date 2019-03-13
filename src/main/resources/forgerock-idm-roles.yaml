@@ -225,12 +225,12 @@ paths:
           name: requestPayload
           required: true
           schema:
-            $ref: '#/definitions/RoleAssignmentsItems'
+            $ref: '#/definitions/RoleAssignments'
       responses:
         '201':
           description: Success
           schema:
-            $ref: '#/definitions/RoleAssignmentsItems'
+            $ref: '#/definitions/RoleAssignments'
           headers:
             Location:
               type: string
@@ -258,7 +258,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/RoleAssignmentsItems'
+            $ref: '#/definitions/RoleAssignments'
       tags:
         - Role - Managed Assignments
     put:
@@ -279,14 +279,14 @@ paths:
           name: requestPayload
           required: true
           schema:
-            $ref: '#/definitions/RoleAssignmentsItems'
+            $ref: '#/definitions/RoleAssignments'
         - $ref: '#/parameters/If-None-Match-Star'
         - $ref: '#/parameters/If-Match'
       responses:
         '201':
           description: Success
           schema:
-            $ref: '#/definitions/RoleAssignmentsItems'
+            $ref: '#/definitions/RoleAssignments'
           headers:
             Location:
               type: string
@@ -312,7 +312,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/RoleAssignmentsItems'
+            $ref: '#/definitions/RoleAssignments'
       tags:
         - Role - Managed Assignments
     patch:
@@ -339,7 +339,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/RoleAssignmentsItems'
+            $ref: '#/definitions/RoleAssignments'
       tags:
         - Role - Managed Assignments
   '/managed/role/{roleId}/authzMembers':
@@ -390,12 +390,12 @@ paths:
           name: requestPayload
           required: true
           schema:
-            $ref: '#/definitions/RoleAuthzMembersItems'
+            $ref: '#/definitions/RoleAuthzMembers'
       responses:
         '201':
           description: Success
           schema:
-            $ref: '#/definitions/RoleAuthzMembersItems'
+            $ref: '#/definitions/RoleAuthzMembers'
           headers:
             Location:
               type: string
@@ -423,7 +423,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/RoleAuthzMembersItems'
+            $ref: '#/definitions/RoleAuthzMembers'
       tags:
         - Role - Authorization Role Members
     put:
@@ -444,14 +444,14 @@ paths:
           name: requestPayload
           required: true
           schema:
-            $ref: '#/definitions/RoleAuthzMembersItems'
+            $ref: '#/definitions/RoleAuthzMembers'
         - $ref: '#/parameters/If-None-Match-Star'
         - $ref: '#/parameters/If-Match'
       responses:
         '201':
           description: Success
           schema:
-            $ref: '#/definitions/RoleAuthzMembersItems'
+            $ref: '#/definitions/RoleAuthzMembers'
           headers:
             Location:
               type: string
@@ -477,7 +477,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/RoleAuthzMembersItems'
+            $ref: '#/definitions/RoleAuthzMembers'
       tags:
         - Role - Authorization Role Members
     patch:
@@ -504,7 +504,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/RoleAuthzMembersItems'
+            $ref: '#/definitions/RoleAuthzMembers'
       tags:
         - Role - Authorization Role Members
   '/managed/role/{roleId}/members':
@@ -555,12 +555,12 @@ paths:
           name: requestPayload
           required: true
           schema:
-            $ref: '#/definitions/RoleMembersItems'
+            $ref: '#/definitions/RoleMembers'
       responses:
         '201':
           description: Success
           schema:
-            $ref: '#/definitions/RoleMembersItems'
+            $ref: '#/definitions/RoleMembers'
           headers:
             Location:
               type: string
@@ -588,7 +588,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/RoleMembersItems'
+            $ref: '#/definitions/RoleMembers'
       tags:
         - Role - Role Members
     put:
@@ -609,14 +609,14 @@ paths:
           name: requestPayload
           required: true
           schema:
-            $ref: '#/definitions/RoleMembersItems'
+            $ref: '#/definitions/RoleMembers'
         - $ref: '#/parameters/If-None-Match-Star'
         - $ref: '#/parameters/If-Match'
       responses:
         '201':
           description: Success
           schema:
-            $ref: '#/definitions/RoleMembersItems'
+            $ref: '#/definitions/RoleMembers'
           headers:
             Location:
               type: string
@@ -642,7 +642,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/RoleMembersItems'
+            $ref: '#/definitions/RoleMembers'
       tags:
         - Role - Role Members
     patch:
@@ -669,11 +669,11 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/RoleMembersItems'
+            $ref: '#/definitions/RoleMembers'
       tags:
         - Role - Role Members
 definitions:
-  'RoleAssignmentsItems':
+  'RoleAssignments':
     type: object
     properties:
       _ref:
@@ -694,7 +694,7 @@ definitions:
       result:
         type: array
         items:
-          $ref: '#/definitions/RoleMembersItems'
+          $ref: '#/definitions/RoleMembers'
         description: Array of matching items
       resultCount:
         type: integer
@@ -756,7 +756,7 @@ definitions:
       result:
         type: array
         items:
-          $ref: '#/definitions/RoleAssignmentsItems'
+          $ref: '#/definitions/RoleAssignments'
         description: Array of matching items
       resultCount:
         type: integer
@@ -781,7 +781,7 @@ definitions:
         default: -1
         description: Count of individual items remaining
     title: Role Assignments Query Response
-  'RoleAuthzMembersItems':
+  'RoleAuthzMembers':
     type: object
     properties:
       _ref:
@@ -796,37 +796,13 @@ definitions:
         title: Authorization Role Members Items _refProperties
         description: Supports metadata within the relationship
     title: Authorization Role Members Items
-  'PatchArray':
-    type: array
-    items:
-      type: object
-      properties:
-        operation:
-          type: string
-          description: Operation to perform on the field
-        field:
-          type: string
-          description: Target JSON Pointer of field to patch
-        from:
-          type: string
-          description: Source JSON Pointer used with copy and move operations
-        value:
-          type: string
-          description: Value to apply
-      title: Patch Operation
-    title: Patch Array
-  'Status':
-    type: object
-    properties:
-      status:
-        type: string
   'RoleAuthzMembersQueryResult':
     type: object
     properties:
       result:
         type: array
         items:
-          $ref: '#/definitions/RoleAuthzMembersItems'
+          $ref: '#/definitions/RoleAuthzMembers'
         description: Array of matching items
       resultCount:
         type: integer
@@ -851,7 +827,7 @@ definitions:
         default: -1
         description: Count of individual items remaining
     title: Role Authz Members Query Response
-  'RoleMembersItems':
+  'RoleMembers':
     type: object
     properties:
       _ref:
@@ -889,19 +865,19 @@ definitions:
       members:
         type: array
         items:
-          $ref: '#/definitions/RoleMembersItems'
+          $ref: '#/definitions/RoleMembers'
         title: Role Members
         description: Role Members
       authzMembers:
         type: array
         items:
-          $ref: '#/definitions/RoleAuthzMembersItems'
+          $ref: '#/definitions/RoleAuthzMembers'
         title: Authorization Role Members
         description: Authorization Role Members
       assignments:
         type: array
         items:
-          $ref: '#/definitions/RoleAssignmentsItems'
+          $ref: '#/definitions/RoleAssignments'
         title: Managed Assignments
         description: Managed Assignments
       condition:

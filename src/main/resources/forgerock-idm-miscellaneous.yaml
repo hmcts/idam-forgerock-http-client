@@ -207,26 +207,6 @@ definitions:
       _id:
         type: string
         description: Recon ID
-  'ApiError':
-    type: object
-    required:
-      - code
-      - message
-    properties:
-      code:
-        type: integer
-        format: int32
-        description: 3-digit apiError code corresponding to HTTP status codes
-      message:
-        type: string
-        description: ApiError message
-      reason:
-        type: string
-        description: Short description corresponding to apiError code
-      detail:
-        type: string
-        description: Detailed apiError message
-    title: ApiError
   'ReconciliationServiceResource':
     type: object
     required:

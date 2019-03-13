@@ -1,0 +1,73 @@
+swagger: '2.0'
+info:
+  version: 5.5.0
+  title: Forgerock Shared Definitions
+basePath: /forgerock/shared/definitions
+tags:
+  - name: Shared Definitions
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /shared/definitions:
+    get:
+      summary: Placeholder for Generation Purposes
+      operationId: _shared_definitions
+      parameters:
+        - name: _nothing_dont_call_this_endpoint
+          in: query
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: string
+      tags:
+        - Shared Definitions
+definitions:
+  'PatchArray':
+    type: array
+    items:
+      type: object
+      properties:
+        operation:
+          type: string
+          description: Operation to perform on the field
+        field:
+          type: string
+          description: Target JSON Pointer of field to patch
+        from:
+          type: string
+          description: Source JSON Pointer used with copy and move operations
+        value:
+          type: string
+          description: Value to apply
+      title: Patch Operation
+    title: Patch Array
+  'Status':
+    type: object
+    properties:
+      status:
+        type: string
+  'ApiError':
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+        description: 3-digit apiError code corresponding to HTTP status codes
+      message:
+        type: string
+        description: ApiError message
+      reason:
+        type: string
+        description: Short description corresponding to apiError code
+      detail:
+        type: string
+        description: Detailed apiError message
+    title: ApiError

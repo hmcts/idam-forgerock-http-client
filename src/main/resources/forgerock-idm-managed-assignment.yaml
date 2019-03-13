@@ -228,12 +228,12 @@ paths:
           name: requestPayload
           required: true
           schema:
-            $ref: '#/definitions/AssignmentRolesItems'
+            $ref: '#/definitions/AssignmentRoles'
       responses:
         '201':
           description: Success
           schema:
-            $ref: '#/definitions/AssignmentRolesItems'
+            $ref: '#/definitions/AssignmentRoles'
           headers:
             Location:
               type: string
@@ -261,7 +261,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/AssignmentRolesItems'
+            $ref: '#/definitions/AssignmentRoles'
       tags:
         - Assignment - Managed Roles
     put:
@@ -282,14 +282,14 @@ paths:
           name: requestPayload
           required: true
           schema:
-            $ref: '#/definitions/AssignmentRolesItems'
+            $ref: '#/definitions/AssignmentRoles'
         - $ref: '#/parameters/If-None-Match-Star'
         - $ref: '#/parameters/If-Match'
       responses:
         '201':
           description: Success
           schema:
-            $ref: '#/definitions/AssignmentRolesItems'
+            $ref: '#/definitions/AssignmentRoles'
           headers:
             Location:
               type: string
@@ -315,7 +315,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/AssignmentRolesItems'
+            $ref: '#/definitions/AssignmentRoles'
       tags:
         - Assignment - Managed Roles
     patch:
@@ -342,15 +342,10 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/AssignmentRolesItems'
+            $ref: '#/definitions/AssignmentRoles'
       tags:
         - Assignment - Managed Roles
 definitions:
-  'Status':
-    type: object
-    properties:
-      status:
-        type: string
   'Assignment':
     type: object
     required:
@@ -404,12 +399,12 @@ definitions:
       roles:
         type: array
         items:
-          $ref: '#/definitions/AssignmentRolesItems'
+          $ref: '#/definitions/AssignmentRoles'
         title: Managed Roles
         description: Managed Roles
     title: Assignment
     description: A role assignment
-  'AssignmentRolesItems':
+  'AssignmentRoles':
     type: object
     properties:
       _ref:
@@ -461,7 +456,7 @@ definitions:
       result:
         type: array
         items:
-          $ref: '#/definitions/AssignmentRolesItems'
+          $ref: '#/definitions/AssignmentRoles'
         description: Array of matching items
       resultCount:
         type: integer

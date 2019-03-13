@@ -83,39 +83,53 @@ def generateCodeFromSwagger(swaggerSourceFile, packageName, importMappings) {
     config.setOutputDir("$buildDir")
     config.setLang('java')
     config.setAdditionalProperties([
-            'generateApis'                 : 'false',
-            'apiPackage'                   : 'uk.gov.hmcts.reform.idam.api.fr.' + packageName,
-            'modelPackage'                 : 'uk.gov.hmcts.reform.idam.api.fr.' + packageName + '.model',
-            'invokerPackage'               : 'uk.gov.hmcts.reform.idam.api.fr.client.invoker',
-            'groupId'                      : project.group,
-            'artifactId'                   : 'fr-idam-feign-client',
-            'artifactVersion'              : project.version,
-            'sourceFolder'                 : project.swaggerTargetFolder,
-            'library'                      : 'feign',
-            'dateLibrary'                  : 'java8',
-            'generateModelDocumentation'   : 'false'
+            'generateApis'              : 'false',
+            'apiPackage'                : 'uk.gov.hmcts.reform.idam.api.fr.' + packageName,
+            'modelPackage'              : 'uk.gov.hmcts.reform.idam.api.fr.' + packageName + '.model',
+            'invokerPackage'            : 'uk.gov.hmcts.reform.idam.api.fr.client.invoker',
+            'groupId'                   : project.group,
+            'artifactId'                : 'fr-idam-feign-client',
+            'artifactVersion'           : project.version,
+            'sourceFolder'              : project.swaggerTargetFolder,
+            'library'                   : 'feign',
+            'dateLibrary'               : 'java8',
+            'generateModelDocumentation': 'false'
     ])
     if (importMappings != null) {
-        ((LinkedHashMap<String, String>)importMappings).each {k,v -> config.addImportMapping(k, v)}
+        ((LinkedHashMap<String, String>) importMappings).each { k, v -> config.addImportMapping(k, v) }
     }
     new DefaultGenerator().opts(config.toClientOptInput()).generate()
 }
 
 task generateApi {
     outputs.dir("$buildDir")
-    doLast{
+    doLast {
+        generateCodeFromSwagger('src/main/resources/forgerock-shared.yaml', 'shared', null)
         generateCodeFromSwagger('src/main/resources/forgerock-am-agents.yaml', 'am.agents', null)
         generateCodeFromSwagger('src/main/resources/forgerock-am-authentication.yaml', 'am.oidc', [
-                'Response'            : 'feign.Response'
+                'Response'  : 'feign.Response'
         ])
         generateCodeFromSwagger('src/main/resources/forgerock-am-oauth2-client.yaml', 'am.agents.oauth2', [
-                'AmAgent'            : 'uk.gov.hmcts.reform.idam.api.fr.am.agents.model.AmAgent'
+                'AmAgent'   : 'uk.gov.hmcts.reform.idam.api.fr.am.agents.model.AmAgent'
         ])
-        generateCodeFromSwagger('src/main/resources/forgerock-idm-managed-assignment.yaml', 'idm.manage.assignment', null)
-        generateCodeFromSwagger('src/main/resources/forgerock-idm-managed-user.yaml', 'idm.manage.user', null)
-        generateCodeFromSwagger('src/main/resources/forgerock-idm-miscellaneous.yaml', 'idm.misc', null)
-        generateCodeFromSwagger('src/main/resources/forgerock-idm-roles.yaml', 'idm.manage.roles', null)
-        generateCodeFromSwagger('src/main/resources/forgerock-idm-selfservice-registration.yaml', 'idm.selfservice', null)
+        generateCodeFromSwagger('src/main/resources/forgerock-idm-managed-assignment.yaml', 'idm.manage.assignment', [
+                'PatchArray': 'uk.gov.hmcts.reform.idam.api.fr.shared.model.PatchArray',
+                'Status'    : 'uk.gov.hmcts.reform.idam.api.fr.shared.model.Status'
+        ])
+        generateCodeFromSwagger('src/main/resources/forgerock-idm-managed-user.yaml', 'idm.manage.user', [
+                'PatchArray': 'uk.gov.hmcts.reform.idam.api.fr.shared.model.PatchArray',
+                'Status'    : 'uk.gov.hmcts.reform.idam.api.fr.shared.model.Status'
+        ])
+        generateCodeFromSwagger('src/main/resources/forgerock-idm-miscellaneous.yaml', 'idm.misc', [
+                'ApiError'  : 'uk.gov.hmcts.reform.idam.api.fr.shared.model.ApiError'
+        ])
+        generateCodeFromSwagger('src/main/resources/forgerock-idm-roles.yaml', 'idm.manage.roles', [
+                'PatchArray': 'uk.gov.hmcts.reform.idam.api.fr.shared.model.PatchArray',
+                'Status'    : 'uk.gov.hmcts.reform.idam.api.fr.shared.model.Status'
+        ])
+        generateCodeFromSwagger('src/main/resources/forgerock-idm-selfservice-registration.yaml', 'idm.selfservice', [
+                'ApiError'  : 'uk.gov.hmcts.reform.idam.api.fr.shared.model.ApiError'
+        ])
     }
 }
 

@@ -116,26 +116,6 @@ definitions:
           $ref: '#/definitions/FailedPolicyRequirements'
         description: Array of matching items
     title: Validate User Object
-  'ApiError':
-    type: object
-    required:
-      - code
-      - message
-    properties:
-      code:
-        type: integer
-        format: int32
-        description: 3-digit apiError code corresponding to HTTP status codes
-      message:
-        type: string
-        description: ApiError message
-      reason:
-        type: string
-        description: Short description corresponding to apiError code
-      detail:
-        type: string
-        description: Detailed apiError message
-    title: ApiError
   'GetInitialRequirementsResponse':
     type: object
     required:

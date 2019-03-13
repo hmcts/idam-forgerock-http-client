@@ -245,12 +245,12 @@ paths:
           name: requestPayload
           required: true
           schema:
-            $ref: '#/definitions/UserAuthzRolesItems'
+            $ref: '#/definitions/UserAuthzRoles'
       responses:
         '201':
           description: Success
           schema:
-            $ref: '#/definitions/UserAuthzRolesItems'
+            $ref: '#/definitions/UserAuthzRoles'
           headers:
             Location:
               type: string
@@ -278,7 +278,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/UserAuthzRolesItems'
+            $ref: '#/definitions/UserAuthzRoles'
       tags:
         - User - Authorization Roles
     put:
@@ -299,14 +299,14 @@ paths:
           name: requestPayload
           required: true
           schema:
-            $ref: '#/definitions/UserAuthzRolesItems'
+            $ref: '#/definitions/UserAuthzRoles'
         - $ref: '#/parameters/If-None-Match-Star'
         - $ref: '#/parameters/If-Match'
       responses:
         '201':
           description: Success
           schema:
-            $ref: '#/definitions/UserAuthzRolesItems'
+            $ref: '#/definitions/UserAuthzRoles'
           headers:
             Location:
               type: string
@@ -332,7 +332,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/UserAuthzRolesItems'
+            $ref: '#/definitions/UserAuthzRoles'
       tags:
         - User - Authorization Roles
     patch:
@@ -359,7 +359,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/UserAuthzRolesItems'
+            $ref: '#/definitions/UserAuthzRoles'
       tags:
         - User - Authorization Roles
   '/managed/user/{userId}/reports':
@@ -409,12 +409,12 @@ paths:
           name: requestPayload
           required: true
           schema:
-            $ref: '#/definitions/UserReportsItems'
+            $ref: '#/definitions/UserReports'
       responses:
         '201':
           description: Success
           schema:
-            $ref: '#/definitions/UserReportsItems'
+            $ref: '#/definitions/UserReports'
           headers:
             Location:
               type: string
@@ -442,7 +442,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/UserReportsItems'
+            $ref: '#/definitions/UserReports'
       tags:
         - User - Direct Reports
     put:
@@ -463,14 +463,14 @@ paths:
           name: requestPayload
           required: true
           schema:
-            $ref: '#/definitions/UserReportsItems'
+            $ref: '#/definitions/UserReports'
         - $ref: '#/parameters/If-None-Match-Star'
         - $ref: '#/parameters/If-Match'
       responses:
         '201':
           description: Success
           schema:
-            $ref: '#/definitions/UserReportsItems'
+            $ref: '#/definitions/UserReports'
           headers:
             Location:
               type: string
@@ -496,7 +496,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/UserReportsItems'
+            $ref: '#/definitions/UserReports'
       tags:
         - User - Direct Reports
     patch:
@@ -523,7 +523,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/UserReportsItems'
+            $ref: '#/definitions/UserReports'
       tags:
         - User - Direct Reports
   '/managed/user/{userId}/roles':
@@ -573,12 +573,12 @@ paths:
           name: requestPayload
           required: true
           schema:
-            $ref: '#/definitions/UserRolesItems'
+            $ref: '#/definitions/UserRoles'
       responses:
         '201':
           description: Success
           schema:
-            $ref: '#/definitions/UserRolesItems'
+            $ref: '#/definitions/UserRoles'
           headers:
             Location:
               type: string
@@ -606,7 +606,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/UserRolesItems'
+            $ref: '#/definitions/UserRoles'
       tags:
         - User - Provisioning Roles
     put:
@@ -627,14 +627,14 @@ paths:
           name: requestPayload
           required: true
           schema:
-            $ref: '#/definitions/UserRolesItems'
+            $ref: '#/definitions/UserRoles'
         - $ref: '#/parameters/If-None-Match-Star'
         - $ref: '#/parameters/If-Match'
       responses:
         '201':
           description: Success
           schema:
-            $ref: '#/definitions/UserRolesItems'
+            $ref: '#/definitions/UserRoles'
           headers:
             Location:
               type: string
@@ -660,7 +660,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/UserRolesItems'
+            $ref: '#/definitions/UserRoles'
       tags:
         - User - Provisioning Roles
     patch:
@@ -687,11 +687,11 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/UserRolesItems'
+            $ref: '#/definitions/UserRoles'
       tags:
         - User - Provisioning Roles
 definitions:
-  'UserAuthzRolesItems':
+  'UserAuthzRoles':
     type: object
     properties:
       _ref:
@@ -706,7 +706,7 @@ definitions:
         description: Supports metadata within the relationship
         title: Authorization Roles Items _refProperties
     title: Authorization Roles Items
-  'UserReportsItems':
+  'UserReports':
     type: object
     properties:
       _ref:
@@ -721,32 +721,13 @@ definitions:
         description: Supports metadata within the relationship
         title: Direct Reports Items _refProperties
     title: Direct Reports Items
-  'PatchArray':
-    type: array
-    items:
-      type: object
-      properties:
-        operation:
-          type: string
-          description: Operation to perform on the field
-        field:
-          type: string
-          description: Target JSON Pointer of field to patch
-        from:
-          type: string
-          description: Source JSON Pointer used with copy and move operations
-        value:
-          type: string
-          description: Value to apply
-      title: Patch Operation
-    title: Patch Array
   'UserAuthzRolesQueryResult':
     type: object
     properties:
       result:
         type: array
         items:
-          $ref: '#/definitions/UserAuthzRolesItems'
+          $ref: '#/definitions/UserAuthzRoles'
         description: Array of matching items
       resultCount:
         type: integer
@@ -777,7 +758,7 @@ definitions:
       result:
         type: array
         items:
-          $ref: '#/definitions/UserRolesItems'
+          $ref: '#/definitions/UserRoles'
         description: Array of matching items
       resultCount:
         type: integer
@@ -915,19 +896,19 @@ definitions:
       roles:
         type: array
         items:
-          $ref: '#/definitions/UserRolesItems'
+          $ref: '#/definitions/UserRoles'
         description: Provisioning Roles
         title: Provisioning Roles
       authzRoles:
         type: array
         items:
-          $ref: '#/definitions/UserAuthzRolesItems'
+          $ref: '#/definitions/UserAuthzRoles'
         description: Authorization Roles
         title: Authorization Roles
       reports:
         type: array
         items:
-          $ref: '#/definitions/UserReportsItems'
+          $ref: '#/definitions/UserReports'
         description: Direct Reports
         title: Direct Reports
       effectiveRoles:
@@ -1063,7 +1044,7 @@ definitions:
         description: LDAP Mapping of Assigment
     description: Effective Assignment
     title: EffectiveAssignment
-  'UserRolesItems':
+  'UserRoles':
     type: object
     properties:
       _ref:
@@ -1087,7 +1068,7 @@ definitions:
       result:
         type: array
         items:
-          $ref: '#/definitions/UserReportsItems'
+          $ref: '#/definitions/UserReports'
         description: Array of matching items
       resultCount:
         type: integer
@@ -1112,11 +1093,6 @@ definitions:
         default: -1
         description: Count of individual items remaining
     title: User Reports Query Response
-  'Status':
-    type: object
-    properties:
-      status:
-        type: string
 parameters:
   _queryFilter:
     name: _queryFilter
