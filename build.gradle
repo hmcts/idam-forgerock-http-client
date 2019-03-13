@@ -1,0 +1,164 @@
+import io.swagger.codegen.DefaultGenerator
+import io.swagger.codegen.config.CodegenConfigurator
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'io.swagger:swagger-codegen:2.4.2'
+        classpath 'io.spring.gradle:dependency-management-plugin:1.0.7.RELEASE'
+    }
+}
+
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id 'io.spring.dependency-management' version '1.0.7.RELEASE'
+    id 'com.jfrog.bintray' version '1.8.0'
+}
+
+ext {
+    swagger_annotations_version = "1.5.9"
+    jackson_version = "2.8.7"
+    feign_version = "9.4.0"
+    feign_form_version = "2.1.0"
+    junit_version = "4.12"
+    oltu_version = "1.0.1"
+}
+
+version = '1.0.0'
+group = 'uk.gov.hmcts.reform.idam'
+
+description = """idam-forgerock-http-client"""
+
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    maven {
+        url 'https://dl.bintray.com/hmcts/hmcts-maven'
+    }
+    jcenter()
+}
+
+configurations {
+    generatedCompile
+    compile.extendsFrom generatedCompile
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'uk.gov.hmcts.reform.idam:idam-bom:1.4.9'
+    }
+}
+
+dependencies {
+    generatedCompile "io.swagger:swagger-annotations:$swagger_annotations_version"
+    generatedCompile "io.github.openfeign:feign-core:$feign_version"
+    generatedCompile "io.github.openfeign:feign-jackson:$feign_version"
+    generatedCompile "io.github.openfeign:feign-slf4j:$feign_version"
+    generatedCompile "io.github.openfeign.form:feign-form:$feign_form_version"
+    generatedCompile "com.fasterxml.jackson.core:jackson-core:$jackson_version"
+    generatedCompile "com.fasterxml.jackson.core:jackson-annotations:$jackson_version"
+    generatedCompile "com.fasterxml.jackson.core:jackson-databind:$jackson_version"
+    generatedCompile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jackson_version"
+    generatedCompile "org.apache.oltu.oauth2:org.apache.oltu.oauth2.client:$oltu_version"
+    generatedCompile "com.brsanthu:migbase64:2.2"
+}
+
+project.ext {
+    swaggerTargetFolder = 'src/generated/java'
+}
+
+def generateCodeFromSwagger(swaggerSourceFile, packageName, importMappings) {
+    def config = new CodegenConfigurator()
+    config.setInputSpec("file:///$projectDir/$swaggerSourceFile")
+    config.setOutputDir("$buildDir")
+    config.setLang('java')
+    config.setAdditionalProperties([
+            'generateApis'                 : 'false',
+            'apiPackage'                   : 'uk.gov.hmcts.reform.idam.api.fr.' + packageName,
+            'modelPackage'                 : 'uk.gov.hmcts.reform.idam.api.fr.' + packageName + '.model',
+            'invokerPackage'               : 'uk.gov.hmcts.reform.idam.api.fr.client.invoker',
+            'groupId'                      : project.group,
+            'artifactId'                   : 'fr-idam-feign-client',
+            'artifactVersion'              : project.version,
+            'sourceFolder'                 : project.swaggerTargetFolder,
+            'library'                      : 'feign',
+            'dateLibrary'                  : 'java8',
+            'generateModelDocumentation'   : 'false'
+    ])
+    if (importMappings != null) {
+        ((LinkedHashMap<String, String>)importMappings).each {k,v -> config.addImportMapping(k, v)}
+    }
+    new DefaultGenerator().opts(config.toClientOptInput()).generate()
+}
+
+task generateApi {
+    outputs.dir("$buildDir")
+    doLast{
+        generateCodeFromSwagger('src/main/resources/forgerock-am-agents.yaml', 'am.agents', null)
+        generateCodeFromSwagger('src/main/resources/forgerock-am-authentication.yaml', 'am.oidc', [
+                'Response'            : 'feign.Response'
+        ])
+        generateCodeFromSwagger('src/main/resources/forgerock-am-oauth2-client.yaml', 'am.agents.oauth2', [
+                'AmAgent'            : 'uk.gov.hmcts.reform.idam.api.fr.am.agents.model.AmAgent'
+        ])
+        generateCodeFromSwagger('src/main/resources/forgerock-idm-managed-assignment.yaml', 'idm.manage.assignment', null)
+        generateCodeFromSwagger('src/main/resources/forgerock-idm-managed-user.yaml', 'idm.manage.user', null)
+        generateCodeFromSwagger('src/main/resources/forgerock-idm-miscellaneous.yaml', 'idm.misc', null)
+        generateCodeFromSwagger('src/main/resources/forgerock-idm-roles.yaml', 'idm.manage.roles', null)
+        generateCodeFromSwagger('src/main/resources/forgerock-idm-selfservice-registration.yaml', 'idm.selfservice', null)
+    }
+}
+
+sourceSets {
+    generated {
+        java {
+            srcDirs "$buildDir/$swaggerTargetFolder"
+        }
+    }
+}
+
+jar {
+    from sourceSets.generated.output
+}
+
+compileGeneratedJava.dependsOn generateApi
+classes.dependsOn generatedClasses
+compileJava.dependsOn compileGeneratedJava
+
+publishing {
+    publications {
+        Main(MavenPublication) {
+            from components.java
+            groupId project.group
+            artifactId rootProject.name
+            version project.version
+        }
+    }
+}
+
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+    publications = ['Main']
+    publish = true
+    pkg {
+        repo = 'hmcts-maven'
+        name = "${rootProject.name}"
+        userOrg = 'hmcts'
+        licenses = ['MIT']
+        vcsUrl = "https://github.com/hmcts/${rootProject.name}"
+        version {
+            name = project.version
+        }
+    }
+}

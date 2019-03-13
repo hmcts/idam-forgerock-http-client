@@ -1,0 +1,1196 @@
+swagger: '2.0'
+info:
+  version: 5.5.0
+  title: ForgeRock IDM Users API
+basePath: /openidm
+tags:
+  - name: User
+  - name: User - Authorization Roles
+  - name: User - Direct Reports
+  - name: User - Provisioning Roles
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+  - text/plain
+  - multipart/form-data
+produces:
+  - application/json
+paths:
+  /managed/user:
+    get:
+      summary: Query by Filter or by Query ID
+      operationId: _query_filter
+      parameters:
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/_queryFilter'
+        - $ref: '#/parameters/_queryId'
+        - name: _pageSize
+          in: query
+          required: false
+          type: integer
+        - name: _totalPagedResultsPolicy
+          in: query
+          required: false
+          type: string
+          enum:
+            - NONE
+        - name: _sortKeys
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/UserQueryResultSet'
+      tags:
+        - User
+    post:
+      summary: Create with Server-Assigned ID
+      operationId: _create_post
+      parameters:
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/_action_create'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        '201':
+          description: Success
+          schema:
+            $ref: '#/definitions/User'
+          headers:
+            Location:
+              type: string
+              description: Resource location in response to successful create operation.
+      tags:
+        - User
+  '/managed/user/{userId}':
+    get:
+      summary: Read
+      operationId: _userid_read
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/_mimeType'
+        - $ref: '#/parameters/If-None-Match-Rev'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - User
+    post:
+      summary: 'Action: resetPassword'
+      operationId: _userid_action_resetpassword
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/_action_resetPassword'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - User
+    put:
+      summary: Create with Client-Assigned ID or Server-Assigned ID
+      operationId: _userid_create_put
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+        - $ref: '#/parameters/If-None-Match-Star'
+        - $ref: '#/parameters/If-Match'
+      responses:
+        '201':
+          description: Success
+          schema:
+            $ref: '#/definitions/User'
+          headers:
+            Location:
+              type: string
+              description: Resource location in response to successful create operation.
+      tags:
+        - User
+    delete:
+      summary: Delete
+      operationId: _userid_delete
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/If-Match'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - User
+    patch:
+      summary: Update via Patch Operations
+      operationId: _userid_patch
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            $ref: '#/definitions/PatchArray'
+        - $ref: '#/parameters/If-Match'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - User
+  '/managed/user/{userId}#_action_triggersynccheck':
+    post:
+      summary: 'Action: triggerSyncCheck'
+      operationId: _userid_action_triggersynccheck
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/_action_triggerSyncCheck'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/Status'
+      tags:
+        - User
+  '/managed/user/{userId}/authzRoles':
+    get:
+      summary: Query by Filter
+      operationId: _userid_authzroles_query_filter
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/_queryFilter'
+        - $ref: '#/parameters/_queryId'
+        - name: _pageSize
+          in: query
+          required: false
+          type: integer
+        - name: _totalPagedResultsPolicy
+          in: query
+          required: false
+          type: string
+          enum:
+            - NONE
+        - name: _sortKeys
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/UserAuthzRolesQueryResult'
+      tags:
+        - User - Authorization Roles
+    post:
+      summary: Create with Server-Assigned ID
+      operationId: _userid_authzroles_create_post
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            $ref: '#/definitions/UserAuthzRolesItems'
+      responses:
+        '201':
+          description: Success
+          schema:
+            $ref: '#/definitions/UserAuthzRolesItems'
+          headers:
+            Location:
+              type: string
+              description: Resource location in response to successful create operation.
+      tags:
+        - User - Authorization Roles
+  '/managed/user/{userId}/authzRoles/{id}':
+    get:
+      summary: Read
+      operationId: _userid_authzroles_id_read
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/_mimeType'
+        - $ref: '#/parameters/If-None-Match-Rev'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/UserAuthzRolesItems'
+      tags:
+        - User - Authorization Roles
+    put:
+      summary: Create with Client-Assigned ID or Server-Assigned ID
+      operationId: _userid_authzroles_id_create_put
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            $ref: '#/definitions/UserAuthzRolesItems'
+        - $ref: '#/parameters/If-None-Match-Star'
+        - $ref: '#/parameters/If-Match'
+      responses:
+        '201':
+          description: Success
+          schema:
+            $ref: '#/definitions/UserAuthzRolesItems'
+          headers:
+            Location:
+              type: string
+              description: Resource location in response to successful create operation.
+      tags:
+        - User - Authorization Roles
+    delete:
+      summary: Delete
+      operationId: _userid_authzroles_id_delete
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/If-Match'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/UserAuthzRolesItems'
+      tags:
+        - User - Authorization Roles
+    patch:
+      summary: Update via Patch Operations
+      operationId: _userid_authzroles_id_patch
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            $ref: '#/definitions/PatchArray'
+        - $ref: '#/parameters/If-Match'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/UserAuthzRolesItems'
+      tags:
+        - User - Authorization Roles
+  '/managed/user/{userId}/reports':
+    get:
+      summary: Query by Filter
+      operationId: _userid_reports_query_filter
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/_queryFilter'
+        - name: _pageSize
+          in: query
+          required: false
+          type: integer
+        - name: _totalPagedResultsPolicy
+          in: query
+          required: false
+          type: string
+          enum:
+            - NONE
+        - name: _sortKeys
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/UserReportsQueryResult'
+      tags:
+        - User - Direct Reports
+    post:
+      summary: Create with Server-Assigned ID
+      operationId: _userid_reports_create_post
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            $ref: '#/definitions/UserReportsItems'
+      responses:
+        '201':
+          description: Success
+          schema:
+            $ref: '#/definitions/UserReportsItems'
+          headers:
+            Location:
+              type: string
+              description: Resource location in response to successful create operation.
+      tags:
+        - User - Direct Reports
+  '/managed/user/{userId}/reports/{id}':
+    get:
+      summary: Read
+      operationId: _userid_reports_id_read
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/_mimeType'
+        - $ref: '#/parameters/If-None-Match-Rev'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/UserReportsItems'
+      tags:
+        - User - Direct Reports
+    put:
+      summary: Create with Client-Assigned ID or Server-Assigned ID
+      operationId: _userid_reports_id_create_put
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            $ref: '#/definitions/UserReportsItems'
+        - $ref: '#/parameters/If-None-Match-Star'
+        - $ref: '#/parameters/If-Match'
+      responses:
+        '201':
+          description: Success
+          schema:
+            $ref: '#/definitions/UserReportsItems'
+          headers:
+            Location:
+              type: string
+              description: Resource location in response to successful create operation.
+      tags:
+        - User - Direct Reports
+    delete:
+      summary: Delete
+      operationId: _userid_reports_id_delete
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/If-Match'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/UserReportsItems'
+      tags:
+        - User - Direct Reports
+    patch:
+      summary: Update via Patch Operations
+      operationId: _userid_reports_id_patch
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            $ref: '#/definitions/PatchArray'
+        - $ref: '#/parameters/If-Match'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/UserReportsItems'
+      tags:
+        - User - Direct Reports
+  '/managed/user/{userId}/roles':
+    get:
+      summary: Query by Filter
+      operationId: _userid_roles_query_filter
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/_queryFilter'
+        - name: _pageSize
+          in: query
+          required: false
+          type: integer
+        - name: _totalPagedResultsPolicy
+          in: query
+          required: false
+          type: string
+          enum:
+            - NONE
+        - name: _sortKeys
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/UserRolesQueryResult'
+      tags:
+        - User - Provisioning Roles
+    post:
+      summary: Create with Server-Assigned ID
+      operationId: _userid_roles_create_post
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            $ref: '#/definitions/UserRolesItems'
+      responses:
+        '201':
+          description: Success
+          schema:
+            $ref: '#/definitions/UserRolesItems'
+          headers:
+            Location:
+              type: string
+              description: Resource location in response to successful create operation.
+      tags:
+        - User - Provisioning Roles
+  '/managed/user/{userId}/roles/{id}':
+    get:
+      summary: Read
+      operationId: _userid_roles_id_read
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/_mimeType'
+        - $ref: '#/parameters/If-None-Match-Rev'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/UserRolesItems'
+      tags:
+        - User - Provisioning Roles
+    put:
+      summary: Create with Client-Assigned ID Or Server-Assigned ID
+      operationId: _userid_roles_id_create_put
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            $ref: '#/definitions/UserRolesItems'
+        - $ref: '#/parameters/If-None-Match-Star'
+        - $ref: '#/parameters/If-Match'
+      responses:
+        '201':
+          description: Success
+          schema:
+            $ref: '#/definitions/UserRolesItems'
+          headers:
+            Location:
+              type: string
+              description: Resource location in response to successful create operation.
+      tags:
+        - User - Provisioning Roles
+    delete:
+      summary: Delete
+      operationId: _userid_roles_id_delete
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/If-Match'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/UserRolesItems'
+      tags:
+        - User - Provisioning Roles
+    patch:
+      summary: Update via Patch Operations
+      operationId: _userid_roles_id_patch
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            $ref: '#/definitions/PatchArray'
+        - $ref: '#/parameters/If-Match'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/UserRolesItems'
+      tags:
+        - User - Provisioning Roles
+definitions:
+  'UserAuthzRolesItems':
+    type: object
+    properties:
+      _ref:
+        type: string
+        description: References a relationship from a managed object
+      _refProperties:
+        type: object
+        properties:
+          _id:
+            type: string
+            description: _refProperties object ID
+        description: Supports metadata within the relationship
+        title: Authorization Roles Items _refProperties
+    title: Authorization Roles Items
+  'UserReportsItems':
+    type: object
+    properties:
+      _ref:
+        type: string
+        description: References a relationship from a managed object
+      _refProperties:
+        type: object
+        properties:
+          _id:
+            type: string
+            description: _refProperties object ID
+        description: Supports metadata within the relationship
+        title: Direct Reports Items _refProperties
+    title: Direct Reports Items
+  'PatchArray':
+    type: array
+    items:
+      type: object
+      properties:
+        operation:
+          type: string
+          description: Operation to perform on the field
+        field:
+          type: string
+          description: Target JSON Pointer of field to patch
+        from:
+          type: string
+          description: Source JSON Pointer used with copy and move operations
+        value:
+          type: string
+          description: Value to apply
+      title: Patch Operation
+    title: Patch Array
+  'UserAuthzRolesQueryResult':
+    type: object
+    properties:
+      result:
+        type: array
+        items:
+          $ref: '#/definitions/UserAuthzRolesItems'
+        description: Array of matching items
+      resultCount:
+        type: integer
+        format: int32
+        default: 0
+        description: Count of individual result items
+      pagedResultsCookie:
+        type: string
+        description: Opaque cookie used by the server to keep track of the position in the search results
+      totalPagedResultsPolicy:
+        type: string
+        default: NONE
+        description: 'Either NONE, EXACT, or ESTIMATE. Indicates the accuracy of the result count'
+      totalPagedResults:
+        type: integer
+        format: int32
+        default: -1
+        description: Total count of individual items
+      remainingPagedResults:
+        type: integer
+        format: int32
+        default: -1
+        description: Count of individual items remaining
+    title: User Authz Roles Query Response
+  'UserRolesQueryResult':
+    type: object
+    properties:
+      result:
+        type: array
+        items:
+          $ref: '#/definitions/UserRolesItems'
+        description: Array of matching items
+      resultCount:
+        type: integer
+        format: int32
+        default: 0
+        description: Count of individual result items
+      pagedResultsCookie:
+        type: string
+        description: Opaque cookie used by the server to keep track of the position in the search results
+      totalPagedResultsPolicy:
+        type: string
+        default: NONE
+        description: 'Either NONE, EXACT, or ESTIMATE. Indicates the accuracy of the result count'
+      totalPagedResults:
+        type: integer
+        format: int32
+        default: -1
+        description: Total count of individual items
+      remainingPagedResults:
+        type: integer
+        format: int32
+        default: -1
+        description: Count of individual items remaining
+    title: User Roles Query Response
+  'UserQueryResultSet':
+    type: object
+    properties:
+      result:
+        type: array
+        items:
+          $ref: '#/definitions/User'
+        description: Array of matching items
+      resultCount:
+        type: integer
+        format: int32
+        default: 0
+        description: Count of individual result items
+      pagedResultsCookie:
+        type: string
+        description: Opaque cookie used by the server to keep track of the position in the search results
+      totalPagedResultsPolicy:
+        type: string
+        default: NONE
+        description: 'Either NONE, EXACT, or ESTIMATE. Indicates the accuracy of the result count'
+      totalPagedResults:
+        type: integer
+        format: int32
+        default: -1
+        description: Total count of individual items
+      remainingPagedResults:
+        type: integer
+        format: int32
+        default: -1
+        description: Count of individual items remaining
+    title: User Query Response
+  'User':
+    type: object
+    required:
+      - givenName
+      - mail
+      - sn
+      - userName
+    properties:
+      _id:
+        type: string
+        description: User ID
+      password:
+        type: string
+        minLength: 8
+        description: Password
+        title: Password
+      kbaInfo:
+        type: array
+        items:
+          type: object
+          properties:
+            answer:
+              type: string
+              description: Answer
+            customQuestion:
+              type: string
+              description: Custom question
+            questionId:
+              type: string
+              description: Question ID
+          title: KBA Info Items
+        description: KBA Info
+      preferences:
+        type: object
+        properties:
+          updates:
+            type: boolean
+            description: Send me news and updates
+          marketing:
+            type: boolean
+            description: Send me special offers and services
+        description: Preferences
+        title: Preferences
+      mail:
+        type: string
+        description: Email Address
+        title: Email Address
+      sn:
+        type: string
+        description: Last Name
+        title: Last Name
+      description:
+        type: string
+        description: Description
+        title: Description
+      address2:
+        type: string
+        description: Address 2
+        title: Address 2
+      givenName:
+        type: string
+        description: First Name
+        title: First Name
+      city:
+        type: string
+        description: City
+        title: City
+      country:
+        type: string
+        description: Country
+        title: Country
+      postalCode:
+        type: string
+        description: Postal Code
+        title: Postal Code
+      accountStatus:
+        type: string
+        description: Status
+        title: Status
+      roles:
+        type: array
+        items:
+          $ref: '#/definitions/UserRolesItems'
+        description: Provisioning Roles
+        title: Provisioning Roles
+      authzRoles:
+        type: array
+        items:
+          $ref: '#/definitions/UserAuthzRolesItems'
+        description: Authorization Roles
+        title: Authorization Roles
+      reports:
+        type: array
+        items:
+          $ref: '#/definitions/UserReportsItems'
+        description: Direct Reports
+        title: Direct Reports
+      effectiveRoles:
+        type: array
+        items:
+          $ref: '#/definitions/EffectiveRole'
+        description: Effective Roles
+        title: Effective Roles
+      effectiveAssignments:
+        type: array
+        items:
+          $ref: '#/definitions/EffectiveAssignment'
+        description: Effective Assignments
+        title: Effective Assignments
+      telephoneNumber:
+        type: string
+        pattern: '^\+?([0-9\- \(\)])*$'
+        description: Mobile Phone
+        title: Mobile Phone
+      stateProvince:
+        type: string
+        description: State/Province
+        title: State/Province
+      postalAddress:
+        type: string
+        description: Address 1
+        title: Address 1
+      userName:
+        type: string
+        minLength: 1
+        description: Username
+        title: Username
+      manager:
+        type: object
+        properties:
+          _ref:
+            type: string
+            description: References a relationship from a managed object
+          _refProperties:
+            type: object
+            properties:
+              _id:
+                type: string
+                description: _refProperties object ID
+            description: Supports metadata within the relationship
+            title: Manager _refProperties
+        description: Manager
+        title: Manager
+      lastSync:
+        type: object
+        properties:
+          effectiveAssignments:
+            type: array
+            items:
+              type: object
+              title: Effective Assignments Items
+            description: Effective Assignments
+            title: Effective Assignments
+          timestamp:
+            type: string
+            description: Timestamp
+        description: Last Sync timestamp
+        title: Last Sync timestamp
+      termsAccepted:
+        type: object
+        properties:
+          termsVersion:
+            type: string
+            description: Terms & Conditions Version
+            title: ''
+          iso8601date:
+            type: string
+            description: ISO 8601 Date and time format
+            title: ''
+        description: Terms Accepted
+        title: Terms Accepted
+      lastChanged:
+        type: object
+        properties:
+          date:
+            type: string
+            description: Last changed date
+            title: ''
+        description: Last Changed
+        title: Last Changed
+        required:
+          - date
+      consentedMappings:
+        type: array
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              mapping:
+                type: string
+                description: Mapping
+                title: Mapping
+              consentDate:
+                type: string
+                description: Consent Date
+                title: Consent Date
+            title: Consented Mappings Item
+            required:
+              - consentDate
+              - mapping
+          title: Consented Mappings Items
+        description: Consented Mappings
+        title: Consented Mappings
+    title: User
+  'EffectiveRole':
+    type: object
+    properties:
+      _ref:
+        type: string
+        description: Full path of effective Role Mapping
+    description: Effective Role
+    title: EffectiveRole
+  'EffectiveAssignment':
+    type: object
+    properties:
+      _id:
+        type: string
+        description: Assignment object ID
+      name:
+        type: string
+        description: Name of Assignment
+      description:
+        type: string
+        description: Description of Assignment
+      mapping:
+        type: string
+        description: LDAP Mapping of Assigment
+    description: Effective Assignment
+    title: EffectiveAssignment
+  'UserRolesItems':
+    type: object
+    properties:
+      _ref:
+        type: string
+        description: References a relationship from a managed object
+      _refProperties:
+        type: object
+        properties:
+          _id:
+            type: string
+            description: _refProperties object ID
+          _grantType:
+            type: string
+            description: Grant Type
+        description: Supports metadata within the relationship
+        title: Provisioning Roles Items _refProperties
+    title: Provisioning Roles Items
+  'UserReportsQueryResult':
+    type: object
+    properties:
+      result:
+        type: array
+        items:
+          $ref: '#/definitions/UserReportsItems'
+        description: Array of matching items
+      resultCount:
+        type: integer
+        format: int32
+        default: 0
+        description: Count of individual result items
+      pagedResultsCookie:
+        type: string
+        description: Opaque cookie used by the server to keep track of the position in the search results
+      totalPagedResultsPolicy:
+        type: string
+        default: NONE
+        description: 'Either NONE, EXACT, or ESTIMATE. Indicates the accuracy of the result count'
+      totalPagedResults:
+        type: integer
+        format: int32
+        default: -1
+        description: Total count of individual items
+      remainingPagedResults:
+        type: integer
+        format: int32
+        default: -1
+        description: Count of individual items remaining
+    title: User Reports Query Response
+  'Status':
+    type: object
+    properties:
+      status:
+        type: string
+parameters:
+  _queryFilter:
+    name: _queryFilter
+    in: query
+    required: false
+    type: string
+  _action_triggerSyncCheck:
+    name: _action
+    in: query
+    required: true
+    type: string
+    enum:
+      - triggerSyncCheck
+  _action_create:
+    name: _action
+    in: query
+    required: false
+    type: string
+    default: 'create'
+    enum:
+      - create
+  _action_resetPassword:
+    name: _action
+    in: query
+    required: true
+    type: string
+    enum:
+      - resetPassword
+  _queryId:
+    name: _queryId
+    in: query
+    required: false
+    type: string
+    enum:
+      - query-all
+      - query-all-ids
+  If-None-Match-Star:
+    name: If-None-Match
+    in: header
+    description: Add on PUT Operations when Creating new Entities
+    required: false
+    type: string
+    enum:
+      - '*'
+  If-Match:
+    name: If-Match
+    in: header
+    description: Add on PUT Operations when Updating Existing Entities
+    required: false
+    type: string
+    enum:
+      - '*'
+  If-None-Match-Rev:
+    name: If-None-Match
+    in: header
+    description: Add on GET Operations
+    required: false
+    type: string
+  _mimeType:
+    name: _mimeType
+    in: query
+    description: Optional parameter requesting that the response have the given MIME-Type. Use of this parameter requires a _fields parameter with a single field specified.
+    required: false
+    type: string
+  _prettyPrint:
+    name: _prettyPrint
+    in: query
+    description: Optional parameter requesting that the returned JSON resource content should be formatted to be more human readable.
+    required: false
+    type: boolean
+  _fields:
+    name: _fields
+    in: query
+    description: Optional parameter containing a comma separated list of field references specifying which fields of the targeted JSON resource should be returned.
+    required: false
+    type: string
+    collectionFormat: csv

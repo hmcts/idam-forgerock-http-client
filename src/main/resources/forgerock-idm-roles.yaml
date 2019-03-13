@@ -1,0 +1,994 @@
+swagger: '2.0'
+info:
+  version: "1.0"
+  title: ForgeRock Roles API
+basePath: /openidm
+tags:
+  - name: Role
+  - name: Role - Managed Assignments
+  - name: Role - Authorization Role Members
+  - name: Role - Role Members
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+  - text/plain
+  - multipart/form-data
+produces:
+  - application/json
+paths:
+  /managed/role:
+    get:
+      summary: Query by Filter or by Query ID
+      operationId: _query_filter
+      parameters:
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/_queryFilter'
+        - $ref: '#/parameters/_queryId'
+        - name: _pageSize
+          in: query
+          required: false
+          type: integer
+        - name: _totalPagedResultsPolicy
+          in: query
+          required: false
+          type: string
+          enum:
+            - NONE
+        - name: _sortKeys
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RoleQueryResult'
+      tags:
+        - Role
+    post:
+      summary: Create with Server-Assigned ID
+      operationId: _create_post
+      parameters:
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            $ref: '#/definitions/Role'
+      responses:
+        '201':
+          description: Success
+          schema:
+            $ref: '#/definitions/Role'
+          headers:
+            Location:
+              type: string
+              description: Resource location in response to successful create operation.
+      tags:
+        - Role
+  '/managed/role/{roleId}':
+    get:
+      summary: Read
+      operationId: _roleid_read
+      parameters:
+        - name: roleId
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/_mimeType'
+        - $ref: '#/parameters/If-None-Match-Rev'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/Role'
+      tags:
+        - Role
+    post:
+      summary: 'Action: triggerSyncCheck'
+      operationId: _roleid_action_triggersynccheck
+      parameters:
+        - name: roleId
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/_action_triggerSyncCheck'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/Status'
+      tags:
+        - Role
+    put:
+      summary: Create with Client-Assigned ID or Server-Assigned ID
+      operationId: _roleid_create_put
+      parameters:
+        - name: roleId
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            $ref: '#/definitions/Role'
+        - $ref: '#/parameters/If-None-Match-Star'
+        - $ref: '#/parameters/If-Match'
+      responses:
+        '201':
+          description: Success
+          schema:
+            $ref: '#/definitions/Role'
+          headers:
+            Location:
+              type: string
+              description: Resource location in response to successful create operation.
+      tags:
+        - Role
+    delete:
+      summary: Delete
+      operationId: _roleid_delete
+      parameters:
+        - name: roleId
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/If-Match'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/Role'
+      tags:
+        - Role
+    patch:
+      summary: Update via Patch Operations
+      operationId: _roleid_patch
+      parameters:
+        - name: roleId
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            $ref: '#/definitions/PatchArray'
+        - $ref: '#/parameters/If-Match'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/Role'
+      tags:
+        - Role
+  '/managed/role/{roleId}/assignments':
+    get:
+      summary: Query by Filter or by ID
+      operationId: _roleid_assignments_query_filter
+      parameters:
+        - name: roleId
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/_queryFilter'
+        - $ref: '#/parameters/_queryId'
+        - name: _pageSize
+          in: query
+          required: false
+          type: integer
+        - name: _totalPagedResultsPolicy
+          in: query
+          required: false
+          type: string
+          enum:
+            - NONE
+        - name: _sortKeys
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RoleAssignmentsResult'
+      tags:
+        - Role - Managed Assignments
+    post:
+      summary: Create with Server-Assigned ID
+      operationId: _roleid_assignments_create_post
+      parameters:
+        - name: roleId
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            $ref: '#/definitions/RoleAssignmentsItems'
+      responses:
+        '201':
+          description: Success
+          schema:
+            $ref: '#/definitions/RoleAssignmentsItems'
+          headers:
+            Location:
+              type: string
+              description: Resource location in response to successful create operation.
+      tags:
+        - Role - Managed Assignments
+  '/managed/role/{roleId}/assignments/{id}':
+    get:
+      summary: Read
+      operationId: _roleid_assignments_id_read
+      parameters:
+        - name: roleId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/_mimeType'
+        - $ref: '#/parameters/If-None-Match-Rev'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RoleAssignmentsItems'
+      tags:
+        - Role - Managed Assignments
+    put:
+      summary: Create with Client-Assigned ID or Server-Assigned ID
+      operationId: _roleid_assignments_id_create_put
+      parameters:
+        - name: roleId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            $ref: '#/definitions/RoleAssignmentsItems'
+        - $ref: '#/parameters/If-None-Match-Star'
+        - $ref: '#/parameters/If-Match'
+      responses:
+        '201':
+          description: Success
+          schema:
+            $ref: '#/definitions/RoleAssignmentsItems'
+          headers:
+            Location:
+              type: string
+              description: Resource location in response to successful create operation.
+      tags:
+        - Role - Managed Assignments
+    delete:
+      summary: Delete
+      operationId: _roleid_assignments_id_delete
+      parameters:
+        - name: roleId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/If-Match'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RoleAssignmentsItems'
+      tags:
+        - Role - Managed Assignments
+    patch:
+      summary: Update via Patch Operations
+      operationId: _roleid_assignments_id_patch
+      parameters:
+        - name: roleId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            $ref: '#/definitions/PatchArray'
+        - $ref: '#/parameters/If-Match'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RoleAssignmentsItems'
+      tags:
+        - Role - Managed Assignments
+  '/managed/role/{roleId}/authzMembers':
+    get:
+      summary: Query by Filter or by Query ID
+      operationId: _roleid_authzmembers_query_filter
+      parameters:
+        - name: roleId
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/_queryFilter'
+        - $ref: '#/parameters/_queryId'
+        - name: _pageSize
+          in: query
+          required: false
+          type: integer
+        - name: _totalPagedResultsPolicy
+          in: query
+          required: false
+          type: string
+          enum:
+            - NONE
+        - name: _sortKeys
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RoleAuthzMembersQueryResult'
+      tags:
+        - Role - Authorization Role Members
+    post:
+      summary: Create with Server-Assigned ID
+      operationId: _roleid_authzmembers_create_post
+      parameters:
+        - name: roleId
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            $ref: '#/definitions/RoleAuthzMembersItems'
+      responses:
+        '201':
+          description: Success
+          schema:
+            $ref: '#/definitions/RoleAuthzMembersItems'
+          headers:
+            Location:
+              type: string
+              description: Resource location in response to successful create operation.
+      tags:
+        - Role - Authorization Role Members
+  '/managed/role/{roleId}/authzMembers/{id}':
+    get:
+      summary: Read
+      operationId: _roleid_authzmembers_id_read
+      parameters:
+        - name: roleId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/_mimeType'
+        - $ref: '#/parameters/If-None-Match-Rev'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RoleAuthzMembersItems'
+      tags:
+        - Role - Authorization Role Members
+    put:
+      summary: Create with Client-Assigned ID or Server-Assigned ID
+      operationId: _roleid_authzmembers_id_create_put
+      parameters:
+        - name: roleId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            $ref: '#/definitions/RoleAuthzMembersItems'
+        - $ref: '#/parameters/If-None-Match-Star'
+        - $ref: '#/parameters/If-Match'
+      responses:
+        '201':
+          description: Success
+          schema:
+            $ref: '#/definitions/RoleAuthzMembersItems'
+          headers:
+            Location:
+              type: string
+              description: Resource location in response to successful create operation.
+      tags:
+        - Role - Authorization Role Members
+    delete:
+      summary: Delete
+      operationId: _roleid_authzmembers_id_delete
+      parameters:
+        - name: roleId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/If-Match'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RoleAuthzMembersItems'
+      tags:
+        - Role - Authorization Role Members
+    patch:
+      summary: Update via Patch Operations
+      operationId: _roleid_authzmembers_id_patch
+      parameters:
+        - name: roleId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            $ref: '#/definitions/PatchArray'
+        - $ref: '#/parameters/If-Match'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RoleAuthzMembersItems'
+      tags:
+        - Role - Authorization Role Members
+  '/managed/role/{roleId}/members':
+    get:
+      summary: Query by Filter or by Query ID
+      operationId: _roleid_members_query_filter
+      parameters:
+        - name: roleId
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/_queryFilter'
+        - $ref: '#/parameters/_queryId'
+        - name: _pageSize
+          in: query
+          required: false
+          type: integer
+        - name: _totalPagedResultsPolicy
+          in: query
+          required: false
+          type: string
+          enum:
+            - NONE
+        - name: _sortKeys
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RoleMembersQueryResult'
+      tags:
+        - Role - Role Members
+    post:
+      summary: Create with Server-Assigned ID
+      operationId: _roleid_members_create_post
+      parameters:
+        - name: roleId
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            $ref: '#/definitions/RoleMembersItems'
+      responses:
+        '201':
+          description: Success
+          schema:
+            $ref: '#/definitions/RoleMembersItems'
+          headers:
+            Location:
+              type: string
+              description: Resource location in response to successful create operation.
+      tags:
+        - Role - Role Members
+  '/managed/role/{roleId}/members/{id}':
+    get:
+      summary: Read
+      operationId: _roleid_members_id_read
+      parameters:
+        - name: roleId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/_mimeType'
+        - $ref: '#/parameters/If-None-Match-Rev'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RoleMembersItems'
+      tags:
+        - Role - Role Members
+    put:
+      summary: Create with Client-Assigned ID or Server-Assigned ID
+      operationId: _roleid_members_id_create_put
+      parameters:
+        - name: roleId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            $ref: '#/definitions/RoleMembersItems'
+        - $ref: '#/parameters/If-None-Match-Star'
+        - $ref: '#/parameters/If-Match'
+      responses:
+        '201':
+          description: Success
+          schema:
+            $ref: '#/definitions/RoleMembersItems'
+          headers:
+            Location:
+              type: string
+              description: Resource location in response to successful create operation.
+      tags:
+        - Role - Role Members
+    delete:
+      summary: Delete
+      operationId: _roleid_members_id_delete
+      parameters:
+        - name: roleId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/If-Match'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RoleMembersItems'
+      tags:
+        - Role - Role Members
+    patch:
+      summary: Update via Patch Operations
+      operationId: _roleid_members_id_patch
+      parameters:
+        - name: roleId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            $ref: '#/definitions/PatchArray'
+        - $ref: '#/parameters/If-Match'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/RoleMembersItems'
+      tags:
+        - Role - Role Members
+definitions:
+  'RoleAssignmentsItems':
+    type: object
+    properties:
+      _ref:
+        type: string
+        description: References a relationship from a managed object
+      _refProperties:
+        type: object
+        properties:
+          _id:
+            type: string
+            description: _refProperties object ID
+        title: Managed Assignments Items _refProperties
+        description: Supports metadata within the relationship
+    title: Managed Assignments Items
+  'RoleMembersQueryResult':
+    type: object
+    properties:
+      result:
+        type: array
+        items:
+          $ref: '#/definitions/RoleMembersItems'
+        description: Array of matching items
+      resultCount:
+        type: integer
+        format: int32
+        default: 0
+        description: Count of individual result items
+      pagedResultsCookie:
+        type: string
+        description: Opaque cookie used by the server to keep track of the position in the search results
+      totalPagedResultsPolicy:
+        type: string
+        default: NONE
+        description: 'Either NONE, EXACT, or ESTIMATE. Indicates the accuracy of the result count'
+      totalPagedResults:
+        type: integer
+        format: int32
+        default: -1
+        description: Total count of individual items
+      remainingPagedResults:
+        type: integer
+        format: int32
+        default: -1
+        description: Count of individual items remaining
+    title: Role Members Query Response
+  'RoleQueryResult':
+    type: object
+    properties:
+      result:
+        type: array
+        items:
+          $ref: '#/definitions/Role'
+        description: Array of matching items
+      resultCount:
+        type: integer
+        format: int32
+        default: 0
+        description: Count of individual result items
+      pagedResultsCookie:
+        type: string
+        description: Opaque cookie used by the server to keep track of the position in the search results
+      totalPagedResultsPolicy:
+        type: string
+        default: NONE
+        description: 'Either NONE, EXACT, or ESTIMATE. Indicates the accuracy of the result count'
+      totalPagedResults:
+        type: integer
+        format: int32
+        default: -1
+        description: Total count of individual items
+      remainingPagedResults:
+        type: integer
+        format: int32
+        default: -1
+        description: Count of individual items remaining
+    title: Role Query Response
+  'RoleAssignmentsResult':
+    type: object
+    properties:
+      result:
+        type: array
+        items:
+          $ref: '#/definitions/RoleAssignmentsItems'
+        description: Array of matching items
+      resultCount:
+        type: integer
+        format: int32
+        default: 0
+        description: Count of individual result items
+      pagedResultsCookie:
+        type: string
+        description: Opaque cookie used by the server to keep track of the position in the search results
+      totalPagedResultsPolicy:
+        type: string
+        default: NONE
+        description: 'Either NONE, EXACT, or ESTIMATE. Indicates the accuracy of the result count'
+      totalPagedResults:
+        type: integer
+        format: int32
+        default: -1
+        description: Total count of individual items
+      remainingPagedResults:
+        type: integer
+        format: int32
+        default: -1
+        description: Count of individual items remaining
+    title: Role Assignments Query Response
+  'RoleAuthzMembersItems':
+    type: object
+    properties:
+      _ref:
+        type: string
+        description: References a relationship from a managed object
+      _refProperties:
+        type: object
+        properties:
+          _id:
+            type: string
+            description: _refProperties object ID
+        title: Authorization Role Members Items _refProperties
+        description: Supports metadata within the relationship
+    title: Authorization Role Members Items
+  'PatchArray':
+    type: array
+    items:
+      type: object
+      properties:
+        operation:
+          type: string
+          description: Operation to perform on the field
+        field:
+          type: string
+          description: Target JSON Pointer of field to patch
+        from:
+          type: string
+          description: Source JSON Pointer used with copy and move operations
+        value:
+          type: string
+          description: Value to apply
+      title: Patch Operation
+    title: Patch Array
+  'Status':
+    type: object
+    properties:
+      status:
+        type: string
+  'RoleAuthzMembersQueryResult':
+    type: object
+    properties:
+      result:
+        type: array
+        items:
+          $ref: '#/definitions/RoleAuthzMembersItems'
+        description: Array of matching items
+      resultCount:
+        type: integer
+        format: int32
+        default: 0
+        description: Count of individual result items
+      pagedResultsCookie:
+        type: string
+        description: Opaque cookie used by the server to keep track of the position in the search results
+      totalPagedResultsPolicy:
+        type: string
+        default: NONE
+        description: 'Either NONE, EXACT, or ESTIMATE. Indicates the accuracy of the result count'
+      totalPagedResults:
+        type: integer
+        format: int32
+        default: -1
+        description: Total count of individual items
+      remainingPagedResults:
+        type: integer
+        format: int32
+        default: -1
+        description: Count of individual items remaining
+    title: Role Authz Members Query Response
+  'RoleMembersItems':
+    type: object
+    properties:
+      _ref:
+        type: string
+        description: References a relationship from a managed object
+      _refProperties:
+        type: object
+        properties:
+          _id:
+            type: string
+            description: _refProperties object ID
+          _grantType:
+            type: string
+            description: Grant Type
+        title: Role Members Items _refProperties
+        description: Supports metadata within the relationship
+    title: Role Members Items
+  'Role':
+    type: object
+    required:
+      - name
+    properties:
+      _id:
+        type: string
+        title: Name
+        description: Role ID
+      name:
+        type: string
+        title: Name
+        description: 'The role name, used for display purposes.'
+      description:
+        type: string
+        title: Description
+        description: 'The role description, used for display purposes.'
+      members:
+        type: array
+        items:
+          $ref: '#/definitions/RoleMembersItems'
+        title: Role Members
+        description: Role Members
+      authzMembers:
+        type: array
+        items:
+          $ref: '#/definitions/RoleAuthzMembersItems'
+        title: Authorization Role Members
+        description: Authorization Role Members
+      assignments:
+        type: array
+        items:
+          $ref: '#/definitions/RoleAssignmentsItems'
+        title: Managed Assignments
+        description: Managed Assignments
+      condition:
+        type: string
+        title: Condition
+        description: A conditional filter for this role
+      temporalConstraints:
+        type: array
+        items:
+          type: object
+          properties:
+            duration:
+              type: string
+              description: Duration
+          title: Temporal Constraints Items
+          required:
+            - duration
+        title: Temporal Constraints
+        description: An array of temporal constraints for a role
+    title: Role
+    description: ''
+parameters:
+  _queryFilter:
+    name: _queryFilter
+    in: query
+    required: false
+    type: string
+  _action_triggerSyncCheck:
+    name: _action
+    in: query
+    required: true
+    type: string
+    enum:
+      - triggerSyncCheck
+  _action_resetPassword:
+    name: _action
+    in: query
+    required: true
+    type: string
+    enum:
+      - resetPassword
+  _queryId:
+    name: _queryId
+    in: query
+    required: false
+    type: string
+    enum:
+      - query-all
+      - query-all-ids
+  If-None-Match-Star:
+    name: If-None-Match
+    in: header
+    description: Add on PUT Operations when Creating new Entities
+    required: false
+    type: string
+    enum:
+      - '*'
+  If-Match:
+    name: If-Match
+    in: header
+    description: Add on PUT Operations when Updating Existing Entities
+    required: false
+    type: string
+    enum:
+      - '*'
+  If-None-Match-Rev:
+    name: If-None-Match
+    in: header
+    description: Add on GET Operations
+    required: false
+    type: string
+  _mimeType:
+    name: _mimeType
+    in: query
+    description: Optional parameter requesting that the response have the given MIME-Type. Use of this parameter requires a _fields parameter with a single field specified.
+    required: false
+    type: string
+  _prettyPrint:
+    name: _prettyPrint
+    in: query
+    description: Optional parameter requesting that the returned JSON resource content should be formatted to be more human readable.
+    required: false
+    type: boolean
+  _fields:
+    name: _fields
+    in: query
+    description: Optional parameter containing a comma separated list of field references specifying which fields of the targeted JSON resource should be returned.
+    required: false
+    type: string
+    collectionFormat: csv

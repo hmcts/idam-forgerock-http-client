@@ -1,0 +1,420 @@
+swagger: '2.0'
+info:
+  version: 5.5.0
+  title: ForgeRock IDM Miscellaneous API
+basePath: /openidm
+tags:
+  - name: LDAP Account
+  - name: Reconciliation
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+  - text/plain
+  - multipart/form-data
+produces:
+  - application/json
+paths:
+  /recon:
+    get:
+      summary: Read
+      operationId: _read
+      parameters:
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/_mimeType'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/ReconServiceResultSet'
+      tags:
+        - Reconciliation
+      description: Lists all reconciliation summaries.
+    post:
+      summary: 'Action: recon'
+      operationId: _action_recon
+      parameters:
+        - name: mapping
+          in: query
+          description: 'Mapping name (e.g., systemXmlfileAccounts_managedUser)'
+          required: true
+          type: string
+        - name: waitForCompletion
+          in: query
+          description: 'When true, request will block until reconciliation completes, and will respond immediately when false.'
+          required: false
+          type: boolean
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - name: _action
+          in: query
+          required: true
+          type: string
+          enum:
+            - recon
+            - reconById
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/ReconStateResponse'
+      tags:
+        - Reconciliation
+      description: Recon all available source identifiers.
+  '/recon/{reconId}':
+    get:
+      summary: Read
+      operationId: _reconid_read
+      parameters:
+        - name: reconId
+          in: path
+          description: Recon ID
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/_mimeType'
+        - $ref: '#/parameters/If-None-Match-Rev'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/ReconciliationServiceResource'
+        '404':
+          schema:
+            $ref: '#/definitions/ApiError'
+          description: Indicates that the resource could not be found
+      tags:
+        - Reconciliation
+      description: Read an individual reconciliation summary.
+    post:
+      summary: 'Action: cancel'
+      operationId: _reconid_action_cancel
+      parameters:
+        - name: reconId
+          in: path
+          description: Recon ID
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - name: _action
+          in: query
+          required: true
+          type: string
+          enum:
+            - cancel
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/ReconCancelResponse'
+        '404':
+          schema:
+            $ref: '#/definitions/ApiError'
+          description: Indicates that the resource could not be found
+      tags:
+        - Reconciliation
+      description: Cancels a running reconciliation
+  /system/ldap/account:
+    get:
+      summary: Query by Expression
+      operationId: _account_query_expression
+      parameters:
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/_queryFilter'
+        - name: _pageSize
+          in: query
+          required: false
+          type: integer
+        - name: _pagedResultsCookie
+          in: query
+          required: false
+          type: string
+        - name: _totalPagedResultsPolicy
+          in: query
+          required: false
+          type: string
+          enum:
+            - NONE
+        - name: _sortKeys
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/AccountQueryResultSet'
+      tags:
+        - LDAP Account
+      description: Query by filter of system ldap accounts
+definitions:
+  'ReconProgress':
+    type: object
+    required:
+      - links
+      - source
+      - target
+    properties:
+      source:
+        type: object
+        description: Stats for source objects
+      target:
+        type: object
+        description: Stats for target objects
+      links:
+        type: object
+        description: Stats for links
+    description: Recon progress stats
+  'ReconServiceResultSet':
+    type: object
+    required:
+      - reconciliations
+    properties:
+      reconciliations:
+        type: array
+        items:
+          $ref: '#/definitions/ReconciliationServiceResource'
+  'ReconCancelResponse':
+    type: object
+    required:
+      - _id
+      - action
+      - status
+    properties:
+      action:
+        type: string
+        description: Action name
+      status:
+        type: string
+        description: Action status
+      _id:
+        type: string
+        description: Recon ID
+  'ReconStateResponse':
+    type: object
+    required:
+      - _id
+      - state
+    properties:
+      state:
+        type: string
+        description: 'Recon state (ACTIVE, CANCELED, FAILED, SUCCESS)'
+      _id:
+        type: string
+        description: Recon ID
+  'ApiError':
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+        description: 3-digit apiError code corresponding to HTTP status codes
+      message:
+        type: string
+        description: ApiError message
+      reason:
+        type: string
+        description: Short description corresponding to apiError code
+      detail:
+        type: string
+        description: Detailed apiError message
+    title: ApiError
+  'ReconciliationServiceResource':
+    type: object
+    required:
+      - _id
+      - duration
+      - durationSummary
+      - ended
+      - mapping
+      - parameters
+      - progress
+      - situationSummary
+      - stage
+      - stageDescription
+      - started
+      - state
+      - statusSummary
+    properties:
+      mapping:
+        type: string
+        description: 'Mapping name (e.g., systemXmlfileAccounts_managedUser)'
+      state:
+        type: string
+        description: Coarse-grained state of recon process
+      stage:
+        type: string
+        description: Fine-grained stage of recon process
+      stageDescription:
+        type: string
+        description: Description of current stage
+      progress:
+        $ref: '#/definitions/ReconProgress'
+      situationSummary:
+        type: object
+        description: Stats related to success and failure
+      statusSummary:
+        type: object
+        description: Success and failure counts
+      durationSummary:
+        type: object
+        description: Duration stats for discrete recon operations
+      parameters:
+        type: object
+        description: Parameters for source and target selection
+      started:
+        type: string
+        format: date-time
+        description: ISO 8601 date-time when recon started
+      ended:
+        type: string
+        format: date-time
+        description: ISO 8601 date-time when recon ended or empty-string
+      duration:
+        type: integer
+        format: int64
+        description: 'Recon duration, in millisconds'
+      _id:
+        type: string
+        description: Recon ID
+  'AccountQueryResultSet':
+    type: object
+    properties:
+      result:
+        type: array
+        items:
+          type: object
+          properties:
+            _id:
+              type: string
+            cn:
+              type: string
+            employeeType:
+              type: string
+            description:
+              type: string
+            givenName:
+              type: string
+            mail:
+              type: string
+            telephoneNumber:
+              type: string
+            sn:
+              type: string
+            uid:
+              type: string
+            dn:
+              type: string
+            userPassword:
+              type: string
+            ldapGroups:
+              type: array
+              items:
+                type: string
+            disabled:
+              type: string
+            aliasList:
+              type: array
+              items:
+                type: string
+            objectClass:
+              type: array
+              items:
+                type: string
+            kbaInfo:
+              type: array
+              items:
+                type: string
+            pwdAccountLockedTime:
+              type: string
+            inetUserStatus:
+              type: string
+          title: Connector Object
+        description: Array of matching items
+      resultCount:
+        type: integer
+        format: int32
+        default: 0
+        description: Count of individual result items
+      pagedResultsCookie:
+        type: string
+        description: Opaque cookie used by the server to keep track of the position in the search results
+      totalPagedResultsPolicy:
+        type: string
+        default: NONE
+        description: 'Either NONE, EXACT, or ESTIMATE. Indicates the accuracy of the result count'
+      totalPagedResults:
+        type: integer
+        format: int32
+        default: -1
+        description: Total count of individual items
+      remainingPagedResults:
+        type: integer
+        format: int32
+        default: -1
+        description: Count of individual items remaining
+    title: Query Response
+
+parameters:
+  _queryFilter:
+    name: _queryFilter
+    in: query
+    required: false
+    type: string
+  _queryId:
+    name: _queryId
+    in: query
+    required: false
+    type: string
+    enum:
+      - query-all
+      - query-all-ids
+  If-None-Match-Star:
+    name: If-None-Match
+    in: header
+    description: Add on PUT Operations when Creating new Entities
+    required: false
+    type: string
+    enum:
+      - '*'
+  If-Match:
+    name: If-Match
+    in: header
+    description: Add on PUT Operations when Updating Existing Entities
+    required: false
+    type: string
+    enum:
+      - '*'
+  If-None-Match-Rev:
+    name: If-None-Match
+    in: header
+    description: Add on GET Operations
+    required: false
+    type: string
+  _mimeType:
+    name: _mimeType
+    in: query
+    description: Optional parameter requesting that the response have the given MIME-Type. Use of this parameter requires a _fields parameter with a single field specified.
+    required: false
+    type: string
+  _prettyPrint:
+    name: _prettyPrint
+    in: query
+    description: Optional parameter requesting that the returned JSON resource content should be formatted to be more human readable.
+    required: false
+    type: boolean
+  _fields:
+    name: _fields
+    in: query
+    description: Optional parameter containing a comma separated list of field references specifying which fields of the targeted JSON resource should be returned.
+    required: false
+    type: string
+    collectionFormat: csv

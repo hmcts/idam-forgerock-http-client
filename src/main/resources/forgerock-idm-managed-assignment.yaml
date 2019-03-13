@@ -1,0 +1,543 @@
+swagger: '2.0'
+info:
+  version: 5.5.0
+  title: API Explorer
+basePath: /openidm
+tags:
+  - name: Assignment
+  - name: Assignment - Managed Roles
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+  - text/plain
+  - multipart/form-data
+produces:
+  - application/json
+paths:
+  /managed/assignment:
+    get:
+      summary: Query by Filter
+      operationId: _query_filter
+      parameters:
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/_queryFilter'
+        - $ref: '#/parameters/_queryId'
+        - name: _pageSize
+          in: query
+          required: false
+          type: integer
+        - name: _totalPagedResultsPolicy
+          in: query
+          required: false
+          type: string
+          enum:
+            - NONE
+        - name: _sortKeys
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/AssignmentQueryResultSet'
+      tags:
+        - Assignment
+    post:
+      summary: Create with Server-Assigned ID
+      operationId: _create_post
+      parameters:
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            $ref: '#/definitions/Assignment'
+      responses:
+        '201':
+          description: Success
+          schema:
+            $ref: '#/definitions/Assignment'
+          headers:
+            Location:
+              type: string
+              description: Resource location in response to successful create operation.
+      tags:
+        - Assignment
+  '/managed/assignment/{assignmentId}':
+    get:
+      summary: Read
+      operationId: _assignmentid_read
+      parameters:
+        - name: assignmentId
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/_mimeType'
+        - $ref: '#/parameters/If-None-Match-Rev'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/Assignment'
+      tags:
+        - Assignment
+    post:
+      summary: 'Action: triggerSyncCheck'
+      operationId: _assignmentid_action_triggersynccheck
+      parameters:
+        - name: assignmentId
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - name: _action
+          in: query
+          required: true
+          type: string
+          enum:
+            - triggerSyncCheck
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/Status'
+      tags:
+        - Assignment
+    put:
+      summary: Create with Client-Assigned ID
+      operationId: _assignmentid_create_put
+      parameters:
+        - name: assignmentId
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            $ref: '#/definitions/Assignment'
+        - $ref: '#/parameters/If-None-Match-Star'
+        - $ref: '#/parameters/If-Match'
+      responses:
+        '201':
+          description: Success
+          schema:
+            $ref: '#/definitions/Assignment'
+          headers:
+            Location:
+              type: string
+              description: Resource location in response to successful create operation.
+      tags:
+        - Assignment
+    delete:
+      summary: Delete
+      operationId: _assignmentid_delete
+      parameters:
+        - name: assignmentId
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/If-Match'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/Assignment'
+      tags:
+        - Assignment
+    patch:
+      summary: Update via Patch Operations
+      operationId: _assignmentid_patch
+      parameters:
+        - name: assignmentId
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            $ref: '#/definitions/PatchArray'
+        - $ref: '#/parameters/If-Match'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/Assignment'
+      tags:
+        - Assignment
+  '/managed/assignment/{assignmentId}/roles':
+    get:
+      summary: Query by Filter
+      operationId: _assignmentid_roles_query_filter
+      parameters:
+        - name: assignmentId
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/_queryFilter'
+        - $ref: '#/parameters/_queryId'
+        - name: _pageSize
+          in: query
+          required: false
+          type: integer
+        - name: _totalPagedResultsPolicy
+          in: query
+          required: false
+          type: string
+          enum:
+            - NONE
+        - name: _sortKeys
+          in: query
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/AssignmentRolesItemsQueryResultSet'
+      tags:
+        - Assignment - Managed Roles
+    post:
+      summary: Create with Server-Assigned ID
+      operationId: _assignmentid_roles_create_post
+      parameters:
+        - name: assignmentId
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            $ref: '#/definitions/AssignmentRolesItems'
+      responses:
+        '201':
+          description: Success
+          schema:
+            $ref: '#/definitions/AssignmentRolesItems'
+          headers:
+            Location:
+              type: string
+              description: Resource location in response to successful create operation.
+      tags:
+        - Assignment - Managed Roles
+  '/managed/assignment/{assignmentId}/roles/{id}':
+    get:
+      summary: Read
+      operationId: _assignmentid_roles_id_read
+      parameters:
+        - name: assignmentId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/_mimeType'
+        - $ref: '#/parameters/If-None-Match-Rev'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/AssignmentRolesItems'
+      tags:
+        - Assignment - Managed Roles
+    put:
+      summary: Create with Client-Assigned ID
+      operationId: _assignmentid_roles_id_create_put
+      parameters:
+        - name: assignmentId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            $ref: '#/definitions/AssignmentRolesItems'
+        - $ref: '#/parameters/If-None-Match-Star'
+        - $ref: '#/parameters/If-Match'
+      responses:
+        '201':
+          description: Success
+          schema:
+            $ref: '#/definitions/AssignmentRolesItems'
+          headers:
+            Location:
+              type: string
+              description: Resource location in response to successful create operation.
+      tags:
+        - Assignment - Managed Roles
+    delete:
+      summary: Delete
+      operationId: _assignmentid_roles_id_delete
+      parameters:
+        - name: assignmentId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/If-Match'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/AssignmentRolesItems'
+      tags:
+        - Assignment - Managed Roles
+    patch:
+      summary: Update via Patch Operations
+      operationId: _assignmentid_roles_id_patch
+      parameters:
+        - name: assignmentId
+          in: path
+          required: true
+          type: string
+        - name: id
+          in: path
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            $ref: '#/definitions/PatchArray'
+        - $ref: '#/parameters/If-Match'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/AssignmentRolesItems'
+      tags:
+        - Assignment - Managed Roles
+definitions:
+  'Status':
+    type: object
+    properties:
+      status:
+        type: string
+  'Assignment':
+    type: object
+    required:
+      - description
+      - mapping
+      - name
+    properties:
+      _id:
+        type: string
+        title: Name
+        description: The assignment ID
+      name:
+        type: string
+        title: Name
+        description: 'The assignment name, used for display purposes.'
+      description:
+        type: string
+        title: Description
+        description: 'The assignment description, used for display purposes.'
+      mapping:
+        type: string
+        title: Mapping
+        description: The name of the mapping this assignment applies to
+      attributes:
+        type: array
+        items:
+          type: object
+          properties:
+            assignmentOperation:
+              type: string
+              description: Assignment operation
+            unassignmentOperation:
+              type: string
+              description: Unassignment operation
+            name:
+              type: string
+              description: Name
+            value:
+              type: string
+              description: Value
+          title: Assignment Attributes Items
+        title: Assignment Attributes
+        description: The attributes operated on by this assignment.
+      linkQualifiers:
+        type: array
+        items:
+          type: string
+          title: Link Qualifiers Items
+        title: Link Qualifiers
+        description: Conditional link qualifiers to restrict this assignment to.
+      roles:
+        type: array
+        items:
+          $ref: '#/definitions/AssignmentRolesItems'
+        title: Managed Roles
+        description: Managed Roles
+    title: Assignment
+    description: A role assignment
+  'AssignmentRolesItems':
+    type: object
+    properties:
+      _ref:
+        type: string
+        description: References a relationship from a managed object
+      _refProperties:
+        type: object
+        properties:
+          _id:
+            type: string
+            description: _refProperties object ID
+        title: Managed Roles Items _refProperties
+        description: Supports metadata within the relationship
+    title: Managed Roles Items
+  'AssignmentQueryResultSet':
+    type: object
+    properties:
+      result:
+        type: array
+        items:
+          $ref: '#/definitions/Assignment'
+        description: Array of matching items
+      resultCount:
+        type: integer
+        format: int32
+        default: 0
+        description: Count of individual result items
+      pagedResultsCookie:
+        type: string
+        description: Opaque cookie used by the server to keep track of the position in the search results
+      totalPagedResultsPolicy:
+        type: string
+        default: NONE
+        description: 'Either NONE, EXACT, or ESTIMATE. Indicates the accuracy of the result count'
+      totalPagedResults:
+        type: integer
+        format: int32
+        default: -1
+        description: Total count of individual items
+      remainingPagedResults:
+        type: integer
+        format: int32
+        default: -1
+        description: Count of individual items remaining
+    title: Query Response
+  'AssignmentRolesItemsQueryResultSet':
+    type: object
+    properties:
+      result:
+        type: array
+        items:
+          $ref: '#/definitions/AssignmentRolesItems'
+        description: Array of matching items
+      resultCount:
+        type: integer
+        format: int32
+        default: 0
+        description: Count of individual result items
+      pagedResultsCookie:
+        type: string
+        description: Opaque cookie used by the server to keep track of the position in the search results
+      totalPagedResultsPolicy:
+        type: string
+        default: NONE
+        description: 'Either NONE, EXACT, or ESTIMATE. Indicates the accuracy of the result count'
+      totalPagedResults:
+        type: integer
+        format: int32
+        default: -1
+        description: Total count of individual items
+      remainingPagedResults:
+        type: integer
+        format: int32
+        default: -1
+        description: Count of individual items remaining
+    title: Query Response
+parameters:
+  _queryFilter:
+    name: _queryFilter
+    in: query
+    required: false
+    type: string
+  _queryId:
+    name: _queryId
+    in: query
+    required: false
+    type: string
+    enum:
+      - query-all
+      - query-all-ids
+  If-None-Match-Star:
+    name: If-None-Match
+    in: header
+    description: Add on PUT Operations when Creating new Entities
+    required: false
+    type: string
+    enum:
+      - '*'
+  If-Match:
+    name: If-Match
+    in: header
+    description: Add on PUT Operations when Updating Existing Entities
+    required: false
+    type: string
+    enum:
+      - '*'
+  If-None-Match-Rev:
+    name: If-None-Match
+    in: header
+    description: Add on GET Operations
+    required: false
+    type: string
+  _mimeType:
+    name: _mimeType
+    in: query
+    description: Optional parameter requesting that the response have the given MIME-Type. Use of this parameter requires a _fields parameter with a single field specified.
+    required: false
+    type: string
+  _prettyPrint:
+    name: _prettyPrint
+    in: query
+    description: Optional parameter requesting that the returned JSON resource content should be formatted to be more human readable.
+    required: false
+    type: boolean
+  _fields:
+    name: _fields
+    in: query
+    description: Optional parameter containing a comma separated list of field references specifying which fields of the targeted JSON resource should be returned.
+    required: false
+    type: string
+    collectionFormat: csv

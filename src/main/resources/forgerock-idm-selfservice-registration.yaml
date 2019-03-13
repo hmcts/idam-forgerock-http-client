@@ -1,0 +1,290 @@
+swagger: '2.0'
+info:
+  version: 5.5.0
+  title: ForgeRock IDM SelfService Registration API
+basePath: /openidm
+tags:
+  - name: SelfServiceRegistration
+  - name: SelfServiceRegistrationValiation
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+  - text/plain
+  - multipart/form-data
+produces:
+  - application/json
+paths:
+  /policy/selfservice/registration:
+    post:
+      summary: 'Action: validateObject'
+      operationId: _policy_selfservice_registration_validation
+      parameters:
+        - name: requestPayload
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Object'
+        - name: _action
+          in: query
+          required: true
+          type: string
+          default: "validateObject"
+          enum:
+            - validateObject
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/ValidateObjectResponse'
+      tags:
+        - SelfServiceRegistrationValiation
+      description: Submits requirements for stage.
+  /selfservice/registration:
+    get:
+      summary: Read
+      operationId: _selfservice_registration_read
+      parameters:
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/_mimeType'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/GetInitialRequirementsResponse'
+        '404':
+          schema:
+            $ref: '#/definitions/ApiError'
+          description: Indicates that the resource could not be found
+      tags:
+        - SelfServiceRegistration
+      description: The initial requirements for a self service process.
+    post:
+      summary: 'Action: submitRequirements'
+      operationId: _selfservice_registration_action_submitrequirements
+      parameters:
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - name: requestPayload
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/SubmitRequirementsRequest'
+        - name: _action
+          in: query
+          required: true
+          type: string
+          enum:
+            - submitRequirements
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/SelfServiceRegistrationResponse'
+        '404':
+          schema:
+            $ref: '#/definitions/ApiError'
+          description: Indicates that the resource could not be found
+      tags:
+        - SelfServiceRegistration
+      description: Submits requirements for stage.
+definitions:
+  'PolicyRequirements':
+    type: object
+    properties:
+      policyRequirement:
+        type: string
+  'FailedPolicyRequirements':
+    type: object
+    properties:
+      policyRequirements:
+        type: array
+        items:
+          $ref: '#/definitions/PolicyRequirements'
+      property:
+        type: string
+  'ValidateObjectResponse':
+    type: object
+    properties:
+      result:
+        type: boolean
+      failedPolicyRequirements:
+        type: array
+        items:
+          $ref: '#/definitions/FailedPolicyRequirements'
+        description: Array of matching items
+    title: Validate User Object
+  'ApiError':
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+        description: 3-digit apiError code corresponding to HTTP status codes
+      message:
+        type: string
+        description: ApiError message
+      reason:
+        type: string
+        description: Short description corresponding to apiError code
+      detail:
+        type: string
+        description: Detailed apiError message
+    title: ApiError
+  'GetInitialRequirementsResponse':
+    type: object
+    required:
+      - requirements
+      - tag
+      - type
+    properties:
+      type:
+        type: string
+        title: Type
+        description: The type of the self service interaction.
+      tag:
+        type: string
+        title: Tag
+        description: The stage description tag.
+      requirements:
+        type: object
+        title: Requirements
+        description: A JSON Schema object that defines the input that must be submitted to the submitRequirements action.
+    description: Initialize the user self service stage. A set of requirements will be returned that will need to be fulfilled and sent to the submitRequirements action.
+  'SubmitRequirementsRequest':
+    type: object
+    required:
+      - input
+      - token
+    properties:
+      token:
+        type: string
+        title: Token
+        description: The token returned from the previous submitRequirements request.
+      input:
+        type: object
+        title: Input
+        description: The input as collected from the user. This object must conform to the JSON Schema of the requirements property from the last response.
+    title: SelfService Submit Requirements Request
+    description: 'Submit some fulfilled requirements. Returns either a completion status, or a token along with some more requirements. If requirements are returned, they should be submitted with the token as a fresh request to this action.'
+  'SelfServiceRegistrationResponse':
+    type: object
+    required:
+      - requirements
+      - tag
+      - token
+      - type
+    properties:
+      status:
+        $ref: '#/definitions/SuccessObject'
+      token:
+        type: string
+        title: Token
+        description: A token for the process that must be returned with the next set of requirements when they have been fulfilled.
+      type:
+        type: string
+        title: Type
+        description: The type of the self service interaction.
+      tag:
+        type: string
+        title: Tag
+        description: The stage description tag.
+      requirements:
+        type: object
+        title: Requirements
+        description: A JSON Schema object that defines the input that must be submitted to the submitRequirements action.
+    title: More requirements response
+    description: 'If more requirements need fulfilling before the user registration process is completed, this response structure will be returned.'
+  'SuccessObject':
+    type: object
+    required:
+      - success
+    properties:
+      success:
+        type: string
+        title: Success
+        description: Success Object
+    title: Completed process response
+    description: 'If all the requirements have been fulfilled and the user registration process is complete, this response structure will be used.'
+parameters:
+  _queryFilter:
+    name: _queryFilter
+    in: query
+    required: false
+    type: string
+  _action_triggerSyncCheck:
+    name: _action
+    in: query
+    required: true
+    type: string
+    enum:
+      - triggerSyncCheck
+  _action_create:
+    name: _action
+    in: query
+    required: false
+    type: string
+    default: 'create'
+    enum:
+      - create
+  _action_resetPassword:
+    name: _action
+    in: query
+    required: true
+    type: string
+    enum:
+      - resetPassword
+  _queryId:
+    name: _queryId
+    in: query
+    required: false
+    type: string
+    enum:
+      - query-all
+      - query-all-ids
+  If-None-Match-Star:
+    name: If-None-Match
+    in: header
+    description: Add on PUT Operations when Creating new Entities
+    required: false
+    type: string
+    enum:
+      - '*'
+  If-Match:
+    name: If-Match
+    in: header
+    description: Add on PUT Operations when Updating Existing Entities
+    required: false
+    type: string
+    enum:
+      - '*'
+  If-None-Match-Rev:
+    name: If-None-Match
+    in: header
+    description: Add on GET Operations
+    required: false
+    type: string
+  _mimeType:
+    name: _mimeType
+    in: query
+    description: Optional parameter requesting that the response have the given MIME-Type. Use of this parameter requires a _fields parameter with a single field specified.
+    required: false
+    type: string
+  _prettyPrint:
+    name: _prettyPrint
+    in: query
+    description: Optional parameter requesting that the returned JSON resource content should be formatted to be more human readable.
+    required: false
+    type: boolean
+  _fields:
+    name: _fields
+    in: query
+    description: Optional parameter containing a comma separated list of field references specifying which fields of the targeted JSON resource should be returned.
+    required: false
+    type: string
+    collectionFormat: csv

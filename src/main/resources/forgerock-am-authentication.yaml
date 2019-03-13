@@ -1,0 +1,461 @@
+swagger: '2.0'
+info:
+  title: Forgerock AM Authentication API
+  description: An OAuth2 Client for Forgerock AM based on tests
+  version: "1.0.0"
+schemes:
+  - http
+  - https
+tags:
+  - name: OpenID Connect
+basePath: /openam
+produces:
+  - application/json
+paths:
+  /oauth2/authorize:
+    post:
+      summary: 'OpenID Connect Authorize'
+      operationId: _oauth2_authorize
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/realm'
+        - name: client_id
+          in: query
+          required: false
+          type: string
+        - name: redirect_uri
+          in: query
+          required: false
+          type: string
+        - name: state
+          in: query
+          required: false
+          type: string
+        - name: response_type
+          in: query
+          required: false
+          type: string
+          default: "code"
+        - name: decision
+          in: query
+          required: false
+          type: string
+          default: "Allow"
+        - name: Cookie
+          in: header
+          required: false
+          type: string
+        - name: csrf
+          in: formData
+          description: The ID of the token
+          required: false
+          type: string
+        - name: scope
+          in: formData
+          description: The requred scopes
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/Response'
+      tags:
+        - OpenID Connect
+      description: Use token ID to get Authorization code
+
+  /oauth2/connect/jwk_uri:
+    get:
+      summary: 'Get JWKS'
+      operationId: _get_json_web_key_set
+      parameters:
+        - $ref: '#/parameters/realm'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/JsonWebKeySet'
+      tags:
+        - OpenID Connect
+      description: Retrieves the JSON Web Key Set
+
+  /oauth2/tokeninfo:
+    get:
+      summary: 'Access Token Info'
+      operationId: _get_access_token_info
+      parameters:
+        - $ref: '#/parameters/authorization'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/Response'
+      tags:
+        - OpenID Connect
+      description: Returns information about the supplied token
+
+  /oauth2/idtokeninfo:
+    post:
+      summary: Request ID Token Info
+      operationId: _id_token_info
+      description: |
+        Partner makes a request to the id token info endpoint to get information about
+        the token presented
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/realm'
+        - $ref: '#/parameters/authorization'
+        - name: claims
+          in: query
+          description: Claims required in the result
+          required: false
+          type: string
+        - name: id_token
+          in: formData
+          description: The id token
+          required: false
+          type: string
+      tags:
+        - OpenID Connect
+      responses:
+        200:
+          description: Authorisation token (Bearer)
+          schema:
+            $ref: '#/definitions/Response'
+
+  /oauth2/access_token:
+    post:
+      summary: Request Access Token
+      operationId: _access_token
+      description: |
+        Partner makes a request to the token endpoint by adding the
+        following parameters describerd  below
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/realm'
+        - $ref: '#/parameters/authorization'
+        - name: grant_type
+          in: formData
+          description: The OAuth2 Grant Type
+          required: true
+          type: string
+          enum:
+            - authorization_code
+            - implicit
+            - password
+            - refresh_token
+            - client_credentials
+            - jwt-bearer
+        - name: code
+          in: formData
+          description: The
+          required: false
+          type: string
+        - name: redirect_uri
+          in: formData
+          description: The
+          required: false
+          type: string
+        - name: client_id
+          in: formData
+          description: The
+          required: false
+          type: string
+        - name: client_secret
+          in: formData
+          description: The
+          required: false
+          type: string
+        - name: scope
+          in: formData
+          description: The
+          required: false
+          type: string
+        - name: username
+          in: formData
+          description: The
+          required: false
+          type: string
+        - name: password
+          in: formData
+          description: The
+          required: false
+          type: string
+      tags:
+        - OpenID Connect
+      responses:
+        200:
+          description: Authorisation token
+          schema:
+            $ref: '#/definitions/AmToken'
+          examples:
+            application/json: |-
+              {
+                 "access_token":"2YotnFZFEjr1zCsicMWpAA",
+                 "token_type":"Bearer",
+                 "expires_in":3600,
+               }
+
+  /oauth2/{realm}/access_token:
+    post:
+      summary: Request Access Token For Realm
+      operationId: _access_token_for_realm
+      description: |
+        Partner makes a request to the token endpoint by adding the
+        following parameters describerd  below
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/pathRealm'
+        - $ref: '#/parameters/authorization'
+        - name: grant_type
+          in: formData
+          description: The OAuth2 Grant Type
+          required: true
+          type: string
+          enum:
+            - authorization_code
+            - implicit
+            - password
+            - refresh_token
+            - client_credentials
+            - jwt-bearer
+        - name: code
+          in: formData
+          description: The
+          required: false
+          type: string
+        - name: redirect_uri
+          in: formData
+          description: The
+          required: false
+          type: string
+        - name: client_id
+          in: formData
+          description: The
+          required: false
+          type: string
+        - name: client_secret
+          in: formData
+          description: The
+          required: false
+          type: string
+        - name: scope
+          in: formData
+          description: The
+          required: false
+          type: string
+        - name: username
+          in: formData
+          description: The
+          required: false
+          type: string
+        - name: password
+          in: formData
+          description: The
+          required: false
+          type: string
+      tags:
+        - OpenID Connect
+      responses:
+        200:
+          description: Authorisation token
+          schema:
+            $ref: '#/definitions/AmToken'
+          examples:
+            application/json: |-
+              {
+                 "access_token":"2YotnFZFEjr1zCsicMWpAA",
+                 "token_type":"Bearer",
+                 "expires_in":3600,
+               }
+
+  /oauth2/userinfo:
+    post:
+      summary: Request Info For User of the Authorization token
+      operationId: _user_info
+      description: |
+        Partner makes a request to the token endpoint by adding the
+        following parameters describerd  below
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+          - $ref: '#/parameters/realm'
+          - $ref: '#/parameters/authorization'
+      tags:
+        - OpenID Connect
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/Response'
+
+  /oauth2/{realm}/userinfo:
+    post:
+      summary: Request Info For User of the Authorization token
+      operationId: _user_info_for_realm
+      description: |
+        Partner makes a request to the token endpoint by adding the
+        following parameters describerd  below
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/authorization'
+        - $ref: '#/parameters/pathRealm'
+      tags:
+        - OpenID Connect
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/Response'
+
+  /json/authenticate:
+    post:
+      summary: Request ID Token Info
+      operationId: _json_authenticate
+      description: |
+        Partner makes a request to the id token info endpoint to get information about
+        the token presented
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/realm'
+        - name: X-OpenAM-Username
+          in: header
+          description: The Username
+          required: true
+          type: string
+        - name: X-OpenAM-Password
+          in: header
+          description: The Password
+          required: true
+          type: string
+      tags:
+        - OpenID Connect
+      responses:
+        200:
+          description: AM Authorisation token
+          schema:
+            $ref: '#/definitions/AmAuthenticateToken'
+
+definitions:
+  AmAuthenticateToken:
+    type: object
+    properties:
+      tokenId:
+        type: string
+        description: IPlanetDirectoryPro Token
+      successUrl:
+        type: string
+        description: Success redirect url
+      realm:
+        type: string
+        description: Realm authenicated against
+
+  AmToken:
+    type: object
+    properties:
+      code:
+        type: string
+        description: The access code
+      access_token:
+        type: string
+        description: The access token
+      refresh_token:
+        type: string
+        description: The refresh token
+      scope:
+        type: string
+        description: The scopes of the token
+      id_token:
+        type: string
+        description: The ID Token
+      token_type:
+        type: string
+        description: The type of token eg "Bearer"
+      expires_in:
+        type: string
+        description: The lifetime in seconds of the access token
+
+  JsonWebKeySet:
+    type: object
+    properties:
+      keys:
+        type: array
+        items:
+          $ref: '#/definitions/JsonWebKey'
+
+  JsonWebKey:
+    type: object
+    properties:
+      alg:
+        type: string
+      kty:
+        type: string
+      use:
+        type: string
+      kid:
+        type: string
+      n:
+        type: string
+      e:
+        type: string
+      x5c:
+        type: string
+      x5t:
+        type: string
+      crv:
+        type: string
+      d:
+        type: string
+      dp:
+        type: string
+      dq:
+        type: string
+      k:
+        type: string
+      p:
+        type: string
+      q:
+        type: string
+      qi:
+        type: string
+      x:
+        type: string
+      y:
+        type: string
+
+parameters:
+  realm:
+    name: realm
+    in: query
+    required: false
+    type: string
+  pathRealm:
+    name: realm
+    in: path
+    required: true
+    type: string
+  authorization:
+    name: Authorization
+    in: header
+    required: true
+    type: string
