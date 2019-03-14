@@ -150,7 +150,7 @@ Cast it to whatever the result will be from that action, I guess.. I dunno hones
 
 * Define the Client bean with your configuration classes 6y:
 
-
+```java
     @Bean
     public ApiClient idmApiClient(ErrorDecoder errorDecoder,
                                   Client httpClient, Encoder encoder) {
@@ -160,10 +160,11 @@ Cast it to whatever the result will be from that action, I guess.. I dunno hones
             .client(httpClient).encoder(encoder);
         return client;
     }
+```
 
 * Build your clients :
 
-
+```java
     @Bean
     public RoleApi roleApi(@Qualifier("idmApiClient") ApiClient client) {
         return buildFeignClient(client, RoleApi.class);
@@ -174,7 +175,7 @@ Cast it to whatever the result will be from that action, I guess.. I dunno hones
             .logger(new Slf4jLogger(clazz))
             .target(clazz, <Target AM/FR URL>);
     }
-    
+```
 ## Work Around
 
 #### • Feign doesnt remove headers that are `null`
@@ -183,7 +184,7 @@ Instead they will show up like this:
 `Authorization: {authorization}`
 
 The following method in a *feign.RequestInterceptor* will solve the problem :
-
+```java
     class HeaderSanitizingInterceptor implements RequestInterceptor {
         @Override public void apply(RequestTemplate template) {
             Map<String, Collection<String>> headers = template.headers();
@@ -195,14 +196,14 @@ The following method in a *feign.RequestInterceptor* will solve the problem :
             template.headers(sanitizedHeaders);
         }
     }
-
+```
 Doing it like this makes it thread safe, using the single 
 replace cannot be done whilst iterating over the collection
 
 #### • Swagger generator makes snake_case form parameters into camelCase
 
 The following method in a *feign.RequestInterceptor* will solve the problem :
-
+```java
     class AccessTokenRequestInterceptor implements RequestInterceptor {
         @Override public void apply(RequestTemplate template) {
             if (template.url().contains("access_token")) {
@@ -220,7 +221,7 @@ The following method in a *feign.RequestInterceptor* will solve the problem :
             }
         }
     }
-
+```
 Basically just replace them, this is due to how the Api is generated.
 
 There is no better work around as far as I know.
