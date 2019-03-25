@@ -51,31 +51,32 @@ repositories {
 }
 
 configurations {
-    generatedCompile
-    compile.extendsFrom generatedCompile
+    // generatedCompile
+    // compile.extendsFrom generatedCompile
+    compile
 }
 
 dependencyManagement {
     imports {
-        mavenBom 'uk.gov.hmcts.reform.idam:idam-bom:1.4.9'
+        mavenBom 'uk.gov.hmcts.reform.idam:idam-bom:1.5.0'
     }
 }
 
 dependencies {
-    generatedCompile "io.swagger:swagger-annotations:$swagger_annotations_version"
-    generatedCompile "io.github.openfeign:feign-core:$feign_version"
-    generatedCompile "io.github.openfeign:feign-jackson:$feign_version"
-    generatedCompile "io.github.openfeign:feign-slf4j:$feign_version"
-    generatedCompile "io.github.openfeign.form:feign-form:$feign_form_version"
-    generatedCompile "com.fasterxml.jackson.core:jackson-core:$jackson_version"
-    generatedCompile "com.fasterxml.jackson.core:jackson-annotations:$jackson_version"
-    generatedCompile "com.fasterxml.jackson.core:jackson-databind:$jackson_version"
-    generatedCompile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jackson_version"
-    generatedCompile "org.apache.oltu.oauth2:org.apache.oltu.oauth2.client:$oltu_version"
-    generatedCompile "com.brsanthu:migbase64:2.2"
+    compile "io.swagger:swagger-annotations:$swagger_annotations_version"
+    compile "io.github.openfeign:feign-core:$feign_version"
+    compile "io.github.openfeign:feign-jackson:$feign_version"
+    compile "io.github.openfeign:feign-slf4j:$feign_version"
+    compile "io.github.openfeign.form:feign-form:$feign_form_version"
+    compile "com.fasterxml.jackson.core:jackson-core:$jackson_version"
+    compile "com.fasterxml.jackson.core:jackson-annotations:$jackson_version"
+    compile "com.fasterxml.jackson.core:jackson-databind:$jackson_version"
+    compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jackson_version"
+    compile "org.apache.oltu.oauth2:org.apache.oltu.oauth2.client:$oltu_version"
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile "com.brsanthu:migbase64:2.2"
+    testCompile "junit:junit:$junit_version"
 }
-
-
 
 def generateCodeFromSwagger(swaggerSourceFile, packageName, importMappings) {
     def config = new CodegenConfigurator()
@@ -139,12 +140,14 @@ sourceSets {
 }
 
 jar {
-    from sourceSets.generated.output
+    // from sourceSets.generated.output
 }
 
-compileGeneratedJava.dependsOn generateApi
-classes.dependsOn generatedClasses
-compileJava.dependsOn compileGeneratedJava
+/*
+    compileGeneratedJava.dependsOn generateApi
+    classes.dependsOn generatedClasses
+    compileJava.dependsOn compileGeneratedJava
+*/
 
 publishing {
     publications {

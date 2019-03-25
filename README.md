@@ -308,4 +308,3 @@ return feign.Response and then you can handle it instead of Feign throwing excep
                 .stream().findFirst().orElse("")).build()
                 .getQueryParams().getFirst("code");
 ```
-
