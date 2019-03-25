@@ -26,7 +26,7 @@ import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.RestsmsType;
  * A single descendent item
  */
 @ApiModel(description = "A single descendent item")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-21T15:18:22.399Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
 public class Item {
   @JsonProperty("_id")
   private String id = null;

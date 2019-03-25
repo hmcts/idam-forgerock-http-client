@@ -27,7 +27,7 @@ import uk.gov.hmcts.reform.idam.api.fr.am.oidc.model.JsonWebKey;
 /**
  * JsonWebKeySet
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-21T15:18:22.935Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:58.839Z")
 public class JsonWebKeySet {
   @JsonProperty("keys")
   private List<JsonWebKey> keys = null;

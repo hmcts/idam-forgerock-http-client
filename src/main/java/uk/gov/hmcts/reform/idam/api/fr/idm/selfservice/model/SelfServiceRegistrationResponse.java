@@ -26,7 +26,7 @@ import uk.gov.hmcts.reform.idam.api.fr.idm.selfservice.model.SuccessObject;
  * If more requirements need fulfilling before the user registration process is completed, this response structure will be returned.
  */
 @ApiModel(description = "If more requirements need fulfilling before the user registration process is completed, this response structure will be returned.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-21T15:18:23.943Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.636Z")
 public class SelfServiceRegistrationResponse {
   @JsonProperty("status")
   private SuccessObject status = null;

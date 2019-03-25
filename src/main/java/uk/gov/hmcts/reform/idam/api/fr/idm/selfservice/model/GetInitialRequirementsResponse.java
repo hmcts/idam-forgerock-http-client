@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
  * Initialize the user self service stage. A set of requirements will be returned that will need to be fulfilled and sent to the submitRequirements action.
  */
 @ApiModel(description = "Initialize the user self service stage. A set of requirements will be returned that will need to be fulfilled and sent to the submitRequirements action.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-21T15:18:23.943Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.636Z")
 public class GetInitialRequirementsResponse {
   @JsonProperty("type")
   private String type = null;

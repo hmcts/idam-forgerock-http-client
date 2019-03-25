@@ -27,7 +27,7 @@ import java.util.List;
  * Response types this client will support and use.
  */
 @ApiModel(description = "Response types this client will support and use.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-21T15:18:22.399Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
 public class ResponseTypes {
   @JsonProperty("inherited")
   private Boolean inherited = null;

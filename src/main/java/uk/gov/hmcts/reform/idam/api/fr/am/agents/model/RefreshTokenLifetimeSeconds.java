@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
  * The time in seconds a refresh token is valid for. &lt;i&gt;NB&lt;/i&gt; If this field is set to zero, Refresh Token Lifetime of the OAuth2 Provider is used instead. If this field is set to -1, the token will never expire.
  */
 @ApiModel(description = "The time in seconds a refresh token is valid for. <i>NB</i> If this field is set to zero, Refresh Token Lifetime of the OAuth2 Provider is used instead. If this field is set to -1, the token will never expire.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-21T15:18:22.399Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
 public class RefreshTokenLifetimeSeconds {
   @JsonProperty("inherited")
   private Boolean inherited = null;

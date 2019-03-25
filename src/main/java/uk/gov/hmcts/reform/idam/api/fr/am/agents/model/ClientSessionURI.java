@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
  * This is the URI that will be used to check messages sent to the session management endpoints. This URI must match the origin of the message
  */
 @ApiModel(description = "This is the URI that will be used to check messages sent to the session management endpoints. This URI must match the origin of the message")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-21T15:18:22.399Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
 public class ClientSessionURI {
   @JsonProperty("inherited")
   private Boolean inherited = null;

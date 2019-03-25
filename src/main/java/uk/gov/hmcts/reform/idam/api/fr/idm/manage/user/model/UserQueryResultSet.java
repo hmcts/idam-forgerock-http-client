@@ -27,7 +27,7 @@ import uk.gov.hmcts.reform.idam.api.fr.idm.manage.user.model.User;
 /**
  * UserQueryResultSet
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-21T15:18:23.299Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:59.475Z")
 public class UserQueryResultSet {
   @JsonProperty("result")
   private List<User> result = null;

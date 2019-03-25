@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
  * The user info endpoint offers different output format. See http://openid.net/specs/openid-connect-core-1_0.html#UserInfoResponse
  */
 @ApiModel(description = "The user info endpoint offers different output format. See http://openid.net/specs/openid-connect-core-1_0.html#UserInfoResponse")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-21T15:18:22.399Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
 public class UserInfoResponseFormat_ {
   @JsonProperty("inherited")
   private Boolean inherited = null;

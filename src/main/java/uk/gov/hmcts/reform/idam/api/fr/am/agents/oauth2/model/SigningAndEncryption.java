@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * SigningAndEncryption
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-21T15:18:23.026Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:59.013Z")
 public class SigningAndEncryption {
   @JsonProperty("jwksUri")
   private String jwksUri = null;

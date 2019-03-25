@@ -19,7 +19,7 @@ paths:
   /policy/selfservice/registration:
     post:
       summary: 'Action: validateObject'
-      operationId: _policy_selfservice_registration_validation
+      operationId: selfserviceRegistrationValidation
       parameters:
         - name: requestPayload
           in: body
@@ -44,11 +44,9 @@ paths:
   /selfservice/registration:
     get:
       summary: Read
-      operationId: _selfservice_registration_read
+      operationId: getInitialRequirements
       parameters:
         - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/_prettyPrint'
-        - $ref: '#/parameters/_mimeType'
       responses:
         '200':
           description: Success
@@ -63,10 +61,9 @@ paths:
       description: The initial requirements for a self service process.
     post:
       summary: 'Action: submitRequirements'
-      operationId: _selfservice_registration_action_submitrequirements
+      operationId: submitRequirements
       parameters:
         - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/_prettyPrint'
         - name: requestPayload
           in: body
           required: true
@@ -249,18 +246,6 @@ parameters:
     description: Add on GET Operations
     required: false
     type: string
-  _mimeType:
-    name: _mimeType
-    in: query
-    description: Optional parameter requesting that the response have the given MIME-Type. Use of this parameter requires a _fields parameter with a single field specified.
-    required: false
-    type: string
-  _prettyPrint:
-    name: _prettyPrint
-    in: query
-    description: Optional parameter requesting that the returned JSON resource content should be formatted to be more human readable.
-    required: false
-    type: boolean
   _fields:
     name: _fields
     in: query
@@ -268,3 +253,8 @@ parameters:
     required: false
     type: string
     collectionFormat: csv
+  authorization:
+    name: Cookie
+    in: header
+    required: false
+    type: string

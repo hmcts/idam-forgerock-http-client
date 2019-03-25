@@ -29,7 +29,7 @@ import uk.gov.hmcts.reform.idam.api.fr.idm.manage.assignment.model.AssignmentRol
  * A role assignment
  */
 @ApiModel(description = "A role assignment")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-21T15:18:23.146Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:59.251Z")
 public class Assignment {
   @JsonProperty("_id")
   private String id = null;

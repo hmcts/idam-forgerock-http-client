@@ -27,7 +27,7 @@ import java.util.List;
  * A description of the client or other information that may be relevant to the resource owner when considering approval.&lt;br&gt;&lt;br&gt;The description may be entered as a single string or as pipe separated strings for locale and localized name; e.g. \&quot;en|The company intranet is requesting the following access permission\&quot;. Locale strings are in the format &lt;code&gt;language + \&quot;_\&quot; + country + \&quot;_\&quot; + variant&lt;/code&gt;, e.g. en, en_GB, en_US_WIN. If the locale is omitted, the description is displayed to all users having undefined locales. e.g. \&quot;The company intranet is requesting the following access permission\&quot;.
  */
 @ApiModel(description = "A description of the client or other information that may be relevant to the resource owner when considering approval.<br><br>The description may be entered as a single string or as pipe separated strings for locale and localized name; e.g. \"en|The company intranet is requesting the following access permission\". Locale strings are in the format <code>language + \"_\" + country + \"_\" + variant</code>, e.g. en, en_GB, en_US_WIN. If the locale is omitted, the description is displayed to all users having undefined locales. e.g. \"The company intranet is requesting the following access permission\".")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-21T15:18:22.399Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
 public class DisplayDescription {
   @JsonProperty("inherited")
   private Boolean inherited = null;

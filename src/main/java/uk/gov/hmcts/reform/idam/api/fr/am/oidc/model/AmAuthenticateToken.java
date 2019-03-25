@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * AmAuthenticateToken
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-21T15:18:22.935Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:58.839Z")
 public class AmAuthenticateToken {
   @JsonProperty("tokenId")
   private String tokenId = null;

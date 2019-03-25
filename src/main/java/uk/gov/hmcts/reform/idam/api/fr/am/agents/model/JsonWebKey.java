@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
  * Raw JSON Web Key value containing the client&#39;s public keys.
  */
 @ApiModel(description = "Raw JSON Web Key value containing the client's public keys.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-21T15:18:22.399Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
 public class JsonWebKey {
   @JsonProperty("inherited")
   private Boolean inherited = null;

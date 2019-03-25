@@ -22,7 +22,7 @@ import uk.gov.hmcts.reform.idam.api.fr.shared.model.PatchOperation;
 /**
  * PatchArray
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-21T15:18:22.046Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.386Z")
 public class PatchArray extends ArrayList<PatchOperation> {
 
   @Override

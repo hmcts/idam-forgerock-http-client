@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * UMA
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-21T15:18:23.026Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:59.013Z")
 public class UMA {
   @JsonProperty("claimsRedirectionUris")
   private List<String> claimsRedirectionUris = null;

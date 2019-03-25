@@ -27,7 +27,7 @@ import uk.gov.hmcts.reform.idam.api.fr.am.agents.oauth2.model.OAuth2Client;
 /**
  * OAuth2ClientsResultSet
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-21T15:18:23.026Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:59.013Z")
 public class OAuth2ClientsResultSet {
   @JsonProperty("result")
   private List<OAuth2Client> result = null;

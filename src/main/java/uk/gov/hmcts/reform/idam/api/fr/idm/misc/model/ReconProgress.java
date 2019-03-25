@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
  * Recon progress stats
  */
 @ApiModel(description = "Recon progress stats")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-21T15:18:23.581Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.022Z")
 public class ReconProgress {
   @JsonProperty("source")
   private Object source = null;

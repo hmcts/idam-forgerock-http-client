@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
  * JWS algorithm for signing UserInfo Responses. If this is specified, the response will be JWT &lt;a href&#x3D;\&quot;https://tools.ietf.org/html/rfc7519\&quot;&gt;JWT&lt;/a&gt; serialized, and signed using JWS. The default, if omitted, is for the UserInfo Response to return the Claims as a UTF-8 encoded JSON object using the application/json content-type.
  */
 @ApiModel(description = "JWS algorithm for signing UserInfo Responses. If this is specified, the response will be JWT <a href=\"https://tools.ietf.org/html/rfc7519\">JWT</a> serialized, and signed using JWS. The default, if omitted, is for the UserInfo Response to return the Claims as a UTF-8 encoded JSON object using the application/json content-type.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-21T15:18:22.399Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
 public class UserInfoSignedResponseAlgorithm {
   @JsonProperty("inherited")
   private Boolean inherited = null;

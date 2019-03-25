@@ -20,7 +20,7 @@ import feign.slf4j.Slf4jLogger;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.auth.*;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.auth.OAuth.AccessTokenListener;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-21T15:18:23.943Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.636Z")
 public class ApiClient {
   public interface Api {}
 

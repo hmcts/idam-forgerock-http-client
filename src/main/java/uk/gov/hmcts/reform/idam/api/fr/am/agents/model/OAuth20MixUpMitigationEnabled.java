@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
  * Enables OAuth 2.0 mix-up mitigation on the authorization server side.&lt;br&gt;&lt;br&gt;Enable this setting only if this OAuth 2.0 client supports the &lt;a href&#x3D;\&quot;https://tools.ietf.org/html/draft-ietf-oauth-mix-up-mitigation-01\&quot;&gt;OAuth 2.0 Mix-Up Mitigation draft&lt;/a&gt;, otherwise OpenAM will fail to validate access token requests received from this client.
  */
 @ApiModel(description = "Enables OAuth 2.0 mix-up mitigation on the authorization server side.<br><br>Enable this setting only if this OAuth 2.0 client supports the <a href=\"https://tools.ietf.org/html/draft-ietf-oauth-mix-up-mitigation-01\">OAuth 2.0 Mix-Up Mitigation draft</a>, otherwise OpenAM will fail to validate access token requests received from this client.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-21T15:18:22.399Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
 public class OAuth20MixUpMitigationEnabled {
   @JsonProperty("inherited")
   private Boolean inherited = null;

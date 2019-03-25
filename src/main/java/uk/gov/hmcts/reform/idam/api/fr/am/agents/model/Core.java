@@ -33,7 +33,7 @@ import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.Status;
 /**
  * Core
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-21T15:18:22.399Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
 public class Core {
   @JsonProperty("agentgroup")
   private String agentgroup = null;

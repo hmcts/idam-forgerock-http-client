@@ -25,7 +25,7 @@ import uk.gov.hmcts.reform.idam.api.fr.idm.manage.roles.model.ManagedAssignments
 /**
  * RoleAssignments
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-21T15:18:23.755Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.261Z")
 public class RoleAssignments {
   @JsonProperty("_ref")
   private String ref = null;

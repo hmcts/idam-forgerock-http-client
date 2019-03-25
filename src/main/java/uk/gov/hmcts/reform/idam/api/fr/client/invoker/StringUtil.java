@@ -13,7 +13,7 @@
 
 package uk.gov.hmcts.reform.idam.api.fr.client.invoker;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-21T15:18:23.943Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.636Z")
 public class StringUtil {
   /**
    * Check if the given array contains the given value (with case-insensitive comparison).

@@ -27,7 +27,7 @@ import uk.gov.hmcts.reform.idam.api.fr.idm.selfservice.model.FailedPolicyRequire
 /**
  * ValidateObjectResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-21T15:18:23.943Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.636Z")
 public class ValidateObjectResponse {
   @JsonProperty("result")
   private Boolean result = null;
