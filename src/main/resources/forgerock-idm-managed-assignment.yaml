@@ -89,7 +89,7 @@ paths:
       tags:
         - Assignment
     post:
-      summary: 'Action: triggerSyncCheck'
+      summary: 'Post with Action'
       operationId: _assignmentid_action_triggersynccheck
       parameters:
         - name: assignmentId
@@ -112,7 +112,7 @@ paths:
       tags:
         - Assignment
     put:
-      summary: Create with Client-Assigned ID
+      summary: Update or Create with Client-Assigned ID
       operationId: _assignmentid_create_put
       parameters:
         - name: assignmentId
@@ -211,7 +211,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/AssignmentRolesItemsQueryResultSet'
+            $ref: '#/definitions/AssignmentRolesResultSet'
       tags:
         - Assignment - Managed Roles
     post:
@@ -265,7 +265,7 @@ paths:
       tags:
         - Assignment - Managed Roles
     put:
-      summary: Create with Client-Assigned ID
+      summary: Update or Create with Client-Assigned ID
       operationId: _assignmentid_roles_id_create_put
       parameters:
         - name: assignmentId
@@ -450,7 +450,7 @@ definitions:
         default: -1
         description: Count of individual items remaining
     title: Query Response
-  'AssignmentRolesItemsQueryResultSet':
+  'AssignmentRolesResultSet':
     type: object
     properties:
       result:

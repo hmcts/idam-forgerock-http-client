@@ -51,8 +51,8 @@ paths:
       tags:
         - Aggregating Agents
     post:
-      summary: 'Action: getAllTypes'
-      operationId: _action_getalltypes
+      summary: 'Post Action Get All Types'
+      operationId: post_with_action_get_all_types
       parameters:
         - $ref: '#/parameters/_fields'
         - $ref: '#/parameters/_prettyPrint'
@@ -74,8 +74,8 @@ paths:
         - Aggregating Agents
   '/json/realms/root/realms/{realm}/realm-config/agents#_action_getcreatabletypes':
     post:
-      summary: 'Action: getCreatableTypes'
-      operationId: _action_getcreatabletypes
+      summary: 'Post Action Get Creatable Types'
+      operationId: post_with_action_get_creatable_types
       parameters:
         - $ref: '#/parameters/realm'
         - $ref: '#/parameters/_fields'

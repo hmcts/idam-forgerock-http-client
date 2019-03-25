@@ -48,19 +48,24 @@ paths:
       tags:
         - OAuth2 Client Agents
     post:
-      summary: 'Action: getAllTypes'
-      operationId: _action_getalltypes
+      summary: 'Post with Action'
+      operationId: post_with_action
       parameters:
         - $ref: '#/parameters/_fields'
         - $ref: '#/parameters/_prettyPrint'
         - $ref: '#/parameters/_action'
         - $ref: '#/parameters/realm'
         - $ref: '#/parameters/authorization'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            $ref: '#/definitions/AmAgent'
       responses:
         '200':
           description: Success
           schema:
-            type: object
+            type: '#/definitions/AmAgent'
       description: Call the endpoint with various actions
       tags:
         - OAuth2 Client Agents
@@ -86,7 +91,7 @@ paths:
       tags:
         - OAuth2 Client Agents
     put:
-      summary: Create with Client-Assigned ID
+      summary: Update or Create with Client-Assigned ID
       operationId: _id_create_put
       parameters:
         - name: id

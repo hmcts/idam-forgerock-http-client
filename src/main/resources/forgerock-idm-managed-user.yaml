@@ -110,7 +110,7 @@ paths:
       tags:
         - User
     put:
-      summary: Create with Client-Assigned ID or Server-Assigned ID
+      summary: Update or Create with Client-Assigned ID
       operationId: _userid_create_put
       parameters:
         - name: userId
@@ -282,7 +282,7 @@ paths:
       tags:
         - User - Authorization Roles
     put:
-      summary: Create with Client-Assigned ID or Server-Assigned ID
+      summary: Update or Create with Client-Assigned ID
       operationId: _userid_authzroles_id_create_put
       parameters:
         - name: userId
@@ -446,7 +446,7 @@ paths:
       tags:
         - User - Direct Reports
     put:
-      summary: Create with Client-Assigned ID or Server-Assigned ID
+      summary: Update or Create with Client-Assigned ID
       operationId: _userid_reports_id_create_put
       parameters:
         - name: userId
@@ -610,7 +610,7 @@ paths:
       tags:
         - User - Provisioning Roles
     put:
-      summary: Create with Client-Assigned ID Or Server-Assigned ID
+      summary: Update or Create with Client-Assigned ID
       operationId: _userid_roles_id_create_put
       parameters:
         - name: userId
@@ -1143,6 +1143,7 @@ parameters:
     description: Add on PUT Operations when Updating Existing Entities
     required: false
     type: string
+    default: '*'
     enum:
       - '*'
   If-None-Match-Rev:

@@ -109,7 +109,7 @@ paths:
       tags:
         - Role
     put:
-      summary: Create with Client-Assigned ID or Server-Assigned ID
+      summary: Update or Create with Client-Assigned ID
       operationId: _roleid_create_put
       parameters:
         - name: roleId
@@ -262,7 +262,7 @@ paths:
       tags:
         - Role - Managed Assignments
     put:
-      summary: Create with Client-Assigned ID or Server-Assigned ID
+      summary: Update or Create with Client-Assigned ID
       operationId: _roleid_assignments_id_create_put
       parameters:
         - name: roleId
@@ -427,7 +427,7 @@ paths:
       tags:
         - Role - Authorization Role Members
     put:
-      summary: Create with Client-Assigned ID or Server-Assigned ID
+      summary: Update or Create with Client-Assigned ID
       operationId: _roleid_authzmembers_id_create_put
       parameters:
         - name: roleId
@@ -592,7 +592,7 @@ paths:
       tags:
         - Role - Role Members
     put:
-      summary: Create with Client-Assigned ID or Server-Assigned ID
+      summary: Update or Create with Client-Assigned ID
       operationId: _roleid_members_id_create_put
       parameters:
         - name: roleId
