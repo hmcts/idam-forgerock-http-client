@@ -1134,7 +1134,6 @@ parameters:
     description: Add on PUT Operations when Updating Existing Entities
     required: false
     type: string
-    default: '*'
     enum:
       - '*'
   If-None-Match-Rev:

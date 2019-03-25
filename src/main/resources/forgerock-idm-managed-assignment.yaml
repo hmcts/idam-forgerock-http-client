@@ -208,7 +208,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/AssignmentRolesResultSet'
+            $ref: '#/definitions/AssignmentRolesQueryResult'
       tags:
         - Assignment - Managed Roles
     post:
@@ -445,7 +445,7 @@ definitions:
         default: -1
         description: Count of individual items remaining
     title: Query Response
-  'AssignmentRolesResultSet':
+  'AssignmentRolesQueryResult':
     type: object
     properties:
       result:

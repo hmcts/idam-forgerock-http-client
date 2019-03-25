@@ -54,16 +54,11 @@ paths:
         - $ref: '#/parameters/_action'
         - $ref: '#/parameters/realm'
         - $ref: '#/parameters/authorization'
-        - in: body
-          name: requestPayload
-          required: true
-          schema:
-            $ref: '#/definitions/AmAgent'
       responses:
         '200':
           description: Success
           schema:
-            type: '#/definitions/AmAgent'
+            type: object
       description: Call the endpoint with various actions
       tags:
         - OAuth2 Client Agents

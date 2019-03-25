@@ -213,7 +213,7 @@ public class OAuth2ClientAgentsApiTest {
     public void queryFilterTestQueryMap() {
         String realm = null;
         String cookie = null;
-        OAuth2ClientAgentsApi.QueryFilterQueryParams queryParams = new OAuth2ClientAgentsApi.QueryFilterQueryParams()
+        OAuth2ClientAgentsApi.QueryFilterParams queryParams = new OAuth2ClientAgentsApi.QueryFilterParams()
             .fields(null)
             .prettyPrint(null)
             .queryFilter(null)

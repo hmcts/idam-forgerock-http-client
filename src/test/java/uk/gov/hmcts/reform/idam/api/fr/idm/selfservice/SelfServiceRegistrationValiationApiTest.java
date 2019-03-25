@@ -22,37 +22,5 @@ public class SelfServiceRegistrationValiationApiTest {
         api = new ApiClient().buildClient(SelfServiceRegistrationValiationApi.class);
     }
 
-    
-    /**
-     * Action: validateObject
-     *
-     * Submits requirements for stage.
-     */
-    @Test
-    public void policySelfserviceRegistrationValidationTest() {
-        Object requestPayload = null;
-        String action = null;
-        // ValidateObjectResponse response = api.policySelfserviceRegistrationValidation(requestPayload, action);
 
-        // TODO: test validations
-    }
-
-    /**
-     * Action: validateObject
-     *
-     * Submits requirements for stage.
-     *
-     * This tests the overload of the method that uses a Map for query parameters instead of
-     * listing them out individually.
-     */
-    @Test
-    public void policySelfserviceRegistrationValidationTestQueryMap() {
-        Object requestPayload = null;
-        SelfServiceRegistrationValiationApi.PolicySelfserviceRegistrationValidationQueryParams queryParams = new SelfServiceRegistrationValiationApi.PolicySelfserviceRegistrationValidationQueryParams()
-            .action(null);
-        // ValidateObjectResponse response = api.policySelfserviceRegistrationValidation(requestPayload, queryParams);
-
-    // TODO: test validations
-    }
-    
 }
