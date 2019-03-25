@@ -13,7 +13,7 @@ paths:
   /shared/definitions:
     get:
       summary: Placeholder for Generation Purposes
-      operationId: _shared_definitions
+      operationId: notARealEndpoint
       parameters:
         - name: _nothing_dont_call_this_endpoint
           in: query

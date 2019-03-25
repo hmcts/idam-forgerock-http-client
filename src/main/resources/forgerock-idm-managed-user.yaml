@@ -21,10 +21,10 @@ paths:
   /managed/user:
     get:
       summary: Query by Filter or by Query ID
-      operationId: _query_filter
+      operationId: queryFilter
       parameters:
         - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/authorization'
         - $ref: '#/parameters/_queryFilter'
         - $ref: '#/parameters/_queryId'
         - name: _pageSize
@@ -50,11 +50,10 @@ paths:
         - User
     post:
       summary: Create with Server-Assigned ID
-      operationId: _create_post
+      operationId: post
       parameters:
         - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/_prettyPrint'
-        - $ref: '#/parameters/_action_create'
+        - $ref: '#/parameters/authorization'
         - in: body
           name: requestPayload
           required: true
@@ -74,16 +73,14 @@ paths:
   '/managed/user/{userId}':
     get:
       summary: Read
-      operationId: _userid_read
+      operationId: get
       parameters:
         - name: userId
           in: path
           required: true
           type: string
         - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/_prettyPrint'
-        - $ref: '#/parameters/_mimeType'
-        - $ref: '#/parameters/If-None-Match-Rev'
+        - $ref: '#/parameters/authorization'
       responses:
         '200':
           description: Success
@@ -93,14 +90,14 @@ paths:
         - User
     post:
       summary: 'Action: resetPassword'
-      operationId: _userid_action_resetpassword
+      operationId: resetPassword
       parameters:
         - name: userId
           in: path
           required: true
           type: string
         - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/authorization'
         - $ref: '#/parameters/_action_resetPassword'
       responses:
         '200':
@@ -110,15 +107,15 @@ paths:
       tags:
         - User
     put:
-      summary: Create with Client-Assigned ID or Server-Assigned ID
-      operationId: _userid_create_put
+      summary: Update or Create with Client-Assigned ID
+      operationId: putIfRevision
       parameters:
         - name: userId
           in: path
           required: true
           type: string
         - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/authorization'
         - in: body
           name: requestPayload
           required: true
@@ -139,14 +136,14 @@ paths:
         - User
     delete:
       summary: Delete
-      operationId: _userid_delete
+      operationId: deleteIfMatch
       parameters:
         - name: userId
           in: path
           required: true
           type: string
         - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/authorization'
         - $ref: '#/parameters/If-Match'
       responses:
         '200':
@@ -157,14 +154,14 @@ paths:
         - User
     patch:
       summary: Update via Patch Operations
-      operationId: _userid_patch
+      operationId: patchIfMatch
       parameters:
         - name: userId
           in: path
           required: true
           type: string
         - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/authorization'
         - in: body
           name: requestPayload
           required: true
@@ -181,14 +178,14 @@ paths:
   '/managed/user/{userId}#_action_triggersynccheck':
     post:
       summary: 'Action: triggerSyncCheck'
-      operationId: _userid_action_triggersynccheck
+      operationId: actionTriggerSyncCheck
       parameters:
         - name: userId
           in: path
           required: true
           type: string
         - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/authorization'
         - $ref: '#/parameters/_action_triggerSyncCheck'
       responses:
         '200':
@@ -200,14 +197,14 @@ paths:
   '/managed/user/{userId}/authzRoles':
     get:
       summary: Query by Filter
-      operationId: _userid_authzroles_query_filter
+      operationId: queryFilter
       parameters:
         - name: userId
           in: path
           required: true
           type: string
         - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/authorization'
         - $ref: '#/parameters/_queryFilter'
         - $ref: '#/parameters/_queryId'
         - name: _pageSize
@@ -233,14 +230,14 @@ paths:
         - User - Authorization Roles
     post:
       summary: Create with Server-Assigned ID
-      operationId: _userid_authzroles_create_post
+      operationId: post
       parameters:
         - name: userId
           in: path
           required: true
           type: string
         - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/authorization'
         - in: body
           name: requestPayload
           required: true
@@ -260,7 +257,7 @@ paths:
   '/managed/user/{userId}/authzRoles/{id}':
     get:
       summary: Read
-      operationId: _userid_authzroles_id_read
+      operationId: get
       parameters:
         - name: userId
           in: path
@@ -271,9 +268,7 @@ paths:
           required: true
           type: string
         - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/_prettyPrint'
-        - $ref: '#/parameters/_mimeType'
-        - $ref: '#/parameters/If-None-Match-Rev'
+        - $ref: '#/parameters/authorization'
       responses:
         '200':
           description: Success
@@ -282,8 +277,8 @@ paths:
       tags:
         - User - Authorization Roles
     put:
-      summary: Create with Client-Assigned ID or Server-Assigned ID
-      operationId: _userid_authzroles_id_create_put
+      summary: Update or Create with Client-Assigned ID
+      operationId: putIfRevision
       parameters:
         - name: userId
           in: path
@@ -294,7 +289,7 @@ paths:
           required: true
           type: string
         - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/authorization'
         - in: body
           name: requestPayload
           required: true
@@ -315,7 +310,7 @@ paths:
         - User - Authorization Roles
     delete:
       summary: Delete
-      operationId: _userid_authzroles_id_delete
+      operationId: deleteIfMatch
       parameters:
         - name: userId
           in: path
@@ -326,7 +321,7 @@ paths:
           required: true
           type: string
         - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/authorization'
         - $ref: '#/parameters/If-Match'
       responses:
         '200':
@@ -337,7 +332,7 @@ paths:
         - User - Authorization Roles
     patch:
       summary: Update via Patch Operations
-      operationId: _userid_authzroles_id_patch
+      operationId: patchIfMatch
       parameters:
         - name: userId
           in: path
@@ -348,7 +343,7 @@ paths:
           required: true
           type: string
         - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/authorization'
         - in: body
           name: requestPayload
           required: true
@@ -365,14 +360,14 @@ paths:
   '/managed/user/{userId}/reports':
     get:
       summary: Query by Filter
-      operationId: _userid_reports_query_filter
+      operationId: queryFilter
       parameters:
         - name: userId
           in: path
           required: true
           type: string
         - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/authorization'
         - $ref: '#/parameters/_queryFilter'
         - name: _pageSize
           in: query
@@ -397,14 +392,14 @@ paths:
         - User - Direct Reports
     post:
       summary: Create with Server-Assigned ID
-      operationId: _userid_reports_create_post
+      operationId: post
       parameters:
         - name: userId
           in: path
           required: true
           type: string
         - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/authorization'
         - in: body
           name: requestPayload
           required: true
@@ -424,7 +419,7 @@ paths:
   '/managed/user/{userId}/reports/{id}':
     get:
       summary: Read
-      operationId: _userid_reports_id_read
+      operationId: get
       parameters:
         - name: userId
           in: path
@@ -435,9 +430,7 @@ paths:
           required: true
           type: string
         - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/_prettyPrint'
-        - $ref: '#/parameters/_mimeType'
-        - $ref: '#/parameters/If-None-Match-Rev'
+        - $ref: '#/parameters/authorization'
       responses:
         '200':
           description: Success
@@ -446,8 +439,8 @@ paths:
       tags:
         - User - Direct Reports
     put:
-      summary: Create with Client-Assigned ID or Server-Assigned ID
-      operationId: _userid_reports_id_create_put
+      summary: Update or Create with Client-Assigned ID
+      operationId: putIfRevision
       parameters:
         - name: userId
           in: path
@@ -458,7 +451,7 @@ paths:
           required: true
           type: string
         - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/authorization'
         - in: body
           name: requestPayload
           required: true
@@ -479,7 +472,7 @@ paths:
         - User - Direct Reports
     delete:
       summary: Delete
-      operationId: _userid_reports_id_delete
+      operationId: deleteIfMatch
       parameters:
         - name: userId
           in: path
@@ -490,7 +483,7 @@ paths:
           required: true
           type: string
         - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/authorization'
         - $ref: '#/parameters/If-Match'
       responses:
         '200':
@@ -501,7 +494,7 @@ paths:
         - User - Direct Reports
     patch:
       summary: Update via Patch Operations
-      operationId: _userid_reports_id_patch
+      operationId: patchIfMatch
       parameters:
         - name: userId
           in: path
@@ -512,7 +505,7 @@ paths:
           required: true
           type: string
         - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/authorization'
         - in: body
           name: requestPayload
           required: true
@@ -529,14 +522,14 @@ paths:
   '/managed/user/{userId}/roles':
     get:
       summary: Query by Filter
-      operationId: _userid_roles_query_filter
+      operationId: queryFilter
       parameters:
         - name: userId
           in: path
           required: true
           type: string
         - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/authorization'
         - $ref: '#/parameters/_queryFilter'
         - name: _pageSize
           in: query
@@ -561,14 +554,14 @@ paths:
         - User - Provisioning Roles
     post:
       summary: Create with Server-Assigned ID
-      operationId: _userid_roles_create_post
+      operationId: post
       parameters:
         - name: userId
           in: path
           required: true
           type: string
         - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/authorization'
         - in: body
           name: requestPayload
           required: true
@@ -588,7 +581,7 @@ paths:
   '/managed/user/{userId}/roles/{id}':
     get:
       summary: Read
-      operationId: _userid_roles_id_read
+      operationId: get
       parameters:
         - name: userId
           in: path
@@ -599,9 +592,7 @@ paths:
           required: true
           type: string
         - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/_prettyPrint'
-        - $ref: '#/parameters/_mimeType'
-        - $ref: '#/parameters/If-None-Match-Rev'
+        - $ref: '#/parameters/authorization'
       responses:
         '200':
           description: Success
@@ -610,8 +601,8 @@ paths:
       tags:
         - User - Provisioning Roles
     put:
-      summary: Create with Client-Assigned ID Or Server-Assigned ID
-      operationId: _userid_roles_id_create_put
+      summary: Update or Create with Client-Assigned ID
+      operationId: putIfRevision
       parameters:
         - name: userId
           in: path
@@ -622,7 +613,7 @@ paths:
           required: true
           type: string
         - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/authorization'
         - in: body
           name: requestPayload
           required: true
@@ -643,7 +634,7 @@ paths:
         - User - Provisioning Roles
     delete:
       summary: Delete
-      operationId: _userid_roles_id_delete
+      operationId: deleteIfMatch
       parameters:
         - name: userId
           in: path
@@ -654,7 +645,7 @@ paths:
           required: true
           type: string
         - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/authorization'
         - $ref: '#/parameters/If-Match'
       responses:
         '200':
@@ -665,7 +656,7 @@ paths:
         - User - Provisioning Roles
     patch:
       summary: Update via Patch Operations
-      operationId: _userid_roles_id_patch
+      operationId: patchIfMatch
       parameters:
         - name: userId
           in: path
@@ -676,7 +667,7 @@ paths:
           required: true
           type: string
         - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/authorization'
         - in: body
           name: requestPayload
           required: true
@@ -1151,18 +1142,6 @@ parameters:
     description: Add on GET Operations
     required: false
     type: string
-  _mimeType:
-    name: _mimeType
-    in: query
-    description: Optional parameter requesting that the response have the given MIME-Type. Use of this parameter requires a _fields parameter with a single field specified.
-    required: false
-    type: string
-  _prettyPrint:
-    name: _prettyPrint
-    in: query
-    description: Optional parameter requesting that the returned JSON resource content should be formatted to be more human readable.
-    required: false
-    type: boolean
   _fields:
     name: _fields
     in: query
@@ -1170,3 +1149,8 @@ parameters:
     required: false
     type: string
     collectionFormat: csv
+  authorization:
+    name: Cookie
+    in: header
+    required: false
+    type: string

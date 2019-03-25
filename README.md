@@ -132,7 +132,7 @@ and fix the definition pointers*
 ```yaml
      put:
        summary: Create with Client-Assigned ID or Update Entity
-       operationId: _userid_create_put
+       operationId: putIfRevision
        parameters:
          - name: userId
            in: path
@@ -163,7 +163,7 @@ it shows up as a different endpoint.
   /json/realms/root/realms/{realm}/realm-config/agents/OAuth2Client:
     post:
       summary: 'Action: getAllTypes'
-      operationId: _action_getalltypes
+      operationId: actionGetAllTypes
       parameters:
         - $ref: '#/parameters/_action'
       responses:
