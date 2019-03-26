@@ -13,15 +13,13 @@
 
 package uk.gov.hmcts.reform.idam.api.fr.am.agents.model;
 
-import java.util.Objects;
-import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Default Scope(s). Scopes automatically given to tokens.&lt;br&gt;&lt;br&gt;Default Scopes may be entered as simple strings or pipe separated strings representing the internal scope name, locale, and localized description; e.g. \&quot;read|en|Permission to view email messages in your account\&quot;. Locale strings are in the format &lt;code&gt;language + \&quot;_\&quot; + country + \&quot;_\&quot; + variant&lt;/code&gt;, e.g. en, en_GB, en_US_WIN. If the locale and pipe is omitted, the description is displayed to all users having undefined locales. e.g. \&quot;read|Permission to view email messages in your account\&quot;. &lt;i&gt;NB&lt;/i&gt; If the description is also omitted, nothing is displayed to all users, e.g. specifying \&quot;read|\&quot; would allow the scope \&quot;read\&quot; to be used by the client, but would not display it to the user when it was requested.

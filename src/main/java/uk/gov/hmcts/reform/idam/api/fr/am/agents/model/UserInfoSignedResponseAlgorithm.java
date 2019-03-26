@@ -13,13 +13,11 @@
 
 package uk.gov.hmcts.reform.idam.api.fr.am.agents.model;
 
-import java.util.Objects;
-import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
+import java.util.Objects;
 
 /**
  * JWS algorithm for signing UserInfo Responses. If this is specified, the response will be JWT &lt;a href&#x3D;\&quot;https://tools.ietf.org/html/rfc7519\&quot;&gt;JWT&lt;/a&gt; serialized, and signed using JWS. The default, if omitted, is for the UserInfo Response to return the Claims as a UTF-8 encoded JSON object using the application/json content-type.

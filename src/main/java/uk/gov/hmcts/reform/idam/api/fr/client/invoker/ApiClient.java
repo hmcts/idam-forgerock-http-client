@@ -1,24 +1,24 @@
 package uk.gov.hmcts.reform.idam.api.fr.client.invoker;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
-import org.apache.oltu.oauth2.client.request.OAuthClientRequest.AuthenticationRequestBuilder;
-import org.apache.oltu.oauth2.client.request.OAuthClientRequest.TokenRequestBuilder;
-
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-
 import feign.Feign;
 import feign.RequestInterceptor;
 import feign.form.FormEncoder;
 import feign.jackson.JacksonDecoder;
 import feign.jackson.JacksonEncoder;
 import feign.slf4j.Slf4jLogger;
-import uk.gov.hmcts.reform.idam.api.fr.client.invoker.auth.*;
+import org.apache.oltu.oauth2.client.request.OAuthClientRequest.AuthenticationRequestBuilder;
+import org.apache.oltu.oauth2.client.request.OAuthClientRequest.TokenRequestBuilder;
+import uk.gov.hmcts.reform.idam.api.fr.client.invoker.auth.ApiKeyAuth;
+import uk.gov.hmcts.reform.idam.api.fr.client.invoker.auth.HttpBasicAuth;
+import uk.gov.hmcts.reform.idam.api.fr.client.invoker.auth.OAuth;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.auth.OAuth.AccessTokenListener;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.636Z")
 public class ApiClient {

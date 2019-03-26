@@ -13,13 +13,11 @@
 
 package uk.gov.hmcts.reform.idam.api.fr.idm.selfservice.model;
 
-import java.util.Objects;
-import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
+import java.util.Objects;
 
 /**
  * If all the requirements have been fulfilled and the user registration process is complete, this response structure will be used.

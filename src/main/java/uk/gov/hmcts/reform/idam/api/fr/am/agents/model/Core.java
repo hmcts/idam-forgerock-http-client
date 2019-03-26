@@ -13,22 +13,10 @@
 
 package uk.gov.hmcts.reform.idam.api.fr.am.agents.model;
 
-import java.util.Objects;
-import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.AccessTokenLifetimeSeconds;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.AuthorizationCodeLifetimeSeconds;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.ClientName;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.ClientType;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.DefaultScopes;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.RedirectionURIs;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.RefreshTokenLifetimeSeconds;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.Scopes;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.Status;
+
+import java.util.Objects;
 
 /**
  * Core

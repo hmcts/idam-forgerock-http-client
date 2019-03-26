@@ -13,19 +13,10 @@
 
 package uk.gov.hmcts.reform.idam.api.fr.am.agents.model;
 
-import java.util.Objects;
-import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.Claims;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.ClientSessionURI;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.DefaultMaxAge;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.DefaultMaxAgeEnabled;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.OpenIDConnectJWTTokenLifetimeSeconds;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.PostLogoutRedirectURIs;
+
+import java.util.Objects;
 
 /**
  * OpenIDConnect

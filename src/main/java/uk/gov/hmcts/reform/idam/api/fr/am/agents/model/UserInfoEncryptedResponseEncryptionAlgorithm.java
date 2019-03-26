@@ -13,13 +13,11 @@
 
 package uk.gov.hmcts.reform.idam.api.fr.am.agents.model;
 
-import java.util.Objects;
-import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
+import java.util.Objects;
 
 /**
  * JWE enc algorithm for encrypting UserInfo Responses. If userinfo encrypted response algorithm is specified, the default for this value is A128CBC-HS256. When user info encrypted response encryption is included, user info encrypted response algorithm MUST also be provided.&lt;br&gt;&lt;br&gt;OpenAM supports the following token encryption algorithms:&lt;ul&gt;&lt;li&gt;&lt;code&gt;A128GCM&lt;/code&gt;, &lt;code&gt;A192GCM&lt;/code&gt;, and &lt;code&gt;A256GCM&lt;/code&gt; - AES in Galois Counter Mode (GCM) authenticated encryption mode.&lt;/li&gt;&lt;li&gt;&lt;code&gt;A128CBC-HS256&lt;/code&gt;, &lt;code&gt;A192CBC-HS384&lt;/code&gt;, and &lt;code&gt;A256CBC-HS512&lt;/code&gt; - AES encryption in CBC mode, with HMAC-SHA-2 for integrity.&lt;/li&gt;&lt;/ul&gt;

@@ -13,26 +13,12 @@
 
 package uk.gov.hmcts.reform.idam.api.fr.idm.manage.user.model;
 
-import java.util.Objects;
-import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
 import java.util.ArrayList;
 import java.util.List;
-import uk.gov.hmcts.reform.idam.api.fr.idm.manage.user.model.EffectiveAssignment;
-import uk.gov.hmcts.reform.idam.api.fr.idm.manage.user.model.EffectiveRole;
-import uk.gov.hmcts.reform.idam.api.fr.idm.manage.user.model.KBAInfoItems;
-import uk.gov.hmcts.reform.idam.api.fr.idm.manage.user.model.LastChanged;
-import uk.gov.hmcts.reform.idam.api.fr.idm.manage.user.model.LastSyncTimestamp;
-import uk.gov.hmcts.reform.idam.api.fr.idm.manage.user.model.Manager;
-import uk.gov.hmcts.reform.idam.api.fr.idm.manage.user.model.Preferences;
-import uk.gov.hmcts.reform.idam.api.fr.idm.manage.user.model.TermsAccepted;
-import uk.gov.hmcts.reform.idam.api.fr.idm.manage.user.model.UserAuthzRoles;
-import uk.gov.hmcts.reform.idam.api.fr.idm.manage.user.model.UserReports;
-import uk.gov.hmcts.reform.idam.api.fr.idm.manage.user.model.UserRoles;
+import java.util.Objects;
 
 /**
  * User

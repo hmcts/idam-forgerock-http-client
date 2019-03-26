@@ -13,13 +13,11 @@
 
 package uk.gov.hmcts.reform.idam.api.fr.idm.selfservice.model;
 
-import java.util.Objects;
-import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
+import java.util.Objects;
 
 /**
  * Submit some fulfilled requirements. Returns either a completion status, or a token along with some more requirements. If requirements are returned, they should be submitted with the token as a fresh request to this action.

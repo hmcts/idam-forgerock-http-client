@@ -1,11 +1,13 @@
 package uk.gov.hmcts.reform.idam.api.fr.client.invoker.auth;
 
-import java.io.IOException;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Map.Entry;
-
+import feign.Client;
 import feign.Request;
+import feign.Request.Options;
+import feign.RequestInterceptor;
+import feign.RequestTemplate;
+import feign.Response;
+import feign.RetryableException;
+import feign.Util;
 import org.apache.oltu.oauth2.client.HttpClient;
 import org.apache.oltu.oauth2.client.OAuthClient;
 import org.apache.oltu.oauth2.client.request.OAuthClientRequest;
@@ -18,15 +20,12 @@ import org.apache.oltu.oauth2.common.exception.OAuthProblemException;
 import org.apache.oltu.oauth2.common.exception.OAuthSystemException;
 import org.apache.oltu.oauth2.common.message.types.GrantType;
 import org.apache.oltu.oauth2.common.token.BasicOAuthToken;
-
-import feign.Client;
-import feign.Request.Options;
-import feign.RequestInterceptor;
-import feign.RequestTemplate;
-import feign.Response;
-import feign.RetryableException;
-import feign.Util;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.StringUtil;
+
+import java.io.IOException;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Map.Entry;
 
 
 public class OAuth implements RequestInterceptor {

@@ -13,11 +13,8 @@
 
 package uk.gov.hmcts.reform.idam.api.fr.shared.model;
 
-import java.util.Objects;
-import java.util.Arrays;
 import java.util.ArrayList;
-import java.util.List;
-import uk.gov.hmcts.reform.idam.api.fr.shared.model.PatchOperation;
+import java.util.Objects;
 
 /**
  * PatchArray

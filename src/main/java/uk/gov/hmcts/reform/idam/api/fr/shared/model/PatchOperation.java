@@ -13,18 +13,18 @@
 
 package uk.gov.hmcts.reform.idam.api.fr.shared.model;
 
-import java.util.Objects;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
+import java.util.Objects;
+
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 
 /**
  * PatchOperation
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.386Z")
+@JsonInclude(NON_NULL)
 public class PatchOperation {
   @JsonProperty("operation")
   private String operation = null;
@@ -36,7 +36,7 @@ public class PatchOperation {
   private String from = null;
 
   @JsonProperty("value")
-  private String value = null;
+  private Object value = null;
 
   public PatchOperation operation(String operation) {
     this.operation = operation;
@@ -92,7 +92,7 @@ public class PatchOperation {
     this.from = from;
   }
 
-  public PatchOperation value(String value) {
+  public PatchOperation value(Object value) {
     this.value = value;
     return this;
   }
@@ -102,11 +102,11 @@ public class PatchOperation {
    * @return value
   **/
   @ApiModelProperty(value = "Value to apply")
-  public String getValue() {
+  public Object getValue() {
     return value;
   }
 
-  public void setValue(String value) {
+  public void setValue(Object value) {
     this.value = value;
   }
 

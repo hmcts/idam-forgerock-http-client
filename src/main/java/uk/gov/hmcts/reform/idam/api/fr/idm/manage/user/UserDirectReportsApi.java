@@ -1,17 +1,17 @@
 package uk.gov.hmcts.reform.idam.api.fr.idm.manage.user;
 
+import feign.Headers;
+import feign.Param;
+import feign.QueryMap;
+import feign.RequestLine;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.EncodingUtils;
-
 import uk.gov.hmcts.reform.idam.api.fr.idm.manage.user.model.UserReports;
 import uk.gov.hmcts.reform.idam.api.fr.idm.manage.user.model.UserReportsQueryResult;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import feign.*;
 import uk.gov.hmcts.reform.idam.api.fr.shared.model.PatchArray;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:59.475Z")
 public interface UserDirectReportsApi extends ApiClient.Api {

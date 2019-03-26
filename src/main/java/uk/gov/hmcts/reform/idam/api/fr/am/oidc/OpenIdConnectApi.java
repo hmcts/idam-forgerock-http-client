@@ -1,21 +1,22 @@
 package uk.gov.hmcts.reform.idam.api.fr.am.oidc;
 
+import feign.Headers;
+import feign.Param;
+import feign.QueryMap;
+import feign.RequestLine;
+import feign.Response;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriComponentsBuilder;
-import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
-import uk.gov.hmcts.reform.idam.api.fr.client.invoker.EncodingUtils;
-
 import uk.gov.hmcts.reform.idam.api.fr.am.oidc.model.AmAuthenticateToken;
 import uk.gov.hmcts.reform.idam.api.fr.am.oidc.model.AmToken;
 import uk.gov.hmcts.reform.idam.api.fr.am.oidc.model.JsonWebKeySet;
+import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
+import uk.gov.hmcts.reform.idam.api.fr.client.invoker.EncodingUtils;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import feign.*;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:58.839Z")
 public interface OpenIdConnectApi extends ApiClient.Api {

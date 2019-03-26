@@ -1,18 +1,18 @@
 package uk.gov.hmcts.reform.idam.api.fr.idm.manage.roles;
 
+import feign.Headers;
+import feign.Param;
+import feign.QueryMap;
+import feign.RequestLine;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.EncodingUtils;
-
 import uk.gov.hmcts.reform.idam.api.fr.idm.manage.roles.model.Role;
 import uk.gov.hmcts.reform.idam.api.fr.idm.manage.roles.model.RoleQueryResult;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import feign.*;
 import uk.gov.hmcts.reform.idam.api.fr.shared.model.PatchArray;
 import uk.gov.hmcts.reform.idam.api.fr.shared.model.Status;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.261Z")
 public interface RoleApi extends ApiClient.Api {

@@ -1,18 +1,18 @@
 package uk.gov.hmcts.reform.idam.api.fr.am.agents;
 
-import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
-import uk.gov.hmcts.reform.idam.api.fr.client.invoker.EncodingUtils;
-
+import feign.Headers;
+import feign.Param;
+import feign.QueryMap;
+import feign.RequestLine;
 import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.AmAgentGetAllTypes;
 import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.AmAgentGetCreatableTypes;
 import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.AmAgentNextDescendents;
 import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.AmAgentsResultSet;
+import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
+import uk.gov.hmcts.reform.idam.api.fr.client.invoker.EncodingUtils;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import feign.*;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
 public interface AggregatingAgentsApi extends ApiClient.Api {

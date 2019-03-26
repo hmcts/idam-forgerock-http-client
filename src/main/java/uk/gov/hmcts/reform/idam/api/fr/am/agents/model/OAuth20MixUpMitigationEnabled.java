@@ -13,13 +13,11 @@
 
 package uk.gov.hmcts.reform.idam.api.fr.am.agents.model;
 
-import java.util.Objects;
-import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
+import java.util.Objects;
 
 /**
  * Enables OAuth 2.0 mix-up mitigation on the authorization server side.&lt;br&gt;&lt;br&gt;Enable this setting only if this OAuth 2.0 client supports the &lt;a href&#x3D;\&quot;https://tools.ietf.org/html/draft-ietf-oauth-mix-up-mitigation-01\&quot;&gt;OAuth 2.0 Mix-Up Mitigation draft&lt;/a&gt;, otherwise OpenAM will fail to validate access token requests received from this client.

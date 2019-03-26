@@ -13,32 +13,10 @@
 
 package uk.gov.hmcts.reform.idam.api.fr.am.agents.model;
 
-import java.util.Objects;
-import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.ClientIDTokenPublicEncryptionKey;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.ClientJWTBearerPublicKey;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.EnableIDTokenEncryption;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.IDTokenEncryptionAlgorithm;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.IDTokenEncryptionMethod;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.IDTokenSigningAlgorithm;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.JWKsURIContentCacheMissCacheTime;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.JWKsURIContentCacheTimeoutInMs;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.JsonWebKey;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.JsonWebKeyURI;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.PublicKeySelector;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.RequestParameterEncryptionAlgorithm;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.RequestParameterEncryptionMethod;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.RequestParameterSigningAlgorithm;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.TokenEndpointAuthenticationSigningAlgorithm;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.UserInfoEncryptedResponseAlgorithm;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.UserInfoEncryptedResponseEncryptionAlgorithm;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.UserInfoResponseFormat_;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.UserInfoSignedResponseAlgorithm;
+
+import java.util.Objects;
 
 /**
  * SigningAndEncryption

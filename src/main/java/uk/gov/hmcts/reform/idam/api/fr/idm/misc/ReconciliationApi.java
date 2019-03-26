@@ -1,18 +1,18 @@
 package uk.gov.hmcts.reform.idam.api.fr.idm.misc;
 
+import feign.Headers;
+import feign.Param;
+import feign.QueryMap;
+import feign.RequestLine;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.EncodingUtils;
-
 import uk.gov.hmcts.reform.idam.api.fr.idm.misc.model.ReconCancelResponse;
 import uk.gov.hmcts.reform.idam.api.fr.idm.misc.model.ReconServiceResultSet;
 import uk.gov.hmcts.reform.idam.api.fr.idm.misc.model.ReconStateResponse;
 import uk.gov.hmcts.reform.idam.api.fr.idm.misc.model.ReconciliationServiceResource;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import feign.*;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.022Z")
 public interface ReconciliationApi extends ApiClient.Api {

@@ -13,24 +13,10 @@
 
 package uk.gov.hmcts.reform.idam.api.fr.am.agents.model;
 
-import java.util.Objects;
-import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.AccessToken;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.Contacts;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.DisplayDescription;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.DisplayName;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.ImpliedConsent;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.OAuth20MixUpMitigationEnabled;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.RequestUris;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.ResponseTypes;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.SectorIdentifierURI;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.SubjectType;
-import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.TokenEndpointAuthenticationMethod;
+
+import java.util.Objects;
 
 /**
  * Advanced
