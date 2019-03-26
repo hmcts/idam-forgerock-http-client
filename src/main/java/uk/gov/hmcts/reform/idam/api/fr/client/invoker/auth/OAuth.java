@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import feign.Request;
 import org.apache.oltu.oauth2.client.HttpClient;
 import org.apache.oltu.oauth2.client.OAuthClient;
 import org.apache.oltu.oauth2.client.request.OAuthClientRequest;
@@ -92,7 +93,7 @@ public class OAuth implements RequestInterceptor {
         try {
             accessTokenResponse = oauthClient.accessToken(tokenRequestBuilder.buildBodyMessage());
         } catch (Exception e) {
-            throw new RetryableException(e.getMessage(), e,null);
+            throw new RetryableException(500, e.getMessage(), Request.HttpMethod.GET, null);
         }
         if (accessTokenResponse != null && accessTokenResponse.getAccessToken() != null) {
             setAccessToken(accessTokenResponse.getAccessToken(), accessTokenResponse.getExpiresIn());
