@@ -3,6 +3,7 @@ package uk.gov.hmcts.reform.idam.api.fr.am.agents.oauth2;
 import feign.Headers;
 import feign.Param;
 import feign.QueryMap;
+import feign.Request;
 import feign.RequestLine;
 import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.AmAgent;
 import uk.gov.hmcts.reform.idam.api.fr.am.agents.oauth2.model.OAuth2ClientsResultSet;
@@ -24,12 +25,12 @@ public interface OAuth2ClientAgentsApi extends ApiClient.Api {
     * @param cookie  (optional)
    * @return Object
    */
-  @RequestLine("POST /json/realms/root/realms/{realm}/realm-config/agents/OAuth2Client?_fields={fields}&_action={action}")
+  @RequestLine("POST /json/realms/root/realms/{realm}/realm-config/agents/OAuth2Client?_fields={fields}&_action=getAllTypes")
   @Headers({
     "Accept: application/json",
     "Cookie: {cookie}"
   })
-  Object actionGetAllTypes(@Param("action") String action, @Param("realm") String realm, @Param("fields") String fields, @Param("cookie") String cookie);
+  Request actionGetAllTypes(@Param("realm") String realm, @Param("fields") String fields, @Param("cookie") String cookie);
 
   /**
    * Delete

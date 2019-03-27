@@ -26,12 +26,12 @@ public interface AggregatingAgentsApi extends ApiClient.Api {
     * @param cookie  (optional)
    * @return AmAgentGetAllTypes
    */
-  @RequestLine("POST /json/realms/root/realms/{realm}/realm-config/agents?_fields={fields}&_action={action}")
+  @RequestLine("POST /json/realms/root/realms/{realm}/realm-config/agents?_fields={fields}&_action=getAllTypes")
   @Headers({
     "Accept: application/json",
     "Cookie: {cookie}"
   })
-  AmAgentGetAllTypes actionGetAllTypes(@Param("realm") String realm, @Param("action") String action, @Param("fields") String fields, @Param("cookie") String cookie);
+  AmAgentGetAllTypes actionGetAllTypes(@Param("realm") String realm, @Param("fields") String fields, @Param("cookie") String cookie);
 
   /**
    * Action: getCreatableTypes
@@ -42,12 +42,12 @@ public interface AggregatingAgentsApi extends ApiClient.Api {
     * @param cookie  (optional)
    * @return AmAgentGetCreatableTypes
    */
-  @RequestLine("POST /json/realms/root/realms/{realm}/realm-config/agents#_action_getcreatabletypes?_fields={fields}&_action={action}")
+  @RequestLine("POST /json/realms/root/realms/{realm}/realm-config/agents?_fields={fields}&_action=getCreatableTypes")
   @Headers({
     "Accept: application/json",
     "Cookie: {cookie}"
   })
-  AmAgentGetCreatableTypes actionGetCreatableTypes(@Param("realm") String realm, @Param("action") String action, @Param("fields") String fields, @Param("cookie") String cookie);
+  AmAgentGetCreatableTypes actionGetCreatableTypes(@Param("realm") String realm, @Param("fields") String fields, @Param("cookie") String cookie);
 
   /**
    * Action: nextdescendents
@@ -58,12 +58,12 @@ public interface AggregatingAgentsApi extends ApiClient.Api {
     * @param cookie  (optional)
    * @return AmAgentNextDescendents
    */
-  @RequestLine("POST /json/realms/root/realms/{realm}/realm-config/agents#_action_nextdescendents?_fields={fields}&_action={action}")
+  @RequestLine("POST /json/realms/root/realms/{realm}/realm-config/agents?_fields={fields}&_action=nextdescendents")
   @Headers({
     "Accept: application/json",
     "Cookie: {cookie}"
   })
-  AmAgentNextDescendents actionNextDescendents(@Param("realm") String realm, @Param("action") String action, @Param("fields") String fields, @Param("cookie") String cookie);
+  AmAgentNextDescendents actionNextDescendents(@Param("realm") String realm, @Param("fields") String fields, @Param("cookie") String cookie);
 
   /**
    * Query by Filter
