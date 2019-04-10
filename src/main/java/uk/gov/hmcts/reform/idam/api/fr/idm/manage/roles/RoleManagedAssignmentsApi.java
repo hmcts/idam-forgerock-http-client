@@ -6,8 +6,8 @@ import feign.QueryMap;
 import feign.RequestLine;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.EncodingUtils;
-import uk.gov.hmcts.reform.idam.api.fr.idm.manage.roles.model.RoleAssignments;
-import uk.gov.hmcts.reform.idam.api.fr.idm.manage.roles.model.RoleAssignmentsResult;
+import uk.gov.hmcts.reform.idam.api.fr.idm.manage.roles.model.IdmRoleAssignments;
+import uk.gov.hmcts.reform.idam.api.fr.idm.manage.roles.model.IdmRoleAssignmentsResult;
 import uk.gov.hmcts.reform.idam.api.fr.shared.model.PatchArray;
 
 import java.util.HashMap;
@@ -25,7 +25,7 @@ public interface RoleManagedAssignmentsApi extends ApiClient.Api {
    * @param cookie
    * @return RoleAssignments
    */
-  default RoleAssignments putCreate(String roleId, String assignmentsId, RoleAssignments requestPayload, String cookie) {
+  default IdmRoleAssignments putCreate(String roleId, String assignmentsId, IdmRoleAssignments requestPayload, String cookie) {
     return putIfRevision(roleId, assignmentsId, requestPayload, null, cookie, "*", null);
   }
 
@@ -38,7 +38,7 @@ public interface RoleManagedAssignmentsApi extends ApiClient.Api {
    * @param cookie
    * @return RoleAssignments
    */
-  default RoleAssignments putUpdate(String roleId, String assignmentsId, RoleAssignments requestPayload, String cookie) {
+  default IdmRoleAssignments putUpdate(String roleId, String assignmentsId, IdmRoleAssignments requestPayload, String cookie) {
     return putIfRevision(roleId, assignmentsId, requestPayload, null, cookie, null, "*");
   }
 
@@ -51,7 +51,7 @@ public interface RoleManagedAssignmentsApi extends ApiClient.Api {
    * @param cookie
    * @return RoleAssignments
    */
-  default RoleAssignments patch(String roleId, String assignmentsId, PatchArray patchArray, String cookie) {
+  default IdmRoleAssignments patch(String roleId, String assignmentsId, PatchArray patchArray, String cookie) {
     return patchIfMatch(roleId, assignmentsId, patchArray, null, cookie, "*");
   }
 
@@ -63,7 +63,7 @@ public interface RoleManagedAssignmentsApi extends ApiClient.Api {
    * @param cookie
    * @return RoleAssignments
    */
-  default RoleAssignments delete(String roleId, String assignmentsId, String cookie) {
+  default IdmRoleAssignments delete(String roleId, String assignmentsId, String cookie) {
     return deleteIfMatch(roleId, assignmentsId, null, cookie, "*");
   }
 
@@ -84,7 +84,7 @@ public interface RoleManagedAssignmentsApi extends ApiClient.Api {
     
     "If-Match: {ifMatch}"
   })
-  RoleAssignments deleteIfMatch(@Param("roleId") String roleId, @Param("id") String id, @Param("fields") String fields, @Param("cookie") String cookie, @Param("ifMatch") String ifMatch);
+  IdmRoleAssignments deleteIfMatch(@Param("roleId") String roleId, @Param("id") String id, @Param("fields") String fields, @Param("cookie") String cookie, @Param("ifMatch") String ifMatch);
 
   /**
    * Read
@@ -100,7 +100,7 @@ public interface RoleManagedAssignmentsApi extends ApiClient.Api {
     "Accept: application/json",
     "Cookie: {cookie}"
   })
-  RoleAssignments get(@Param("roleId") String roleId, @Param("id") String id, @Param("fields") String fields, @Param("cookie") String cookie);
+  IdmRoleAssignments get(@Param("roleId") String roleId, @Param("id") String id, @Param("fields") String fields, @Param("cookie") String cookie);
 
   /**
    * Update via Patch Operations
@@ -121,7 +121,7 @@ public interface RoleManagedAssignmentsApi extends ApiClient.Api {
     
     "If-Match: {ifMatch}"
   })
-  RoleAssignments patchIfMatch(@Param("roleId") String roleId, @Param("id") String id, PatchArray requestPayload, @Param("fields") String fields, @Param("cookie") String cookie, @Param("ifMatch") String ifMatch);
+  IdmRoleAssignments patchIfMatch(@Param("roleId") String roleId, @Param("id") String id, PatchArray requestPayload, @Param("fields") String fields, @Param("cookie") String cookie, @Param("ifMatch") String ifMatch);
 
   /**
    * Create with Server-Assigned ID
@@ -138,7 +138,7 @@ public interface RoleManagedAssignmentsApi extends ApiClient.Api {
     "Accept: application/json",
     "Cookie: {cookie}"
   })
-  RoleAssignments post(@Param("roleId") String roleId, RoleAssignments requestPayload, @Param("fields") String fields, @Param("cookie") String cookie);
+  IdmRoleAssignments post(@Param("roleId") String roleId, IdmRoleAssignments requestPayload, @Param("fields") String fields, @Param("cookie") String cookie);
 
   /**
    * Update or Create with Client-Assigned ID
@@ -162,7 +162,7 @@ public interface RoleManagedAssignmentsApi extends ApiClient.Api {
     
     "If-Match: {ifMatch}"
   })
-  RoleAssignments putIfRevision(@Param("roleId") String roleId, @Param("id") String id, RoleAssignments requestPayload, @Param("fields") String fields, @Param("cookie") String cookie, @Param("ifNoneMatch") String ifNoneMatch, @Param("ifMatch") String ifMatch);
+  IdmRoleAssignments putIfRevision(@Param("roleId") String roleId, @Param("id") String id, IdmRoleAssignments requestPayload, @Param("fields") String fields, @Param("cookie") String cookie, @Param("ifNoneMatch") String ifNoneMatch, @Param("ifMatch") String ifMatch);
 
   /**
    * Query by Filter or by ID
@@ -186,7 +186,7 @@ public interface RoleManagedAssignmentsApi extends ApiClient.Api {
   "Accept: application/json",
       "Cookie: {cookie}"
   })
-  RoleAssignmentsResult queryFilter(@Param("roleId") String roleId, @Param("cookie") String cookie, @QueryMap(encoded = true) Map<String, Object> queryParams);
+  IdmRoleAssignmentsResult queryFilter(@Param("roleId") String roleId, @Param("cookie") String cookie, @QueryMap(encoded = true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the

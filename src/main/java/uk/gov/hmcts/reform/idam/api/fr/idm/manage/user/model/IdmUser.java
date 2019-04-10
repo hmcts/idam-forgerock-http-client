@@ -24,7 +24,7 @@ import java.util.Objects;
  * User
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:59.475Z")
-public class User {
+public class IdmUser {
   @JsonProperty("_id")
   private String id = null;
 
@@ -65,13 +65,13 @@ public class User {
   private String accountStatus = null;
 
   @JsonProperty("roles")
-  private List<UserRoles> roles = null;
+  private List<IdmUserRoles> roles = null;
 
   @JsonProperty("authzRoles")
-  private List<UserAuthzRoles> authzRoles = null;
+  private List<IdmUserAuthzRoles> authzRoles = null;
 
   @JsonProperty("reports")
-  private List<UserReports> reports = null;
+  private List<IdmUserReports> reports = null;
 
   @JsonProperty("effectiveRoles")
   private List<EffectiveRole> effectiveRoles = null;
@@ -106,7 +106,7 @@ public class User {
   @JsonProperty("consentedMappings")
   private List<List<Object>> consentedMappings = null;
 
-  public User id(String id) {
+  public IdmUser id(String id) {
     this.id = id;
     return this;
   }
@@ -124,7 +124,7 @@ public class User {
     this.id = id;
   }
 
-  public User password(String password) {
+  public IdmUser password(String password) {
     this.password = password;
     return this;
   }
@@ -142,12 +142,12 @@ public class User {
     this.password = password;
   }
 
-  public User kbaInfo(List<KBAInfoItems> kbaInfo) {
+  public IdmUser kbaInfo(List<KBAInfoItems> kbaInfo) {
     this.kbaInfo = kbaInfo;
     return this;
   }
 
-  public User addKbaInfoItem(KBAInfoItems kbaInfoItem) {
+  public IdmUser addKbaInfoItem(KBAInfoItems kbaInfoItem) {
     if (this.kbaInfo == null) {
       this.kbaInfo = new ArrayList<>();
     }
@@ -168,7 +168,7 @@ public class User {
     this.kbaInfo = kbaInfo;
   }
 
-  public User preferences(Preferences preferences) {
+  public IdmUser preferences(Preferences preferences) {
     this.preferences = preferences;
     return this;
   }
@@ -186,7 +186,7 @@ public class User {
     this.preferences = preferences;
   }
 
-  public User mail(String mail) {
+  public IdmUser mail(String mail) {
     this.mail = mail;
     return this;
   }
@@ -204,7 +204,7 @@ public class User {
     this.mail = mail;
   }
 
-  public User sn(String sn) {
+  public IdmUser sn(String sn) {
     this.sn = sn;
     return this;
   }
@@ -222,7 +222,7 @@ public class User {
     this.sn = sn;
   }
 
-  public User description(String description) {
+  public IdmUser description(String description) {
     this.description = description;
     return this;
   }
@@ -240,7 +240,7 @@ public class User {
     this.description = description;
   }
 
-  public User address2(String address2) {
+  public IdmUser address2(String address2) {
     this.address2 = address2;
     return this;
   }
@@ -258,7 +258,7 @@ public class User {
     this.address2 = address2;
   }
 
-  public User givenName(String givenName) {
+  public IdmUser givenName(String givenName) {
     this.givenName = givenName;
     return this;
   }
@@ -276,7 +276,7 @@ public class User {
     this.givenName = givenName;
   }
 
-  public User city(String city) {
+  public IdmUser city(String city) {
     this.city = city;
     return this;
   }
@@ -294,7 +294,7 @@ public class User {
     this.city = city;
   }
 
-  public User country(String country) {
+  public IdmUser country(String country) {
     this.country = country;
     return this;
   }
@@ -312,7 +312,7 @@ public class User {
     this.country = country;
   }
 
-  public User postalCode(String postalCode) {
+  public IdmUser postalCode(String postalCode) {
     this.postalCode = postalCode;
     return this;
   }
@@ -330,7 +330,7 @@ public class User {
     this.postalCode = postalCode;
   }
 
-  public User accountStatus(String accountStatus) {
+  public IdmUser accountStatus(String accountStatus) {
     this.accountStatus = accountStatus;
     return this;
   }
@@ -348,12 +348,12 @@ public class User {
     this.accountStatus = accountStatus;
   }
 
-  public User roles(List<UserRoles> roles) {
+  public IdmUser roles(List<IdmUserRoles> roles) {
     this.roles = roles;
     return this;
   }
 
-  public User addRolesItem(UserRoles rolesItem) {
+  public IdmUser addRolesItem(IdmUserRoles rolesItem) {
     if (this.roles == null) {
       this.roles = new ArrayList<>();
     }
@@ -366,20 +366,20 @@ public class User {
    * @return roles
   **/
   @ApiModelProperty(value = "Provisioning Roles")
-  public List<UserRoles> getRoles() {
+  public List<IdmUserRoles> getRoles() {
     return roles;
   }
 
-  public void setRoles(List<UserRoles> roles) {
+  public void setRoles(List<IdmUserRoles> roles) {
     this.roles = roles;
   }
 
-  public User authzRoles(List<UserAuthzRoles> authzRoles) {
+  public IdmUser authzRoles(List<IdmUserAuthzRoles> authzRoles) {
     this.authzRoles = authzRoles;
     return this;
   }
 
-  public User addAuthzRolesItem(UserAuthzRoles authzRolesItem) {
+  public IdmUser addAuthzRolesItem(IdmUserAuthzRoles authzRolesItem) {
     if (this.authzRoles == null) {
       this.authzRoles = new ArrayList<>();
     }
@@ -392,20 +392,20 @@ public class User {
    * @return authzRoles
   **/
   @ApiModelProperty(value = "Authorization Roles")
-  public List<UserAuthzRoles> getAuthzRoles() {
+  public List<IdmUserAuthzRoles> getAuthzRoles() {
     return authzRoles;
   }
 
-  public void setAuthzRoles(List<UserAuthzRoles> authzRoles) {
+  public void setAuthzRoles(List<IdmUserAuthzRoles> authzRoles) {
     this.authzRoles = authzRoles;
   }
 
-  public User reports(List<UserReports> reports) {
+  public IdmUser reports(List<IdmUserReports> reports) {
     this.reports = reports;
     return this;
   }
 
-  public User addReportsItem(UserReports reportsItem) {
+  public IdmUser addReportsItem(IdmUserReports reportsItem) {
     if (this.reports == null) {
       this.reports = new ArrayList<>();
     }
@@ -418,20 +418,20 @@ public class User {
    * @return reports
   **/
   @ApiModelProperty(value = "Direct Reports")
-  public List<UserReports> getReports() {
+  public List<IdmUserReports> getReports() {
     return reports;
   }
 
-  public void setReports(List<UserReports> reports) {
+  public void setReports(List<IdmUserReports> reports) {
     this.reports = reports;
   }
 
-  public User effectiveRoles(List<EffectiveRole> effectiveRoles) {
+  public IdmUser effectiveRoles(List<EffectiveRole> effectiveRoles) {
     this.effectiveRoles = effectiveRoles;
     return this;
   }
 
-  public User addEffectiveRolesItem(EffectiveRole effectiveRolesItem) {
+  public IdmUser addEffectiveRolesItem(EffectiveRole effectiveRolesItem) {
     if (this.effectiveRoles == null) {
       this.effectiveRoles = new ArrayList<>();
     }
@@ -452,12 +452,12 @@ public class User {
     this.effectiveRoles = effectiveRoles;
   }
 
-  public User effectiveAssignments(List<EffectiveAssignment> effectiveAssignments) {
+  public IdmUser effectiveAssignments(List<EffectiveAssignment> effectiveAssignments) {
     this.effectiveAssignments = effectiveAssignments;
     return this;
   }
 
-  public User addEffectiveAssignmentsItem(EffectiveAssignment effectiveAssignmentsItem) {
+  public IdmUser addEffectiveAssignmentsItem(EffectiveAssignment effectiveAssignmentsItem) {
     if (this.effectiveAssignments == null) {
       this.effectiveAssignments = new ArrayList<>();
     }
@@ -478,7 +478,7 @@ public class User {
     this.effectiveAssignments = effectiveAssignments;
   }
 
-  public User telephoneNumber(String telephoneNumber) {
+  public IdmUser telephoneNumber(String telephoneNumber) {
     this.telephoneNumber = telephoneNumber;
     return this;
   }
@@ -496,7 +496,7 @@ public class User {
     this.telephoneNumber = telephoneNumber;
   }
 
-  public User stateProvince(String stateProvince) {
+  public IdmUser stateProvince(String stateProvince) {
     this.stateProvince = stateProvince;
     return this;
   }
@@ -514,7 +514,7 @@ public class User {
     this.stateProvince = stateProvince;
   }
 
-  public User postalAddress(String postalAddress) {
+  public IdmUser postalAddress(String postalAddress) {
     this.postalAddress = postalAddress;
     return this;
   }
@@ -532,7 +532,7 @@ public class User {
     this.postalAddress = postalAddress;
   }
 
-  public User userName(String userName) {
+  public IdmUser userName(String userName) {
     this.userName = userName;
     return this;
   }
@@ -550,7 +550,7 @@ public class User {
     this.userName = userName;
   }
 
-  public User manager(Manager manager) {
+  public IdmUser manager(Manager manager) {
     this.manager = manager;
     return this;
   }
@@ -568,7 +568,7 @@ public class User {
     this.manager = manager;
   }
 
-  public User lastSync(LastSyncTimestamp lastSync) {
+  public IdmUser lastSync(LastSyncTimestamp lastSync) {
     this.lastSync = lastSync;
     return this;
   }
@@ -586,7 +586,7 @@ public class User {
     this.lastSync = lastSync;
   }
 
-  public User termsAccepted(TermsAccepted termsAccepted) {
+  public IdmUser termsAccepted(TermsAccepted termsAccepted) {
     this.termsAccepted = termsAccepted;
     return this;
   }
@@ -604,7 +604,7 @@ public class User {
     this.termsAccepted = termsAccepted;
   }
 
-  public User lastChanged(LastChanged lastChanged) {
+  public IdmUser lastChanged(LastChanged lastChanged) {
     this.lastChanged = lastChanged;
     return this;
   }
@@ -622,12 +622,12 @@ public class User {
     this.lastChanged = lastChanged;
   }
 
-  public User consentedMappings(List<List<Object>> consentedMappings) {
+  public IdmUser consentedMappings(List<List<Object>> consentedMappings) {
     this.consentedMappings = consentedMappings;
     return this;
   }
 
-  public User addConsentedMappingsItem(List<Object> consentedMappingsItem) {
+  public IdmUser addConsentedMappingsItem(List<Object> consentedMappingsItem) {
     if (this.consentedMappings == null) {
       this.consentedMappings = new ArrayList<>();
     }
@@ -657,7 +657,7 @@ public class User {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    User user = (User) o;
+    IdmUser user = (IdmUser) o;
     return Objects.equals(this.id, user.id) &&
         Objects.equals(this.password, user.password) &&
         Objects.equals(this.kbaInfo, user.kbaInfo) &&

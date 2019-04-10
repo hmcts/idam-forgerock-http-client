@@ -21,12 +21,12 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * UserQueryResultSet
+ * UserRolesQueryResult
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:59.475Z")
-public class UserQueryResultSet {
+public class IdmUserRolesQueryResult {
   @JsonProperty("result")
-  private List<User> result = null;
+  private List<IdmUserRoles> result = null;
 
   @JsonProperty("resultCount")
   private Integer resultCount = 0;
@@ -43,12 +43,12 @@ public class UserQueryResultSet {
   @JsonProperty("remainingPagedResults")
   private Integer remainingPagedResults = -1;
 
-  public UserQueryResultSet result(List<User> result) {
+  public IdmUserRolesQueryResult result(List<IdmUserRoles> result) {
     this.result = result;
     return this;
   }
 
-  public UserQueryResultSet addResultItem(User resultItem) {
+  public IdmUserRolesQueryResult addResultItem(IdmUserRoles resultItem) {
     if (this.result == null) {
       this.result = new ArrayList<>();
     }
@@ -61,15 +61,15 @@ public class UserQueryResultSet {
    * @return result
   **/
   @ApiModelProperty(value = "Array of matching items")
-  public List<User> getResult() {
+  public List<IdmUserRoles> getResult() {
     return result;
   }
 
-  public void setResult(List<User> result) {
+  public void setResult(List<IdmUserRoles> result) {
     this.result = result;
   }
 
-  public UserQueryResultSet resultCount(Integer resultCount) {
+  public IdmUserRolesQueryResult resultCount(Integer resultCount) {
     this.resultCount = resultCount;
     return this;
   }
@@ -87,7 +87,7 @@ public class UserQueryResultSet {
     this.resultCount = resultCount;
   }
 
-  public UserQueryResultSet pagedResultsCookie(String pagedResultsCookie) {
+  public IdmUserRolesQueryResult pagedResultsCookie(String pagedResultsCookie) {
     this.pagedResultsCookie = pagedResultsCookie;
     return this;
   }
@@ -105,7 +105,7 @@ public class UserQueryResultSet {
     this.pagedResultsCookie = pagedResultsCookie;
   }
 
-  public UserQueryResultSet totalPagedResultsPolicy(String totalPagedResultsPolicy) {
+  public IdmUserRolesQueryResult totalPagedResultsPolicy(String totalPagedResultsPolicy) {
     this.totalPagedResultsPolicy = totalPagedResultsPolicy;
     return this;
   }
@@ -123,7 +123,7 @@ public class UserQueryResultSet {
     this.totalPagedResultsPolicy = totalPagedResultsPolicy;
   }
 
-  public UserQueryResultSet totalPagedResults(Integer totalPagedResults) {
+  public IdmUserRolesQueryResult totalPagedResults(Integer totalPagedResults) {
     this.totalPagedResults = totalPagedResults;
     return this;
   }
@@ -141,7 +141,7 @@ public class UserQueryResultSet {
     this.totalPagedResults = totalPagedResults;
   }
 
-  public UserQueryResultSet remainingPagedResults(Integer remainingPagedResults) {
+  public IdmUserRolesQueryResult remainingPagedResults(Integer remainingPagedResults) {
     this.remainingPagedResults = remainingPagedResults;
     return this;
   }
@@ -168,13 +168,13 @@ public class UserQueryResultSet {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UserQueryResultSet userQueryResultSet = (UserQueryResultSet) o;
-    return Objects.equals(this.result, userQueryResultSet.result) &&
-        Objects.equals(this.resultCount, userQueryResultSet.resultCount) &&
-        Objects.equals(this.pagedResultsCookie, userQueryResultSet.pagedResultsCookie) &&
-        Objects.equals(this.totalPagedResultsPolicy, userQueryResultSet.totalPagedResultsPolicy) &&
-        Objects.equals(this.totalPagedResults, userQueryResultSet.totalPagedResults) &&
-        Objects.equals(this.remainingPagedResults, userQueryResultSet.remainingPagedResults);
+    IdmUserRolesQueryResult userRolesQueryResult = (IdmUserRolesQueryResult) o;
+    return Objects.equals(this.result, userRolesQueryResult.result) &&
+        Objects.equals(this.resultCount, userRolesQueryResult.resultCount) &&
+        Objects.equals(this.pagedResultsCookie, userRolesQueryResult.pagedResultsCookie) &&
+        Objects.equals(this.totalPagedResultsPolicy, userRolesQueryResult.totalPagedResultsPolicy) &&
+        Objects.equals(this.totalPagedResults, userRolesQueryResult.totalPagedResults) &&
+        Objects.equals(this.remainingPagedResults, userRolesQueryResult.remainingPagedResults);
   }
 
   @Override
@@ -186,7 +186,7 @@ public class UserQueryResultSet {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UserQueryResultSet {\n");
+    sb.append("class UserRolesQueryResult {\n");
     
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("    resultCount: ").append(toIndentedString(resultCount)).append("\n");

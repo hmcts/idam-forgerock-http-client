@@ -19,17 +19,17 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 
 /**
- * UserRoles
+ * UserAuthzRoles
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:59.475Z")
-public class UserRoles {
+public class IdmUserAuthzRoles {
   @JsonProperty("_ref")
   private String ref = null;
 
   @JsonProperty("_refProperties")
-  private ProvisioningRolesItemsRefProperties refProperties = null;
+  private AuthorizationRolesItemsRefProperties refProperties = null;
 
-  public UserRoles ref(String ref) {
+  public IdmUserAuthzRoles ref(String ref) {
     this.ref = ref;
     return this;
   }
@@ -47,7 +47,7 @@ public class UserRoles {
     this.ref = ref;
   }
 
-  public UserRoles refProperties(ProvisioningRolesItemsRefProperties refProperties) {
+  public IdmUserAuthzRoles refProperties(AuthorizationRolesItemsRefProperties refProperties) {
     this.refProperties = refProperties;
     return this;
   }
@@ -57,11 +57,11 @@ public class UserRoles {
    * @return refProperties
   **/
   @ApiModelProperty(value = "")
-  public ProvisioningRolesItemsRefProperties getRefProperties() {
+  public AuthorizationRolesItemsRefProperties getRefProperties() {
     return refProperties;
   }
 
-  public void setRefProperties(ProvisioningRolesItemsRefProperties refProperties) {
+  public void setRefProperties(AuthorizationRolesItemsRefProperties refProperties) {
     this.refProperties = refProperties;
   }
 
@@ -74,9 +74,9 @@ public class UserRoles {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UserRoles userRoles = (UserRoles) o;
-    return Objects.equals(this.ref, userRoles.ref) &&
-        Objects.equals(this.refProperties, userRoles.refProperties);
+    IdmUserAuthzRoles userAuthzRoles = (IdmUserAuthzRoles) o;
+    return Objects.equals(this.ref, userAuthzRoles.ref) &&
+        Objects.equals(this.refProperties, userAuthzRoles.refProperties);
   }
 
   @Override
@@ -88,7 +88,7 @@ public class UserRoles {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UserRoles {\n");
+    sb.append("class UserAuthzRoles {\n");
     
     sb.append("    ref: ").append(toIndentedString(ref)).append("\n");
     sb.append("    refProperties: ").append(toIndentedString(refProperties)).append("\n");

@@ -21,12 +21,12 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * RoleMembersQueryResult
+ * RoleQueryResult
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.261Z")
-public class RoleMembersQueryResult {
+public class IdmRoleQueryResult {
   @JsonProperty("result")
-  private List<RoleMembers> result = null;
+  private List<IdmRole> result = null;
 
   @JsonProperty("resultCount")
   private Integer resultCount = 0;
@@ -43,12 +43,12 @@ public class RoleMembersQueryResult {
   @JsonProperty("remainingPagedResults")
   private Integer remainingPagedResults = -1;
 
-  public RoleMembersQueryResult result(List<RoleMembers> result) {
+  public IdmRoleQueryResult result(List<IdmRole> result) {
     this.result = result;
     return this;
   }
 
-  public RoleMembersQueryResult addResultItem(RoleMembers resultItem) {
+  public IdmRoleQueryResult addResultItem(IdmRole resultItem) {
     if (this.result == null) {
       this.result = new ArrayList<>();
     }
@@ -61,15 +61,15 @@ public class RoleMembersQueryResult {
    * @return result
   **/
   @ApiModelProperty(value = "Array of matching items")
-  public List<RoleMembers> getResult() {
+  public List<IdmRole> getResult() {
     return result;
   }
 
-  public void setResult(List<RoleMembers> result) {
+  public void setResult(List<IdmRole> result) {
     this.result = result;
   }
 
-  public RoleMembersQueryResult resultCount(Integer resultCount) {
+  public IdmRoleQueryResult resultCount(Integer resultCount) {
     this.resultCount = resultCount;
     return this;
   }
@@ -87,7 +87,7 @@ public class RoleMembersQueryResult {
     this.resultCount = resultCount;
   }
 
-  public RoleMembersQueryResult pagedResultsCookie(String pagedResultsCookie) {
+  public IdmRoleQueryResult pagedResultsCookie(String pagedResultsCookie) {
     this.pagedResultsCookie = pagedResultsCookie;
     return this;
   }
@@ -105,7 +105,7 @@ public class RoleMembersQueryResult {
     this.pagedResultsCookie = pagedResultsCookie;
   }
 
-  public RoleMembersQueryResult totalPagedResultsPolicy(String totalPagedResultsPolicy) {
+  public IdmRoleQueryResult totalPagedResultsPolicy(String totalPagedResultsPolicy) {
     this.totalPagedResultsPolicy = totalPagedResultsPolicy;
     return this;
   }
@@ -123,7 +123,7 @@ public class RoleMembersQueryResult {
     this.totalPagedResultsPolicy = totalPagedResultsPolicy;
   }
 
-  public RoleMembersQueryResult totalPagedResults(Integer totalPagedResults) {
+  public IdmRoleQueryResult totalPagedResults(Integer totalPagedResults) {
     this.totalPagedResults = totalPagedResults;
     return this;
   }
@@ -141,7 +141,7 @@ public class RoleMembersQueryResult {
     this.totalPagedResults = totalPagedResults;
   }
 
-  public RoleMembersQueryResult remainingPagedResults(Integer remainingPagedResults) {
+  public IdmRoleQueryResult remainingPagedResults(Integer remainingPagedResults) {
     this.remainingPagedResults = remainingPagedResults;
     return this;
   }
@@ -168,13 +168,13 @@ public class RoleMembersQueryResult {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RoleMembersQueryResult roleMembersQueryResult = (RoleMembersQueryResult) o;
-    return Objects.equals(this.result, roleMembersQueryResult.result) &&
-        Objects.equals(this.resultCount, roleMembersQueryResult.resultCount) &&
-        Objects.equals(this.pagedResultsCookie, roleMembersQueryResult.pagedResultsCookie) &&
-        Objects.equals(this.totalPagedResultsPolicy, roleMembersQueryResult.totalPagedResultsPolicy) &&
-        Objects.equals(this.totalPagedResults, roleMembersQueryResult.totalPagedResults) &&
-        Objects.equals(this.remainingPagedResults, roleMembersQueryResult.remainingPagedResults);
+    IdmRoleQueryResult roleQueryResult = (IdmRoleQueryResult) o;
+    return Objects.equals(this.result, roleQueryResult.result) &&
+        Objects.equals(this.resultCount, roleQueryResult.resultCount) &&
+        Objects.equals(this.pagedResultsCookie, roleQueryResult.pagedResultsCookie) &&
+        Objects.equals(this.totalPagedResultsPolicy, roleQueryResult.totalPagedResultsPolicy) &&
+        Objects.equals(this.totalPagedResults, roleQueryResult.totalPagedResults) &&
+        Objects.equals(this.remainingPagedResults, roleQueryResult.remainingPagedResults);
   }
 
   @Override
@@ -186,7 +186,7 @@ public class RoleMembersQueryResult {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RoleMembersQueryResult {\n");
+    sb.append("class RoleQueryResult {\n");
     
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("    resultCount: ").append(toIndentedString(resultCount)).append("\n");

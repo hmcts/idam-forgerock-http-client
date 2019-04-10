@@ -6,8 +6,8 @@ import feign.QueryMap;
 import feign.RequestLine;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.EncodingUtils;
-import uk.gov.hmcts.reform.idam.api.fr.idm.manage.roles.model.Role;
-import uk.gov.hmcts.reform.idam.api.fr.idm.manage.roles.model.RoleQueryResult;
+import uk.gov.hmcts.reform.idam.api.fr.idm.manage.roles.model.IdmRole;
+import uk.gov.hmcts.reform.idam.api.fr.idm.manage.roles.model.IdmRoleQueryResult;
 import uk.gov.hmcts.reform.idam.api.fr.shared.model.PatchArray;
 import uk.gov.hmcts.reform.idam.api.fr.shared.model.Status;
 
@@ -25,7 +25,7 @@ public interface RoleApi extends ApiClient.Api {
    * @param cookie
    * @return Role
    */
-  default Role putCreate(String roleId, Role requestPayload, String cookie) {
+  default IdmRole putCreate(String roleId, IdmRole requestPayload, String cookie) {
     return putIfRevision(roleId, requestPayload, null, cookie, "*", null);
   }
 
@@ -37,7 +37,7 @@ public interface RoleApi extends ApiClient.Api {
    * @param cookie
    * @return Role
    */
-  default Role putUpdate(String roleId, Role requestPayload, String cookie) {
+  default IdmRole putUpdate(String roleId, IdmRole requestPayload, String cookie) {
     return putIfRevision(roleId, requestPayload, null, cookie, null, "*");
   }
 
@@ -49,7 +49,7 @@ public interface RoleApi extends ApiClient.Api {
    * @param cookie
    * @return Role
    */
-  default Role patch(String roleId, PatchArray patchArray, String cookie) {
+  default IdmRole patch(String roleId, PatchArray patchArray, String cookie) {
     return patchIfMatch(roleId, patchArray, null, cookie, "*");
   }
 
@@ -60,7 +60,7 @@ public interface RoleApi extends ApiClient.Api {
    * @param cookie
    * @return Role
    */
-  default Role delete(String roleId, String cookie) {
+  default IdmRole delete(String roleId, String cookie) {
     return deleteIfMatch(roleId, null, cookie, "*");
   }
 
@@ -95,7 +95,7 @@ public interface RoleApi extends ApiClient.Api {
     "Cookie: {cookie}",
     "If-Match: {ifMatch}"
   })
-  Role deleteIfMatch(@Param("roleId") String roleId, @Param("fields") String fields, @Param("cookie") String cookie, @Param("ifMatch") String ifMatch);
+  IdmRole deleteIfMatch(@Param("roleId") String roleId, @Param("fields") String fields, @Param("cookie") String cookie, @Param("ifMatch") String ifMatch);
 
   /**
    * Read
@@ -110,7 +110,7 @@ public interface RoleApi extends ApiClient.Api {
     "Accept: application/json",
     "Cookie: {cookie}"
   })
-  Role get(@Param("roleId") String roleId, @Param("fields") String fields, @Param("cookie") String cookie);
+  IdmRole get(@Param("roleId") String roleId, @Param("fields") String fields, @Param("cookie") String cookie);
 
   /**
    * Update via Patch Operations
@@ -129,7 +129,7 @@ public interface RoleApi extends ApiClient.Api {
     "Cookie: {cookie}",
     "If-Match: {ifMatch}"
   })
-  Role patchIfMatch(@Param("roleId") String roleId, PatchArray requestPayload, @Param("fields") String fields, @Param("cookie") String cookie, @Param("ifMatch") String ifMatch);
+  IdmRole patchIfMatch(@Param("roleId") String roleId, PatchArray requestPayload, @Param("fields") String fields, @Param("cookie") String cookie, @Param("ifMatch") String ifMatch);
 
   /**
    * Create with Server-Assigned ID
@@ -145,7 +145,7 @@ public interface RoleApi extends ApiClient.Api {
     "Accept: application/json",
     "Cookie: {cookie}"
   })
-  Role post(Role requestPayload, @Param("fields") String fields, @Param("cookie") String cookie);
+  IdmRole post(IdmRole requestPayload, @Param("fields") String fields, @Param("cookie") String cookie);
 
   /**
    * Update or Create with Client-Assigned ID
@@ -166,7 +166,7 @@ public interface RoleApi extends ApiClient.Api {
     "If-None-Match: {ifNoneMatch}",
     "If-Match: {ifMatch}"
   })
-  Role putIfRevision(@Param("roleId") String roleId, Role requestPayload, @Param("fields") String fields, @Param("cookie") String cookie, @Param("ifNoneMatch") String ifNoneMatch, @Param("ifMatch") String ifMatch);
+  IdmRole putIfRevision(@Param("roleId") String roleId, IdmRole requestPayload, @Param("fields") String fields, @Param("cookie") String cookie, @Param("ifNoneMatch") String ifNoneMatch, @Param("ifMatch") String ifMatch);
 
   /**
    * Query by Filter or by Query ID
@@ -189,7 +189,7 @@ public interface RoleApi extends ApiClient.Api {
   "Accept: application/json",
       "Cookie: {cookie}"
   })
-  RoleQueryResult queryFilter(@Param("cookie") String cookie, @QueryMap(encoded = true) Map<String, Object> queryParams);
+  IdmRoleQueryResult queryFilter(@Param("cookie") String cookie, @QueryMap(encoded = true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the

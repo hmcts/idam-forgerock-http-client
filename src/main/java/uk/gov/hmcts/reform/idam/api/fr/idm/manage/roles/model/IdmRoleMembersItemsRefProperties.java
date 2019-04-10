@@ -24,14 +24,14 @@ import java.util.Objects;
  */
 @ApiModel(description = "Supports metadata within the relationship")
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.261Z")
-public class RoleMembersItemsRefProperties {
+public class IdmRoleMembersItemsRefProperties {
   @JsonProperty("_id")
   private String id = null;
 
   @JsonProperty("_grantType")
   private String grantType = null;
 
-  public RoleMembersItemsRefProperties id(String id) {
+  public IdmRoleMembersItemsRefProperties id(String id) {
     this.id = id;
     return this;
   }
@@ -49,7 +49,7 @@ public class RoleMembersItemsRefProperties {
     this.id = id;
   }
 
-  public RoleMembersItemsRefProperties grantType(String grantType) {
+  public IdmRoleMembersItemsRefProperties grantType(String grantType) {
     this.grantType = grantType;
     return this;
   }
@@ -76,7 +76,7 @@ public class RoleMembersItemsRefProperties {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RoleMembersItemsRefProperties roleMembersItemsRefProperties = (RoleMembersItemsRefProperties) o;
+    IdmRoleMembersItemsRefProperties roleMembersItemsRefProperties = (IdmRoleMembersItemsRefProperties) o;
     return Objects.equals(this.id, roleMembersItemsRefProperties.id) &&
         Objects.equals(this.grantType, roleMembersItemsRefProperties.grantType);
   }

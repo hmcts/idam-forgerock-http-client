@@ -6,8 +6,8 @@ import feign.QueryMap;
 import feign.RequestLine;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.EncodingUtils;
-import uk.gov.hmcts.reform.idam.api.fr.idm.manage.user.model.UserReports;
-import uk.gov.hmcts.reform.idam.api.fr.idm.manage.user.model.UserReportsQueryResult;
+import uk.gov.hmcts.reform.idam.api.fr.idm.manage.user.model.IdmUserReports;
+import uk.gov.hmcts.reform.idam.api.fr.idm.manage.user.model.IdmUserReportsQueryResult;
 import uk.gov.hmcts.reform.idam.api.fr.shared.model.PatchArray;
 
 import java.util.HashMap;
@@ -25,7 +25,7 @@ public interface UserDirectReportsApi extends ApiClient.Api {
    * @param cookie
    * @return UserReports
    */
-  default UserReports putCreate(String userId, String reportsId, UserReports requestPayload, String cookie) {
+  default IdmUserReports putCreate(String userId, String reportsId, IdmUserReports requestPayload, String cookie) {
     return putIfRevision(userId, reportsId, requestPayload, null, cookie, "*", null);
   }
 
@@ -38,7 +38,7 @@ public interface UserDirectReportsApi extends ApiClient.Api {
    * @param cookie
    * @return UserReports
    */
-  default UserReports putUpdate(String userId, String reportsId, UserReports requestPayload, String cookie) {
+  default IdmUserReports putUpdate(String userId, String reportsId, IdmUserReports requestPayload, String cookie) {
     return putIfRevision(userId, reportsId, requestPayload, null, cookie, null, "*");
   }
 
@@ -51,7 +51,7 @@ public interface UserDirectReportsApi extends ApiClient.Api {
    * @param cookie
    * @return UserReports
    */
-  default UserReports patch(String userId, String reportsId, PatchArray patchArray, String cookie) {
+  default IdmUserReports patch(String userId, String reportsId, PatchArray patchArray, String cookie) {
     return patchIfMatch(userId, reportsId, patchArray, null, cookie, "*");
   }
 
@@ -63,7 +63,7 @@ public interface UserDirectReportsApi extends ApiClient.Api {
    * @param cookie
    * @return UserReports
    */
-  default UserReports delete(String userId, String reportsId, String cookie) {
+  default IdmUserReports delete(String userId, String reportsId, String cookie) {
     return deleteIfMatch(userId, reportsId, null, cookie, "*");
   }
 
@@ -83,7 +83,7 @@ public interface UserDirectReportsApi extends ApiClient.Api {
     "Cookie: {cookie}",
     "If-Match: {ifMatch}"
   })
-  UserReports deleteIfMatch(@Param("userId") String userId, @Param("id") String id, @Param("fields") String fields, @Param("cookie") String cookie, @Param("ifMatch") String ifMatch);
+  IdmUserReports deleteIfMatch(@Param("userId") String userId, @Param("id") String id, @Param("fields") String fields, @Param("cookie") String cookie, @Param("ifMatch") String ifMatch);
 
   /**
    * Read
@@ -99,7 +99,7 @@ public interface UserDirectReportsApi extends ApiClient.Api {
     "Accept: application/json",
     "Cookie: {cookie}"
   })
-  UserReports get(@Param("userId") String userId, @Param("id") String id, @Param("fields") String fields, @Param("cookie") String cookie);
+  IdmUserReports get(@Param("userId") String userId, @Param("id") String id, @Param("fields") String fields, @Param("cookie") String cookie);
 
   /**
    * Update via Patch Operations
@@ -120,7 +120,7 @@ public interface UserDirectReportsApi extends ApiClient.Api {
     
     "If-Match: {ifMatch}"
   })
-  UserReports patchIfMatch(@Param("userId") String userId, @Param("id") String id, PatchArray requestPayload, @Param("fields") String fields, @Param("cookie") String cookie, @Param("ifMatch") String ifMatch);
+  IdmUserReports patchIfMatch(@Param("userId") String userId, @Param("id") String id, PatchArray requestPayload, @Param("fields") String fields, @Param("cookie") String cookie, @Param("ifMatch") String ifMatch);
 
   /**
    * Create with Server-Assigned ID
@@ -137,7 +137,7 @@ public interface UserDirectReportsApi extends ApiClient.Api {
     "Accept: application/json",
     "Cookie: {cookie}"
   })
-  UserReports post(@Param("userId") String userId, UserReports requestPayload, @Param("fields") String fields, @Param("cookie") String cookie);
+  IdmUserReports post(@Param("userId") String userId, IdmUserReports requestPayload, @Param("fields") String fields, @Param("cookie") String cookie);
 
   /**
    * Update or Create with Client-Assigned ID
@@ -161,7 +161,7 @@ public interface UserDirectReportsApi extends ApiClient.Api {
     
     "If-Match: {ifMatch}"
   })
-  UserReports putIfRevision(@Param("userId") String userId, @Param("id") String id, UserReports requestPayload, @Param("fields") String fields, @Param("cookie") String cookie, @Param("ifNoneMatch") String ifNoneMatch, @Param("ifMatch") String ifMatch);
+  IdmUserReports putIfRevision(@Param("userId") String userId, @Param("id") String id, IdmUserReports requestPayload, @Param("fields") String fields, @Param("cookie") String cookie, @Param("ifNoneMatch") String ifNoneMatch, @Param("ifMatch") String ifMatch);
 
   /**
    * Query by Filter
@@ -184,7 +184,7 @@ public interface UserDirectReportsApi extends ApiClient.Api {
   "Accept: application/json",
       "Cookie: {cookie}"
   })
-  UserReportsQueryResult queryFilter(@Param("userId") String userId, @Param("cookie") String cookie, @QueryMap(encoded = true) Map<String, Object> queryParams);
+  IdmUserReportsQueryResult queryFilter(@Param("userId") String userId, @Param("cookie") String cookie, @QueryMap(encoded = true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the

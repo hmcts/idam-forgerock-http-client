@@ -21,12 +21,12 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * UserReportsQueryResult
+ * UserAuthzRolesQueryResult
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:59.475Z")
-public class UserReportsQueryResult {
+public class IdmUserAuthzRolesQueryResult {
   @JsonProperty("result")
-  private List<UserReports> result = null;
+  private List<IdmUserAuthzRoles> result = null;
 
   @JsonProperty("resultCount")
   private Integer resultCount = 0;
@@ -43,12 +43,12 @@ public class UserReportsQueryResult {
   @JsonProperty("remainingPagedResults")
   private Integer remainingPagedResults = -1;
 
-  public UserReportsQueryResult result(List<UserReports> result) {
+  public IdmUserAuthzRolesQueryResult result(List<IdmUserAuthzRoles> result) {
     this.result = result;
     return this;
   }
 
-  public UserReportsQueryResult addResultItem(UserReports resultItem) {
+  public IdmUserAuthzRolesQueryResult addResultItem(IdmUserAuthzRoles resultItem) {
     if (this.result == null) {
       this.result = new ArrayList<>();
     }
@@ -61,15 +61,15 @@ public class UserReportsQueryResult {
    * @return result
   **/
   @ApiModelProperty(value = "Array of matching items")
-  public List<UserReports> getResult() {
+  public List<IdmUserAuthzRoles> getResult() {
     return result;
   }
 
-  public void setResult(List<UserReports> result) {
+  public void setResult(List<IdmUserAuthzRoles> result) {
     this.result = result;
   }
 
-  public UserReportsQueryResult resultCount(Integer resultCount) {
+  public IdmUserAuthzRolesQueryResult resultCount(Integer resultCount) {
     this.resultCount = resultCount;
     return this;
   }
@@ -87,7 +87,7 @@ public class UserReportsQueryResult {
     this.resultCount = resultCount;
   }
 
-  public UserReportsQueryResult pagedResultsCookie(String pagedResultsCookie) {
+  public IdmUserAuthzRolesQueryResult pagedResultsCookie(String pagedResultsCookie) {
     this.pagedResultsCookie = pagedResultsCookie;
     return this;
   }
@@ -105,7 +105,7 @@ public class UserReportsQueryResult {
     this.pagedResultsCookie = pagedResultsCookie;
   }
 
-  public UserReportsQueryResult totalPagedResultsPolicy(String totalPagedResultsPolicy) {
+  public IdmUserAuthzRolesQueryResult totalPagedResultsPolicy(String totalPagedResultsPolicy) {
     this.totalPagedResultsPolicy = totalPagedResultsPolicy;
     return this;
   }
@@ -123,7 +123,7 @@ public class UserReportsQueryResult {
     this.totalPagedResultsPolicy = totalPagedResultsPolicy;
   }
 
-  public UserReportsQueryResult totalPagedResults(Integer totalPagedResults) {
+  public IdmUserAuthzRolesQueryResult totalPagedResults(Integer totalPagedResults) {
     this.totalPagedResults = totalPagedResults;
     return this;
   }
@@ -141,7 +141,7 @@ public class UserReportsQueryResult {
     this.totalPagedResults = totalPagedResults;
   }
 
-  public UserReportsQueryResult remainingPagedResults(Integer remainingPagedResults) {
+  public IdmUserAuthzRolesQueryResult remainingPagedResults(Integer remainingPagedResults) {
     this.remainingPagedResults = remainingPagedResults;
     return this;
   }
@@ -168,13 +168,13 @@ public class UserReportsQueryResult {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UserReportsQueryResult userReportsQueryResult = (UserReportsQueryResult) o;
-    return Objects.equals(this.result, userReportsQueryResult.result) &&
-        Objects.equals(this.resultCount, userReportsQueryResult.resultCount) &&
-        Objects.equals(this.pagedResultsCookie, userReportsQueryResult.pagedResultsCookie) &&
-        Objects.equals(this.totalPagedResultsPolicy, userReportsQueryResult.totalPagedResultsPolicy) &&
-        Objects.equals(this.totalPagedResults, userReportsQueryResult.totalPagedResults) &&
-        Objects.equals(this.remainingPagedResults, userReportsQueryResult.remainingPagedResults);
+    IdmUserAuthzRolesQueryResult userAuthzRolesQueryResult = (IdmUserAuthzRolesQueryResult) o;
+    return Objects.equals(this.result, userAuthzRolesQueryResult.result) &&
+        Objects.equals(this.resultCount, userAuthzRolesQueryResult.resultCount) &&
+        Objects.equals(this.pagedResultsCookie, userAuthzRolesQueryResult.pagedResultsCookie) &&
+        Objects.equals(this.totalPagedResultsPolicy, userAuthzRolesQueryResult.totalPagedResultsPolicy) &&
+        Objects.equals(this.totalPagedResults, userAuthzRolesQueryResult.totalPagedResults) &&
+        Objects.equals(this.remainingPagedResults, userAuthzRolesQueryResult.remainingPagedResults);
   }
 
   @Override
@@ -186,7 +186,7 @@ public class UserReportsQueryResult {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UserReportsQueryResult {\n");
+    sb.append("class UserAuthzRolesQueryResult {\n");
     
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
     sb.append("    resultCount: ").append(toIndentedString(resultCount)).append("\n");

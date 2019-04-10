@@ -26,7 +26,7 @@ import java.util.Objects;
  */
 @ApiModel(description = "")
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.261Z")
-public class Role {
+public class IdmRole {
   @JsonProperty("_id")
   private String id = null;
 
@@ -37,13 +37,13 @@ public class Role {
   private String description = null;
 
   @JsonProperty("members")
-  private List<RoleMembers> members = null;
+  private List<IdmRoleMembers> members = null;
 
   @JsonProperty("authzMembers")
-  private List<RoleAuthzMembers> authzMembers = null;
+  private List<IdmRoleAuthzMembers> authzMembers = null;
 
   @JsonProperty("assignments")
-  private List<RoleAssignments> assignments = null;
+  private List<IdmRoleAssignments> assignments = null;
 
   @JsonProperty("condition")
   private String condition = null;
@@ -51,7 +51,7 @@ public class Role {
   @JsonProperty("temporalConstraints")
   private List<TemporalConstraintsItems> temporalConstraints = null;
 
-  public Role id(String id) {
+  public IdmRole id(String id) {
     this.id = id;
     return this;
   }
@@ -69,7 +69,7 @@ public class Role {
     this.id = id;
   }
 
-  public Role name(String name) {
+  public IdmRole name(String name) {
     this.name = name;
     return this;
   }
@@ -87,7 +87,7 @@ public class Role {
     this.name = name;
   }
 
-  public Role description(String description) {
+  public IdmRole description(String description) {
     this.description = description;
     return this;
   }
@@ -105,12 +105,12 @@ public class Role {
     this.description = description;
   }
 
-  public Role members(List<RoleMembers> members) {
+  public IdmRole members(List<IdmRoleMembers> members) {
     this.members = members;
     return this;
   }
 
-  public Role addMembersItem(RoleMembers membersItem) {
+  public IdmRole addMembersItem(IdmRoleMembers membersItem) {
     if (this.members == null) {
       this.members = new ArrayList<>();
     }
@@ -123,20 +123,20 @@ public class Role {
    * @return members
   **/
   @ApiModelProperty(value = "Role Members")
-  public List<RoleMembers> getMembers() {
+  public List<IdmRoleMembers> getMembers() {
     return members;
   }
 
-  public void setMembers(List<RoleMembers> members) {
+  public void setMembers(List<IdmRoleMembers> members) {
     this.members = members;
   }
 
-  public Role authzMembers(List<RoleAuthzMembers> authzMembers) {
+  public IdmRole authzMembers(List<IdmRoleAuthzMembers> authzMembers) {
     this.authzMembers = authzMembers;
     return this;
   }
 
-  public Role addAuthzMembersItem(RoleAuthzMembers authzMembersItem) {
+  public IdmRole addAuthzMembersItem(IdmRoleAuthzMembers authzMembersItem) {
     if (this.authzMembers == null) {
       this.authzMembers = new ArrayList<>();
     }
@@ -149,20 +149,20 @@ public class Role {
    * @return authzMembers
   **/
   @ApiModelProperty(value = "Authorization Role Members")
-  public List<RoleAuthzMembers> getAuthzMembers() {
+  public List<IdmRoleAuthzMembers> getAuthzMembers() {
     return authzMembers;
   }
 
-  public void setAuthzMembers(List<RoleAuthzMembers> authzMembers) {
+  public void setAuthzMembers(List<IdmRoleAuthzMembers> authzMembers) {
     this.authzMembers = authzMembers;
   }
 
-  public Role assignments(List<RoleAssignments> assignments) {
+  public IdmRole assignments(List<IdmRoleAssignments> assignments) {
     this.assignments = assignments;
     return this;
   }
 
-  public Role addAssignmentsItem(RoleAssignments assignmentsItem) {
+  public IdmRole addAssignmentsItem(IdmRoleAssignments assignmentsItem) {
     if (this.assignments == null) {
       this.assignments = new ArrayList<>();
     }
@@ -175,15 +175,15 @@ public class Role {
    * @return assignments
   **/
   @ApiModelProperty(value = "Managed Assignments")
-  public List<RoleAssignments> getAssignments() {
+  public List<IdmRoleAssignments> getAssignments() {
     return assignments;
   }
 
-  public void setAssignments(List<RoleAssignments> assignments) {
+  public void setAssignments(List<IdmRoleAssignments> assignments) {
     this.assignments = assignments;
   }
 
-  public Role condition(String condition) {
+  public IdmRole condition(String condition) {
     this.condition = condition;
     return this;
   }
@@ -201,12 +201,12 @@ public class Role {
     this.condition = condition;
   }
 
-  public Role temporalConstraints(List<TemporalConstraintsItems> temporalConstraints) {
+  public IdmRole temporalConstraints(List<TemporalConstraintsItems> temporalConstraints) {
     this.temporalConstraints = temporalConstraints;
     return this;
   }
 
-  public Role addTemporalConstraintsItem(TemporalConstraintsItems temporalConstraintsItem) {
+  public IdmRole addTemporalConstraintsItem(TemporalConstraintsItems temporalConstraintsItem) {
     if (this.temporalConstraints == null) {
       this.temporalConstraints = new ArrayList<>();
     }
@@ -236,7 +236,7 @@ public class Role {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Role role = (Role) o;
+    IdmRole role = (IdmRole) o;
     return Objects.equals(this.id, role.id) &&
         Objects.equals(this.name, role.name) &&
         Objects.equals(this.description, role.description) &&

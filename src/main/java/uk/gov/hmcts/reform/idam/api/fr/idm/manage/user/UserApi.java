@@ -6,8 +6,8 @@ import feign.QueryMap;
 import feign.RequestLine;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.EncodingUtils;
-import uk.gov.hmcts.reform.idam.api.fr.idm.manage.user.model.User;
-import uk.gov.hmcts.reform.idam.api.fr.idm.manage.user.model.UserQueryResultSet;
+import uk.gov.hmcts.reform.idam.api.fr.idm.manage.user.model.IdmUser;
+import uk.gov.hmcts.reform.idam.api.fr.idm.manage.user.model.IdmUserQueryResultSet;
 import uk.gov.hmcts.reform.idam.api.fr.shared.model.PatchArray;
 import uk.gov.hmcts.reform.idam.api.fr.shared.model.Status;
 
@@ -25,7 +25,7 @@ public interface UserApi extends ApiClient.Api {
    * @param cookie
    * @return User
    */
-  default User putCreate(String userId, User requestPayload, String cookie) {
+  default IdmUser putCreate(String userId, IdmUser requestPayload, String cookie) {
     return putIfRevision(userId, requestPayload, null, cookie, "*", null);
   }
 
@@ -37,7 +37,7 @@ public interface UserApi extends ApiClient.Api {
    * @param cookie
    * @return User
    */
-  default User putUpdate(String userId, User requestPayload, String cookie) {
+  default IdmUser putUpdate(String userId, IdmUser requestPayload, String cookie) {
     return putIfRevision(userId, requestPayload, null, cookie, null, "*");
   }
 
@@ -49,7 +49,7 @@ public interface UserApi extends ApiClient.Api {
    * @param cookie
    * @return User
    */
-  default User patch(String userId, PatchArray patchArray, String cookie) {
+  default IdmUser patch(String userId, PatchArray patchArray, String cookie) {
     return patchIfMatch(userId, patchArray, null, cookie, "*");
   }
 
@@ -60,7 +60,7 @@ public interface UserApi extends ApiClient.Api {
    * @param cookie
    * @return User
    */
-  default User delete(String userId, String cookie) {
+  default IdmUser delete(String userId, String cookie) {
     return deleteIfMatch(userId, null, cookie, "*");
   }
 
@@ -95,7 +95,7 @@ public interface UserApi extends ApiClient.Api {
     "Cookie: {cookie}",
     "If-Match: {ifMatch}"
   })
-  User deleteIfMatch(@Param("userId") String userId, @Param("fields") String fields, @Param("cookie") String cookie, @Param("ifMatch") String ifMatch);
+  IdmUser deleteIfMatch(@Param("userId") String userId, @Param("fields") String fields, @Param("cookie") String cookie, @Param("ifMatch") String ifMatch);
 
   /**
    * Read
@@ -110,7 +110,7 @@ public interface UserApi extends ApiClient.Api {
     "Accept: application/json",
     "Cookie: {cookie}"
   })
-  User get(@Param("userId") String userId, @Param("fields") String fields, @Param("cookie") String cookie);
+  IdmUser get(@Param("userId") String userId, @Param("fields") String fields, @Param("cookie") String cookie);
 
   /**
    * Update via Patch Operations
@@ -129,7 +129,7 @@ public interface UserApi extends ApiClient.Api {
     "Cookie: {cookie}",
     "If-Match: {ifMatch}"
   })
-  User patchIfMatch(@Param("userId") String userId, PatchArray requestPayload, @Param("fields") String fields, @Param("cookie") String cookie, @Param("ifMatch") String ifMatch);
+  IdmUser patchIfMatch(@Param("userId") String userId, PatchArray requestPayload, @Param("fields") String fields, @Param("cookie") String cookie, @Param("ifMatch") String ifMatch);
 
   /**
    * Create with Server-Assigned ID
@@ -145,7 +145,7 @@ public interface UserApi extends ApiClient.Api {
     "Accept: application/json",
     "Cookie: {cookie}"
   })
-  User post(User requestPayload, @Param("fields") String fields, @Param("cookie") String cookie);
+  IdmUser post(IdmUser requestPayload, @Param("fields") String fields, @Param("cookie") String cookie);
 
   /**
    * Update or Create with Client-Assigned ID
@@ -167,7 +167,7 @@ public interface UserApi extends ApiClient.Api {
     "If-None-Match: {ifNoneMatch}",
     "If-Match: {ifMatch}"
   })
-  User putIfRevision(@Param("userId") String userId, User requestPayload, @Param("fields") String fields, @Param("cookie") String cookie, @Param("ifNoneMatch") String ifNoneMatch, @Param("ifMatch") String ifMatch);
+  IdmUser putIfRevision(@Param("userId") String userId, IdmUser requestPayload, @Param("fields") String fields, @Param("cookie") String cookie, @Param("ifNoneMatch") String ifNoneMatch, @Param("ifMatch") String ifMatch);
 
   /**
    * Query by Filter or by Query ID
@@ -190,7 +190,7 @@ public interface UserApi extends ApiClient.Api {
   "Accept: application/json",
       "Cookie: {cookie}"
   })
-  UserQueryResultSet queryFilter(@Param("cookie") String cookie, @QueryMap(encoded = true) Map<String, Object> queryParams);
+  IdmUserQueryResultSet queryFilter(@Param("cookie") String cookie, @QueryMap(encoded = true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
@@ -237,5 +237,5 @@ public interface UserApi extends ApiClient.Api {
     "Accept: application/json",
     "Cookie: {cookie}"
   })
-  User resetPassword(@Param("userId") String userId, @Param("fields") String fields, @Param("cookie") String cookie);
+  IdmUser resetPassword(@Param("userId") String userId, @Param("fields") String fields, @Param("cookie") String cookie);
 }

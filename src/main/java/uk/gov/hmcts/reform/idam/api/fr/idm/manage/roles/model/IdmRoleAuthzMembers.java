@@ -22,14 +22,14 @@ import java.util.Objects;
  * RoleAuthzMembers
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.261Z")
-public class RoleAuthzMembers {
+public class IdmRoleAuthzMembers {
   @JsonProperty("_ref")
   private String ref = null;
 
   @JsonProperty("_refProperties")
   private ManagedAssignmentsItemsRefProperties refProperties = null;
 
-  public RoleAuthzMembers ref(String ref) {
+  public IdmRoleAuthzMembers ref(String ref) {
     this.ref = ref;
     return this;
   }
@@ -47,7 +47,7 @@ public class RoleAuthzMembers {
     this.ref = ref;
   }
 
-  public RoleAuthzMembers refProperties(ManagedAssignmentsItemsRefProperties refProperties) {
+  public IdmRoleAuthzMembers refProperties(ManagedAssignmentsItemsRefProperties refProperties) {
     this.refProperties = refProperties;
     return this;
   }
@@ -74,7 +74,7 @@ public class RoleAuthzMembers {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RoleAuthzMembers roleAuthzMembers = (RoleAuthzMembers) o;
+    IdmRoleAuthzMembers roleAuthzMembers = (IdmRoleAuthzMembers) o;
     return Objects.equals(this.ref, roleAuthzMembers.ref) &&
         Objects.equals(this.refProperties, roleAuthzMembers.refProperties);
   }

@@ -22,14 +22,14 @@ import java.util.Objects;
  * RoleAssignments
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.261Z")
-public class RoleAssignments {
+public class IdmRoleAssignments {
   @JsonProperty("_ref")
   private String ref = null;
 
   @JsonProperty("_refProperties")
   private ManagedAssignmentsItemsRefProperties refProperties = null;
 
-  public RoleAssignments ref(String ref) {
+  public IdmRoleAssignments ref(String ref) {
     this.ref = ref;
     return this;
   }
@@ -47,7 +47,7 @@ public class RoleAssignments {
     this.ref = ref;
   }
 
-  public RoleAssignments refProperties(ManagedAssignmentsItemsRefProperties refProperties) {
+  public IdmRoleAssignments refProperties(ManagedAssignmentsItemsRefProperties refProperties) {
     this.refProperties = refProperties;
     return this;
   }
@@ -74,7 +74,7 @@ public class RoleAssignments {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RoleAssignments roleAssignments = (RoleAssignments) o;
+    IdmRoleAssignments roleAssignments = (IdmRoleAssignments) o;
     return Objects.equals(this.ref, roleAssignments.ref) &&
         Objects.equals(this.refProperties, roleAssignments.refProperties);
   }
