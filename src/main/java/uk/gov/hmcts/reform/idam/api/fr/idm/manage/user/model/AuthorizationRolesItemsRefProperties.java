@@ -28,6 +28,9 @@ public class AuthorizationRolesItemsRefProperties {
   @JsonProperty("_id")
   private String id = null;
 
+  @JsonProperty("_rev")
+  private String rev = null;
+
   public AuthorizationRolesItemsRefProperties id(String id) {
     this.id = id;
     return this;
@@ -46,6 +49,23 @@ public class AuthorizationRolesItemsRefProperties {
     this.id = id;
   }
 
+  /**
+   * Revision
+   * @return rev
+   **/
+  @ApiModelProperty(value = "Revision")
+  public String getRev() {
+    return rev;
+  }
+
+  public void setRev(String rev) {
+    this.rev = rev;
+  }
+
+  public AuthorizationRolesItemsRefProperties rev(String rev) {
+    this.rev = rev;
+    return this;
+  }
 
   @Override
   public boolean equals(Object o) {

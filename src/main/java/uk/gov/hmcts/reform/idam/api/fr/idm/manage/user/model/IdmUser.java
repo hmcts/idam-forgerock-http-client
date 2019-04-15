@@ -28,6 +28,9 @@ public class IdmUser {
   @JsonProperty("_id")
   private String id = null;
 
+  @JsonProperty("_rev")
+  private String rev = null;
+
   @JsonProperty("password")
   private String password = null;
 
@@ -242,6 +245,24 @@ public class IdmUser {
 
   public IdmUser address2(String address2) {
     this.address2 = address2;
+    return this;
+  }
+
+  /**
+   * Revision
+   * @return rev
+   **/
+  @ApiModelProperty(value = "Revision")
+  public String getRev() {
+    return rev;
+  }
+
+  public void setRev(String rev) {
+    this.rev = rev;
+  }
+
+  public IdmUser rev(String rev) {
+    this.rev = rev;
     return this;
   }
 

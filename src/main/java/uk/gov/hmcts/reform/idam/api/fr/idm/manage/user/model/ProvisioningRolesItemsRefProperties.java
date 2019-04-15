@@ -28,11 +28,32 @@ public class ProvisioningRolesItemsRefProperties {
   @JsonProperty("_id")
   private String id = null;
 
+  @JsonProperty("_rev")
+  private String rev = null;
+
   @JsonProperty("_grantType")
   private String grantType = null;
 
   public ProvisioningRolesItemsRefProperties id(String id) {
     this.id = id;
+    return this;
+  }
+
+  /**
+   * Revision
+   * @return rev
+   **/
+  @ApiModelProperty(value = "Revision")
+  public String getRev() {
+    return rev;
+  }
+
+  public void setRev(String rev) {
+    this.rev = rev;
+  }
+
+  public ProvisioningRolesItemsRefProperties rev(String rev) {
+    this.rev = rev;
     return this;
   }
 
