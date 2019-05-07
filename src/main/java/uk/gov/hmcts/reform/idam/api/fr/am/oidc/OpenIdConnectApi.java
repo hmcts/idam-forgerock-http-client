@@ -2,7 +2,6 @@ package uk.gov.hmcts.reform.idam.api.fr.am.oidc;
 
 import feign.Headers;
 import feign.Param;
-import feign.QueryMap;
 import feign.RequestLine;
 import feign.Response;
 import org.springframework.http.HttpHeaders;
@@ -13,7 +12,6 @@ import uk.gov.hmcts.reform.idam.api.fr.am.oidc.model.AmAuthenticateToken;
 import uk.gov.hmcts.reform.idam.api.fr.am.oidc.model.AmToken;
 import uk.gov.hmcts.reform.idam.api.fr.am.oidc.model.JsonWebKeySet;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
-import uk.gov.hmcts.reform.idam.api.fr.client.invoker.EncodingUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,14 +26,10 @@ public interface OpenIdConnectApi extends ApiClient.Api {
    * @return The Auth Code
    */
   default String getAuthorizationCode(GetAuthorizationCodeParams params) {
-    Response feignResponse = oauth2Authorize(params.get("cookie"),
-            params.get("token_id"), params.get("scope"),
-            new OpenIdConnectApi.OAuth2AuthorizeParams()
-                    .clientId(params.get("client_id"))
-                    .responseType("code")
-                    .realm(params.get("realm"))
-                    .decision("Allow")
-                    .redirectUri(params.get("redirect_uri")));
+    Response feignResponse = oauth2Authorize(params.get("realm"),
+            params.get("client_id"), params.get("redirect_uri"),
+            null, null, "code", "Allow",
+            params.get("cookie"), params.get("token_id"), params.get("scope"));
 
     HttpStatus responseStatus = HttpStatus.valueOf(feignResponse.status());
 
@@ -90,16 +84,16 @@ public interface OpenIdConnectApi extends ApiClient.Api {
   /**
    * Request Access Token
    * Partner makes a request to the token endpoint by adding the following parameters describerd  below 
-    * @param authorization  (required)
-    * @param grantType The OAuth2 Grant Type (required)
-    * @param realm  (optional)
-    * @param code The (optional)
-    * @param redirectUri The (optional)
-    * @param clientId The (optional)
-    * @param clientSecret The (optional)
-    * @param scope The (optional)
-    * @param username The (optional)
-    * @param password The (optional)
+   * @param authorization  (required)
+   * @param grantType The OAuth2 Grant Type (required)
+   * @param realm  (optional)
+   * @param code The (optional)
+   * @param redirectUri The (optional)
+   * @param clientId The (optional)
+   * @param clientSecret The (optional)
+   * @param scope The (optional)
+   * @param username The (optional)
+   * @param password The (optional)
    * @return AmToken
    */
   @RequestLine("POST /oauth2/access_token?realm={realm}")
@@ -109,7 +103,6 @@ public interface OpenIdConnectApi extends ApiClient.Api {
     "Authorization: {authorization}"
   })
   AmToken accessToken(@Param("authorization") String authorization, @Param("grant_type") String grantType, @Param("realm") String realm, @Param("code") String code, @Param("redirect_uri") String redirectUri, @Param("client_id") String clientId, @Param("client_secret") String clientSecret, @Param("scope") String scope, @Param("username") String username, @Param("password") String password);
-
   /**
    * Request Access Token For Realm
    * Partner makes a request to the token endpoint by adding the following parameters describerd  below 
@@ -194,86 +187,53 @@ public interface OpenIdConnectApi extends ApiClient.Api {
   /**
    * OpenID Connect Authorize
    * Use token ID to get Authorization code
-   *
+   * @param realm  (optional)
+   * @param clientId  (optional)
+   * @param redirectUri  (optional)
+   * @param state  (optional)
+   * @param nonce  (optional)
+   * @param responseType  (optional, default to code)
+   * @param decision  (optional, default to Allow)
    * @param cookie  (optional)
    * @param csrf The ID of the token (optional)
    * @param scope The requred scopes (optional)
-   * @param queryParams Map of query parameters as name-value pairs
-   *   <p>The following elements may be specified in the query map:</p>
-   *   <ul>
-   *   <li>realm -  (optional)</li>
-   *   <li>clientId -  (optional)</li>
-   *   <li>redirectUri -  (optional)</li>
-   *   <li>state -  (optional)</li>
-   *   <li>responseType -  (optional, default to code)</li>
-   *   <li>decision -  (optional, default to Allow)</li>
-   *   </ul>
    * @return feign.Response
    */
-  @RequestLine("POST /oauth2/authorize?realm={realm}&client_id={clientId}&redirect_uri={redirectUri}&state={state}&response_type={responseType}&decision={decision}")
+  @RequestLine("POST /oauth2/authorize?realm={realm}")
   @Headers({
-  "Content-Type: application/x-www-form-urlencoded",
-  "Accept: application/json",
-      "Cookie: {cookie}"
+          "Content-Type: application/x-www-form-urlencoded",
+          "Accept: application/json",
+          "Cookie: {cookie}"
   })
-  Response oauth2Authorize(@Param("cookie") String cookie, @Param("csrf") String csrf, @Param("scope") String scope, @QueryMap(encoded = true) Map<String, Object> queryParams);
-
-  /**
-   * A convenience class for generating query parameters for the
-   * <code>oauth2Authorize</code> method in a fluent style.
-   */
-  public static class OAuth2AuthorizeParams extends HashMap<String, Object> {
-    public OAuth2AuthorizeParams realm(final String value) {
-      put("realm", EncodingUtils.encode(value));
-      return this;
-    }
-    public OAuth2AuthorizeParams clientId(final String value) {
-      put("client_id", EncodingUtils.encode(value));
-      return this;
-    }
-    public OAuth2AuthorizeParams redirectUri(final String value) {
-      put("redirect_uri", EncodingUtils.encode(value));
-      return this;
-    }
-    public OAuth2AuthorizeParams state(final String value) {
-      put("state", EncodingUtils.encode(value));
-      return this;
-    }
-    public OAuth2AuthorizeParams responseType(final String value) {
-      put("response_type", EncodingUtils.encode(value));
-      return this;
-    }
-    public OAuth2AuthorizeParams decision(final String value) {
-      put("decision", EncodingUtils.encode(value));
-      return this;
-    }
-  }
+  feign.Response oauth2Authorize(@Param("realm") String realm, @Param("client_id") String clientId, @Param("redirect_uri") String redirectUri, @Param("state") String state, @Param("nonce") String nonce, @Param("response_type") String responseType, @Param("decision") String decision, @Param("cookie") String cookie, @Param("csrf") String csrf, @Param("scope") String scope);
 
   /**
    * Request Info For User of the Authorization token
    * Partner makes a request to the token endpoint by adding the following parameters describerd  below 
-    * @param authorization  (required)
-    * @param realm  (optional)
-   * @return feign.Response
+   * @param authorization  (required)
+   * @param realm  (optional)
+   * @param claims  (optional)
+   * @return Map of user info
    */
   @RequestLine("POST /oauth2/userinfo?realm={realm}")
   @Headers({
     "Accept: application/json",
     "Authorization: {authorization}"
   })
-  Map<String, Object> userInfo(@Param("authorization") String authorization, @Param("realm") String realm);
+  Map<String, Object> userInfo(@Param("authorization") String authorization, @Param("realm") String realm, @Param("claims") String claims);
 
   /**
    * Request Info For User of the Authorization token
    * Partner makes a request to the token endpoint by adding the following parameters describerd  below 
-    * @param authorization  (required)
-    * @param realm  (required)
-   * @return feign.Response
+   * @param authorization  (required)
+   * @param realm  (required)
+   * @param claims  (optional)
+   * @return Map of user info
    */
   @RequestLine("POST /oauth2/{realm}/userinfo")
   @Headers({
     "Accept: application/json",
     "Authorization: {authorization}"
   })
-  Map<String, Object> userInfoForRealm(@Param("authorization") String authorization, @Param("realm") String realm);
+  Map<String, Object> userInfoForRealm(@Param("authorization") String authorization, @Param("realm") String realm, @Param("claims") String claims);
 }
