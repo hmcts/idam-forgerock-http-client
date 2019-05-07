@@ -23,24 +23,28 @@ paths:
       parameters:
         - $ref: '#/parameters/realm'
         - name: client_id
-          in: query
+          in: formData
           required: false
           type: string
         - name: redirect_uri
-          in: query
+          in: formData
           required: false
           type: string
         - name: state
-          in: query
+          in: formData
+          required: false
+          type: string
+        - name: nonce
+          in: formData
           required: false
           type: string
         - name: response_type
-          in: query
+          in: formData
           required: false
           type: string
           default: "code"
         - name: decision
-          in: query
+          in: formData
           required: false
           type: string
           default: "Allow"
@@ -295,6 +299,10 @@ paths:
       parameters:
           - $ref: '#/parameters/realm'
           - $ref: '#/parameters/authorization'
+          - name: claims
+            in: query
+            required: false
+            type: string
       tags:
         - OpenID Connect
       responses:
@@ -317,6 +325,10 @@ paths:
       parameters:
         - $ref: '#/parameters/authorization'
         - $ref: '#/parameters/pathRealm'
+        - name: claims
+          in: query
+          required: false
+          type: string
       tags:
         - OpenID Connect
       responses:
