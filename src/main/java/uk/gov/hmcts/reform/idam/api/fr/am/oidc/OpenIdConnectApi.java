@@ -209,16 +209,17 @@ public interface OpenIdConnectApi extends ApiClient.Api {
 
   /**
    * Request Info For User of the Authorization token
-   * Partner makes a request to the token endpoint by adding the following parameters describerd  below 
+   * Partner makes a request to the token endpoint by adding the following parameters describerd  below
    * @param authorization  (required)
    * @param realm  (optional)
    * @param claims  (optional)
-   * @return Map of user info
+   * @return feign.Response
    */
   @RequestLine("POST /oauth2/userinfo?realm={realm}")
   @Headers({
-    "Accept: application/json",
-    "Authorization: {authorization}"
+          "Content-Type: application/x-www-form-urlencoded",
+          "Accept: application/json",
+          "Authorization: {authorization}"
   })
   Map<String, Object> userInfo(@Param("authorization") String authorization, @Param("realm") String realm, @Param("claims") String claims);
 
@@ -228,12 +229,13 @@ public interface OpenIdConnectApi extends ApiClient.Api {
    * @param authorization  (required)
    * @param realm  (required)
    * @param claims  (optional)
-   * @return Map of user info
+   * @return feign.Response
    */
   @RequestLine("POST /oauth2/{realm}/userinfo")
   @Headers({
-    "Accept: application/json",
-    "Authorization: {authorization}"
+          "Content-Type: application/x-www-form-urlencoded",
+          "Accept: application/json",
+          "Authorization: {authorization}"
   })
   Map<String, Object> userInfoForRealm(@Param("authorization") String authorization, @Param("realm") String realm, @Param("claims") String claims);
 }

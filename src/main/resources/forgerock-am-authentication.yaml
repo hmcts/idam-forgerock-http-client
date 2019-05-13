@@ -13,6 +13,59 @@ produces:
   - application/json
 paths:
   /oauth2/authorize:
+    get:
+      summary: 'OpenID Connect Authorize'
+      operationId: get_oauth2_authorize
+      parameters:
+        - $ref: '#/parameters/realm'
+        - name: client_id
+          in: formData
+          required: false
+          type: string
+        - name: redirect_uri
+          in: formData
+          required: false
+          type: string
+        - name: state
+          in: formData
+          required: false
+          type: string
+        - name: nonce
+          in: formData
+          required: false
+          type: string
+        - name: response_type
+          in: formData
+          required: false
+          type: string
+          default: "code"
+        - name: decision
+          in: formData
+          required: false
+          type: string
+          default: "Allow"
+        - name: Cookie
+          in: header
+          required: false
+          type: string
+        - name: csrf
+          in: formData
+          description: The ID of the token
+          required: false
+          type: string
+        - name: scope
+          in: formData
+          description: The requred scopes
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/Response'
+      tags:
+        - OpenID Connect
+      description: Use token ID to get Authorization code
     post:
       summary: 'OpenID Connect Authorize'
       operationId: _oauth2_authorize
@@ -300,7 +353,7 @@ paths:
           - $ref: '#/parameters/realm'
           - $ref: '#/parameters/authorization'
           - name: claims
-            in: query
+            in: formData
             required: false
             type: string
       tags:
@@ -326,7 +379,7 @@ paths:
         - $ref: '#/parameters/authorization'
         - $ref: '#/parameters/pathRealm'
         - name: claims
-          in: query
+          in: formData
           required: false
           type: string
       tags:
