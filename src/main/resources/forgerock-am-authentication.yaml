@@ -150,6 +150,10 @@ paths:
           description: Success
           schema:
             $ref: '#/definitions/Response'
+        '401':
+          schema:
+            $ref: '#/definitions/AmApiError'
+          description: The supplied credentials where invalid
       tags:
         - OpenID Connect
       description: Returns information about the supplied token
@@ -185,6 +189,10 @@ paths:
           description: Authorisation token (Bearer)
           schema:
             $ref: '#/definitions/Response'
+        '401':
+          schema:
+            $ref: '#/definitions/AmApiError'
+          description: The supplied credentials where invalid
 
   /oauth2/access_token:
     post:
@@ -250,7 +258,7 @@ paths:
       tags:
         - OpenID Connect
       responses:
-        200:
+        '200':
           description: Authorisation token
           schema:
             $ref: '#/definitions/AmToken'
@@ -261,6 +269,10 @@ paths:
                  "token_type":"Bearer",
                  "expires_in":3600,
                }
+        '401':
+          schema:
+            $ref: '#/definitions/AmApiError'
+          description: The supplied credentials where invalid
 
   /oauth2/{realm}/access_token:
     post:
@@ -326,7 +338,7 @@ paths:
       tags:
         - OpenID Connect
       responses:
-        200:
+        '200':
           description: Authorisation token
           schema:
             $ref: '#/definitions/AmToken'
@@ -337,6 +349,10 @@ paths:
                  "token_type":"Bearer",
                  "expires_in":3600,
                }
+        '401':
+          schema:
+            $ref: '#/definitions/AmApiError'
+          description: The supplied credentials where invalid
 
   /oauth2/userinfo:
     post:
@@ -363,6 +379,10 @@ paths:
           description: Success
           schema:
             $ref: '#/definitions/Response'
+        '401':
+          schema:
+            $ref: '#/definitions/AmApiError'
+          description: Indicates that the supplied auth was invalid
 
   /oauth2/{realm}/userinfo:
     post:
@@ -389,6 +409,10 @@ paths:
           description: Success
           schema:
             $ref: '#/definitions/Response'
+        '401':
+          schema:
+            $ref: '#/definitions/AmApiError'
+          description: Indicates that the supplied details where incorrect
 
   /json/authenticate:
     post:
@@ -434,6 +458,16 @@ definitions:
       realm:
         type: string
         description: Realm authenicated against
+
+  AmApiError:
+    type: object
+    properties:
+      error_description:
+        type: string
+        description: A detailed explanation of the error
+      error:
+        type: string
+        description: The reason for the error
 
   AmToken:
     type: object
