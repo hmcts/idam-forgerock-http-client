@@ -2,6 +2,7 @@ package uk.gov.hmcts.reform.idam.api.fr.am.oidc;
 
 import feign.Headers;
 import feign.Param;
+import feign.QueryMap;
 import feign.RequestLine;
 import feign.Response;
 import org.springframework.http.HttpHeaders;
@@ -12,6 +13,7 @@ import uk.gov.hmcts.reform.idam.api.fr.am.oidc.model.AmAuthenticateToken;
 import uk.gov.hmcts.reform.idam.api.fr.am.oidc.model.AmToken;
 import uk.gov.hmcts.reform.idam.api.fr.am.oidc.model.JsonWebKeySet;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
+import uk.gov.hmcts.reform.idam.api.fr.client.invoker.EncodingUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -183,6 +185,64 @@ public interface OpenIdConnectApi extends ApiClient.Api {
     "X-OpenAM-Password: {xOpenAMPassword}"
   })
   AmAuthenticateToken jsonAuthenticate(@Param("xOpenAMUsername") String xOpenAMUsername, @Param("xOpenAMPassword") String xOpenAMPassword, @Param("realm") String realm);
+
+  /**
+   * OpenID Connect Authorize
+   * Request redirect to login page
+   * Note, this is equivalent to the other <code>getOauth2Authorize</code> method,
+   * but with the query parameters collected into a single Map parameter. This
+   * is convenient for services with optional query parameters, especially when
+   * used with the {@link AuthorizeParams} class that allows for
+   * building up this map in a fluent style.
+   * @param realm  (required)
+   * @param queryParams Map of query parameters as name-value pairs
+   *   <p>The following elements may be specified in the query map:</p>
+   *   <ul>
+   *   <li>clientId -  (optional)</li>
+   *   <li>redirectUri -  (optional)</li>
+   *   <li>state -  (optional)</li>
+   *   <li>nonce -  (optional)</li>
+   *   <li>responseType -  (optional, default to code)</li>
+   *   <li>scope - The requred scopes (optional)</li>
+   *   </ul>
+   * @return feign.Response
+   */
+  @RequestLine("GET /oauth2/{realm}/authorize?client_id={clientId}&redirect_uri={redirectUri}&state={state}&nonce={nonce}&response_type={responseType}&scope={scope}")
+  @Headers({
+          "Accept: application/json",
+  })
+  feign.Response getOauth2Authorize(@Param("realm") String realm, @QueryMap(encoded=true) Map<String, Object> queryParams);
+
+  /**
+   * A convenience class for generating query parameters for the
+   * <code>getOauth2Authorize</code> method in a fluent style.
+   */
+  public static class AuthorizeParams extends HashMap<String, Object> {
+    public AuthorizeParams clientId(final String value) {
+      put("client_id", EncodingUtils.encode(value));
+      return this;
+    }
+    public AuthorizeParams redirectUri(final String value) {
+      put("redirect_uri", EncodingUtils.encode(value));
+      return this;
+    }
+    public AuthorizeParams state(final String value) {
+      put("state", EncodingUtils.encode(value));
+      return this;
+    }
+    public AuthorizeParams nonce(final String value) {
+      put("nonce", EncodingUtils.encode(value));
+      return this;
+    }
+    public AuthorizeParams responseType(final String value) {
+      put("response_type", EncodingUtils.encode(value));
+      return this;
+    }
+    public AuthorizeParams scope(final String value) {
+      put("scope", EncodingUtils.encode(value));
+      return this;
+    }
+  }
 
   /**
    * OpenID Connect Authorize
