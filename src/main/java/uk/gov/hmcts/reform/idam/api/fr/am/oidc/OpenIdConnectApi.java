@@ -2,7 +2,6 @@ package uk.gov.hmcts.reform.idam.api.fr.am.oidc;
 
 import feign.Headers;
 import feign.Param;
-import feign.QueryMap;
 import feign.RequestLine;
 import feign.Response;
 import org.springframework.http.HttpHeaders;
@@ -13,7 +12,6 @@ import uk.gov.hmcts.reform.idam.api.fr.am.oidc.model.AmAuthenticateToken;
 import uk.gov.hmcts.reform.idam.api.fr.am.oidc.model.AmToken;
 import uk.gov.hmcts.reform.idam.api.fr.am.oidc.model.JsonWebKeySet;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
-import uk.gov.hmcts.reform.idam.api.fr.client.invoker.EncodingUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,7 +29,7 @@ public interface OpenIdConnectApi extends ApiClient.Api {
     Response feignResponse = oauth2Authorize(params.get("realm"),
             params.get("client_id"), params.get("redirect_uri"),
             null, null, "code", "Allow",
-            params.get("cookie"), params.get("token_id"), params.get("scope"));
+            null, params.get("cookie"), params.get("token_id"), params.get("scope"));
 
     HttpStatus responseStatus = HttpStatus.valueOf(feignResponse.status());
 
@@ -186,86 +184,55 @@ public interface OpenIdConnectApi extends ApiClient.Api {
   })
   AmAuthenticateToken jsonAuthenticate(@Param("xOpenAMUsername") String xOpenAMUsername, @Param("xOpenAMPassword") String xOpenAMPassword, @Param("realm") String realm);
 
+
   /**
    * OpenID Connect Authorize
    * Request redirect to login page
-   * Note, this is equivalent to the other <code>getOauth2Authorize</code> method,
-   * but with the query parameters collected into a single Map parameter. This
-   * is convenient for services with optional query parameters, especially when
-   * used with the {@link AuthorizeParams} class that allows for
-   * building up this map in a fluent style.
    * @param realm  (required)
-   * @param queryParams Map of query parameters as name-value pairs
-   *   <p>The following elements may be specified in the query map:</p>
-   *   <ul>
-   *   <li>clientId -  (optional)</li>
-   *   <li>redirectUri -  (optional)</li>
-   *   <li>state -  (optional)</li>
-   *   <li>nonce -  (optional)</li>
-   *   <li>responseType -  (optional, default to code)</li>
-   *   <li>scope - The requred scopes (optional)</li>
-   *   </ul>
+   * @param clientId OAuth2 client id of the service initiating the OAuth2 flow. (optional)
+   * @param redirectUri URI to redirect the user to after successful authentication. This URL must match one of the registered URLs for the OAuth2 application linked to the service initiating the authentication flow.  (optional)
+   * @param state Optional state to be sent back to the initiating service after successful authentication. (optional)
+   * @param nonce Optional parameter required for openid hybrid flow requests. (optional)
+   * @param responseType Response type to use for this request (optional, default to code)
+   * @param scope Optional scopes to request. (optional)
+   * @param responseMode Informs Authorization server of the mechanism to be used for returning parameters. Use is not recommended.  (optional)
+   * @param display ASCII string value that specifies how the Authorization Server displays the authentication and consent user interface pages to the End-User.  (optional)
+   * @param prompt Space delimited, case sensitive list of ASCII string values that specifies whether the Authorization Server prompts the End-User for reauthentication and consent.  (optional)
+   * @param maxAge Maximum Authentication Age (optional)
+   * @param acrValues Requested Authentication Context Class Reference values (optional)
+   * @param idTokenHint Token previously issued by the Authorization Server being passed as a hint about the End-User&#39;s current or past authenticated session with the Client.  (optional)
+   * @param loginHint Hint to the Authorization Server about the login identifier the End-User might use to log in (if necessary). This hint can be used by an RP if it first asks the End-User for their e-mail address (or other identifier) and then wants to pass that value as a hint to the discovered authorization service.  (optional)
    * @return feign.Response
    */
-  @RequestLine("GET /oauth2/{realm}/authorize?client_id={clientId}&redirect_uri={redirectUri}&state={state}&nonce={nonce}&response_type={responseType}&scope={scope}")
+  @RequestLine("GET /oauth2/{realm}/authorize?client_id={clientId}&redirect_uri={redirectUri}&state={state}&nonce={nonce}&response_type={responseType}&scope={scope}&response_mode={responseMode}&display={display}&prompt={prompt}&max_age={maxAge}&acr_values={acrValues}&id_token_hint={idTokenHint}&login_hint={loginHint}")
   @Headers({
           "Accept: application/json",
   })
-  feign.Response getOauth2Authorize(@Param("realm") String realm, @QueryMap(encoded=true) Map<String, Object> queryParams);
-
-  /**
-   * A convenience class for generating query parameters for the
-   * <code>getOauth2Authorize</code> method in a fluent style.
-   */
-  public static class AuthorizeParams extends HashMap<String, Object> {
-    public AuthorizeParams clientId(final String value) {
-      put("client_id", EncodingUtils.encode(value));
-      return this;
-    }
-    public AuthorizeParams redirectUri(final String value) {
-      put("redirect_uri", EncodingUtils.encode(value));
-      return this;
-    }
-    public AuthorizeParams state(final String value) {
-      put("state", EncodingUtils.encode(value));
-      return this;
-    }
-    public AuthorizeParams nonce(final String value) {
-      put("nonce", EncodingUtils.encode(value));
-      return this;
-    }
-    public AuthorizeParams responseType(final String value) {
-      put("response_type", EncodingUtils.encode(value));
-      return this;
-    }
-    public AuthorizeParams scope(final String value) {
-      put("scope", EncodingUtils.encode(value));
-      return this;
-    }
-  }
+  feign.Response getOauth2Authorize(@Param("realm") String realm, @Param("clientId") String clientId, @Param("redirectUri") String redirectUri, @Param("state") String state, @Param("nonce") String nonce, @Param("responseType") String responseType, @Param("scope") String scope, @Param("responseMode") String responseMode, @Param("display") String display, @Param("prompt") String prompt, @Param("maxAge") String maxAge, @Param("acrValues") String acrValues, @Param("idTokenHint") String idTokenHint, @Param("loginHint") String loginHint);
 
   /**
    * OpenID Connect Authorize
    * Use token ID to get Authorization code
-   * @param realm  (optional)
+   * @param realm  (required)
    * @param clientId  (optional)
    * @param redirectUri  (optional)
    * @param state  (optional)
    * @param nonce  (optional)
    * @param responseType  (optional, default to code)
    * @param decision  (optional, default to Allow)
+   * @param saveConsent  (optional)
    * @param cookie  (optional)
    * @param csrf The ID of the token (optional)
    * @param scope The requred scopes (optional)
    * @return feign.Response
    */
-  @RequestLine("POST /oauth2/authorize?realm={realm}")
+  @RequestLine("POST /oauth2/{realm}/authorize")
   @Headers({
           "Content-Type: application/x-www-form-urlencoded",
           "Accept: application/json",
           "Cookie: {cookie}"
   })
-  feign.Response oauth2Authorize(@Param("realm") String realm, @Param("client_id") String clientId, @Param("redirect_uri") String redirectUri, @Param("state") String state, @Param("nonce") String nonce, @Param("response_type") String responseType, @Param("decision") String decision, @Param("cookie") String cookie, @Param("csrf") String csrf, @Param("scope") String scope);
+  feign.Response oauth2Authorize(@Param("realm") String realm, @Param("client_id") String clientId, @Param("redirect_uri") String redirectUri, @Param("state") String state, @Param("nonce") String nonce, @Param("response_type") String responseType, @Param("decision") String decision, @Param("save_consent") String saveConsent, @Param("cookie") String cookie, @Param("csrf") String csrf, @Param("scope") String scope);
 
   /**
    * Request Info For User of the Authorization token
