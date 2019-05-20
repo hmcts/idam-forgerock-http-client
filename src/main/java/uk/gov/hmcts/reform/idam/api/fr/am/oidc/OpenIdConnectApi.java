@@ -11,6 +11,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import uk.gov.hmcts.reform.idam.api.fr.am.oidc.model.AmAuthenticateToken;
 import uk.gov.hmcts.reform.idam.api.fr.am.oidc.model.AmToken;
 import uk.gov.hmcts.reform.idam.api.fr.am.oidc.model.JsonWebKeySet;
+import uk.gov.hmcts.reform.idam.api.fr.am.oidc.model.WellKnownConfig;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
 
 import java.util.HashMap;
@@ -265,4 +266,16 @@ public interface OpenIdConnectApi extends ApiClient.Api {
           "Authorization: {authorization}"
   })
   Map<String, Object> userInfoForRealm(@Param("authorization") String authorization, @Param("realm") String realm, @Param("claims") String claims);
+
+  /**
+   * Well Known OpenID Config
+   * Returns information required for oidc discovery
+   * @param realm  (required)
+   * @return WellKnownConfig
+   */
+  @RequestLine("GET /oauth2/{realm}/.well-known/openid-configuration")
+  @Headers({
+          "Accept: application/json",
+  })
+  WellKnownConfig wellKnownOpenidConfiguration(@Param("realm") String realm);
 }
