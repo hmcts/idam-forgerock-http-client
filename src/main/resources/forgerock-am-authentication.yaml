@@ -500,13 +500,58 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/WellKnownConfig'
+            $ref: '#/definitions/AmWellKnownConfig'
       tags:
         - OpenID Connect
       description: Returns information required for oidc discovery
 
+  '/oauth2/{realm}/connect/endSession':
+    get:
+      summary: 'OpenID Connect end_session'
+      operationId: _end_session
+      parameters:
+        - $ref: '#/parameters/pathRealm'
+        - name: id_token_hint
+          in: query
+          required: false
+          description: Users id token to help OP link the session
+          type: string
+        - name: post_logout_redirect_uri
+          in: query
+          required: false
+          description: Optional uri to redirect the user to after logout
+          type: string
+        - name: state
+          in: query
+          required: false
+          description: Optional application state parameter
+          type: string
+      responses:
+        '204':
+          description: Success
+          schema:
+            $ref: '#/definitions/Response'
+      tags:
+        - OpenID Connect
+      description: Ends the session of the user
+
+  '/oauth2/{realm}/connect/checkSession':
+    get:
+      summary: 'OpenID Connect check_session_iframe'
+      operationId: _check_Session
+      parameters:
+        - $ref: '#/parameters/pathRealm'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/Response'
+      tags:
+        - OpenID Connect
+      description: Returns an iframe that the RP can use to check the session state
+
 definitions:
-  WellKnownConfig:
+  AmWellKnownConfig:
     type: object
     title: OpenID Connect Well-Known Configuration Reponse
     properties:

@@ -10,8 +10,8 @@ import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriComponentsBuilder;
 import uk.gov.hmcts.reform.idam.api.fr.am.oidc.model.AmAuthenticateToken;
 import uk.gov.hmcts.reform.idam.api.fr.am.oidc.model.AmToken;
+import uk.gov.hmcts.reform.idam.api.fr.am.oidc.model.AmWellKnownConfig;
 import uk.gov.hmcts.reform.idam.api.fr.am.oidc.model.JsonWebKeySet;
-import uk.gov.hmcts.reform.idam.api.fr.am.oidc.model.WellKnownConfig;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
 
 import java.util.HashMap;
@@ -277,5 +277,32 @@ public interface OpenIdConnectApi extends ApiClient.Api {
   @Headers({
           "Accept: application/json",
   })
-  WellKnownConfig wellKnownOpenidConfiguration(@Param("realm") String realm);
+  AmWellKnownConfig wellKnownOpenidConfiguration(@Param("realm") String realm);
+
+  /**
+   * OpenID Connect check_session_iframe
+   * Returns an iframe that the RP can use to check the session state
+   * @param realm  (required)
+   * @return feign.Response
+   */
+  @RequestLine("GET /oauth2/{realm}/connect/checkSession")
+  @Headers({
+          "Accept: application/json",
+  })
+  feign.Response checkSession(@Param("realm") String realm);
+
+  /**
+   * OpenID Connect end_session
+   * Ends the session of the user
+   * @param realm  (required)
+   * @param idTokenHint Users id token to help OP link the session (optional)
+   * @param postLogoutRedirectUri Optional uri to redirect the user to after logout (optional)
+   * @param state Optional application state parameter (optional)
+   * @return feign.Response
+   */
+  @RequestLine("GET /oauth2/{realm}/connect/endSession?id_token_hint={idTokenHint}&post_logout_redirect_uri={postLogoutRedirectUri}&state={state}")
+  @Headers({
+          "Accept: application/json",
+  })
+  feign.Response endSession(@Param("realm") String realm, @Param("idTokenHint") String idTokenHint, @Param("postLogoutRedirectUri") String postLogoutRedirectUri, @Param("state") String state);
 }
