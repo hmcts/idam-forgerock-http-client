@@ -265,6 +265,11 @@ paths:
             - refresh_token
             - client_credentials
             - jwt-bearer
+        - name: refresh_token
+          in: formData
+          description: A previously issued refresh token
+          required: false
+          type: string
         - name: code
           in: formData
           description: The
@@ -345,6 +350,11 @@ paths:
             - refresh_token
             - client_credentials
             - jwt-bearer
+        - name: refresh_token
+          in: formData
+          description: A previously issued refresh token
+          required: false
+          type: string
         - name: code
           in: formData
           description: The
