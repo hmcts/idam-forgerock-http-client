@@ -17,6 +17,7 @@ paths:
       summary: 'OpenID Connect Authorize'
       operationId: get_oauth2_authorize
       parameters:
+        - $ref: '#/parameters/sessionCookie'
         - $ref: '#/parameters/pathRealm'
         - name: client_id
           in: query
@@ -115,6 +116,7 @@ paths:
       produces:
         - application/json
       parameters:
+        - $ref: '#/parameters/sessionCookie'
         - $ref: '#/parameters/pathRealm'
         - name: client_id
           in: formData
@@ -993,4 +995,9 @@ parameters:
     name: Authorization
     in: header
     required: true
+    type: string
+  sessionCookie:
+    name: Cookie
+    in: header
+    required: false
     type: string

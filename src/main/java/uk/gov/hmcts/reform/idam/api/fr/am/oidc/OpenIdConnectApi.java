@@ -218,8 +218,9 @@ public interface OpenIdConnectApi extends ApiClient.Api {
     @RequestLine("GET /oauth2/{realm}/authorize?client_id={clientId}&redirect_uri={redirectUri}&state={state}&nonce={nonce}&response_type={responseType}&scope={scope}&response_mode={responseMode}&display={display}&prompt={prompt}&max_age={maxAge}&acr_values={acrValues}&id_token_hint={idTokenHint}&login_hint={loginHint}")
     @Headers({
             "Accept: application/json",
+            "Cookie: {cookie}"
     })
-    feign.Response getOauth2Authorize(@Param("realm") String realm, @Param("clientId") String clientId, @Param("redirectUri") String redirectUri, @Param("state") String state, @Param("nonce") String nonce, @Param("responseType") String responseType, @Param("scope") String scope, @Param("responseMode") String responseMode, @Param("display") String display, @Param("prompt") String prompt, @Param("maxAge") String maxAge, @Param("acrValues") String acrValues, @Param("idTokenHint") String idTokenHint, @Param("loginHint") String loginHint);
+    feign.Response getOauth2Authorize(@Param("realm") String realm, @Param("clientId") String clientId, @Param("redirectUri") String redirectUri, @Param("state") String state, @Param("nonce") String nonce, @Param("responseType") String responseType, @Param("scope") String scope, @Param("responseMode") String responseMode, @Param("display") String display, @Param("prompt") String prompt, @Param("maxAge") String maxAge, @Param("acrValues") String acrValues, @Param("idTokenHint") String idTokenHint, @Param("loginHint") String loginHint, @Param("cookie") String cookie);
 
     /**
      * OpenID Connect Authorize
