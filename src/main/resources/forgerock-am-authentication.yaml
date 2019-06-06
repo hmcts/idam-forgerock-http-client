@@ -121,24 +121,84 @@ paths:
         - name: client_id
           in: formData
           required: false
+          description: OAuth2 client id of the service initiating the OAuth2 flow.
           type: string
         - name: redirect_uri
           in: formData
           required: false
+          description: |
+            URI to redirect the user to after successful authentication. This URL
+            must match one of the registered URLs for the OAuth2 application linked to the service
+            initiating the authentication flow.
           type: string
         - name: state
           in: formData
           required: false
+          description: Optional state to be sent back to the initiating service after successful authentication.
           type: string
         - name: nonce
           in: formData
           required: false
+          description: Optional parameter required for openid hybrid flow requests.
           type: string
         - name: response_type
           in: formData
           required: false
+          description: Response type to use for this request
           type: string
-          default: "code"
+          default: code
+        - name: scope
+          in: formData
+          required: false
+          description: Optional scopes to request.
+          type: string
+        - name: response_mode
+          in: formData
+          required: false
+          description: |
+            Informs Authorization server of the mechanism to be used for returning parameters.
+            Use is not recommended.
+          type: string
+        - name: display
+          in: formData
+          required: false
+          description: |
+            ASCII string value that specifies how the Authorization Server
+            displays the authentication and consent user interface pages to the End-User.
+          type: string
+        - name: prompt
+          in: formData
+          required: false
+          description: |
+            Space delimited, case sensitive list of ASCII string values that specifies whether
+            the Authorization Server prompts the End-User for reauthentication and consent.
+          type: string
+        - name: max_age
+          in: formData
+          required: false
+          description: Maximum Authentication Age
+          type: string
+        - name: acr_values
+          in: formData
+          required: false
+          description: Requested Authentication Context Class Reference values
+          type: string
+        - name: id_token_hint
+          in: formData
+          required: false
+          description: |
+            Token previously issued by the Authorization Server being passed as a hint about
+            the End-User's current or past authenticated session with the Client.
+          type: string
+        - name: login_hint
+          in: formData
+          required: false
+          description: |
+            Hint to the Authorization Server about the login identifier the End-User might use to
+            log in (if necessary). This hint can be used by an RP if it first asks the End-User for
+            their e-mail address (or other identifier) and then wants to pass that value as a hint
+            to the discovered authorization service.
+          type: string
         - name: decision
           in: formData
           required: false
@@ -148,18 +208,9 @@ paths:
           in: formData
           required: false
           type: string
-        - name: Cookie
-          in: header
-          required: false
-          type: string
         - name: csrf
           in: formData
           description: The ID of the token
-          required: false
-          type: string
-        - name: scope
-          in: formData
-          description: The requred scopes
           required: false
           type: string
       responses:

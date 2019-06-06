@@ -27,10 +27,11 @@ public interface OpenIdConnectApi extends ApiClient.Api {
      * @return The Auth Code
      */
     default String getAuthorizationCode(GetAuthorizationCodeParams params) {
-        Response feignResponse = oauth2Authorize(params.get("realm"),
-                params.get("client_id"), params.get("redirect_uri"),
-                null, null, "code", "Allow",
-                null, params.get("cookie"), params.get("token_id"), params.get("scope"));
+        Response feignResponse = oauth2Authorize(params.get("realm"), params.get("cookie"),
+                params.get("client_id"), params.get("redirect_uri"), null, null,
+                "code", params.get("scope"), null, null,
+                null, null, null, null,
+                null, "Allow", null, params.get("token_id"));
 
         HttpStatus responseStatus = HttpStatus.valueOf(feignResponse.status());
 
@@ -222,21 +223,29 @@ public interface OpenIdConnectApi extends ApiClient.Api {
     })
     feign.Response getOauth2Authorize(@Param("realm") String realm, @Param("clientId") String clientId, @Param("redirectUri") String redirectUri, @Param("state") String state, @Param("nonce") String nonce, @Param("responseType") String responseType, @Param("scope") String scope, @Param("responseMode") String responseMode, @Param("display") String display, @Param("prompt") String prompt, @Param("maxAge") String maxAge, @Param("acrValues") String acrValues, @Param("idTokenHint") String idTokenHint, @Param("loginHint") String loginHint, @Param("cookie") String cookie);
 
+
     /**
      * OpenID Connect Authorize
      * Use token ID to get Authorization code
      *
      * @param realm        (required)
-     * @param clientId     (optional)
-     * @param redirectUri  (optional)
-     * @param state        (optional)
-     * @param nonce        (optional)
-     * @param responseType (optional, default to code)
+     * @param cookie       (optional)
+     * @param clientId     OAuth2 client id of the service initiating the OAuth2 flow. (optional)
+     * @param redirectUri  URI to redirect the user to after successful authentication. This URL must match one of the registered URLs for the OAuth2 application linked to the service initiating the authentication flow.  (optional)
+     * @param state        Optional state to be sent back to the initiating service after successful authentication. (optional)
+     * @param nonce        Optional parameter required for openid hybrid flow requests. (optional)
+     * @param responseType Response type to use for this request (optional, default to code)
+     * @param scope        Optional scopes to request. (optional)
+     * @param responseMode Informs Authorization server of the mechanism to be used for returning parameters. Use is not recommended.  (optional)
+     * @param display      ASCII string value that specifies how the Authorization Server displays the authentication and consent user interface pages to the End-User.  (optional)
+     * @param prompt       Space delimited, case sensitive list of ASCII string values that specifies whether the Authorization Server prompts the End-User for reauthentication and consent.  (optional)
+     * @param maxAge       Maximum Authentication Age (optional)
+     * @param acrValues    Requested Authentication Context Class Reference values (optional)
+     * @param idTokenHint  Token previously issued by the Authorization Server being passed as a hint about the End-User&#39;s current or past authenticated session with the Client.  (optional)
+     * @param loginHint    Hint to the Authorization Server about the login identifier the End-User might use to log in (if necessary). This hint can be used by an RP if it first asks the End-User for their e-mail address (or other identifier) and then wants to pass that value as a hint to the discovered authorization service.  (optional)
      * @param decision     (optional, default to Allow)
      * @param saveConsent  (optional)
-     * @param cookie       (optional)
      * @param csrf         The ID of the token (optional)
-     * @param scope        The requred scopes (optional)
      * @return feign.Response
      */
     @RequestLine("POST /oauth2/{realm}/authorize")
@@ -245,7 +254,7 @@ public interface OpenIdConnectApi extends ApiClient.Api {
             "Accept: application/json",
             "Cookie: {cookie}"
     })
-    feign.Response oauth2Authorize(@Param("realm") String realm, @Param("client_id") String clientId, @Param("redirect_uri") String redirectUri, @Param("state") String state, @Param("nonce") String nonce, @Param("response_type") String responseType, @Param("decision") String decision, @Param("save_consent") String saveConsent, @Param("cookie") String cookie, @Param("csrf") String csrf, @Param("scope") String scope);
+    feign.Response oauth2Authorize(@Param("realm") String realm, @Param("cookie") String cookie, @Param("client_id") String clientId, @Param("redirect_uri") String redirectUri, @Param("state") String state, @Param("nonce") String nonce, @Param("response_type") String responseType, @Param("scope") String scope, @Param("response_mode") String responseMode, @Param("display") String display, @Param("prompt") String prompt, @Param("max_age") String maxAge, @Param("acr_values") String acrValues, @Param("id_token_hint") String idTokenHint, @Param("login_hint") String loginHint, @Param("decision") String decision, @Param("save_concent") String saveConsent, @Param("csrf") String csrf);
 
     /**
      * Request Info For User of the Authorization token
