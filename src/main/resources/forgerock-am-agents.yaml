@@ -23,6 +23,10 @@ paths:
         - $ref: '#/parameters/realm'
         - $ref: '#/parameters/_fields'
         - $ref: '#/parameters/authorization'
+        - name: _pagedResultsCookie
+          in: query
+          required: false
+          type: string
         - name: _queryFilter
           in: query
           required: true
