@@ -169,7 +169,7 @@ public interface UserDirectReportsApi extends ApiClient.Api {
    * Note, this is equivalent to the other <code>queryFilter</code> method,
    * but with the query parameters collected into a single Map parameter. This
    * is convenient for services with optional query parameters, especially when
-   * used with the {@link QueryFilterQueryParams} class that allows for
+   * used with the {@link QueryFilterParams} class that allows for
    * building up this map in a fluent style.
    * @param userId  (required)
    * @param cookie  (optional)
@@ -178,6 +178,7 @@ public interface UserDirectReportsApi extends ApiClient.Api {
    *   <ul>
    *   <li>fields - Optional parameter containing a comma separated list of field references specifying which fields of the targeted JSON resource should be returned. (optional)</li>
    *   <li>queryFilter -  (optional)</li>
+   *   <li>pagedResultsOffset -  (optional)</li>
    *   <li>pagedResultsCookie -  (optional)</li>
    *   <li>pageSize -  (optional)</li>
    *   <li>totalPagedResultsPolicy -  (optional)</li>
@@ -185,7 +186,7 @@ public interface UserDirectReportsApi extends ApiClient.Api {
    *   </ul>
    * @return UserReportsQueryResult
    */
-  @RequestLine("GET /managed/user/{userId}/reports?_fields={fields}&_queryFilter={queryFilter}&_pagedResultsCookie={pagedResultsCookie}&_pageSize={pageSize}&_totalPagedResultsPolicy={totalPagedResultsPolicy}&_sortKeys={sortKeys}")
+  @RequestLine("GET /managed/user/{userId}/reports?_fields={fields}&_queryFilter={queryFilter}&_pagedResultsOffset={pagedResultsOffset}&_pagedResultsCookie={pagedResultsCookie}&_pageSize={pageSize}&_totalPagedResultsPolicy={totalPagedResultsPolicy}&_sortKeys={sortKeys}")
   @Headers({
           "Accept: application/json",
           "Cookie: {cookie}"
@@ -196,28 +197,32 @@ public interface UserDirectReportsApi extends ApiClient.Api {
    * A convenience class for generating query parameters for the
    * <code>queryFilter</code> method in a fluent style.
    */
-  public static class QueryFilterQueryParams extends HashMap<String, Object> {
-    public QueryFilterQueryParams fields(final String value) {
+  public static class QueryFilterParams extends HashMap<String, Object> {
+    public QueryFilterParams fields(final String value) {
       put("_fields", EncodingUtils.encode(value));
       return this;
     }
-    public QueryFilterQueryParams queryFilter(final String value) {
+    public QueryFilterParams queryFilter(final String value) {
       put("_queryFilter", EncodingUtils.encode(value));
       return this;
     }
-    public QueryFilterQueryParams pagedResultsCookie(final String value) {
+    public QueryFilterParams pagedResultsOffset(final String value) {
+      put("_pagedResultsOffset", EncodingUtils.encode(value));
+      return this;
+    }
+    public QueryFilterParams pagedResultsCookie(final String value) {
       put("_pagedResultsCookie", EncodingUtils.encode(value));
       return this;
     }
-    public QueryFilterQueryParams pageSize(final Integer value) {
+    public QueryFilterParams pageSize(final Integer value) {
       put("_pageSize", EncodingUtils.encode(value));
       return this;
     }
-    public QueryFilterQueryParams totalPagedResultsPolicy(final String value) {
+    public QueryFilterParams totalPagedResultsPolicy(final String value) {
       put("_totalPagedResultsPolicy", EncodingUtils.encode(value));
       return this;
     }
-    public QueryFilterQueryParams sortKeys(final String value) {
+    public QueryFilterParams sortKeys(final String value) {
       put("_sortKeys", EncodingUtils.encode(value));
       return this;
     }

@@ -123,6 +123,10 @@ paths:
         - $ref: '#/parameters/_fields'
         - $ref: '#/parameters/authorization'
         - $ref: '#/parameters/_queryFilter'
+        - name: _pagedResultsOffset
+          in: query
+          required: false
+          type: string
         - name: _pageSize
           in: query
           required: false

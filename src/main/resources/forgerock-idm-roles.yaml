@@ -27,6 +27,10 @@ paths:
         - $ref: '#/parameters/authorization'
         - $ref: '#/parameters/_queryFilter'
         - $ref: '#/parameters/_queryId'
+        - name: _pagedResultsOffset
+          in: query
+          required: false
+          type: string
         - name: _pagedResultsCookie
           in: query
           required: false
@@ -192,6 +196,10 @@ paths:
         - $ref: '#/parameters/authorization'
         - $ref: '#/parameters/_queryFilter'
         - $ref: '#/parameters/_queryId'
+        - name: _pagedResultsOffset
+          in: query
+          required: false
+          type: string
         - name: _pagedResultsCookie
           in: query
           required: false
@@ -359,6 +367,10 @@ paths:
         - $ref: '#/parameters/authorization'
         - $ref: '#/parameters/_queryFilter'
         - $ref: '#/parameters/_queryId'
+        - name: _pagedResultsOffset
+          in: query
+          required: false
+          type: string
         - name: _pagedResultsCookie
           in: query
           required: false
@@ -526,6 +538,10 @@ paths:
         - $ref: '#/parameters/authorization'
         - $ref: '#/parameters/_queryFilter'
         - $ref: '#/parameters/_queryId'
+        - name: _pagedResultsOffset
+          in: query
+          required: false
+          type: string
         - name: _pagedResultsCookie
           in: query
           required: false

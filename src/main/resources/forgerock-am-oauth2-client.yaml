@@ -24,6 +24,10 @@ paths:
         - $ref: '#/parameters/_queryFilter'
         - $ref: '#/parameters/realm'
         - $ref: '#/parameters/authorization'
+        - name: _pagedResultsOffset
+          in: query
+          required: false
+          type: string
         - name: _pagedResultsCookie
           in: query
           required: false
