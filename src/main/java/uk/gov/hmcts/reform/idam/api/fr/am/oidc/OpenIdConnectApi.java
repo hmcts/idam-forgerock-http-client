@@ -86,18 +86,17 @@ public interface OpenIdConnectApi extends ApiClient.Api {
     /**
      * Request Access Token
      * Partner makes a request to the token endpoint by adding the following parameters describerd  below
-     *
-     * @param authorization (required)
-     * @param grantType     The OAuth2 Grant Type (required)
-     * @param refreshToken  A previously issued refresh token (optional)
-     * @param realm         (optional)
-     * @param code          The (optional)
-     * @param redirectUri   The (optional)
-     * @param clientId      The (optional)
-     * @param clientSecret  The (optional)
-     * @param scope         The (optional)
-     * @param username      The (optional)
-     * @param password      The (optional)
+     * @param authorization  (required)
+     * @param grantType The OAuth2 Grant Type (required)
+     * @param realm  (optional)
+     * @param refreshToken A previously issued refresh token (optional)
+     * @param code The (optional)
+     * @param redirectUri The (optional)
+     * @param clientId The (optional)
+     * @param clientSecret The (optional)
+     * @param scope The (optional)
+     * @param username The (optional)
+     * @param password The (optional)
      * @return AmToken
      */
     @RequestLine("POST /oauth2/access_token?realm={realm}")
@@ -106,23 +105,22 @@ public interface OpenIdConnectApi extends ApiClient.Api {
             "Accept: application/json",
             "Authorization: {authorization}"
     })
-    AmToken accessToken(@Param("authorization") String authorization, @Param("grant_type") String grantType, @Param("refresh_token") String refreshToken, @Param("realm") String realm, @Param("code") String code, @Param("redirect_uri") String redirectUri, @Param("client_id") String clientId, @Param("client_secret") String clientSecret, @Param("scope") String scope, @Param("username") String username, @Param("password") String password);
+    AmToken accessToken(@Param("authorization") String authorization, @Param("grant_type") String grantType, @Param("realm") String realm, @Param("refresh_token") String refreshToken, @Param("code") String code, @Param("redirect_uri") String redirectUri, @Param("client_id") String clientId, @Param("client_secret") String clientSecret, @Param("scope") String scope, @Param("username") String username, @Param("password") String password);
 
     /**
      * Request Access Token For Realm
      * Partner makes a request to the token endpoint by adding the following parameters describerd  below
-     *
-     * @param realm         (required)
-     * @param authorization (required)
-     * @param grantType     The OAuth2 Grant Type (required)
-     * @param refreshToken  A previously issued refresh token (optional)
-     * @param code          The (optional)
-     * @param redirectUri   The (optional)
-     * @param clientId      The (optional)
-     * @param clientSecret  The (optional)
-     * @param scope         The (optional)
-     * @param username      The (optional)
-     * @param password      The (optional)
+     * @param realm  (required)
+     * @param authorization  (required)
+     * @param grantType The OAuth2 Grant Type (required)
+     * @param refreshToken A previously issued refresh token (optional)
+     * @param code The (optional)
+     * @param redirectUri The (optional)
+     * @param clientId The (optional)
+     * @param clientSecret The (optional)
+     * @param scope The (optional)
+     * @param username The (optional)
+     * @param password The (optional)
      * @return AmToken
      */
     @RequestLine("POST /oauth2/{realm}/access_token")
