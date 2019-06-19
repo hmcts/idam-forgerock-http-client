@@ -217,7 +217,7 @@ public interface OpenIdConnectApi extends ApiClient.Api {
     @RequestLine("GET /oauth2/{realm}/authorize?client_id={clientId}&redirect_uri={redirectUri}&state={state}&nonce={nonce}&response_type={responseType}&scope={scope}&response_mode={responseMode}&display={display}&prompt={prompt}&max_age={maxAge}&acr_values={acrValues}&id_token_hint={idTokenHint}&login_hint={loginHint}")
     @Headers({
             "Accept: application/json",
-            "Connection: keep-alive",
+            "Connection: Keep-Alive",
             "Cookie: {cookie}"
     })
     feign.Response getOauth2Authorize(@Param("realm") String realm, @Param("clientId") String clientId, @Param("redirectUri") String redirectUri, @Param("state") String state, @Param("nonce") String nonce, @Param("responseType") String responseType, @Param("scope") String scope, @Param("responseMode") String responseMode, @Param("display") String display, @Param("prompt") String prompt, @Param("maxAge") String maxAge, @Param("acrValues") String acrValues, @Param("idTokenHint") String idTokenHint, @Param("loginHint") String loginHint, @Param("cookie") String cookie);
@@ -250,6 +250,7 @@ public interface OpenIdConnectApi extends ApiClient.Api {
     @Headers({
             "Content-Type: application/x-www-form-urlencoded",
             "Accept: application/json",
+            "Connection: Keep-Alive",
             "Cookie: {cookie}"
     })
     feign.Response oauth2Authorize(@Param("realm") String realm, @Param("cookie") String cookie, @Param("client_id") String clientId, @Param("redirect_uri") String redirectUri, @Param("state") String state, @Param("nonce") String nonce, @Param("response_type") String responseType, @Param("scope") String scope, @Param("response_mode") String responseMode, @Param("display") String display, @Param("prompt") String prompt, @Param("max_age") String maxAge, @Param("acr_values") String acrValues, @Param("id_token_hint") String idTokenHint, @Param("login_hint") String loginHint, @Param("decision") String decision, @Param("save_concent") String saveConsent, @Param("csrf") String csrf);
