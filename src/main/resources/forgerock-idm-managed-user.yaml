@@ -1019,6 +1019,15 @@ definitions:
         title: Last Changed
         required:
           - date
+      sunset:
+        type: object
+        properties:
+          date:
+            type: string
+            description: Account expiry date
+            title: ''
+        description: Account Expiry
+        title: Sunset
       consentedMappings:
         type: array
         items:
