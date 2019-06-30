@@ -15,7 +15,7 @@ plugins {
     id 'java'
     id 'maven-publish'
     id 'io.spring.dependency-management' version '1.0.7.RELEASE'
-    id 'com.jfrog.bintray' version '1.8.0'
+    id 'com.jfrog.bintray' version '1.8.4'
 }
 
 
