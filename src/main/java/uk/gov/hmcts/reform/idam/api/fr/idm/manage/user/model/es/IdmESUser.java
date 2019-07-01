@@ -36,7 +36,7 @@ public class IdmESUser extends IdmSearchableEntity<IdmESUser> {
 
     @JsonProperty("sn")
     public void setSn(String sn) {
-        this.surname = surname;
+        this.surname = sn;
     }
 
     @JsonProperty("surname")
