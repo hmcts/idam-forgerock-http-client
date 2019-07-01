@@ -6,25 +6,25 @@ import org.springframework.data.annotation.Id;
 public abstract class IdmSearchableEntity<T> {
 
     @Id
-    protected String uid = null;
+    protected String id = null;
 
     @JsonProperty("_id")
-    public void setId(String id) {
-        this.uid = id;
+    public void setUid(String id) {
+        this.id = id;
     }
 
-    @JsonProperty("uid")
-    public String setUid() {
-        return uid;
+    @JsonProperty("id")
+    public String setId() {
+        return id;
     }
 
-    @JsonProperty("uid")
-    public String getUid() {
-        return uid;
+    @JsonProperty("id")
+    public String getId() {
+        return id;
     }
 
     public T id(String id) {
-        this.uid = id;
+        this.id = id;
         return (T) this;
     }
 
