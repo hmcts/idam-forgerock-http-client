@@ -31,7 +31,7 @@ project.ext {
     spring_data_elasticsearch = "3.1.9.RELEASE"
 }
 
-version = '1.5.1'
+version = '1.5.2'
 group = 'uk.gov.hmcts.reform.idam'
 
 description = """idam-forgerock-http-client"""
