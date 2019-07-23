@@ -904,6 +904,12 @@ definitions:
           $ref: '#/definitions/RoleAssignments'
         title: Managed Assignments
         description: Managed Assignments
+      linkedRoles:
+        type: array
+        items:
+          type: string
+        title: Linked roles
+        description: Internal roles that will be assigned to a user with parent role
       condition:
         type: string
         title: Condition
