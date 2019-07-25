@@ -914,6 +914,16 @@ definitions:
         type: string
         title: Condition
         description: A conditional filter for this role
+      assignableRoles:
+        type: array
+        items:
+          type: string
+        description: Roles this role is allowed to assign
+      conflictingRoles:
+        type: array
+        items:
+          type: string
+        description: Roles that conflict with this role
       temporalConstraints:
         type: array
         items:

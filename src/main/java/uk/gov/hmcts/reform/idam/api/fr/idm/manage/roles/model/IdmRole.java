@@ -14,18 +14,24 @@
 package uk.gov.hmcts.reform.idam.api.fr.idm.manage.roles.model;
 
 import java.util.Objects;
-
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
+import uk.gov.hmcts.reform.idam.api.fr.idm.manage.roles.model.IdmRoleAssignments;
+import uk.gov.hmcts.reform.idam.api.fr.idm.manage.roles.model.IdmRoleAuthzMembers;
+import uk.gov.hmcts.reform.idam.api.fr.idm.manage.roles.model.IdmRoleMembers;
+import uk.gov.hmcts.reform.idam.api.fr.idm.manage.roles.model.TemporalConstraintsItems;
 
 /**
  *
  */
 @ApiModel(description = "")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-07-23T14:36:31.624+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-07-25T09:34:35.634+01:00")
 public class IdmRole {
   @JsonProperty("_id")
   private String id = null;
@@ -45,11 +51,14 @@ public class IdmRole {
   @JsonProperty("assignments")
   private List<IdmRoleAssignments> assignments = null;
 
-  @JsonProperty("linkedRoles")
-  private List<String> linkedRoles = null;
-
   @JsonProperty("condition")
   private String condition = null;
+
+  @JsonProperty("assignableRoles")
+  private List<String> assignableRoles = null;
+
+  @JsonProperty("conflictingRoles")
+  private List<String> conflictingRoles = null;
 
   @JsonProperty("temporalConstraints")
   private List<TemporalConstraintsItems> temporalConstraints = null;
@@ -60,10 +69,10 @@ public class IdmRole {
   }
 
   /**
-   * IdmRole ID
+   * Role ID
    * @return id
    **/
-  @ApiModelProperty(value = "IdmRole ID")
+  @ApiModelProperty(value = "Role ID")
   public String getId() {
     return id;
   }
@@ -122,10 +131,10 @@ public class IdmRole {
   }
 
   /**
-   * IdmRole Members
+   * Role Members
    * @return members
    **/
-  @ApiModelProperty(value = "IdmRole Members")
+  @ApiModelProperty(value = "Role Members")
   public List<IdmRoleMembers> getMembers() {
     return members;
   }
@@ -148,10 +157,10 @@ public class IdmRole {
   }
 
   /**
-   * Authorization IdmRole Members
+   * Authorization Role Members
    * @return authzMembers
    **/
-  @ApiModelProperty(value = "Authorization IdmRole Members")
+  @ApiModelProperty(value = "Authorization Role Members")
   public List<IdmRoleAuthzMembers> getAuthzMembers() {
     return authzMembers;
   }
@@ -186,32 +195,6 @@ public class IdmRole {
     this.assignments = assignments;
   }
 
-  public IdmRole linkedRoles(List<String> linkedRoles) {
-    this.linkedRoles = linkedRoles;
-    return this;
-  }
-
-  public IdmRole addLinkedRolesItem(String linkedRolesItem) {
-    if (this.linkedRoles == null) {
-      this.linkedRoles = new ArrayList<>();
-    }
-    this.linkedRoles.add(linkedRolesItem);
-    return this;
-  }
-
-  /**
-   * Internal roles that will be assigned to a user with parent role
-   * @return linkedRoles
-   **/
-  @ApiModelProperty(value = "Internal roles that will be assigned to a user with parent role")
-  public List<String> getLinkedRoles() {
-    return linkedRoles;
-  }
-
-  public void setLinkedRoles(List<String> linkedRoles) {
-    this.linkedRoles = linkedRoles;
-  }
-
   public IdmRole condition(String condition) {
     this.condition = condition;
     return this;
@@ -228,6 +211,58 @@ public class IdmRole {
 
   public void setCondition(String condition) {
     this.condition = condition;
+  }
+
+  public IdmRole assignableRoles(List<String> assignableRoles) {
+    this.assignableRoles = assignableRoles;
+    return this;
+  }
+
+  public IdmRole addAssignableRolesItem(String assignableRolesItem) {
+    if (this.assignableRoles == null) {
+      this.assignableRoles = new ArrayList<>();
+    }
+    this.assignableRoles.add(assignableRolesItem);
+    return this;
+  }
+
+  /**
+   * Roles this role is allowed to assign
+   * @return assignableRoles
+   **/
+  @ApiModelProperty(value = "Roles this role is allowed to assign")
+  public List<String> getAssignableRoles() {
+    return assignableRoles;
+  }
+
+  public void setAssignableRoles(List<String> assignableRoles) {
+    this.assignableRoles = assignableRoles;
+  }
+
+  public IdmRole conflictingRoles(List<String> conflictingRoles) {
+    this.conflictingRoles = conflictingRoles;
+    return this;
+  }
+
+  public IdmRole addConflictingRolesItem(String conflictingRolesItem) {
+    if (this.conflictingRoles == null) {
+      this.conflictingRoles = new ArrayList<>();
+    }
+    this.conflictingRoles.add(conflictingRolesItem);
+    return this;
+  }
+
+  /**
+   * Roles that conflict with this role
+   * @return conflictingRoles
+   **/
+  @ApiModelProperty(value = "Roles that conflict with this role")
+  public List<String> getConflictingRoles() {
+    return conflictingRoles;
+  }
+
+  public void setConflictingRoles(List<String> conflictingRoles) {
+    this.conflictingRoles = conflictingRoles;
   }
 
   public IdmRole temporalConstraints(List<TemporalConstraintsItems> temporalConstraints) {
@@ -258,28 +293,29 @@ public class IdmRole {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    IdmRole role = (IdmRole) o;
-    return Objects.equals(this.id, role.id) &&
-        Objects.equals(this.name, role.name) &&
-        Objects.equals(this.description, role.description) &&
-        Objects.equals(this.members, role.members) &&
-        Objects.equals(this.authzMembers, role.authzMembers) &&
-        Objects.equals(this.assignments, role.assignments) &&
-        Objects.equals(this.linkedRoles, role.linkedRoles) &&
-        Objects.equals(this.condition, role.condition) &&
-        Objects.equals(this.temporalConstraints, role.temporalConstraints);
+    IdmRole idmRole = (IdmRole) o;
+    return Objects.equals(this.id, idmRole.id) &&
+            Objects.equals(this.name, idmRole.name) &&
+            Objects.equals(this.description, idmRole.description) &&
+            Objects.equals(this.members, idmRole.members) &&
+            Objects.equals(this.authzMembers, idmRole.authzMembers) &&
+            Objects.equals(this.assignments, idmRole.assignments) &&
+            Objects.equals(this.condition, idmRole.condition) &&
+            Objects.equals(this.assignableRoles, idmRole.assignableRoles) &&
+            Objects.equals(this.conflictingRoles, idmRole.conflictingRoles) &&
+            Objects.equals(this.temporalConstraints, idmRole.temporalConstraints);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, members, authzMembers, assignments, linkedRoles, condition, temporalConstraints);
+    return Objects.hash(id, name, description, members, authzMembers, assignments, condition, assignableRoles, conflictingRoles, temporalConstraints);
   }
 
 
@@ -294,8 +330,9 @@ public class IdmRole {
     sb.append("    members: ").append(toIndentedString(members)).append("\n");
     sb.append("    authzMembers: ").append(toIndentedString(authzMembers)).append("\n");
     sb.append("    assignments: ").append(toIndentedString(assignments)).append("\n");
-    sb.append("    linkedRoles: ").append(toIndentedString(linkedRoles)).append("\n");
     sb.append("    condition: ").append(toIndentedString(condition)).append("\n");
+    sb.append("    assignableRoles: ").append(toIndentedString(assignableRoles)).append("\n");
+    sb.append("    conflictingRoles: ").append(toIndentedString(conflictingRoles)).append("\n");
     sb.append("    temporalConstraints: ").append(toIndentedString(temporalConstraints)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -305,7 +342,7 @@ public class IdmRole {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }
@@ -313,4 +350,3 @@ public class IdmRole {
   }
 
 }
-
