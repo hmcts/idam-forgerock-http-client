@@ -1,0 +1,102 @@
+swagger: '2.0'
+info:
+  version: 5.5.0
+  title: API Explorer
+host: 172.18.0.5
+basePath: /openidm
+tags:
+  - name: Information
+schemes:
+  - http
+consumes:
+  - application/json
+  - text/plain
+  - multipart/form-data
+produces:
+  - application/json
+paths:
+  /info/login:
+    get:
+      summary: Read
+      operationId: _read
+      parameters:
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/authorization'
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/IdmUserInfo'
+      description: 'Provides authentication and authorization details, for the authenticated caller (e.g., User).'
+      tags:
+        - Information
+definitions:
+  'IdmUserInfo':
+    type: object
+    required:
+      - authenticationId
+      - authorization
+    properties:
+      authorization:
+        type: object
+        properties:
+          component:
+            type: string
+            description: 'Resource path (e.g., repo/internal/user)'
+          roles:
+            type: array
+            items:
+              type: string
+            description: Roles
+          ipAddress:
+            type: string
+            description: Client IP Address
+          id:
+            type: string
+            description: 'Resource ID (e.g., User ID)'
+          moduleId:
+            type: string
+            description: Auth Module ID
+        description: Authorization details
+        title: Authorization
+        required:
+          - component
+          - id
+          - ipAddress
+          - moduleId
+          - roles
+      authenticationId:
+        type: string
+        description: 'Resource ID (e.g., User ID)'
+    title: Auth Info
+parameters:
+  'If-None-Match: *':
+    name: If-None-Match
+    in: header
+    required: true
+    type: string
+    enum:
+      - '*'
+  If-Match:
+    name: If-Match
+    in: header
+    required: false
+    type: string
+    default: '*'
+  'If-None-Match: <rev>':
+    name: If-None-Match
+    in: header
+    required: false
+    type: string
+  _fields:
+    name: _fields
+    in: query
+    description: Optional parameter containing a comma separated list of field references specifying which fields of the targeted JSON resource should be returned.
+    required: false
+    type: string
+    collectionFormat: csv
+  authorization:
+    name: Cookie
+    in: header
+    required: false
+    type: string
