@@ -86,7 +86,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/AmAgent'
+            $ref: '#/definitions/OAuth2Client'
       tags:
         - OAuth2 Client Agents
     put:
@@ -109,7 +109,7 @@ paths:
         '201':
           description: Success
           schema:
-            $ref: '#/definitions/AmAgent'
+            $ref: '#/definitions/OAuth2Client'
           headers:
             Location:
               type: string
@@ -137,335 +137,386 @@ paths:
 definitions:
   'OAuth2Client':
     type: object
+    title: OAuth2 CRUD JSON Object
     properties:
-      coreOAuth2ClientConfig:
-        type: object
-        properties:
-          agentgroup:
-            type: string
-            description: Add the client to a group to allow inheritance of property values from the group. <br>Changing the group will update inherited property values. <br>Remove the group by selecting the name and pressing <code>BACKSPACE</code>. Inherited property values are copied to the client.
-            title: Group
-            x-propertyOrder: 100
-          status:
-            type: string
-            description: Status of the agent configuration.
-            title: Status
-            x-propertyOrder: 200
-          userpassword:
-            type: string
-            format: password
-            description: Client secret. Used when the client authenticates to OpenAM.
-            title: Client secret
-            x-propertyOrder: 23000
-          clientType:
-            type: string
-            description: 'Type of OAuth 2.0 client. Confidential clients can keep their password secret, and are typically web apps or other server-based clients. Public clients run the risk of exposing their password to a host or user agent, such as rich browser applications or desktop clients.'
-            title: Client type
-            x-propertyOrder: 23100
-          redirectionUris:
-            type: array
-            items:
-              type: string
-            description: 'Redirection URIs (optional for confidential clients). Complete URIs or URIs consisting of protocol + authority + path are registered so that the OAuth 2.0 provider can trust that tokens are sent to trusted entities. If multiple URI''s are registered, the client MUST specify the URI that the user should be redirected to following approval. May not contain a fragment (#).'
-            title: Redirection URIs
-            x-propertyOrder: 23200
-          scopes:
-            type: array
-            items:
-              type: string
-            description: 'Scope(s). Scopes are strings that are presented to the user for approval and included in tokens so that the protected resource may make decisions about what to give access to.<br><br>Scopes may be entered as simple strings or pipe separated strings representing the internal scope name, locale, and localized description; e.g. "read|en|Permission to view email messages in your account". Locale strings are in the format <code>language + "_" + country + "_" + variant</code>, e.g. en, en_GB, en_US_WIN. If the locale and pipe is omitted, the description is displayed to all users having undefined locales. e.g. "read|Permission to view email messages in your account". <i>NB</i> If the description is also omitted, nothing is displayed to all users, e.g. specifying "read|" would allow the scope "read" to be used by the client, but would not display it to the user when it was requested.'
-            title: Scope(s)
-            x-propertyOrder: 23300
-          defaultScopes:
-            type: array
-            items:
-              type: string
-            description: 'Default Scope(s). Scopes automatically given to tokens.<br><br>Default Scopes may be entered as simple strings or pipe separated strings representing the internal scope name, locale, and localized description; e.g. "read|en|Permission to view email messages in your account". Locale strings are in the format <code>language + "_" + country + "_" + variant</code>, e.g. en, en_GB, en_US_WIN. If the locale and pipe is omitted, the description is displayed to all users having undefined locales. e.g. "read|Permission to view email messages in your account". <i>NB</i> If the description is also omitted, nothing is displayed to all users, e.g. specifying "read|" would allow the scope "read" to be used by the client, but would not display it to the user when it was requested.'
-            title: Default Scope(s)
-            x-propertyOrder: 23700
-          clientName:
-            type: array
-            items:
-              type: string
-            description: This value is a readable name for this client.
-            title: Client Name
-            x-propertyOrder: 25300
-          authorizationCodeLifetime:
-            type: integer
-            format: int32
-            description: 'The time in seconds an authorization code is valid for. <i>NB</i> If this field is set to zero, Authorization Code Lifetime of the OAuth2 Provider is used instead of.'
-            title: Authorization Code Lifetime (seconds)
-            x-propertyOrder: 25800
-          refreshTokenLifetime:
-            type: integer
-            format: int32
-            description: 'The time in seconds a refresh token is valid for. <i>NB</i> If this field is set to zero, Refresh Token Lifetime of the OAuth2 Provider is used instead. If this field is set to -1, the token will never expire.'
-            title: Refresh Token Lifetime (seconds)
-            x-propertyOrder: 25900
-          accessTokenLifetime:
-            type: integer
-            format: int32
-            description: 'The time in seconds an access token is valid for. <i>NB</i> If this field is set to zero, Access Token Lifetime of the OAuth2 Provider is used instead of.'
-            title: Access Token Lifetime (seconds)
-            x-propertyOrder: 26000
-        title: Core
-        x-propertyOrder: 0
-      advancedOAuth2ClientConfig:
-        type: object
-        properties:
-          name:
-            type: array
-            items:
-              type: string
-            description: 'A client name that may be relevant to the resource owner when considering approval.<br><br>The name may be entered as a single string or as pipe separated strings for locale and localized name; e.g. "en|The ExampleCo Intranet". Locale strings are in the format <code>language + "_" + country + "_" + variant</code>, e.g. en, en_GB, en_US_WIN. If the locale is omitted, the name is displayed to all users having undefined locales. e.g. "The ExampleCo Intranet".'
-            title: Display name
-            x-propertyOrder: 23500
-          descriptions:
-            type: array
-            items:
-              type: string
-            description: 'A description of the client or other information that may be relevant to the resource owner when considering approval.<br><br>The description may be entered as a single string or as pipe separated strings for locale and localized name; e.g. "en|The company intranet is requesting the following access permission". Locale strings are in the format <code>language + "_" + country + "_" + variant</code>, e.g. en, en_GB, en_US_WIN. If the locale is omitted, the description is displayed to all users having undefined locales. e.g. "The company intranet is requesting the following access permission".'
-            title: Display description
-            x-propertyOrder: 23600
-          requestUris:
-            type: array
-            items:
-              type: string
-            description: Array of request_uri values that are pre-registered by the RP for use at the OP.<br><br>The entire Request URI MUST NOT exceed 512 ASCII characters. Otherwise the value will be ignored.
-            title: Request uris
-            x-propertyOrder: 23700
-          responseTypes:
-            type: array
-            items:
-              type: string
-            description: Response types this client will support and use.
-            title: Response Types
-            x-propertyOrder: 23800
-          contacts:
-            type: array
-            items:
-              type: string
-            description: Email addresses of users who can administrate this client.
-            title: Contacts
-            x-propertyOrder: 23900
-          tokenEndpointAuthMethod:
-            type: string
-            description: The authentication method with which a client authenticates to the authorization server at the token endpoint. The authentication method applies to OIDC requests with the openid scope.
-            title: Token Endpoint Authentication Method
-            x-propertyOrder: 24000
-          sectorIdentifierUri:
-            type: string
-            description: The Host component of this URL is used in the computation of pairwise Subject Identifiers.
-            title: Sector Identifier URI
-            x-propertyOrder: 24300
-          subjectType:
-            type: string
-            description: The subject type added to responses for this client.
-            title: Subject Type
-            x-propertyOrder: 24400
-          updateAccessToken:
-            type: string
-            description: The access token used to update the client.
-            title: Access Token
-            x-propertyOrder: 25100
-          isConsentImplied:
-            type: boolean
-            description: 'When enabled, the resource owner will not be asked for consent during authorization flows. The OAuth2 Provider must be configured to allow clients to skip consent.'
-            title: Implied consent
-            x-propertyOrder: 26200
-          mixUpMitigation:
-            type: boolean
-            description: 'Enables OAuth 2.0 mix-up mitigation on the authorization server side.<br><br>Enable this setting only if this OAuth 2.0 client supports the <a href="https://tools.ietf.org/html/draft-ietf-oauth-mix-up-mitigation-01">OAuth 2.0 Mix-Up Mitigation draft</a>, otherwise OpenAM will fail to validate access token requests received from this client.'
-            title: OAuth 2.0 Mix-Up Mitigation enabled
-            x-propertyOrder: 26300
-        title: Advanced
-        x-propertyOrder: 1
-      coreOpenIDClientConfig:
-        type: object
-        properties:
-          claims:
-            type: array
-            items:
-              type: string
-            description: 'List of claim name translations, which will override those specified for the AS. Claims are values that are presented to the user to inform them what data is being made available to the Client.<br><br>Claims may be entered as simple strings or pipe separated strings representing the internal claim name, locale, and localized description; e.g. "name|en|Your full name". Locale strings are in the format <code>language + "_" + country + "_" + variant</code>, e.g. en, en_GB, en_US_WIN. If the locale and pipe is omitted, the description is displayed to all users having undefined locales. e.g. "name|Your full name". <i>NB</i> If the description is also omitted, nothing is displayed to all users, e.g. specifying "name|" would allow the claim "name" to be used by the client, but would not display it to the user when it was requested.<p>If a value is not given here, the value will be computed from the OAuth 2 Provider settings.</p>'
-            title: Claim(s)
-            x-propertyOrder: 23400
-          postLogoutRedirectUri:
-            type: array
-            items:
-              type: string
-            description: URIs that can be redirected to after the client logout process.
-            title: Post Logout Redirect URIs
-            x-propertyOrder: 25000
-          clientSessionUri:
-            type: string
-            description: This is the URI that will be used to check messages sent to the session management endpoints. This URI must match the origin of the message
-            title: Client Session URI
-            x-propertyOrder: 25200
-          defaultMaxAge:
-            type: integer
-            format: int32
-            description: Minimum value 1. Sets the maximum length of time in seconds a session may be active after the authorization service has succeeded before the user must actively re-authenticate.
-            title: Default Max Age
-            x-propertyOrder: 25500
-          defaultMaxAgeEnabled:
-            type: boolean
-            description: Whether or not the default max age is enforced.
-            title: Default Max Age Enabled
-            x-propertyOrder: 25600
-          jwtTokenLifetime:
-            type: integer
-            format: int32
-            description: 'The time in seconds a JWT is valid for. <i>NB</i> If this field is set to zero, JWT Token Lifetime of the OAuth2 Provider is used instead of.'
-            title: OpenID Connect JWT Token Lifetime (seconds)
-            x-propertyOrder: 26100
-        title: OpenID Connect
-        x-propertyOrder: 2
+      _id:
+        type: string
+      _rev:
+        type: string
       signEncOAuth2ClientConfig:
         type: object
         properties:
-          jwksUri:
-            type: string
-            description: The uri that contains the client's public keys in Json Web Key format.
-            title: Json Web Key URI
-            x-propertyOrder: 24100
-          jwksCacheTimeout:
-            type: integer
-            format: int32
-            description: 'To avoid loading the JWKS URI content for every token encryption, the JWKS content is cached. This timeout defines the maximum of time the JWKS URI content can be cached before being refreshed.'
-            title: JWKs URI content cache timeout in ms
-            x-propertyOrder: 24110
-          jwkStoreCacheMissCacheTime:
-            type: integer
-            format: int32
-            description: 'To avoid loading the JWKS URI content for every token signature verification, especially when the kid is not in the jwks content already cached, the JWKS content will be cache for a minimum period of time. This cache miss cache time defines the minimum of time the JWKS URI content is cache.'
-            title: JWKs URI content cache miss cache time
-            x-propertyOrder: 24120
           tokenEndpointAuthSigningAlgorithm:
-            type: string
-            description: 'The JWS algorithm that MUST be used for signing the JWT used to authenticate the Client at the Token Endpointfor the private_key_jwt and client_secret_jwt authentication methods. All Token Requests using these authentication methods from this Client MUST be rejected, if the JWT is not signed with this algorithm.'
-            title: Token Endpoint Authentication Signing Algorithm
-            x-propertyOrder: 24130
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: string
           jwkSet:
-            type: string
-            description: Raw JSON Web Key value containing the client's public keys.
-            title: Json Web Key
-            x-propertyOrder: 24200
-          idTokenSignedResponseAlg:
-            type: string
-            description: Algorithm the ID Token for this client must be signed with.
-            title: ID Token Signing Algorithm
-            x-propertyOrder: 24500
-          idTokenEncryptionEnabled:
-            type: boolean
-            description: Select to enable ID token encryption.
-            title: Enable ID Token Encryption
-            x-propertyOrder: 24600
-          idTokenEncryptionAlgorithm:
-            type: string
-            description: Algorithm the ID Token for this client must be encrypted with.
-            title: ID Token Encryption Algorithm
-            x-propertyOrder: 24700
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: object
+          jwksCacheTimeout:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: integer
           idTokenEncryptionMethod:
-            type: string
-            description: Encryption method the ID Token for this client must be encrypted with.
-            title: ID Token Encryption Method
-            x-propertyOrder: 24800
-          idTokenPublicEncryptionKey:
-            type: string
-            description: A Base64 encoded public key for encrypting ID Tokens.
-            title: Client ID Token Public Encryption Key
-            x-propertyOrder: 24900
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: string
           clientJwtPublicKey:
-            type: string
-            description: 'A Base64 encoded X509 certificate, containing the public key, represented as a UTF-8 PEM file, of the key pair for signing the Client Bearer JWT.'
-            title: Client JWT Bearer Public Key
-            x-propertyOrder: 25400
-          publicKeyLocation:
-            type: string
-            description: 'Select the public key for this client to come from either the jwks_uri, manual jwks or X509 field.'
-            title: Public key selector
-            x-propertyOrder: 25700
-          userinfoResponseFormat:
-            type: string
-            description: 'The user info endpoint offers different output format. See http://openid.net/specs/openid-connect-core-1_0.html#UserInfoResponse'
-            title: User info response format.
-            x-propertyOrder: 27100
-          userinfoSignedResponseAlg:
-            type: string
-            description: 'JWS algorithm for signing UserInfo Responses. If this is specified, the response will be JWT <a href="https://tools.ietf.org/html/rfc7519">JWT</a> serialized, and signed using JWS. The default, if omitted, is for the UserInfo Response to return the Claims as a UTF-8 encoded JSON object using the application/json content-type.'
-            title: User info signed response algorithm
-            x-propertyOrder: 27200
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: object
+          idTokenSignedResponseAlg:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: string
           userinfoEncryptedResponseAlg:
-            type: string
-            description: 'JWE algorithm for encrypting UserInfo Responses. If both signing and encryption are requested, the response will be signed then encrypted, with the result being a Nested JWT. The default, if omitted, is that no encryption is performed.'
-            title: User info encrypted response algorithm
-            x-propertyOrder: 27300
-          userinfoEncryptedResponseEncryptionAlgorithm:
-            type: string
-            description: 'JWE enc algorithm for encrypting UserInfo Responses. If userinfo encrypted response algorithm is specified, the default for this value is A128CBC-HS256. When user info encrypted response encryption is included, user info encrypted response algorithm MUST also be provided.<br><br>OpenAM supports the following token encryption algorithms:<ul><li><code>A128GCM</code>, <code>A192GCM</code>, and <code>A256GCM</code> - AES in Galois Counter Mode (GCM) authenticated encryption mode.</li><li><code>A128CBC-HS256</code>, <code>A192CBC-HS384</code>, and <code>A256CBC-HS512</code> - AES encryption in CBC mode, with HMAC-SHA-2 for integrity.</li></ul>'
-            title: User info encrypted response encryption algorithm
-            x-propertyOrder: 27400
-          requestParameterSignedAlg:
-            type: string
-            description: JWS algorithm for signing the request parameter.
-            title: Request parameter signing algorithm
-            x-propertyOrder: 27500
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: object
+          userinfoSignedResponseAlg:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: object
           requestParameterEncryptedAlg:
-            type: string
-            description: JWE algorithm for encrypting the request parameter.
-            title: Request parameter encryption algorithm
-            x-propertyOrder: 27600
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: object
+          requestParameterSignedAlg:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: object
+          userinfoResponseFormat:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: string
+          idTokenEncryptionEnabled:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: boolean
+          idTokenPublicEncryptionKey:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: object
+          jwksUri:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: string
+          idTokenEncryptionAlgorithm:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: string
           requestParameterEncryptedEncryptionAlgorithm:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: string
+          userinfoEncryptedResponseEncryptionAlgorithm:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: string
+          jwkStoreCacheMissCacheTime:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: integer
+          publicKeyLocation:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: string
+      advancedOAuth2ClientConfig:
+        type: object
+        properties:
+          tokenEndpointAuthMethod:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: string
+          sectorIdentifierUri:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: object
+          responseTypes:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: array
+                items:
+                  type: string
+          isConsentImplied:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: boolean
+          contacts:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: array
+                items:
+                  type: string
+          subjectType:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: string
+          descriptions:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: array
+                items:
+                  type: string
+          updateAccessToken:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: object
+          requestUris:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: array
+                items:
+                  type: string
+          name:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: array
+                items:
+                  type: string
+          mixUpMitigation:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: boolean
+      coreOAuth2ClientConfig:
+        type: object
+        properties:
+          userpassword:
             type: string
-            description: 'JWE enc algorithm for encrypting the request parameter.<br><br>OpenAM supports the following token encryption algorithms:<ul><li><code>A128GCM</code>, <code>A192GCM</code>, and <code>A256GCM</code> - AES in Galois Counter Mode (GCM) authenticated encryption mode.</li><li><code>A128CBC-HS256</code>, <code>A192CBC-HS384</code>, and <code>A256CBC-HS512</code> - AES encryption in CBC mode, with HMAC-SHA-2 for integrity.</li></ul>'
-            title: Request parameter encryption method
-            x-propertyOrder: 27700
-        title: Signing and Encryption
-        x-propertyOrder: 3
+          agentgroup:
+            type: object
+          clientType:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: string
+          defaultScopes:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: array
+                items:
+                  type: string
+          clientName:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: array
+                items:
+                  type: string
+          status:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: string
+          redirectionUris:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: array
+                items:
+                  type: string
+          accessTokenLifetime:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: integer
+          scopes:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: array
+                items:
+                  type: string
+          authorizationCodeLifetime:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: integer
+          refreshTokenLifetime:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: integer
+      coreOpenIDClientConfig:
+        type: object
+        properties:
+          clientSessionUri:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: object
+          jwtTokenLifetime:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: integer
+          claims:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: array
+                items:
+                  type: string
+          defaultMaxAge:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: integer
+          postLogoutRedirectUri:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: array
+                items:
+                  type: string
+          defaultMaxAgeEnabled:
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: boolean
       coreUmaClientConfig:
         type: object
         properties:
           claimsRedirectionUris:
-            type: array
-            items:
-              type: string
-            description: 'Redirection URIs for returning to the client from UMA claims collection (not yet supported). If multiple URIs are registered, the client MUST specify the URI that the user should be redirected to following approval. May not contain a fragment (#).'
-            title: Claims Redirection URIs
-            x-propertyOrder: 23200
-        title: UMA
-        x-propertyOrder: 4
-  'OAuth2ClientsResultSet':
-    type: object
-    properties:
-      result:
-        type: array
-        items:
-          $ref: '#/definitions/OAuth2Client'
-        description: Array of matching items
-      resultCount:
-        type: integer
-        format: int32
-        default: 0
-        description: Count of individual result items
-      pagedResultsCookie:
-        type: string
-        description: Opaque cookie used by the server to keep track of the position in the search results
-      totalPagedResultsPolicy:
-        type: string
-        default: NONE
-        description: 'Either NONE, EXACT, or ESTIMATE. Indicates the accuracy of the result count'
-      totalPagedResults:
-        type: integer
-        format: int32
-        default: -1
-        description: Total count of individual items
-      remainingPagedResults:
-        type: integer
-        format: int32
-        default: -1
-        description: Count of individual items remaining
-    title: Query Response
+            type: object
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: array
+                items:
+                  type: string
+      _type:
+        type: object
+        properties:
+          _id:
+            type: string
+          name:
+            type: string
+          collection:
+            type: boolean
 parameters:
   _queryFilter:
     name: _queryFilter

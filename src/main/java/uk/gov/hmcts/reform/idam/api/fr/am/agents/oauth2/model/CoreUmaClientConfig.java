@@ -16,41 +16,31 @@ package uk.gov.hmcts.reform.idam.api.fr.am.agents.oauth2.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 /**
- * UMA
+ * OAuth2ClientCoreUmaClientConfig
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:59.013Z")
-public class UMA {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-09T15:43:26.593+01:00")
+public class CoreUmaClientConfig {
   @JsonProperty("claimsRedirectionUris")
-  private List<String> claimsRedirectionUris = null;
+  private ConfigResponseTypes claimsRedirectionUris = null;
 
-  public UMA claimsRedirectionUris(List<String> claimsRedirectionUris) {
+  public CoreUmaClientConfig claimsRedirectionUris(ConfigResponseTypes claimsRedirectionUris) {
     this.claimsRedirectionUris = claimsRedirectionUris;
     return this;
   }
 
-  public UMA addClaimsRedirectionUrisItem(String claimsRedirectionUrisItem) {
-    if (this.claimsRedirectionUris == null) {
-      this.claimsRedirectionUris = new ArrayList<>();
-    }
-    this.claimsRedirectionUris.add(claimsRedirectionUrisItem);
-    return this;
-  }
-
    /**
-   * Redirection URIs for returning to the client from UMA claims collection (not yet supported). If multiple URIs are registered, the client MUST specify the URI that the user should be redirected to following approval. May not contain a fragment (#).
+   * Get claimsRedirectionUris
    * @return claimsRedirectionUris
   **/
-  @ApiModelProperty(value = "Redirection URIs for returning to the client from UMA claims collection (not yet supported). If multiple URIs are registered, the client MUST specify the URI that the user should be redirected to following approval. May not contain a fragment (#).")
-  public List<String> getClaimsRedirectionUris() {
+  @ApiModelProperty(value = "")
+  public ConfigResponseTypes getClaimsRedirectionUris() {
     return claimsRedirectionUris;
   }
 
-  public void setClaimsRedirectionUris(List<String> claimsRedirectionUris) {
+  public void setClaimsRedirectionUris(ConfigResponseTypes claimsRedirectionUris) {
     this.claimsRedirectionUris = claimsRedirectionUris;
   }
 
@@ -63,8 +53,8 @@ public class UMA {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UMA UMA = (UMA) o;
-    return Objects.equals(this.claimsRedirectionUris, UMA.claimsRedirectionUris);
+    CoreUmaClientConfig oauth2ClientCoreUmaClientConfig = (CoreUmaClientConfig) o;
+    return Objects.equals(this.claimsRedirectionUris, oauth2ClientCoreUmaClientConfig.claimsRedirectionUris);
   }
 
   @Override
@@ -76,8 +66,8 @@ public class UMA {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UMA {\n");
-    
+    sb.append("class OAuth2ClientCoreUmaClientConfig {\n");
+
     sb.append("    claimsRedirectionUris: ").append(toIndentedString(claimsRedirectionUris)).append("\n");
     sb.append("}");
     return sb.toString();

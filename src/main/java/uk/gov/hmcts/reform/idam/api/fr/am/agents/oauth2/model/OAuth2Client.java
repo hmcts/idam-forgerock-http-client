@@ -21,78 +21,69 @@ import java.util.Objects;
 /**
  * OAuth2Client
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:59.013Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-09T15:43:26.593+01:00")
 public class OAuth2Client {
-  @JsonProperty("coreOAuth2ClientConfig")
-  private Core coreOAuth2ClientConfig = null;
+  @JsonProperty("_id")
+  private String id = null;
 
-  @JsonProperty("advancedOAuth2ClientConfig")
-  private Advanced advancedOAuth2ClientConfig = null;
-
-  @JsonProperty("coreOpenIDClientConfig")
-  private OpenIDConnect coreOpenIDClientConfig = null;
+  @JsonProperty("_rev")
+  private String rev = null;
 
   @JsonProperty("signEncOAuth2ClientConfig")
-  private SigningAndEncryption signEncOAuth2ClientConfig = null;
+  private SignEncOAuth2ClientConfig signEncOAuth2ClientConfig = null;
+
+  @JsonProperty("advancedOAuth2ClientConfig")
+  private AdvancedOAuth2ClientConfig advancedOAuth2ClientConfig = null;
+
+  @JsonProperty("coreOAuth2ClientConfig")
+  private CoreOAuth2ClientConfig coreOAuth2ClientConfig = null;
+
+  @JsonProperty("coreOpenIDClientConfig")
+  private CoreOpenIDClientConfig coreOpenIDClientConfig = null;
 
   @JsonProperty("coreUmaClientConfig")
-  private UMA coreUmaClientConfig = null;
+  private CoreUmaClientConfig coreUmaClientConfig = null;
 
-  public OAuth2Client coreOAuth2ClientConfig(Core coreOAuth2ClientConfig) {
-    this.coreOAuth2ClientConfig = coreOAuth2ClientConfig;
+  @JsonProperty("_type")
+  private OAuth2ClientType type = null;
+
+  public OAuth2Client id(String id) {
+    this.id = id;
     return this;
   }
 
    /**
-   * Get coreOAuth2ClientConfig
-   * @return coreOAuth2ClientConfig
+   * Get id
+   * @return id
   **/
   @ApiModelProperty(value = "")
-  public Core getCoreOAuth2ClientConfig() {
-    return coreOAuth2ClientConfig;
+  public String getId() {
+    return id;
   }
 
-  public void setCoreOAuth2ClientConfig(Core coreOAuth2ClientConfig) {
-    this.coreOAuth2ClientConfig = coreOAuth2ClientConfig;
+  public void setId(String id) {
+    this.id = id;
   }
 
-  public OAuth2Client advancedOAuth2ClientConfig(Advanced advancedOAuth2ClientConfig) {
-    this.advancedOAuth2ClientConfig = advancedOAuth2ClientConfig;
+  public OAuth2Client rev(String rev) {
+    this.rev = rev;
     return this;
   }
 
    /**
-   * Get advancedOAuth2ClientConfig
-   * @return advancedOAuth2ClientConfig
+   * Get rev
+   * @return rev
   **/
   @ApiModelProperty(value = "")
-  public Advanced getAdvancedOAuth2ClientConfig() {
-    return advancedOAuth2ClientConfig;
+  public String getRev() {
+    return rev;
   }
 
-  public void setAdvancedOAuth2ClientConfig(Advanced advancedOAuth2ClientConfig) {
-    this.advancedOAuth2ClientConfig = advancedOAuth2ClientConfig;
+  public void setRev(String rev) {
+    this.rev = rev;
   }
 
-  public OAuth2Client coreOpenIDClientConfig(OpenIDConnect coreOpenIDClientConfig) {
-    this.coreOpenIDClientConfig = coreOpenIDClientConfig;
-    return this;
-  }
-
-   /**
-   * Get coreOpenIDClientConfig
-   * @return coreOpenIDClientConfig
-  **/
-  @ApiModelProperty(value = "")
-  public OpenIDConnect getCoreOpenIDClientConfig() {
-    return coreOpenIDClientConfig;
-  }
-
-  public void setCoreOpenIDClientConfig(OpenIDConnect coreOpenIDClientConfig) {
-    this.coreOpenIDClientConfig = coreOpenIDClientConfig;
-  }
-
-  public OAuth2Client signEncOAuth2ClientConfig(SigningAndEncryption signEncOAuth2ClientConfig) {
+  public OAuth2Client signEncOAuth2ClientConfig(SignEncOAuth2ClientConfig signEncOAuth2ClientConfig) {
     this.signEncOAuth2ClientConfig = signEncOAuth2ClientConfig;
     return this;
   }
@@ -102,15 +93,69 @@ public class OAuth2Client {
    * @return signEncOAuth2ClientConfig
   **/
   @ApiModelProperty(value = "")
-  public SigningAndEncryption getSignEncOAuth2ClientConfig() {
+  public SignEncOAuth2ClientConfig getSignEncOAuth2ClientConfig() {
     return signEncOAuth2ClientConfig;
   }
 
-  public void setSignEncOAuth2ClientConfig(SigningAndEncryption signEncOAuth2ClientConfig) {
+  public void setSignEncOAuth2ClientConfig(SignEncOAuth2ClientConfig signEncOAuth2ClientConfig) {
     this.signEncOAuth2ClientConfig = signEncOAuth2ClientConfig;
   }
 
-  public OAuth2Client coreUmaClientConfig(UMA coreUmaClientConfig) {
+  public OAuth2Client advancedOAuth2ClientConfig(AdvancedOAuth2ClientConfig advancedOAuth2ClientConfig) {
+    this.advancedOAuth2ClientConfig = advancedOAuth2ClientConfig;
+    return this;
+  }
+
+   /**
+   * Get advancedOAuth2ClientConfig
+   * @return advancedOAuth2ClientConfig
+  **/
+  @ApiModelProperty(value = "")
+  public AdvancedOAuth2ClientConfig getAdvancedOAuth2ClientConfig() {
+    return advancedOAuth2ClientConfig;
+  }
+
+  public void setAdvancedOAuth2ClientConfig(AdvancedOAuth2ClientConfig advancedOAuth2ClientConfig) {
+    this.advancedOAuth2ClientConfig = advancedOAuth2ClientConfig;
+  }
+
+  public OAuth2Client coreOAuth2ClientConfig(CoreOAuth2ClientConfig coreOAuth2ClientConfig) {
+    this.coreOAuth2ClientConfig = coreOAuth2ClientConfig;
+    return this;
+  }
+
+   /**
+   * Get coreOAuth2ClientConfig
+   * @return coreOAuth2ClientConfig
+  **/
+  @ApiModelProperty(value = "")
+  public CoreOAuth2ClientConfig getCoreOAuth2ClientConfig() {
+    return coreOAuth2ClientConfig;
+  }
+
+  public void setCoreOAuth2ClientConfig(CoreOAuth2ClientConfig coreOAuth2ClientConfig) {
+    this.coreOAuth2ClientConfig = coreOAuth2ClientConfig;
+  }
+
+  public OAuth2Client coreOpenIDClientConfig(CoreOpenIDClientConfig coreOpenIDClientConfig) {
+    this.coreOpenIDClientConfig = coreOpenIDClientConfig;
+    return this;
+  }
+
+   /**
+   * Get coreOpenIDClientConfig
+   * @return coreOpenIDClientConfig
+  **/
+  @ApiModelProperty(value = "")
+  public CoreOpenIDClientConfig getCoreOpenIDClientConfig() {
+    return coreOpenIDClientConfig;
+  }
+
+  public void setCoreOpenIDClientConfig(CoreOpenIDClientConfig coreOpenIDClientConfig) {
+    this.coreOpenIDClientConfig = coreOpenIDClientConfig;
+  }
+
+  public OAuth2Client coreUmaClientConfig(CoreUmaClientConfig coreUmaClientConfig) {
     this.coreUmaClientConfig = coreUmaClientConfig;
     return this;
   }
@@ -120,12 +165,30 @@ public class OAuth2Client {
    * @return coreUmaClientConfig
   **/
   @ApiModelProperty(value = "")
-  public UMA getCoreUmaClientConfig() {
+  public CoreUmaClientConfig getCoreUmaClientConfig() {
     return coreUmaClientConfig;
   }
 
-  public void setCoreUmaClientConfig(UMA coreUmaClientConfig) {
+  public void setCoreUmaClientConfig(CoreUmaClientConfig coreUmaClientConfig) {
     this.coreUmaClientConfig = coreUmaClientConfig;
+  }
+
+  public OAuth2Client type(OAuth2ClientType type) {
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @ApiModelProperty(value = "")
+  public OAuth2ClientType getType() {
+    return type;
+  }
+
+  public void setType(OAuth2ClientType type) {
+    this.type = type;
   }
 
 
@@ -138,16 +201,19 @@ public class OAuth2Client {
       return false;
     }
     OAuth2Client oauth2Client = (OAuth2Client) o;
-    return Objects.equals(this.coreOAuth2ClientConfig, oauth2Client.coreOAuth2ClientConfig) &&
-        Objects.equals(this.advancedOAuth2ClientConfig, oauth2Client.advancedOAuth2ClientConfig) &&
-        Objects.equals(this.coreOpenIDClientConfig, oauth2Client.coreOpenIDClientConfig) &&
+    return Objects.equals(this.id, oauth2Client.id) &&
+        Objects.equals(this.rev, oauth2Client.rev) &&
         Objects.equals(this.signEncOAuth2ClientConfig, oauth2Client.signEncOAuth2ClientConfig) &&
-        Objects.equals(this.coreUmaClientConfig, oauth2Client.coreUmaClientConfig);
+        Objects.equals(this.advancedOAuth2ClientConfig, oauth2Client.advancedOAuth2ClientConfig) &&
+        Objects.equals(this.coreOAuth2ClientConfig, oauth2Client.coreOAuth2ClientConfig) &&
+        Objects.equals(this.coreOpenIDClientConfig, oauth2Client.coreOpenIDClientConfig) &&
+        Objects.equals(this.coreUmaClientConfig, oauth2Client.coreUmaClientConfig) &&
+        Objects.equals(this.type, oauth2Client.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(coreOAuth2ClientConfig, advancedOAuth2ClientConfig, coreOpenIDClientConfig, signEncOAuth2ClientConfig, coreUmaClientConfig);
+    return Objects.hash(id, rev, signEncOAuth2ClientConfig, advancedOAuth2ClientConfig, coreOAuth2ClientConfig, coreOpenIDClientConfig, coreUmaClientConfig, type);
   }
 
 
@@ -155,12 +221,15 @@ public class OAuth2Client {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OAuth2Client {\n");
-    
-    sb.append("    coreOAuth2ClientConfig: ").append(toIndentedString(coreOAuth2ClientConfig)).append("\n");
-    sb.append("    advancedOAuth2ClientConfig: ").append(toIndentedString(advancedOAuth2ClientConfig)).append("\n");
-    sb.append("    coreOpenIDClientConfig: ").append(toIndentedString(coreOpenIDClientConfig)).append("\n");
+
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    rev: ").append(toIndentedString(rev)).append("\n");
     sb.append("    signEncOAuth2ClientConfig: ").append(toIndentedString(signEncOAuth2ClientConfig)).append("\n");
+    sb.append("    advancedOAuth2ClientConfig: ").append(toIndentedString(advancedOAuth2ClientConfig)).append("\n");
+    sb.append("    coreOAuth2ClientConfig: ").append(toIndentedString(coreOAuth2ClientConfig)).append("\n");
+    sb.append("    coreOpenIDClientConfig: ").append(toIndentedString(coreOpenIDClientConfig)).append("\n");
     sb.append("    coreUmaClientConfig: ").append(toIndentedString(coreUmaClientConfig)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }
