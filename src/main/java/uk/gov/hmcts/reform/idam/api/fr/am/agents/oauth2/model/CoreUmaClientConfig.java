@@ -24,9 +24,9 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-09T15:43:26.593+01:00")
 public class CoreUmaClientConfig {
   @JsonProperty("claimsRedirectionUris")
-  private ConfigResponseTypes claimsRedirectionUris = null;
+  private StringArrayValue claimsRedirectionUris = null;
 
-  public CoreUmaClientConfig claimsRedirectionUris(ConfigResponseTypes claimsRedirectionUris) {
+  public CoreUmaClientConfig claimsRedirectionUris(StringArrayValue claimsRedirectionUris) {
     this.claimsRedirectionUris = claimsRedirectionUris;
     return this;
   }
@@ -36,11 +36,11 @@ public class CoreUmaClientConfig {
    * @return claimsRedirectionUris
   **/
   @ApiModelProperty(value = "")
-  public ConfigResponseTypes getClaimsRedirectionUris() {
+  public StringArrayValue getClaimsRedirectionUris() {
     return claimsRedirectionUris;
   }
 
-  public void setClaimsRedirectionUris(ConfigResponseTypes claimsRedirectionUris) {
+  public void setClaimsRedirectionUris(StringArrayValue claimsRedirectionUris) {
     this.claimsRedirectionUris = claimsRedirectionUris;
   }
 

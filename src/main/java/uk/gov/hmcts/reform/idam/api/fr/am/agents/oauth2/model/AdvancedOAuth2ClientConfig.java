@@ -24,39 +24,39 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-09T15:43:26.593+01:00")
 public class AdvancedOAuth2ClientConfig {
   @JsonProperty("tokenEndpointAuthMethod")
-  private ConfigTokenEndpointAuthSigningAlgorithm tokenEndpointAuthMethod = null;
+  private StringValue tokenEndpointAuthMethod = null;
 
   @JsonProperty("sectorIdentifierUri")
-  private ConfigJwkSet sectorIdentifierUri = null;
+  private ObjectValue sectorIdentifierUri = null;
 
   @JsonProperty("responseTypes")
-  private ConfigResponseTypes responseTypes = null;
+  private StringArrayValue responseTypes = null;
 
   @JsonProperty("isConsentImplied")
-  private IdTokenEncryptionEnabled isConsentImplied = null;
+  private BooleanValue isConsentImplied = null;
 
   @JsonProperty("contacts")
-  private ConfigResponseTypes contacts = null;
+  private StringArrayValue contacts = null;
 
   @JsonProperty("subjectType")
-  private ConfigTokenEndpointAuthSigningAlgorithm subjectType = null;
+  private StringValue subjectType = null;
 
   @JsonProperty("descriptions")
-  private ConfigResponseTypes descriptions = null;
+  private StringArrayValue descriptions = null;
 
   @JsonProperty("updateAccessToken")
-  private ConfigJwkSet updateAccessToken = null;
+  private ObjectValue updateAccessToken = null;
 
   @JsonProperty("requestUris")
-  private ConfigResponseTypes requestUris = null;
+  private StringArrayValue requestUris = null;
 
   @JsonProperty("name")
-  private ConfigResponseTypes name = null;
+  private StringArrayValue name = null;
 
   @JsonProperty("mixUpMitigation")
-  private IdTokenEncryptionEnabled mixUpMitigation = null;
+  private BooleanValue mixUpMitigation = null;
 
-  public AdvancedOAuth2ClientConfig tokenEndpointAuthMethod(ConfigTokenEndpointAuthSigningAlgorithm tokenEndpointAuthMethod) {
+  public AdvancedOAuth2ClientConfig tokenEndpointAuthMethod(StringValue tokenEndpointAuthMethod) {
     this.tokenEndpointAuthMethod = tokenEndpointAuthMethod;
     return this;
   }
@@ -66,15 +66,15 @@ public class AdvancedOAuth2ClientConfig {
    * @return tokenEndpointAuthMethod
   **/
   @ApiModelProperty(value = "")
-  public ConfigTokenEndpointAuthSigningAlgorithm getTokenEndpointAuthMethod() {
+  public StringValue getTokenEndpointAuthMethod() {
     return tokenEndpointAuthMethod;
   }
 
-  public void setTokenEndpointAuthMethod(ConfigTokenEndpointAuthSigningAlgorithm tokenEndpointAuthMethod) {
+  public void setTokenEndpointAuthMethod(StringValue tokenEndpointAuthMethod) {
     this.tokenEndpointAuthMethod = tokenEndpointAuthMethod;
   }
 
-  public AdvancedOAuth2ClientConfig sectorIdentifierUri(ConfigJwkSet sectorIdentifierUri) {
+  public AdvancedOAuth2ClientConfig sectorIdentifierUri(ObjectValue sectorIdentifierUri) {
     this.sectorIdentifierUri = sectorIdentifierUri;
     return this;
   }
@@ -84,15 +84,15 @@ public class AdvancedOAuth2ClientConfig {
    * @return sectorIdentifierUri
   **/
   @ApiModelProperty(value = "")
-  public ConfigJwkSet getSectorIdentifierUri() {
+  public ObjectValue getSectorIdentifierUri() {
     return sectorIdentifierUri;
   }
 
-  public void setSectorIdentifierUri(ConfigJwkSet sectorIdentifierUri) {
+  public void setSectorIdentifierUri(ObjectValue sectorIdentifierUri) {
     this.sectorIdentifierUri = sectorIdentifierUri;
   }
 
-  public AdvancedOAuth2ClientConfig responseTypes(ConfigResponseTypes responseTypes) {
+  public AdvancedOAuth2ClientConfig responseTypes(StringArrayValue responseTypes) {
     this.responseTypes = responseTypes;
     return this;
   }
@@ -102,15 +102,15 @@ public class AdvancedOAuth2ClientConfig {
    * @return responseTypes
   **/
   @ApiModelProperty(value = "")
-  public ConfigResponseTypes getResponseTypes() {
+  public StringArrayValue getResponseTypes() {
     return responseTypes;
   }
 
-  public void setResponseTypes(ConfigResponseTypes responseTypes) {
+  public void setResponseTypes(StringArrayValue responseTypes) {
     this.responseTypes = responseTypes;
   }
 
-  public AdvancedOAuth2ClientConfig isConsentImplied(IdTokenEncryptionEnabled isConsentImplied) {
+  public AdvancedOAuth2ClientConfig isConsentImplied(BooleanValue isConsentImplied) {
     this.isConsentImplied = isConsentImplied;
     return this;
   }
@@ -120,15 +120,15 @@ public class AdvancedOAuth2ClientConfig {
    * @return isConsentImplied
   **/
   @ApiModelProperty(value = "")
-  public IdTokenEncryptionEnabled getIsConsentImplied() {
+  public BooleanValue getIsConsentImplied() {
     return isConsentImplied;
   }
 
-  public void setIsConsentImplied(IdTokenEncryptionEnabled isConsentImplied) {
+  public void setIsConsentImplied(BooleanValue isConsentImplied) {
     this.isConsentImplied = isConsentImplied;
   }
 
-  public AdvancedOAuth2ClientConfig contacts(ConfigResponseTypes contacts) {
+  public AdvancedOAuth2ClientConfig contacts(StringArrayValue contacts) {
     this.contacts = contacts;
     return this;
   }
@@ -138,15 +138,15 @@ public class AdvancedOAuth2ClientConfig {
    * @return contacts
   **/
   @ApiModelProperty(value = "")
-  public ConfigResponseTypes getContacts() {
+  public StringArrayValue getContacts() {
     return contacts;
   }
 
-  public void setContacts(ConfigResponseTypes contacts) {
+  public void setContacts(StringArrayValue contacts) {
     this.contacts = contacts;
   }
 
-  public AdvancedOAuth2ClientConfig subjectType(ConfigTokenEndpointAuthSigningAlgorithm subjectType) {
+  public AdvancedOAuth2ClientConfig subjectType(StringValue subjectType) {
     this.subjectType = subjectType;
     return this;
   }
@@ -156,15 +156,15 @@ public class AdvancedOAuth2ClientConfig {
    * @return subjectType
   **/
   @ApiModelProperty(value = "")
-  public ConfigTokenEndpointAuthSigningAlgorithm getSubjectType() {
+  public StringValue getSubjectType() {
     return subjectType;
   }
 
-  public void setSubjectType(ConfigTokenEndpointAuthSigningAlgorithm subjectType) {
+  public void setSubjectType(StringValue subjectType) {
     this.subjectType = subjectType;
   }
 
-  public AdvancedOAuth2ClientConfig descriptions(ConfigResponseTypes descriptions) {
+  public AdvancedOAuth2ClientConfig descriptions(StringArrayValue descriptions) {
     this.descriptions = descriptions;
     return this;
   }
@@ -174,15 +174,15 @@ public class AdvancedOAuth2ClientConfig {
    * @return descriptions
   **/
   @ApiModelProperty(value = "")
-  public ConfigResponseTypes getDescriptions() {
+  public StringArrayValue getDescriptions() {
     return descriptions;
   }
 
-  public void setDescriptions(ConfigResponseTypes descriptions) {
+  public void setDescriptions(StringArrayValue descriptions) {
     this.descriptions = descriptions;
   }
 
-  public AdvancedOAuth2ClientConfig updateAccessToken(ConfigJwkSet updateAccessToken) {
+  public AdvancedOAuth2ClientConfig updateAccessToken(ObjectValue updateAccessToken) {
     this.updateAccessToken = updateAccessToken;
     return this;
   }
@@ -192,15 +192,15 @@ public class AdvancedOAuth2ClientConfig {
    * @return updateAccessToken
   **/
   @ApiModelProperty(value = "")
-  public ConfigJwkSet getUpdateAccessToken() {
+  public ObjectValue getUpdateAccessToken() {
     return updateAccessToken;
   }
 
-  public void setUpdateAccessToken(ConfigJwkSet updateAccessToken) {
+  public void setUpdateAccessToken(ObjectValue updateAccessToken) {
     this.updateAccessToken = updateAccessToken;
   }
 
-  public AdvancedOAuth2ClientConfig requestUris(ConfigResponseTypes requestUris) {
+  public AdvancedOAuth2ClientConfig requestUris(StringArrayValue requestUris) {
     this.requestUris = requestUris;
     return this;
   }
@@ -210,15 +210,15 @@ public class AdvancedOAuth2ClientConfig {
    * @return requestUris
   **/
   @ApiModelProperty(value = "")
-  public ConfigResponseTypes getRequestUris() {
+  public StringArrayValue getRequestUris() {
     return requestUris;
   }
 
-  public void setRequestUris(ConfigResponseTypes requestUris) {
+  public void setRequestUris(StringArrayValue requestUris) {
     this.requestUris = requestUris;
   }
 
-  public AdvancedOAuth2ClientConfig name(ConfigResponseTypes name) {
+  public AdvancedOAuth2ClientConfig name(StringArrayValue name) {
     this.name = name;
     return this;
   }
@@ -228,15 +228,15 @@ public class AdvancedOAuth2ClientConfig {
    * @return name
   **/
   @ApiModelProperty(value = "")
-  public ConfigResponseTypes getName() {
+  public StringArrayValue getName() {
     return name;
   }
 
-  public void setName(ConfigResponseTypes name) {
+  public void setName(StringArrayValue name) {
     this.name = name;
   }
 
-  public AdvancedOAuth2ClientConfig mixUpMitigation(IdTokenEncryptionEnabled mixUpMitigation) {
+  public AdvancedOAuth2ClientConfig mixUpMitigation(BooleanValue mixUpMitigation) {
     this.mixUpMitigation = mixUpMitigation;
     return this;
   }
@@ -246,11 +246,11 @@ public class AdvancedOAuth2ClientConfig {
    * @return mixUpMitigation
   **/
   @ApiModelProperty(value = "")
-  public IdTokenEncryptionEnabled getMixUpMitigation() {
+  public BooleanValue getMixUpMitigation() {
     return mixUpMitigation;
   }
 
-  public void setMixUpMitigation(IdTokenEncryptionEnabled mixUpMitigation) {
+  public void setMixUpMitigation(BooleanValue mixUpMitigation) {
     this.mixUpMitigation = mixUpMitigation;
   }
 

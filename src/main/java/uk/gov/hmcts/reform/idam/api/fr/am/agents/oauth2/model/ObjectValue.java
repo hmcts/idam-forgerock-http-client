@@ -19,17 +19,17 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 
 /**
- * OAuth2ClientSignEncOAuth2ClientConfigTokenEndpointAuthSigningAlgorithm
+ * OAuth2ClientSignEncOAuth2ClientConfigJwkSet
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-09T15:43:26.593+01:00")
-public class ConfigTokenEndpointAuthSigningAlgorithm {
+public class ObjectValue {
   @JsonProperty("inherited")
   private Boolean inherited = null;
 
   @JsonProperty("value")
-  private String value = null;
+  private Object value = null;
 
-  public ConfigTokenEndpointAuthSigningAlgorithm inherited(Boolean inherited) {
+  public ObjectValue inherited(Boolean inherited) {
     this.inherited = inherited;
     return this;
   }
@@ -47,7 +47,7 @@ public class ConfigTokenEndpointAuthSigningAlgorithm {
     this.inherited = inherited;
   }
 
-  public ConfigTokenEndpointAuthSigningAlgorithm value(String value) {
+  public ObjectValue value(Object value) {
     this.value = value;
     return this;
   }
@@ -57,11 +57,11 @@ public class ConfigTokenEndpointAuthSigningAlgorithm {
    * @return value
   **/
   @ApiModelProperty(value = "")
-  public String getValue() {
+  public Object getValue() {
     return value;
   }
 
-  public void setValue(String value) {
+  public void setValue(Object value) {
     this.value = value;
   }
 
@@ -74,9 +74,9 @@ public class ConfigTokenEndpointAuthSigningAlgorithm {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ConfigTokenEndpointAuthSigningAlgorithm oauth2ClientSignEncOAuth2ClientConfigTokenEndpointAuthSigningAlgorithm = (ConfigTokenEndpointAuthSigningAlgorithm) o;
-    return Objects.equals(this.inherited, oauth2ClientSignEncOAuth2ClientConfigTokenEndpointAuthSigningAlgorithm.inherited) &&
-        Objects.equals(this.value, oauth2ClientSignEncOAuth2ClientConfigTokenEndpointAuthSigningAlgorithm.value);
+    ObjectValue oauth2ClientSignEncOAuth2ClientConfigJwkSet = (ObjectValue) o;
+    return Objects.equals(this.inherited, oauth2ClientSignEncOAuth2ClientConfigJwkSet.inherited) &&
+        Objects.equals(this.value, oauth2ClientSignEncOAuth2ClientConfigJwkSet.value);
   }
 
   @Override
@@ -88,7 +88,7 @@ public class ConfigTokenEndpointAuthSigningAlgorithm {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class OAuth2ClientSignEncOAuth2ClientConfigTokenEndpointAuthSigningAlgorithm {\n");
+    sb.append("class OAuth2ClientSignEncOAuth2ClientConfigJwkSet {\n");
 
     sb.append("    inherited: ").append(toIndentedString(inherited)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");

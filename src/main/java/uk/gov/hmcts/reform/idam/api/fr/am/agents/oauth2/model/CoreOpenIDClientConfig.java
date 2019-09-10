@@ -24,24 +24,24 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-09T15:43:26.593+01:00")
 public class CoreOpenIDClientConfig {
   @JsonProperty("clientSessionUri")
-  private ConfigJwkSet clientSessionUri = null;
+  private ObjectValue clientSessionUri = null;
 
   @JsonProperty("jwtTokenLifetime")
-  private ConfigJwksCacheTimeout jwtTokenLifetime = null;
+  private IntegerValue jwtTokenLifetime = null;
 
   @JsonProperty("claims")
-  private ConfigResponseTypes claims = null;
+  private StringArrayValue claims = null;
 
   @JsonProperty("defaultMaxAge")
-  private ConfigJwksCacheTimeout defaultMaxAge = null;
+  private IntegerValue defaultMaxAge = null;
 
   @JsonProperty("postLogoutRedirectUri")
-  private ConfigResponseTypes postLogoutRedirectUri = null;
+  private StringArrayValue postLogoutRedirectUri = null;
 
   @JsonProperty("defaultMaxAgeEnabled")
-  private IdTokenEncryptionEnabled defaultMaxAgeEnabled = null;
+  private BooleanValue defaultMaxAgeEnabled = null;
 
-  public CoreOpenIDClientConfig clientSessionUri(ConfigJwkSet clientSessionUri) {
+  public CoreOpenIDClientConfig clientSessionUri(ObjectValue clientSessionUri) {
     this.clientSessionUri = clientSessionUri;
     return this;
   }
@@ -51,15 +51,15 @@ public class CoreOpenIDClientConfig {
    * @return clientSessionUri
   **/
   @ApiModelProperty(value = "")
-  public ConfigJwkSet getClientSessionUri() {
+  public ObjectValue getClientSessionUri() {
     return clientSessionUri;
   }
 
-  public void setClientSessionUri(ConfigJwkSet clientSessionUri) {
+  public void setClientSessionUri(ObjectValue clientSessionUri) {
     this.clientSessionUri = clientSessionUri;
   }
 
-  public CoreOpenIDClientConfig jwtTokenLifetime(ConfigJwksCacheTimeout jwtTokenLifetime) {
+  public CoreOpenIDClientConfig jwtTokenLifetime(IntegerValue jwtTokenLifetime) {
     this.jwtTokenLifetime = jwtTokenLifetime;
     return this;
   }
@@ -69,15 +69,15 @@ public class CoreOpenIDClientConfig {
    * @return jwtTokenLifetime
   **/
   @ApiModelProperty(value = "")
-  public ConfigJwksCacheTimeout getJwtTokenLifetime() {
+  public IntegerValue getJwtTokenLifetime() {
     return jwtTokenLifetime;
   }
 
-  public void setJwtTokenLifetime(ConfigJwksCacheTimeout jwtTokenLifetime) {
+  public void setJwtTokenLifetime(IntegerValue jwtTokenLifetime) {
     this.jwtTokenLifetime = jwtTokenLifetime;
   }
 
-  public CoreOpenIDClientConfig claims(ConfigResponseTypes claims) {
+  public CoreOpenIDClientConfig claims(StringArrayValue claims) {
     this.claims = claims;
     return this;
   }
@@ -87,15 +87,15 @@ public class CoreOpenIDClientConfig {
    * @return claims
   **/
   @ApiModelProperty(value = "")
-  public ConfigResponseTypes getClaims() {
+  public StringArrayValue getClaims() {
     return claims;
   }
 
-  public void setClaims(ConfigResponseTypes claims) {
+  public void setClaims(StringArrayValue claims) {
     this.claims = claims;
   }
 
-  public CoreOpenIDClientConfig defaultMaxAge(ConfigJwksCacheTimeout defaultMaxAge) {
+  public CoreOpenIDClientConfig defaultMaxAge(IntegerValue defaultMaxAge) {
     this.defaultMaxAge = defaultMaxAge;
     return this;
   }
@@ -105,15 +105,15 @@ public class CoreOpenIDClientConfig {
    * @return defaultMaxAge
   **/
   @ApiModelProperty(value = "")
-  public ConfigJwksCacheTimeout getDefaultMaxAge() {
+  public IntegerValue getDefaultMaxAge() {
     return defaultMaxAge;
   }
 
-  public void setDefaultMaxAge(ConfigJwksCacheTimeout defaultMaxAge) {
+  public void setDefaultMaxAge(IntegerValue defaultMaxAge) {
     this.defaultMaxAge = defaultMaxAge;
   }
 
-  public CoreOpenIDClientConfig postLogoutRedirectUri(ConfigResponseTypes postLogoutRedirectUri) {
+  public CoreOpenIDClientConfig postLogoutRedirectUri(StringArrayValue postLogoutRedirectUri) {
     this.postLogoutRedirectUri = postLogoutRedirectUri;
     return this;
   }
@@ -123,15 +123,15 @@ public class CoreOpenIDClientConfig {
    * @return postLogoutRedirectUri
   **/
   @ApiModelProperty(value = "")
-  public ConfigResponseTypes getPostLogoutRedirectUri() {
+  public StringArrayValue getPostLogoutRedirectUri() {
     return postLogoutRedirectUri;
   }
 
-  public void setPostLogoutRedirectUri(ConfigResponseTypes postLogoutRedirectUri) {
+  public void setPostLogoutRedirectUri(StringArrayValue postLogoutRedirectUri) {
     this.postLogoutRedirectUri = postLogoutRedirectUri;
   }
 
-  public CoreOpenIDClientConfig defaultMaxAgeEnabled(IdTokenEncryptionEnabled defaultMaxAgeEnabled) {
+  public CoreOpenIDClientConfig defaultMaxAgeEnabled(BooleanValue defaultMaxAgeEnabled) {
     this.defaultMaxAgeEnabled = defaultMaxAgeEnabled;
     return this;
   }
@@ -141,11 +141,11 @@ public class CoreOpenIDClientConfig {
    * @return defaultMaxAgeEnabled
   **/
   @ApiModelProperty(value = "")
-  public IdTokenEncryptionEnabled getDefaultMaxAgeEnabled() {
+  public BooleanValue getDefaultMaxAgeEnabled() {
     return defaultMaxAgeEnabled;
   }
 
-  public void setDefaultMaxAgeEnabled(IdTokenEncryptionEnabled defaultMaxAgeEnabled) {
+  public void setDefaultMaxAgeEnabled(BooleanValue defaultMaxAgeEnabled) {
     this.defaultMaxAgeEnabled = defaultMaxAgeEnabled;
   }
 

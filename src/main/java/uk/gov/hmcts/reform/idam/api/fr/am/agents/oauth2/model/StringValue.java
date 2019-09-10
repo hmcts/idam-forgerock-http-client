@@ -19,17 +19,17 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 
 /**
- * OAuth2ClientSignEncOAuth2ClientConfigJwkSet
+ * OAuth2ClientSignEncOAuth2ClientConfigTokenEndpointAuthSigningAlgorithm
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-09T15:43:26.593+01:00")
-public class ConfigJwkSet {
+public class StringValue {
   @JsonProperty("inherited")
   private Boolean inherited = null;
 
   @JsonProperty("value")
-  private Object value = null;
+  private String value = null;
 
-  public ConfigJwkSet inherited(Boolean inherited) {
+  public StringValue inherited(Boolean inherited) {
     this.inherited = inherited;
     return this;
   }
@@ -47,7 +47,7 @@ public class ConfigJwkSet {
     this.inherited = inherited;
   }
 
-  public ConfigJwkSet value(Object value) {
+  public StringValue value(String value) {
     this.value = value;
     return this;
   }
@@ -57,11 +57,11 @@ public class ConfigJwkSet {
    * @return value
   **/
   @ApiModelProperty(value = "")
-  public Object getValue() {
+  public String getValue() {
     return value;
   }
 
-  public void setValue(Object value) {
+  public void setValue(String value) {
     this.value = value;
   }
 
@@ -74,9 +74,9 @@ public class ConfigJwkSet {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ConfigJwkSet oauth2ClientSignEncOAuth2ClientConfigJwkSet = (ConfigJwkSet) o;
-    return Objects.equals(this.inherited, oauth2ClientSignEncOAuth2ClientConfigJwkSet.inherited) &&
-        Objects.equals(this.value, oauth2ClientSignEncOAuth2ClientConfigJwkSet.value);
+    StringValue oauth2ClientSignEncOAuth2ClientConfigTokenEndpointAuthSigningAlgorithm = (StringValue) o;
+    return Objects.equals(this.inherited, oauth2ClientSignEncOAuth2ClientConfigTokenEndpointAuthSigningAlgorithm.inherited) &&
+        Objects.equals(this.value, oauth2ClientSignEncOAuth2ClientConfigTokenEndpointAuthSigningAlgorithm.value);
   }
 
   @Override
@@ -88,7 +88,7 @@ public class ConfigJwkSet {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class OAuth2ClientSignEncOAuth2ClientConfigJwkSet {\n");
+    sb.append("class OAuth2ClientSignEncOAuth2ClientConfigTokenEndpointAuthSigningAlgorithm {\n");
 
     sb.append("    inherited: ").append(toIndentedString(inherited)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");

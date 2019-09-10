@@ -24,63 +24,63 @@ import java.util.Objects;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-09T15:43:26.593+01:00")
 public class SignEncOAuth2ClientConfig {
   @JsonProperty("tokenEndpointAuthSigningAlgorithm")
-  private ConfigTokenEndpointAuthSigningAlgorithm tokenEndpointAuthSigningAlgorithm = null;
+  private StringValue tokenEndpointAuthSigningAlgorithm = null;
 
   @JsonProperty("jwkSet")
-  private ConfigJwkSet jwkSet = null;
+  private ObjectValue jwkSet = null;
 
   @JsonProperty("jwksCacheTimeout")
-  private ConfigJwksCacheTimeout jwksCacheTimeout = null;
+  private IntegerValue jwksCacheTimeout = null;
 
   @JsonProperty("idTokenEncryptionMethod")
-  private ConfigTokenEndpointAuthSigningAlgorithm idTokenEncryptionMethod = null;
+  private StringValue idTokenEncryptionMethod = null;
 
   @JsonProperty("clientJwtPublicKey")
-  private ConfigJwkSet clientJwtPublicKey = null;
+  private ObjectValue clientJwtPublicKey = null;
 
   @JsonProperty("idTokenSignedResponseAlg")
-  private ConfigTokenEndpointAuthSigningAlgorithm idTokenSignedResponseAlg = null;
+  private StringValue idTokenSignedResponseAlg = null;
 
   @JsonProperty("userinfoEncryptedResponseAlg")
-  private ConfigJwkSet userinfoEncryptedResponseAlg = null;
+  private ObjectValue userinfoEncryptedResponseAlg = null;
 
   @JsonProperty("userinfoSignedResponseAlg")
-  private ConfigJwkSet userinfoSignedResponseAlg = null;
+  private ObjectValue userinfoSignedResponseAlg = null;
 
   @JsonProperty("requestParameterEncryptedAlg")
-  private ConfigJwkSet requestParameterEncryptedAlg = null;
+  private ObjectValue requestParameterEncryptedAlg = null;
 
   @JsonProperty("requestParameterSignedAlg")
-  private ConfigJwkSet requestParameterSignedAlg = null;
+  private ObjectValue requestParameterSignedAlg = null;
 
   @JsonProperty("userinfoResponseFormat")
-  private ConfigTokenEndpointAuthSigningAlgorithm userinfoResponseFormat = null;
+  private StringValue userinfoResponseFormat = null;
 
   @JsonProperty("idTokenEncryptionEnabled")
-  private IdTokenEncryptionEnabled idTokenEncryptionEnabled = null;
+  private BooleanValue idTokenEncryptionEnabled = null;
 
   @JsonProperty("idTokenPublicEncryptionKey")
-  private ConfigJwkSet idTokenPublicEncryptionKey = null;
+  private ObjectValue idTokenPublicEncryptionKey = null;
 
   @JsonProperty("jwksUri")
-  private ConfigTokenEndpointAuthSigningAlgorithm jwksUri = null;
+  private StringValue jwksUri = null;
 
   @JsonProperty("idTokenEncryptionAlgorithm")
-  private ConfigTokenEndpointAuthSigningAlgorithm idTokenEncryptionAlgorithm = null;
+  private StringValue idTokenEncryptionAlgorithm = null;
 
   @JsonProperty("requestParameterEncryptedEncryptionAlgorithm")
-  private ConfigTokenEndpointAuthSigningAlgorithm requestParameterEncryptedEncryptionAlgorithm = null;
+  private StringValue requestParameterEncryptedEncryptionAlgorithm = null;
 
   @JsonProperty("userinfoEncryptedResponseEncryptionAlgorithm")
-  private ConfigTokenEndpointAuthSigningAlgorithm userinfoEncryptedResponseEncryptionAlgorithm = null;
+  private StringValue userinfoEncryptedResponseEncryptionAlgorithm = null;
 
   @JsonProperty("jwkStoreCacheMissCacheTime")
-  private ConfigJwksCacheTimeout jwkStoreCacheMissCacheTime = null;
+  private IntegerValue jwkStoreCacheMissCacheTime = null;
 
   @JsonProperty("publicKeyLocation")
-  private ConfigTokenEndpointAuthSigningAlgorithm publicKeyLocation = null;
+  private StringValue publicKeyLocation = null;
 
-  public SignEncOAuth2ClientConfig tokenEndpointAuthSigningAlgorithm(ConfigTokenEndpointAuthSigningAlgorithm tokenEndpointAuthSigningAlgorithm) {
+  public SignEncOAuth2ClientConfig tokenEndpointAuthSigningAlgorithm(StringValue tokenEndpointAuthSigningAlgorithm) {
     this.tokenEndpointAuthSigningAlgorithm = tokenEndpointAuthSigningAlgorithm;
     return this;
   }
@@ -90,15 +90,15 @@ public class SignEncOAuth2ClientConfig {
    * @return tokenEndpointAuthSigningAlgorithm
   **/
   @ApiModelProperty(value = "")
-  public ConfigTokenEndpointAuthSigningAlgorithm getTokenEndpointAuthSigningAlgorithm() {
+  public StringValue getTokenEndpointAuthSigningAlgorithm() {
     return tokenEndpointAuthSigningAlgorithm;
   }
 
-  public void setTokenEndpointAuthSigningAlgorithm(ConfigTokenEndpointAuthSigningAlgorithm tokenEndpointAuthSigningAlgorithm) {
+  public void setTokenEndpointAuthSigningAlgorithm(StringValue tokenEndpointAuthSigningAlgorithm) {
     this.tokenEndpointAuthSigningAlgorithm = tokenEndpointAuthSigningAlgorithm;
   }
 
-  public SignEncOAuth2ClientConfig jwkSet(ConfigJwkSet jwkSet) {
+  public SignEncOAuth2ClientConfig jwkSet(ObjectValue jwkSet) {
     this.jwkSet = jwkSet;
     return this;
   }
@@ -108,15 +108,15 @@ public class SignEncOAuth2ClientConfig {
    * @return jwkSet
   **/
   @ApiModelProperty(value = "")
-  public ConfigJwkSet getJwkSet() {
+  public ObjectValue getJwkSet() {
     return jwkSet;
   }
 
-  public void setJwkSet(ConfigJwkSet jwkSet) {
+  public void setJwkSet(ObjectValue jwkSet) {
     this.jwkSet = jwkSet;
   }
 
-  public SignEncOAuth2ClientConfig jwksCacheTimeout(ConfigJwksCacheTimeout jwksCacheTimeout) {
+  public SignEncOAuth2ClientConfig jwksCacheTimeout(IntegerValue jwksCacheTimeout) {
     this.jwksCacheTimeout = jwksCacheTimeout;
     return this;
   }
@@ -126,15 +126,15 @@ public class SignEncOAuth2ClientConfig {
    * @return jwksCacheTimeout
   **/
   @ApiModelProperty(value = "")
-  public ConfigJwksCacheTimeout getJwksCacheTimeout() {
+  public IntegerValue getJwksCacheTimeout() {
     return jwksCacheTimeout;
   }
 
-  public void setJwksCacheTimeout(ConfigJwksCacheTimeout jwksCacheTimeout) {
+  public void setJwksCacheTimeout(IntegerValue jwksCacheTimeout) {
     this.jwksCacheTimeout = jwksCacheTimeout;
   }
 
-  public SignEncOAuth2ClientConfig idTokenEncryptionMethod(ConfigTokenEndpointAuthSigningAlgorithm idTokenEncryptionMethod) {
+  public SignEncOAuth2ClientConfig idTokenEncryptionMethod(StringValue idTokenEncryptionMethod) {
     this.idTokenEncryptionMethod = idTokenEncryptionMethod;
     return this;
   }
@@ -144,15 +144,15 @@ public class SignEncOAuth2ClientConfig {
    * @return idTokenEncryptionMethod
   **/
   @ApiModelProperty(value = "")
-  public ConfigTokenEndpointAuthSigningAlgorithm getIdTokenEncryptionMethod() {
+  public StringValue getIdTokenEncryptionMethod() {
     return idTokenEncryptionMethod;
   }
 
-  public void setIdTokenEncryptionMethod(ConfigTokenEndpointAuthSigningAlgorithm idTokenEncryptionMethod) {
+  public void setIdTokenEncryptionMethod(StringValue idTokenEncryptionMethod) {
     this.idTokenEncryptionMethod = idTokenEncryptionMethod;
   }
 
-  public SignEncOAuth2ClientConfig clientJwtPublicKey(ConfigJwkSet clientJwtPublicKey) {
+  public SignEncOAuth2ClientConfig clientJwtPublicKey(ObjectValue clientJwtPublicKey) {
     this.clientJwtPublicKey = clientJwtPublicKey;
     return this;
   }
@@ -162,15 +162,15 @@ public class SignEncOAuth2ClientConfig {
    * @return clientJwtPublicKey
   **/
   @ApiModelProperty(value = "")
-  public ConfigJwkSet getClientJwtPublicKey() {
+  public ObjectValue getClientJwtPublicKey() {
     return clientJwtPublicKey;
   }
 
-  public void setClientJwtPublicKey(ConfigJwkSet clientJwtPublicKey) {
+  public void setClientJwtPublicKey(ObjectValue clientJwtPublicKey) {
     this.clientJwtPublicKey = clientJwtPublicKey;
   }
 
-  public SignEncOAuth2ClientConfig idTokenSignedResponseAlg(ConfigTokenEndpointAuthSigningAlgorithm idTokenSignedResponseAlg) {
+  public SignEncOAuth2ClientConfig idTokenSignedResponseAlg(StringValue idTokenSignedResponseAlg) {
     this.idTokenSignedResponseAlg = idTokenSignedResponseAlg;
     return this;
   }
@@ -180,15 +180,15 @@ public class SignEncOAuth2ClientConfig {
    * @return idTokenSignedResponseAlg
   **/
   @ApiModelProperty(value = "")
-  public ConfigTokenEndpointAuthSigningAlgorithm getIdTokenSignedResponseAlg() {
+  public StringValue getIdTokenSignedResponseAlg() {
     return idTokenSignedResponseAlg;
   }
 
-  public void setIdTokenSignedResponseAlg(ConfigTokenEndpointAuthSigningAlgorithm idTokenSignedResponseAlg) {
+  public void setIdTokenSignedResponseAlg(StringValue idTokenSignedResponseAlg) {
     this.idTokenSignedResponseAlg = idTokenSignedResponseAlg;
   }
 
-  public SignEncOAuth2ClientConfig userinfoEncryptedResponseAlg(ConfigJwkSet userinfoEncryptedResponseAlg) {
+  public SignEncOAuth2ClientConfig userinfoEncryptedResponseAlg(ObjectValue userinfoEncryptedResponseAlg) {
     this.userinfoEncryptedResponseAlg = userinfoEncryptedResponseAlg;
     return this;
   }
@@ -198,15 +198,15 @@ public class SignEncOAuth2ClientConfig {
    * @return userinfoEncryptedResponseAlg
   **/
   @ApiModelProperty(value = "")
-  public ConfigJwkSet getUserinfoEncryptedResponseAlg() {
+  public ObjectValue getUserinfoEncryptedResponseAlg() {
     return userinfoEncryptedResponseAlg;
   }
 
-  public void setUserinfoEncryptedResponseAlg(ConfigJwkSet userinfoEncryptedResponseAlg) {
+  public void setUserinfoEncryptedResponseAlg(ObjectValue userinfoEncryptedResponseAlg) {
     this.userinfoEncryptedResponseAlg = userinfoEncryptedResponseAlg;
   }
 
-  public SignEncOAuth2ClientConfig userinfoSignedResponseAlg(ConfigJwkSet userinfoSignedResponseAlg) {
+  public SignEncOAuth2ClientConfig userinfoSignedResponseAlg(ObjectValue userinfoSignedResponseAlg) {
     this.userinfoSignedResponseAlg = userinfoSignedResponseAlg;
     return this;
   }
@@ -216,15 +216,15 @@ public class SignEncOAuth2ClientConfig {
    * @return userinfoSignedResponseAlg
   **/
   @ApiModelProperty(value = "")
-  public ConfigJwkSet getUserinfoSignedResponseAlg() {
+  public ObjectValue getUserinfoSignedResponseAlg() {
     return userinfoSignedResponseAlg;
   }
 
-  public void setUserinfoSignedResponseAlg(ConfigJwkSet userinfoSignedResponseAlg) {
+  public void setUserinfoSignedResponseAlg(ObjectValue userinfoSignedResponseAlg) {
     this.userinfoSignedResponseAlg = userinfoSignedResponseAlg;
   }
 
-  public SignEncOAuth2ClientConfig requestParameterEncryptedAlg(ConfigJwkSet requestParameterEncryptedAlg) {
+  public SignEncOAuth2ClientConfig requestParameterEncryptedAlg(ObjectValue requestParameterEncryptedAlg) {
     this.requestParameterEncryptedAlg = requestParameterEncryptedAlg;
     return this;
   }
@@ -234,15 +234,15 @@ public class SignEncOAuth2ClientConfig {
    * @return requestParameterEncryptedAlg
   **/
   @ApiModelProperty(value = "")
-  public ConfigJwkSet getRequestParameterEncryptedAlg() {
+  public ObjectValue getRequestParameterEncryptedAlg() {
     return requestParameterEncryptedAlg;
   }
 
-  public void setRequestParameterEncryptedAlg(ConfigJwkSet requestParameterEncryptedAlg) {
+  public void setRequestParameterEncryptedAlg(ObjectValue requestParameterEncryptedAlg) {
     this.requestParameterEncryptedAlg = requestParameterEncryptedAlg;
   }
 
-  public SignEncOAuth2ClientConfig requestParameterSignedAlg(ConfigJwkSet requestParameterSignedAlg) {
+  public SignEncOAuth2ClientConfig requestParameterSignedAlg(ObjectValue requestParameterSignedAlg) {
     this.requestParameterSignedAlg = requestParameterSignedAlg;
     return this;
   }
@@ -252,15 +252,15 @@ public class SignEncOAuth2ClientConfig {
    * @return requestParameterSignedAlg
   **/
   @ApiModelProperty(value = "")
-  public ConfigJwkSet getRequestParameterSignedAlg() {
+  public ObjectValue getRequestParameterSignedAlg() {
     return requestParameterSignedAlg;
   }
 
-  public void setRequestParameterSignedAlg(ConfigJwkSet requestParameterSignedAlg) {
+  public void setRequestParameterSignedAlg(ObjectValue requestParameterSignedAlg) {
     this.requestParameterSignedAlg = requestParameterSignedAlg;
   }
 
-  public SignEncOAuth2ClientConfig userinfoResponseFormat(ConfigTokenEndpointAuthSigningAlgorithm userinfoResponseFormat) {
+  public SignEncOAuth2ClientConfig userinfoResponseFormat(StringValue userinfoResponseFormat) {
     this.userinfoResponseFormat = userinfoResponseFormat;
     return this;
   }
@@ -270,15 +270,15 @@ public class SignEncOAuth2ClientConfig {
    * @return userinfoResponseFormat
   **/
   @ApiModelProperty(value = "")
-  public ConfigTokenEndpointAuthSigningAlgorithm getUserinfoResponseFormat() {
+  public StringValue getUserinfoResponseFormat() {
     return userinfoResponseFormat;
   }
 
-  public void setUserinfoResponseFormat(ConfigTokenEndpointAuthSigningAlgorithm userinfoResponseFormat) {
+  public void setUserinfoResponseFormat(StringValue userinfoResponseFormat) {
     this.userinfoResponseFormat = userinfoResponseFormat;
   }
 
-  public SignEncOAuth2ClientConfig idTokenEncryptionEnabled(IdTokenEncryptionEnabled idTokenEncryptionEnabled) {
+  public SignEncOAuth2ClientConfig idTokenEncryptionEnabled(BooleanValue idTokenEncryptionEnabled) {
     this.idTokenEncryptionEnabled = idTokenEncryptionEnabled;
     return this;
   }
@@ -288,15 +288,15 @@ public class SignEncOAuth2ClientConfig {
    * @return idTokenEncryptionEnabled
   **/
   @ApiModelProperty(value = "")
-  public IdTokenEncryptionEnabled getIdTokenEncryptionEnabled() {
+  public BooleanValue getIdTokenEncryptionEnabled() {
     return idTokenEncryptionEnabled;
   }
 
-  public void setIdTokenEncryptionEnabled(IdTokenEncryptionEnabled idTokenEncryptionEnabled) {
+  public void setIdTokenEncryptionEnabled(BooleanValue idTokenEncryptionEnabled) {
     this.idTokenEncryptionEnabled = idTokenEncryptionEnabled;
   }
 
-  public SignEncOAuth2ClientConfig idTokenPublicEncryptionKey(ConfigJwkSet idTokenPublicEncryptionKey) {
+  public SignEncOAuth2ClientConfig idTokenPublicEncryptionKey(ObjectValue idTokenPublicEncryptionKey) {
     this.idTokenPublicEncryptionKey = idTokenPublicEncryptionKey;
     return this;
   }
@@ -306,15 +306,15 @@ public class SignEncOAuth2ClientConfig {
    * @return idTokenPublicEncryptionKey
   **/
   @ApiModelProperty(value = "")
-  public ConfigJwkSet getIdTokenPublicEncryptionKey() {
+  public ObjectValue getIdTokenPublicEncryptionKey() {
     return idTokenPublicEncryptionKey;
   }
 
-  public void setIdTokenPublicEncryptionKey(ConfigJwkSet idTokenPublicEncryptionKey) {
+  public void setIdTokenPublicEncryptionKey(ObjectValue idTokenPublicEncryptionKey) {
     this.idTokenPublicEncryptionKey = idTokenPublicEncryptionKey;
   }
 
-  public SignEncOAuth2ClientConfig jwksUri(ConfigTokenEndpointAuthSigningAlgorithm jwksUri) {
+  public SignEncOAuth2ClientConfig jwksUri(StringValue jwksUri) {
     this.jwksUri = jwksUri;
     return this;
   }
@@ -324,15 +324,15 @@ public class SignEncOAuth2ClientConfig {
    * @return jwksUri
   **/
   @ApiModelProperty(value = "")
-  public ConfigTokenEndpointAuthSigningAlgorithm getJwksUri() {
+  public StringValue getJwksUri() {
     return jwksUri;
   }
 
-  public void setJwksUri(ConfigTokenEndpointAuthSigningAlgorithm jwksUri) {
+  public void setJwksUri(StringValue jwksUri) {
     this.jwksUri = jwksUri;
   }
 
-  public SignEncOAuth2ClientConfig idTokenEncryptionAlgorithm(ConfigTokenEndpointAuthSigningAlgorithm idTokenEncryptionAlgorithm) {
+  public SignEncOAuth2ClientConfig idTokenEncryptionAlgorithm(StringValue idTokenEncryptionAlgorithm) {
     this.idTokenEncryptionAlgorithm = idTokenEncryptionAlgorithm;
     return this;
   }
@@ -342,15 +342,15 @@ public class SignEncOAuth2ClientConfig {
    * @return idTokenEncryptionAlgorithm
   **/
   @ApiModelProperty(value = "")
-  public ConfigTokenEndpointAuthSigningAlgorithm getIdTokenEncryptionAlgorithm() {
+  public StringValue getIdTokenEncryptionAlgorithm() {
     return idTokenEncryptionAlgorithm;
   }
 
-  public void setIdTokenEncryptionAlgorithm(ConfigTokenEndpointAuthSigningAlgorithm idTokenEncryptionAlgorithm) {
+  public void setIdTokenEncryptionAlgorithm(StringValue idTokenEncryptionAlgorithm) {
     this.idTokenEncryptionAlgorithm = idTokenEncryptionAlgorithm;
   }
 
-  public SignEncOAuth2ClientConfig requestParameterEncryptedEncryptionAlgorithm(ConfigTokenEndpointAuthSigningAlgorithm requestParameterEncryptedEncryptionAlgorithm) {
+  public SignEncOAuth2ClientConfig requestParameterEncryptedEncryptionAlgorithm(StringValue requestParameterEncryptedEncryptionAlgorithm) {
     this.requestParameterEncryptedEncryptionAlgorithm = requestParameterEncryptedEncryptionAlgorithm;
     return this;
   }
@@ -360,15 +360,15 @@ public class SignEncOAuth2ClientConfig {
    * @return requestParameterEncryptedEncryptionAlgorithm
   **/
   @ApiModelProperty(value = "")
-  public ConfigTokenEndpointAuthSigningAlgorithm getRequestParameterEncryptedEncryptionAlgorithm() {
+  public StringValue getRequestParameterEncryptedEncryptionAlgorithm() {
     return requestParameterEncryptedEncryptionAlgorithm;
   }
 
-  public void setRequestParameterEncryptedEncryptionAlgorithm(ConfigTokenEndpointAuthSigningAlgorithm requestParameterEncryptedEncryptionAlgorithm) {
+  public void setRequestParameterEncryptedEncryptionAlgorithm(StringValue requestParameterEncryptedEncryptionAlgorithm) {
     this.requestParameterEncryptedEncryptionAlgorithm = requestParameterEncryptedEncryptionAlgorithm;
   }
 
-  public SignEncOAuth2ClientConfig userinfoEncryptedResponseEncryptionAlgorithm(ConfigTokenEndpointAuthSigningAlgorithm userinfoEncryptedResponseEncryptionAlgorithm) {
+  public SignEncOAuth2ClientConfig userinfoEncryptedResponseEncryptionAlgorithm(StringValue userinfoEncryptedResponseEncryptionAlgorithm) {
     this.userinfoEncryptedResponseEncryptionAlgorithm = userinfoEncryptedResponseEncryptionAlgorithm;
     return this;
   }
@@ -378,15 +378,15 @@ public class SignEncOAuth2ClientConfig {
    * @return userinfoEncryptedResponseEncryptionAlgorithm
   **/
   @ApiModelProperty(value = "")
-  public ConfigTokenEndpointAuthSigningAlgorithm getUserinfoEncryptedResponseEncryptionAlgorithm() {
+  public StringValue getUserinfoEncryptedResponseEncryptionAlgorithm() {
     return userinfoEncryptedResponseEncryptionAlgorithm;
   }
 
-  public void setUserinfoEncryptedResponseEncryptionAlgorithm(ConfigTokenEndpointAuthSigningAlgorithm userinfoEncryptedResponseEncryptionAlgorithm) {
+  public void setUserinfoEncryptedResponseEncryptionAlgorithm(StringValue userinfoEncryptedResponseEncryptionAlgorithm) {
     this.userinfoEncryptedResponseEncryptionAlgorithm = userinfoEncryptedResponseEncryptionAlgorithm;
   }
 
-  public SignEncOAuth2ClientConfig jwkStoreCacheMissCacheTime(ConfigJwksCacheTimeout jwkStoreCacheMissCacheTime) {
+  public SignEncOAuth2ClientConfig jwkStoreCacheMissCacheTime(IntegerValue jwkStoreCacheMissCacheTime) {
     this.jwkStoreCacheMissCacheTime = jwkStoreCacheMissCacheTime;
     return this;
   }
@@ -396,15 +396,15 @@ public class SignEncOAuth2ClientConfig {
    * @return jwkStoreCacheMissCacheTime
   **/
   @ApiModelProperty(value = "")
-  public ConfigJwksCacheTimeout getJwkStoreCacheMissCacheTime() {
+  public IntegerValue getJwkStoreCacheMissCacheTime() {
     return jwkStoreCacheMissCacheTime;
   }
 
-  public void setJwkStoreCacheMissCacheTime(ConfigJwksCacheTimeout jwkStoreCacheMissCacheTime) {
+  public void setJwkStoreCacheMissCacheTime(IntegerValue jwkStoreCacheMissCacheTime) {
     this.jwkStoreCacheMissCacheTime = jwkStoreCacheMissCacheTime;
   }
 
-  public SignEncOAuth2ClientConfig publicKeyLocation(ConfigTokenEndpointAuthSigningAlgorithm publicKeyLocation) {
+  public SignEncOAuth2ClientConfig publicKeyLocation(StringValue publicKeyLocation) {
     this.publicKeyLocation = publicKeyLocation;
     return this;
   }
@@ -414,11 +414,11 @@ public class SignEncOAuth2ClientConfig {
    * @return publicKeyLocation
   **/
   @ApiModelProperty(value = "")
-  public ConfigTokenEndpointAuthSigningAlgorithm getPublicKeyLocation() {
+  public StringValue getPublicKeyLocation() {
     return publicKeyLocation;
   }
 
-  public void setPublicKeyLocation(ConfigTokenEndpointAuthSigningAlgorithm publicKeyLocation) {
+  public void setPublicKeyLocation(StringValue publicKeyLocation) {
     this.publicKeyLocation = publicKeyLocation;
   }
 

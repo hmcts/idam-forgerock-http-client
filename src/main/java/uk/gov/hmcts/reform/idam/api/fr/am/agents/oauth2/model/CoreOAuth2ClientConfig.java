@@ -30,31 +30,31 @@ public class CoreOAuth2ClientConfig {
   private Object agentgroup = null;
 
   @JsonProperty("clientType")
-  private ConfigTokenEndpointAuthSigningAlgorithm clientType = null;
+  private StringValue clientType = null;
 
   @JsonProperty("defaultScopes")
-  private ConfigResponseTypes defaultScopes = null;
+  private StringArrayValue defaultScopes = null;
 
   @JsonProperty("clientName")
-  private ConfigResponseTypes clientName = null;
+  private StringArrayValue clientName = null;
 
   @JsonProperty("status")
-  private ConfigTokenEndpointAuthSigningAlgorithm status = null;
+  private StringValue status = null;
 
   @JsonProperty("redirectionUris")
-  private ConfigResponseTypes redirectionUris = null;
+  private StringArrayValue redirectionUris = null;
 
   @JsonProperty("accessTokenLifetime")
-  private ConfigJwksCacheTimeout accessTokenLifetime = null;
+  private IntegerValue accessTokenLifetime = null;
 
   @JsonProperty("scopes")
-  private ConfigResponseTypes scopes = null;
+  private StringArrayValue scopes = null;
 
   @JsonProperty("authorizationCodeLifetime")
-  private ConfigJwksCacheTimeout authorizationCodeLifetime = null;
+  private IntegerValue authorizationCodeLifetime = null;
 
   @JsonProperty("refreshTokenLifetime")
-  private ConfigJwksCacheTimeout refreshTokenLifetime = null;
+  private IntegerValue refreshTokenLifetime = null;
 
   public CoreOAuth2ClientConfig userpassword(String userpassword) {
     this.userpassword = userpassword;
@@ -92,7 +92,7 @@ public class CoreOAuth2ClientConfig {
     this.agentgroup = agentgroup;
   }
 
-  public CoreOAuth2ClientConfig clientType(ConfigTokenEndpointAuthSigningAlgorithm clientType) {
+  public CoreOAuth2ClientConfig clientType(StringValue clientType) {
     this.clientType = clientType;
     return this;
   }
@@ -102,15 +102,15 @@ public class CoreOAuth2ClientConfig {
    * @return clientType
   **/
   @ApiModelProperty(value = "")
-  public ConfigTokenEndpointAuthSigningAlgorithm getClientType() {
+  public StringValue getClientType() {
     return clientType;
   }
 
-  public void setClientType(ConfigTokenEndpointAuthSigningAlgorithm clientType) {
+  public void setClientType(StringValue clientType) {
     this.clientType = clientType;
   }
 
-  public CoreOAuth2ClientConfig defaultScopes(ConfigResponseTypes defaultScopes) {
+  public CoreOAuth2ClientConfig defaultScopes(StringArrayValue defaultScopes) {
     this.defaultScopes = defaultScopes;
     return this;
   }
@@ -120,15 +120,15 @@ public class CoreOAuth2ClientConfig {
    * @return defaultScopes
   **/
   @ApiModelProperty(value = "")
-  public ConfigResponseTypes getDefaultScopes() {
+  public StringArrayValue getDefaultScopes() {
     return defaultScopes;
   }
 
-  public void setDefaultScopes(ConfigResponseTypes defaultScopes) {
+  public void setDefaultScopes(StringArrayValue defaultScopes) {
     this.defaultScopes = defaultScopes;
   }
 
-  public CoreOAuth2ClientConfig clientName(ConfigResponseTypes clientName) {
+  public CoreOAuth2ClientConfig clientName(StringArrayValue clientName) {
     this.clientName = clientName;
     return this;
   }
@@ -138,15 +138,15 @@ public class CoreOAuth2ClientConfig {
    * @return clientName
   **/
   @ApiModelProperty(value = "")
-  public ConfigResponseTypes getClientName() {
+  public StringArrayValue getClientName() {
     return clientName;
   }
 
-  public void setClientName(ConfigResponseTypes clientName) {
+  public void setClientName(StringArrayValue clientName) {
     this.clientName = clientName;
   }
 
-  public CoreOAuth2ClientConfig status(ConfigTokenEndpointAuthSigningAlgorithm status) {
+  public CoreOAuth2ClientConfig status(StringValue status) {
     this.status = status;
     return this;
   }
@@ -156,15 +156,15 @@ public class CoreOAuth2ClientConfig {
    * @return status
   **/
   @ApiModelProperty(value = "")
-  public ConfigTokenEndpointAuthSigningAlgorithm getStatus() {
+  public StringValue getStatus() {
     return status;
   }
 
-  public void setStatus(ConfigTokenEndpointAuthSigningAlgorithm status) {
+  public void setStatus(StringValue status) {
     this.status = status;
   }
 
-  public CoreOAuth2ClientConfig redirectionUris(ConfigResponseTypes redirectionUris) {
+  public CoreOAuth2ClientConfig redirectionUris(StringArrayValue redirectionUris) {
     this.redirectionUris = redirectionUris;
     return this;
   }
@@ -174,15 +174,15 @@ public class CoreOAuth2ClientConfig {
    * @return redirectionUris
   **/
   @ApiModelProperty(value = "")
-  public ConfigResponseTypes getRedirectionUris() {
+  public StringArrayValue getRedirectionUris() {
     return redirectionUris;
   }
 
-  public void setRedirectionUris(ConfigResponseTypes redirectionUris) {
+  public void setRedirectionUris(StringArrayValue redirectionUris) {
     this.redirectionUris = redirectionUris;
   }
 
-  public CoreOAuth2ClientConfig accessTokenLifetime(ConfigJwksCacheTimeout accessTokenLifetime) {
+  public CoreOAuth2ClientConfig accessTokenLifetime(IntegerValue accessTokenLifetime) {
     this.accessTokenLifetime = accessTokenLifetime;
     return this;
   }
@@ -192,15 +192,15 @@ public class CoreOAuth2ClientConfig {
    * @return accessTokenLifetime
   **/
   @ApiModelProperty(value = "")
-  public ConfigJwksCacheTimeout getAccessTokenLifetime() {
+  public IntegerValue getAccessTokenLifetime() {
     return accessTokenLifetime;
   }
 
-  public void setAccessTokenLifetime(ConfigJwksCacheTimeout accessTokenLifetime) {
+  public void setAccessTokenLifetime(IntegerValue accessTokenLifetime) {
     this.accessTokenLifetime = accessTokenLifetime;
   }
 
-  public CoreOAuth2ClientConfig scopes(ConfigResponseTypes scopes) {
+  public CoreOAuth2ClientConfig scopes(StringArrayValue scopes) {
     this.scopes = scopes;
     return this;
   }
@@ -210,15 +210,15 @@ public class CoreOAuth2ClientConfig {
    * @return scopes
   **/
   @ApiModelProperty(value = "")
-  public ConfigResponseTypes getScopes() {
+  public StringArrayValue getScopes() {
     return scopes;
   }
 
-  public void setScopes(ConfigResponseTypes scopes) {
+  public void setScopes(StringArrayValue scopes) {
     this.scopes = scopes;
   }
 
-  public CoreOAuth2ClientConfig authorizationCodeLifetime(ConfigJwksCacheTimeout authorizationCodeLifetime) {
+  public CoreOAuth2ClientConfig authorizationCodeLifetime(IntegerValue authorizationCodeLifetime) {
     this.authorizationCodeLifetime = authorizationCodeLifetime;
     return this;
   }
@@ -228,15 +228,15 @@ public class CoreOAuth2ClientConfig {
    * @return authorizationCodeLifetime
   **/
   @ApiModelProperty(value = "")
-  public ConfigJwksCacheTimeout getAuthorizationCodeLifetime() {
+  public IntegerValue getAuthorizationCodeLifetime() {
     return authorizationCodeLifetime;
   }
 
-  public void setAuthorizationCodeLifetime(ConfigJwksCacheTimeout authorizationCodeLifetime) {
+  public void setAuthorizationCodeLifetime(IntegerValue authorizationCodeLifetime) {
     this.authorizationCodeLifetime = authorizationCodeLifetime;
   }
 
-  public CoreOAuth2ClientConfig refreshTokenLifetime(ConfigJwksCacheTimeout refreshTokenLifetime) {
+  public CoreOAuth2ClientConfig refreshTokenLifetime(IntegerValue refreshTokenLifetime) {
     this.refreshTokenLifetime = refreshTokenLifetime;
     return this;
   }
@@ -246,11 +246,11 @@ public class CoreOAuth2ClientConfig {
    * @return refreshTokenLifetime
   **/
   @ApiModelProperty(value = "")
-  public ConfigJwksCacheTimeout getRefreshTokenLifetime() {
+  public IntegerValue getRefreshTokenLifetime() {
     return refreshTokenLifetime;
   }
 
-  public void setRefreshTokenLifetime(ConfigJwksCacheTimeout refreshTokenLifetime) {
+  public void setRefreshTokenLifetime(IntegerValue refreshTokenLifetime) {
     this.refreshTokenLifetime = refreshTokenLifetime;
   }
 

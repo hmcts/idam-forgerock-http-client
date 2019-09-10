@@ -24,14 +24,14 @@ import java.util.Objects;
  * OAuth2ClientAdvancedOAuth2ClientConfigResponseTypes
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-09T15:43:26.593+01:00")
-public class ConfigResponseTypes {
+public class StringArrayValue {
   @JsonProperty("inherited")
   private Boolean inherited = null;
 
   @JsonProperty("value")
   private List<String> value = null;
 
-  public ConfigResponseTypes inherited(Boolean inherited) {
+  public StringArrayValue inherited(Boolean inherited) {
     this.inherited = inherited;
     return this;
   }
@@ -49,12 +49,12 @@ public class ConfigResponseTypes {
     this.inherited = inherited;
   }
 
-  public ConfigResponseTypes value(List<String> value) {
+  public StringArrayValue value(List<String> value) {
     this.value = value;
     return this;
   }
 
-  public ConfigResponseTypes addValueItem(String valueItem) {
+  public StringArrayValue addValueItem(String valueItem) {
     if (this.value == null) {
       this.value = new ArrayList<>();
     }
@@ -84,7 +84,7 @@ public class ConfigResponseTypes {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ConfigResponseTypes oauth2ClientAdvancedOAuth2ClientConfigResponseTypes = (ConfigResponseTypes) o;
+    StringArrayValue oauth2ClientAdvancedOAuth2ClientConfigResponseTypes = (StringArrayValue) o;
     return Objects.equals(this.inherited, oauth2ClientAdvancedOAuth2ClientConfigResponseTypes.inherited) &&
         Objects.equals(this.value, oauth2ClientAdvancedOAuth2ClientConfigResponseTypes.value);
   }

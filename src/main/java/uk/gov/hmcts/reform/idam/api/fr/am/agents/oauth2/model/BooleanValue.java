@@ -19,17 +19,17 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 
 /**
- * OAuth2ClientSignEncOAuth2ClientConfigJwksCacheTimeout
+ * OAuth2ClientSignEncOAuth2ClientConfigIdTokenEncryptionEnabled
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-09T15:43:26.593+01:00")
-public class ConfigJwksCacheTimeout {
+public class BooleanValue {
   @JsonProperty("inherited")
   private Boolean inherited = null;
 
   @JsonProperty("value")
-  private Integer value = null;
+  private Boolean value = null;
 
-  public ConfigJwksCacheTimeout inherited(Boolean inherited) {
+  public BooleanValue inherited(Boolean inherited) {
     this.inherited = inherited;
     return this;
   }
@@ -47,7 +47,7 @@ public class ConfigJwksCacheTimeout {
     this.inherited = inherited;
   }
 
-  public ConfigJwksCacheTimeout value(Integer value) {
+  public BooleanValue value(Boolean value) {
     this.value = value;
     return this;
   }
@@ -57,11 +57,11 @@ public class ConfigJwksCacheTimeout {
    * @return value
   **/
   @ApiModelProperty(value = "")
-  public Integer getValue() {
+  public Boolean isValue() {
     return value;
   }
 
-  public void setValue(Integer value) {
+  public void setValue(Boolean value) {
     this.value = value;
   }
 
@@ -74,9 +74,9 @@ public class ConfigJwksCacheTimeout {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ConfigJwksCacheTimeout oauth2ClientSignEncOAuth2ClientConfigJwksCacheTimeout = (ConfigJwksCacheTimeout) o;
-    return Objects.equals(this.inherited, oauth2ClientSignEncOAuth2ClientConfigJwksCacheTimeout.inherited) &&
-        Objects.equals(this.value, oauth2ClientSignEncOAuth2ClientConfigJwksCacheTimeout.value);
+    BooleanValue oauth2ClientSignEncOAuth2ClientConfigIdTokenEncryptionEnabled = (BooleanValue) o;
+    return Objects.equals(this.inherited, oauth2ClientSignEncOAuth2ClientConfigIdTokenEncryptionEnabled.inherited) &&
+        Objects.equals(this.value, oauth2ClientSignEncOAuth2ClientConfigIdTokenEncryptionEnabled.value);
   }
 
   @Override
@@ -88,7 +88,7 @@ public class ConfigJwksCacheTimeout {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class OAuth2ClientSignEncOAuth2ClientConfigJwksCacheTimeout {\n");
+    sb.append("class OAuth2ClientSignEncOAuth2ClientConfigIdTokenEncryptionEnabled {\n");
 
     sb.append("    inherited: ").append(toIndentedString(inherited)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
