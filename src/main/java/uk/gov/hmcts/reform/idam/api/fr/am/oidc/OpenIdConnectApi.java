@@ -108,6 +108,21 @@ public interface OpenIdConnectApi extends ApiClient.Api {
     AmToken accessToken(@Param("authorization") String authorization, @Param("grant_type") String grantType, @Param("realm") String realm, @Param("refresh_token") String refreshToken, @Param("code") String code, @Param("redirect_uri") String redirectUri, @Param("client_id") String clientId, @Param("client_secret") String clientSecret, @Param("scope") String scope, @Param("username") String username, @Param("password") String password);
 
     /**
+     * Revoke an access token
+     * The submitted access token will be revoked.
+     * @param authorization  (required)
+     * @param token The access token (required)
+     * @param realm  (optional)
+     */
+    @RequestLine("POST /oauth2/token/revoke?realm={realm}")
+    @Headers({
+            "Content-Type: application/x-www-form-urlencoded",
+            "Accept: application/json",
+            "Authorization: {authorization}"
+    })
+    void tokenRevoke(@Param("authorization") String authorization, @Param("token") String token, @Param("realm") String realm);
+
+    /**
      * Request Access Token For Realm
      * Partner makes a request to the token endpoint by adding the following parameters describerd  below
      * @param realm  (required)
