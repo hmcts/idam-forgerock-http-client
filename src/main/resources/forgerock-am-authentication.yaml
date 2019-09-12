@@ -237,6 +237,36 @@ paths:
         - OpenID Connect
       description: Retrieves the JSON Web Key Set
 
+  /oauth2/token/revoke:
+    post:
+      summary: Revoke an access token
+      operationId: _token_revoke
+      description: |
+        The submitted access token will be revoked.
+      consumes:
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/realm'
+        - $ref: '#/parameters/authorization'
+        - name: token
+          in: formData
+          description: The access token
+          required: true
+          type: string
+      tags:
+        - OpenID Connect
+      responses:
+        200:
+          description: Token was revoked
+          schema:
+            $ref: '#/definitions/Response'
+        '401':
+          schema:
+            $ref: '#/definitions/AmApiError'
+          description: The supplied client credentials where invalid
+
   /oauth2/tokeninfo:
     get:
       summary: 'Access Token Info'
