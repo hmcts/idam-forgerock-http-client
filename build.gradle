@@ -31,7 +31,7 @@ project.ext {
     spring_data_elasticsearch = "3.1.9.RELEASE"
 }
 
-version = '1.6.0'
+version = '1.6.1'
 group = 'uk.gov.hmcts.reform.idam'
 
 description = """idam-forgerock-http-client"""
@@ -131,6 +131,11 @@ task generateApi {
         ])
         generateCodeFromSwagger('src/main/resources/forgerock-idm-selfservice-registration.yaml', 'idm.selfservice', [
                 'ApiError'  : 'uk.gov.hmcts.reform.idam.api.fr.shared.model.ApiError'
+        ])
+        generateCodeFromSwagger('src/main/resources/forgerock-idm-selfservice-reset.yaml', 'idm.selfservice', [
+                'ApiError'  : 'uk.gov.hmcts.reform.idam.api.fr.shared.model.ApiError',
+                'SubmitRequirementsRequest' : 'uk.gov.hmcts.reform.idam.api.fr.idm.selfservice.model.SubmitRequirementsRequest',
+                'SuccessObject' : 'uk.gov.hmcts.reform.idam.api.fr.idm.selfservice.model.SuccessObject'
         ])
         generateCodeFromSwagger('src/main/resources/forgerock-idm-login.yaml', 'idm.login', null)
     }

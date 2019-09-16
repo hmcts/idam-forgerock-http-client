@@ -54,7 +54,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: "#/definitions/SubmitRequirementsResponse"
+            $ref: "#/definitions/SubmitRequirementsResetResponse"
         '404':
           schema:
             $ref: "#/definitions/ApiError"
@@ -123,26 +123,47 @@ definitions:
         description: The input as collected from the user. This object must conform to the JSON Schema of the requirements property from the last response.
     title: 'SelfService Submit Requirements Request'
     description: 'Submit some fulfilled requirements. Returns either a completion status, or a token along with some more requirements. If requirements are returned, they should be submitted with the token as a fresh request to this action.'
-  'SubmitRequirementsResponse':
+  'SubmitRequirementsResetResponse':
     type: object
+    required:
+      - requirements
+      - tag
+      - token
+      - type
     properties:
       token:
         type: string
+        description: A token for the process that must be returned with the next set of requirements when they have been fulfilled.
         title: Token
-        description: The token returned from the previous submitRequirements request.
-    title: 'SelfService Submit Response'
-    description: 'Returns either a completion status, or a token along with some more requirements.'
-  'SuccessObject':
-    type: object
-    required:
-      - success
-    properties:
-      success:
+      type:
         type: string
-        title: Success
-        description: Success Object
-    title: Completed process response
-    description: 'If all the requirements have been fulfilled and the user registration process is complete, this response structure will be used.'
+        description: The type of the self service interaction.
+        title: Type
+      tag:
+        type: string
+        description: The stage description tag.
+        title: Tag
+      requirements:
+        type: object
+        description: A JSON Schema object that defines the input that must be submitted to the submitRequirements action.
+        title: Requirements
+      status:
+        $ref: '#/definitions/SuccessObject'
+        description: 'If all the requirements have been fulfilled and the user registration process is complete, this response structure will be used.'
+        title: Completed process response
+    description: 'If more requirements need fulfilling before the user registration process is completed, this response structure will be returned.'
+    title: More requirements response
+  'SuccessObject':
+      type: object
+      required:
+        - success
+      properties:
+        success:
+          type: string
+          description: Success Object
+          title: Success
+      description: 'If all the requirements have been fulfilled and the user registration process is complete, this response structure will be used.'
+      title: Completed process response
 parameters:
   _queryFilter:
     name: _queryFilter
