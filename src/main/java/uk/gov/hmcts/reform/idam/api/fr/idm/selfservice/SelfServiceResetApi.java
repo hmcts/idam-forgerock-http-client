@@ -1,36 +1,35 @@
 package uk.gov.hmcts.reform.idam.api.fr.idm.selfservice;
 
-import feign.Headers;
-import feign.Param;
-import feign.QueryMap;
-import feign.RequestLine;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.EncodingUtils;
+
 import uk.gov.hmcts.reform.idam.api.fr.idm.selfservice.model.GetInitialRequirementsResponse;
-import uk.gov.hmcts.reform.idam.api.fr.idm.selfservice.model.SubmitRequirementsRequest;
-import uk.gov.hmcts.reform.idam.api.fr.idm.selfservice.model.SubmitRequirementsResponse;
+import uk.gov.hmcts.reform.idam.api.fr.idm.selfservice.model.SubmitRequirementsResetResponse;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import feign.*;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-07-29T16:19:52.490+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-13T13:49:38.439+01:00")
 public interface SelfServiceResetApi extends ApiClient.Api {
 
 
   /**
    * Action: submitRequirements
    * Submits requirements for stage.
-    * @param requestPayload  (required)
-    * @param action  (required)
-    * @param fields Optional parameter containing a comma separated list of field references specifying which fields of the targeted JSON resource should be returned. (optional)
-   * @return SubmitRequirementsResponse
+   * @param requestPayload  (required)
+   * @param action  (required)
+   * @param fields Optional parameter containing a comma separated list of field references specifying which fields of the targeted JSON resource should be returned. (optional)
+   * @return SubmitRequirementsResetResponse
    */
   @RequestLine("POST /selfservice/reset?_fields={fields}&_action={action}")
   @Headers({
-    "Content-Type: application/json",
-    "Accept: application/json",
+          "Content-Type: application/json",
+          "Accept: application/json",
   })
-  SubmitRequirementsResponse selfserviceResetActionSubmitrequirements(SubmitRequirementsRequest requestPayload, @Param("action") String action, @Param("fields") String fields);
+  SubmitRequirementsResetResponse selfserviceResetActionSubmitrequirements(uk.gov.hmcts.reform.idam.api.fr.idm.selfservice.model.SubmitRequirementsRequest requestPayload, @Param("action") String action, @Param("fields") String fields);
 
   /**
    * Action: submitRequirements
@@ -47,14 +46,14 @@ public interface SelfServiceResetApi extends ApiClient.Api {
    *   <li>fields - Optional parameter containing a comma separated list of field references specifying which fields of the targeted JSON resource should be returned. (optional)</li>
    *   <li>action -  (required)</li>
    *   </ul>
-   * @return SubmitRequirementsResponse
+   * @return SubmitRequirementsResetResponse
    */
   @RequestLine("POST /selfservice/reset?_fields={fields}&_action={action}")
   @Headers({
-  "Content-Type: application/json",
-  "Accept: application/json",
+          "Content-Type: application/json",
+          "Accept: application/json",
   })
-  SubmitRequirementsResponse selfserviceResetActionSubmitrequirements(SubmitRequirementsRequest requestPayload, @QueryMap(encoded = true) Map<String, Object> queryParams);
+  SubmitRequirementsResetResponse selfserviceResetActionSubmitrequirements(uk.gov.hmcts.reform.idam.api.fr.idm.selfservice.model.SubmitRequirementsRequest requestPayload, @QueryMap(encoded=true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
@@ -74,12 +73,12 @@ public interface SelfServiceResetApi extends ApiClient.Api {
   /**
    * Read
    * The initial requirements for a self service process.
-    * @param fields Optional parameter containing a comma separated list of field references specifying which fields of the targeted JSON resource should be returned. (optional)
+   * @param fields Optional parameter containing a comma separated list of field references specifying which fields of the targeted JSON resource should be returned. (optional)
    * @return GetInitialRequirementsResponse
    */
   @RequestLine("GET /selfservice/reset?_fields={fields}")
   @Headers({
-    "Accept: application/json",
+          "Accept: application/json",
   })
   GetInitialRequirementsResponse selfserviceResetRead(@Param("fields") String fields);
 
@@ -100,9 +99,9 @@ public interface SelfServiceResetApi extends ApiClient.Api {
    */
   @RequestLine("GET /selfservice/reset?_fields={fields}")
   @Headers({
-  "Accept: application/json",
+          "Accept: application/json",
   })
-  GetInitialRequirementsResponse selfserviceResetRead(@QueryMap(encoded = true) Map<String, Object> queryParams);
+  GetInitialRequirementsResponse selfserviceResetRead(@QueryMap(encoded=true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
