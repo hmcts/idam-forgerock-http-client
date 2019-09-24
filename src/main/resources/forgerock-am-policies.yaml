@@ -1,0 +1,148 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: OpenAM
+host: 'localhost:8080'
+basePath: /openam/json
+schemes:
+  - http
+consumes:
+  - application/json
+  - text/plain
+  - multipart/form-data
+produces:
+  - application/json
+paths:
+  /json/policies:
+    post:
+      summary: 'Policies: Action: evaluate'
+      operationId: evaluate
+      parameters:
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - $ref: '#/parameters/realm'
+        - $ref: '#/parameters/authorization'
+        - in: body
+          name: requestPayload
+          required: true
+          schema:
+            type: object
+            required:
+              - application
+              - resources
+            properties:
+              resources:
+                type: array
+                items:
+                  type: string
+                title: Resources
+                description: Specifies the list of resources for which to return decisions
+              application:
+                type: string
+                title: Application
+                description: 'Holds the name of the application, and defaults to "iPlanetAMWebAgentService" if not specified'
+              subject:
+                type: object
+                properties:
+                  ssoToken:
+                    type: string
+                    title: SSOToken
+                    description: The value is the SSO token ID string for the subject
+                  jwt:
+                    type: string
+                    title: JWT
+                    description: The value is a JWT string
+                  claims:
+                    type: object
+                    title: Claims
+                    description: The value is an object (map) of JWT claims to their values.
+                title: Subject
+                description: 'Holds an object that represents the subject. You can specify one or more of the following keys. If you specify multiple keys, the subject can have multiple associated principals, and you can use subject conditions corresponding to any type in the request'
+              environment:
+                type: object
+                title: Environment
+                description: Holds a map of keys to lists of values
+            title: Evaluate Request
+            description: Evaluate Request
+        - name: _action
+          in: query
+          required: true
+          type: string
+          enum:
+            - evaluate
+        - name: Accept-API-Version
+          in: header
+          required: true
+          type: string
+          enum:
+            - resource=2.1
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/EvaluateResponse'
+        '405':
+          schema:
+            $ref: '#/definitions/ApiError'
+          description: The requested action is not supported on policies
+        '500':
+          schema:
+            $ref: '#/definitions/ApiError'
+          description: Unexpected server error happened during the process
+        '501':
+          schema:
+            $ref: '#/definitions/ApiError'
+          description: Unsupported operation
+      description: Request policy decisions for specific resources
+      tags:
+        - Policies v2.1
+      x-resourceVersion: '2.1'
+definitions:
+  EvaluateResponse:
+    type: array
+    items:
+      type: object
+      properties:
+        resource:
+          type: string
+          title: Resource
+          description: Specifies the root resource for the decisions to return
+        actions:
+          type: object
+          title: Actions
+          description: A map of action name keys to Boolean values that indicate whether the action is allowed (true) or denied (false) for the specified resource
+        attributes:
+          type: object
+          title: Attributes
+          description: 'A map of attribute names to their values, if any response attributes are returned according to applicable policies'
+        advices:
+          type: object
+          title: Advices
+          description: 'A map of advice names to their values, if any advice is returned according to applicable policies'
+    title: Evaluate and evaluateTree schema response
+    description: Evaluate and evaluateTree schema response
+parameters:
+  _prettyPrint:
+    name: _prettyPrint
+    in: query
+    description: Optional parameter requesting that the returned JSON resource content should be formatted to be more human readable.
+    required: false
+    type: boolean
+  _fields:
+    name: _fields
+    in: query
+    description: Optional parameter containing a comma separated list of field references specifying which fields of the targeted JSON resource should be returned.
+    required: false
+    type: string
+    collectionFormat: csv
+  realm:
+    name: realm
+    in: query
+    description: Optional parameter specifying the realm.
+    required: false
+    type: string
+  authorization:
+    name: Cookie
+    in: header
+    required: false
+    type: string
