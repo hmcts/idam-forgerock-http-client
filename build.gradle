@@ -31,7 +31,7 @@ project.ext {
     spring_data_elasticsearch = "3.1.9.RELEASE"
 }
 
-version = '1.6.1'
+version = '1.7.0'
 group = 'uk.gov.hmcts.reform.idam'
 
 description = """idam-forgerock-http-client"""
@@ -113,6 +113,9 @@ task generateApi {
         ])
         generateCodeFromSwagger('src/main/resources/forgerock-am-oauth2-client.yaml', 'am.agents.oauth2', [
                 'AmAgent'   : 'uk.gov.hmcts.reform.idam.api.fr.am.agents.model.AmAgent'
+        ])
+        generateCodeFromSwagger('src/main/resources/forgerock-am-policies.yaml', 'am.policies', [
+                'ApiError'  : 'uk.gov.hmcts.reform.idam.api.fr.shared.model.ApiError'
         ])
         generateCodeFromSwagger('src/main/resources/forgerock-idm-managed-assignment.yaml', 'idm.manage.assignment', [
                 'PatchArray': 'uk.gov.hmcts.reform.idam.api.fr.shared.model.PatchArray',
