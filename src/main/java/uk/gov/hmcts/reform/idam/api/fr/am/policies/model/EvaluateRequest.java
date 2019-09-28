@@ -25,7 +25,7 @@ import java.util.Objects;
  * Evaluate Request
  */
 @ApiModel(description = "Evaluate Request")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-24T15:44:32.442+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-28T16:50:59.186+01:00")
 public class EvaluateRequest {
   @JsonProperty("resources")
   private List<String> resources = new ArrayList<>();
@@ -45,6 +45,7 @@ public class EvaluateRequest {
   }
 
   public EvaluateRequest addResourcesItem(String resourcesItem) {
+
     this.resources.add(resourcesItem);
     return this;
   }
