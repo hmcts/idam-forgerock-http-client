@@ -62,7 +62,7 @@ paths:
           description: Unsupported operation
     put:
       summary: Create with Client-Assigned ID
-      operationId: create
+      operationId: createOrUpdate
       description: Create or update policy
       tags:
         - Policies v2.1
@@ -117,6 +117,54 @@ paths:
           schema:
             $ref: '#/definitions/ApiError'
           description: Permission Denied to access or create policy
+    delete:
+      summary: Delete
+      operationId: delete
+      parameters:
+        - name: resourceId
+          in: path
+          description: The unique identifier of the policy
+          required: true
+          type: string
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - name: Accept-API-Version
+          in: header
+          required: true
+          type: string
+          enum:
+            - resource=2.1
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/DeletePolicyResponse'
+        '400':
+          schema:
+            $ref: '#/definitions/ApiError'
+          description: |-
+            Bad request error. The cause can be the following:
+            * Missing privilege name
+            * Invalid json provided in the request
+            * Invalid value found in json
+            * Invalid policy name provided in json
+            * Resource name and JSON body name do not match
+            * Query id missing UID
+            * Invalid query id
+            * Invalid search filter
+            * Empty privilege name
+            * Entitlement value was NULL
+            * No resource type was expected
+            * Policy defines invalid resource type
+            * The provided resourceId does not match to the UUID in the json file
+        '403':
+          schema:
+            $ref: '#/definitions/ApiError'
+          description: Permission Denied to access or create policy
+      description: Delete policy
+      tags:
+        - Policies v2.1
+      x-resourceVersion: '2.1'
 definitions:
   EvaluateRequest:
     title: Evaluate Request
@@ -255,6 +303,80 @@ definitions:
         title: Creation Date
         description: 'An integer containing the creation date and time, in number of seconds'
   PutPolicyResponse:
+    title: Policy Resource Schema
+    description: Json schema for the policy resource
+    type: object
+    properties:
+      name:
+        type: string
+        title: Name
+        description: String matching the name of the application
+      active:
+        type: boolean
+        title: Active flag
+        description: 'Boolean indicating whether OpenAM considers the policy active for evaluation purposes, defaults to false'
+      description:
+        type: string
+        title: Description
+        description: String describing the policy
+      applicationName:
+        type: string
+        title: Application name
+        description: 'String containing the application name, such as "iPlanetAMWebAgentService", or "mypolicyset"'
+      actionValues:
+        type: object
+        title: Action values
+        description: 'Set of string action names, each set to a boolean indicating whether the action is allowed. Chosen from the available actions provided by the associated Managing Resource Types resource type'
+      resources:
+        type: array
+        items:
+          type: string
+        title: Resources
+        description: List of the resource name pattern strings to which the policy applies. Must conform to the pattern templates provided by the associated Managing Resource Types resource type
+      subject:
+        type: object
+        title: Subject
+        description: 'Specifies the subject conditions to which the policy applies, where subjects can be combined by using the built-in types "AND", "OR", and "NOT", and where subject implementations are pluggable'
+      condition:
+        type: object
+        properties:
+          type:
+            type: string
+          conditions:
+            type: array
+            items:
+              type: object
+            title: Condition
+            description: 'Specifies environment conditions, where conditions can be combined by using the built-in types "AND", "OR", and "NOT", and where condition implementations are pluggable'
+        title: Condition
+        description: 'Specifies environment conditions, where conditions can be combined by using the built-in types "AND", "OR", and "NOT", and where condition implementations are pluggable'
+      resourceTypeUuid:
+        type: string
+        title: Resource Type UUID
+        description: The UUIDs of the resource type associated with the policy
+      resourceAttributes:
+        type: array
+        items:
+          type: object
+        title: Resource Attributes
+        description: List of attributes to return with decisions. These attributes are known as response attributes
+      lastModifiedBy:
+        type: string
+        title: Last Modified By
+        description: A string containing the universal identifier DN of the subject that most recently updated the policy
+      lastModifiedDate:
+        type: string
+        title: Last Modified date
+        description: 'An integer containing the last modified date and time, in number of seconds'
+      createdBy:
+        type: string
+        title: Created By
+        description: A string containing the universal identifier DN of the subject that created the policy
+      creationDate:
+        type: string
+        title: Creation Date
+        description: 'An integer containing the creation date and time, in number of seconds'
+  DeletePolicyResponse:
     title: Policy Resource Schema
     description: Json schema for the policy resource
     type: object
