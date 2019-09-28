@@ -63,7 +63,7 @@ paths:
   /json/policies/{resourceId}:
     put:
       summary: Create with Client-Assigned ID
-      operationId: createOrUpdate
+      operationId: put
       description: Create or update policy
       tags:
         - Policies v2.1
@@ -80,7 +80,7 @@ paths:
           name: requestPayload
           required: true
           schema:
-            $ref: '#/definitions/PutPolicyRequest'
+            $ref: '#/definitions/PutRequest'
         - name: Accept-API-Version
           in: header
           required: true
@@ -91,7 +91,7 @@ paths:
         201:
           description: Success
           schema:
-            $ref: '#/definitions/PutPolicyResponse'
+            $ref: '#/definitions/PutResponse'
           headers:
             Location:
               type: string
@@ -139,7 +139,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/DeletePolicyResponse'
+            $ref: '#/definitions/DeleteResponse'
         '400':
           schema:
             $ref: '#/definitions/ApiError'
@@ -168,7 +168,7 @@ paths:
       x-resourceVersion: '2.1'
     get:
       summary: Read
-      operationId: retrieve
+      operationId: get
       description: Read policy
       tags:
         - Policies v2.1
@@ -192,7 +192,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/GetPolicyResponse'
+            $ref: '#/definitions/GetResponse'
         '400':
           schema:
             $ref: '#/definitions/ApiError'
@@ -274,7 +274,7 @@ definitions:
           type: object
           title: Advices
           description: 'A map of advice names to their values, if any advice is returned according to applicable policies'
-  PutPolicyRequest:
+  PutRequest:
     title: Policy Resource Schema
     description: Json schema for the policy resource
     type: object
@@ -348,7 +348,7 @@ definitions:
         type: string
         title: Creation Date
         description: 'An integer containing the creation date and time, in number of seconds'
-  PutPolicyResponse:
+  PutResponse:
     title: Policy Resource Schema
     description: Json schema for the policy resource
     type: object
@@ -422,7 +422,7 @@ definitions:
         type: string
         title: Creation Date
         description: 'An integer containing the creation date and time, in number of seconds'
-  DeletePolicyResponse:
+  DeleteResponse:
     title: Policy Resource Schema
     description: Json schema for the policy resource
     type: object
@@ -496,7 +496,7 @@ definitions:
         type: string
         title: Creation Date
         description: 'An integer containing the creation date and time, in number of seconds'
-  GetPolicyResponse:
+  GetResponse:
     title: Policy Resource Schema
     description: Json schema for the policy resource
     type: object

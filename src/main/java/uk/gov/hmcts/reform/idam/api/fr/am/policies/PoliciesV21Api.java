@@ -4,81 +4,21 @@ import feign.Headers;
 import feign.Param;
 import feign.QueryMap;
 import feign.RequestLine;
-import uk.gov.hmcts.reform.idam.api.fr.am.policies.model.DeletePolicyResponse;
+import uk.gov.hmcts.reform.idam.api.fr.am.policies.model.DeleteResponse;
 import uk.gov.hmcts.reform.idam.api.fr.am.policies.model.EvaluateRequest;
 import uk.gov.hmcts.reform.idam.api.fr.am.policies.model.EvaluateResponse;
-import uk.gov.hmcts.reform.idam.api.fr.am.policies.model.GetPolicyResponse;
-import uk.gov.hmcts.reform.idam.api.fr.am.policies.model.PutPolicyRequest;
-import uk.gov.hmcts.reform.idam.api.fr.am.policies.model.PutPolicyResponse;
+import uk.gov.hmcts.reform.idam.api.fr.am.policies.model.GetResponse;
+import uk.gov.hmcts.reform.idam.api.fr.am.policies.model.PutRequest;
+import uk.gov.hmcts.reform.idam.api.fr.am.policies.model.PutResponse;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.EncodingUtils;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-28T16:50:59.186+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-28T17:00:41.196+01:00")
 public interface PoliciesV21Api extends ApiClient.Api {
 
-
-  /**
-   * Create with Client-Assigned ID
-   * Create or update policy
-    * @param resourceId The unique identifier of the policy (required)
-    * @param requestPayload  (required)
-    * @param acceptAPIVersion  (required)
-    * @param fields Optional parameter containing a comma separated list of field references specifying which fields of the targeted JSON resource should be returned. (optional)
-    * @param prettyPrint Optional parameter requesting that the returned JSON resource content should be formatted to be more human readable. (optional)
-   * @return PutPolicyResponse
-   */
-  @RequestLine("PUT /json/policies/{resourceId}?_fields={fields}&_prettyPrint={prettyPrint}")
-  @Headers({
-    "Content-Type: application/json",
-    "Accept: application/json",
-    "Accept-API-Version: {acceptAPIVersion}"
-  })
-  PutPolicyResponse createOrUpdate(@Param("resourceId") String resourceId, PutPolicyRequest requestPayload, @Param("acceptAPIVersion") String acceptAPIVersion, @Param("fields") String fields, @Param("prettyPrint") Boolean prettyPrint);
-
-  /**
-   * Create with Client-Assigned ID
-   * Create or update policy
-   * Note, this is equivalent to the other <code>createOrUpdate</code> method,
-   * but with the query parameters collected into a single Map parameter. This
-   * is convenient for services with optional query parameters, especially when
-   * used with the {@link CreateOrUpdateQueryParams} class that allows for
-   * building up this map in a fluent style.
-   * @param resourceId The unique identifier of the policy (required)
-   * @param requestPayload  (required)
-   * @param acceptAPIVersion  (required)
-   * @param queryParams Map of query parameters as name-value pairs
-   *   <p>The following elements may be specified in the query map:</p>
-   *   <ul>
-   *   <li>fields - Optional parameter containing a comma separated list of field references specifying which fields of the targeted JSON resource should be returned. (optional)</li>
-   *   <li>prettyPrint - Optional parameter requesting that the returned JSON resource content should be formatted to be more human readable. (optional)</li>
-   *   </ul>
-   * @return PutPolicyResponse
-   */
-  @RequestLine("PUT /json/policies/{resourceId}?_fields={fields}&_prettyPrint={prettyPrint}")
-  @Headers({
-  "Content-Type: application/json",
-  "Accept: application/json",
-      "Accept-API-Version: {acceptAPIVersion}"
-  })
-  PutPolicyResponse createOrUpdate(@Param("resourceId") String resourceId, PutPolicyRequest requestPayload, @Param("acceptAPIVersion") String acceptAPIVersion, @QueryMap(encoded = true) Map<String, Object> queryParams);
-
-  /**
-   * A convenience class for generating query parameters for the
-   * <code>createOrUpdate</code> method in a fluent style.
-   */
-  public static class CreateOrUpdateQueryParams extends HashMap<String, Object> {
-    public CreateOrUpdateQueryParams fields(final String value) {
-      put("_fields", EncodingUtils.encode(value));
-      return this;
-    }
-    public CreateOrUpdateQueryParams prettyPrint(final Boolean value) {
-      put("_prettyPrint", EncodingUtils.encode(value));
-      return this;
-    }
-  }
 
   /**
    * Delete
@@ -87,14 +27,14 @@ public interface PoliciesV21Api extends ApiClient.Api {
     * @param acceptAPIVersion  (required)
     * @param fields Optional parameter containing a comma separated list of field references specifying which fields of the targeted JSON resource should be returned. (optional)
     * @param prettyPrint Optional parameter requesting that the returned JSON resource content should be formatted to be more human readable. (optional)
-   * @return DeletePolicyResponse
+   * @return DeleteResponse
    */
   @RequestLine("DELETE /json/policies/{resourceId}?_fields={fields}&_prettyPrint={prettyPrint}")
   @Headers({
     "Accept: application/json",
     "Accept-API-Version: {acceptAPIVersion}"
   })
-  DeletePolicyResponse delete(@Param("resourceId") String resourceId, @Param("acceptAPIVersion") String acceptAPIVersion, @Param("fields") String fields, @Param("prettyPrint") Boolean prettyPrint);
+  DeleteResponse delete(@Param("resourceId") String resourceId, @Param("acceptAPIVersion") String acceptAPIVersion, @Param("fields") String fields, @Param("prettyPrint") Boolean prettyPrint);
 
   /**
    * Delete
@@ -112,14 +52,14 @@ public interface PoliciesV21Api extends ApiClient.Api {
    *   <li>fields - Optional parameter containing a comma separated list of field references specifying which fields of the targeted JSON resource should be returned. (optional)</li>
    *   <li>prettyPrint - Optional parameter requesting that the returned JSON resource content should be formatted to be more human readable. (optional)</li>
    *   </ul>
-   * @return DeletePolicyResponse
+   * @return DeleteResponse
    */
   @RequestLine("DELETE /json/policies/{resourceId}?_fields={fields}&_prettyPrint={prettyPrint}")
   @Headers({
   "Accept: application/json",
       "Accept-API-Version: {acceptAPIVersion}"
   })
-  DeletePolicyResponse delete(@Param("resourceId") String resourceId, @Param("acceptAPIVersion") String acceptAPIVersion, @QueryMap(encoded = true) Map<String, Object> queryParams);
+  DeleteResponse delete(@Param("resourceId") String resourceId, @Param("acceptAPIVersion") String acceptAPIVersion, @QueryMap(encoded = true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
@@ -220,22 +160,22 @@ public interface PoliciesV21Api extends ApiClient.Api {
     * @param fields Optional parameter containing a comma separated list of field references specifying which fields of the targeted JSON resource should be returned. (optional)
     * @param prettyPrint Optional parameter requesting that the returned JSON resource content should be formatted to be more human readable. (optional)
     * @param mimeType Optional parameter requesting that the response have the given MIME-Type. Use of this parameter requires a _fields parameter with a single field specified. (optional)
-   * @return GetPolicyResponse
+   * @return GetResponse
    */
   @RequestLine("GET /json/policies/{resourceId}?_fields={fields}&_prettyPrint={prettyPrint}&_mimeType={mimeType}")
   @Headers({
     "Accept: application/json",
     "Accept-API-Version: {acceptAPIVersion}"
   })
-  GetPolicyResponse retrieve(@Param("resourceId") String resourceId, @Param("acceptAPIVersion") String acceptAPIVersion, @Param("fields") String fields, @Param("prettyPrint") Boolean prettyPrint, @Param("mimeType") String mimeType);
+  GetResponse get(@Param("resourceId") String resourceId, @Param("acceptAPIVersion") String acceptAPIVersion, @Param("fields") String fields, @Param("prettyPrint") Boolean prettyPrint, @Param("mimeType") String mimeType);
 
   /**
    * Read
    * Read policy
-   * Note, this is equivalent to the other <code>retrieve</code> method,
+   * Note, this is equivalent to the other <code>get</code> method,
    * but with the query parameters collected into a single Map parameter. This
    * is convenient for services with optional query parameters, especially when
-   * used with the {@link RetrieveQueryParams} class that allows for
+   * used with the {@link GetQueryParams} class that allows for
    * building up this map in a fluent style.
    * @param resourceId The unique identifier of the policy (required)
    * @param acceptAPIVersion  (required)
@@ -246,30 +186,90 @@ public interface PoliciesV21Api extends ApiClient.Api {
    *   <li>prettyPrint - Optional parameter requesting that the returned JSON resource content should be formatted to be more human readable. (optional)</li>
    *   <li>mimeType - Optional parameter requesting that the response have the given MIME-Type. Use of this parameter requires a _fields parameter with a single field specified. (optional)</li>
    *   </ul>
-   * @return GetPolicyResponse
+   * @return GetResponse
    */
   @RequestLine("GET /json/policies/{resourceId}?_fields={fields}&_prettyPrint={prettyPrint}&_mimeType={mimeType}")
   @Headers({
   "Accept: application/json",
       "Accept-API-Version: {acceptAPIVersion}"
   })
-  GetPolicyResponse retrieve(@Param("resourceId") String resourceId, @Param("acceptAPIVersion") String acceptAPIVersion, @QueryMap(encoded = true) Map<String, Object> queryParams);
+  GetResponse get(@Param("resourceId") String resourceId, @Param("acceptAPIVersion") String acceptAPIVersion, @QueryMap(encoded = true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
-   * <code>retrieve</code> method in a fluent style.
+   * <code>get</code> method in a fluent style.
    */
-  public static class RetrieveQueryParams extends HashMap<String, Object> {
-    public RetrieveQueryParams fields(final String value) {
+  public static class GetQueryParams extends HashMap<String, Object> {
+    public GetQueryParams fields(final String value) {
       put("_fields", EncodingUtils.encode(value));
       return this;
     }
-    public RetrieveQueryParams prettyPrint(final Boolean value) {
+    public GetQueryParams prettyPrint(final Boolean value) {
       put("_prettyPrint", EncodingUtils.encode(value));
       return this;
     }
-    public RetrieveQueryParams mimeType(final String value) {
+    public GetQueryParams mimeType(final String value) {
       put("_mimeType", EncodingUtils.encode(value));
+      return this;
+    }
+  }
+
+  /**
+   * Create with Client-Assigned ID
+   * Create or update policy
+    * @param resourceId The unique identifier of the policy (required)
+    * @param requestPayload  (required)
+    * @param acceptAPIVersion  (required)
+    * @param fields Optional parameter containing a comma separated list of field references specifying which fields of the targeted JSON resource should be returned. (optional)
+    * @param prettyPrint Optional parameter requesting that the returned JSON resource content should be formatted to be more human readable. (optional)
+   * @return PutResponse
+   */
+  @RequestLine("PUT /json/policies/{resourceId}?_fields={fields}&_prettyPrint={prettyPrint}")
+  @Headers({
+    "Content-Type: application/json",
+    "Accept: application/json",
+    "Accept-API-Version: {acceptAPIVersion}"
+  })
+  PutResponse put(@Param("resourceId") String resourceId, PutRequest requestPayload, @Param("acceptAPIVersion") String acceptAPIVersion, @Param("fields") String fields, @Param("prettyPrint") Boolean prettyPrint);
+
+  /**
+   * Create with Client-Assigned ID
+   * Create or update policy
+   * Note, this is equivalent to the other <code>put</code> method,
+   * but with the query parameters collected into a single Map parameter. This
+   * is convenient for services with optional query parameters, especially when
+   * used with the {@link PutQueryParams} class that allows for
+   * building up this map in a fluent style.
+   * @param resourceId The unique identifier of the policy (required)
+   * @param requestPayload  (required)
+   * @param acceptAPIVersion  (required)
+   * @param queryParams Map of query parameters as name-value pairs
+   *   <p>The following elements may be specified in the query map:</p>
+   *   <ul>
+   *   <li>fields - Optional parameter containing a comma separated list of field references specifying which fields of the targeted JSON resource should be returned. (optional)</li>
+   *   <li>prettyPrint - Optional parameter requesting that the returned JSON resource content should be formatted to be more human readable. (optional)</li>
+   *   </ul>
+   * @return PutResponse
+   */
+  @RequestLine("PUT /json/policies/{resourceId}?_fields={fields}&_prettyPrint={prettyPrint}")
+  @Headers({
+  "Content-Type: application/json",
+  "Accept: application/json",
+      "Accept-API-Version: {acceptAPIVersion}"
+  })
+  PutResponse put(@Param("resourceId") String resourceId, PutRequest requestPayload, @Param("acceptAPIVersion") String acceptAPIVersion, @QueryMap(encoded = true) Map<String, Object> queryParams);
+
+  /**
+   * A convenience class for generating query parameters for the
+   * <code>put</code> method in a fluent style.
+   */
+  public static class PutQueryParams extends HashMap<String, Object> {
+    public PutQueryParams fields(final String value) {
+      put("_fields", EncodingUtils.encode(value));
+      return this;
+    }
+    public PutQueryParams prettyPrint(final Boolean value) {
+      put("_prettyPrint", EncodingUtils.encode(value));
       return this;
     }
   }
