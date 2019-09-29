@@ -60,7 +60,7 @@ paths:
           schema:
             $ref: '#/definitions/ApiError'
           description: Unsupported operation
-  /json/policies/{resourceId}:
+  /json/realms/{realm}/policies/{resourceId}:
     put:
       summary: Create Policy with Client-Assigned ID
       operationId: put
@@ -72,6 +72,11 @@ paths:
         - name: resourceId
           in: path
           description: The unique identifier of the policy
+          required: true
+          type: string
+        - name: realm
+          in: path
+          description: The realm of the policy.
           required: true
           type: string
         - $ref: '#/parameters/_fields'

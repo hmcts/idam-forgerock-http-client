@@ -21,7 +21,7 @@ import java.util.Objects;
 /**
  * EvaluateResponseInner
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-29T17:06:44.605+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-29T17:17:13.417+01:00")
 public class EvaluateResponseInner {
   @JsonProperty("resource")
   private String resource = null;

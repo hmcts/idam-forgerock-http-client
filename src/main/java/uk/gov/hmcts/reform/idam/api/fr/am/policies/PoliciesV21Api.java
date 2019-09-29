@@ -16,7 +16,7 @@ import uk.gov.hmcts.reform.idam.api.fr.client.invoker.EncodingUtils;
 import java.util.HashMap;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-29T17:06:44.605+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-29T17:17:13.417+01:00")
 public interface PoliciesV21Api extends ApiClient.Api {
 
 
@@ -30,7 +30,7 @@ public interface PoliciesV21Api extends ApiClient.Api {
     * @param cookie  (optional)
    * @return DeleteResponse
    */
-  @RequestLine("DELETE /json/policies/{resourceId}?_fields={fields}&_prettyPrint={prettyPrint}")
+  @RequestLine("DELETE /json/realms/{realm}/policies/{resourceId}?_fields={fields}&_prettyPrint={prettyPrint}")
   @Headers({
     "Accept: application/json",
     "Accept-API-Version: {acceptAPIVersion}",
@@ -58,7 +58,7 @@ public interface PoliciesV21Api extends ApiClient.Api {
    *   </ul>
    * @return DeleteResponse
    */
-  @RequestLine("DELETE /json/policies/{resourceId}?_fields={fields}&_prettyPrint={prettyPrint}")
+  @RequestLine("DELETE /json/realms/{realm}/policies/{resourceId}?_fields={fields}&_prettyPrint={prettyPrint}")
   @Headers({
   "Accept: application/json",
       "Accept-API-Version: {acceptAPIVersion}",
@@ -169,7 +169,7 @@ public interface PoliciesV21Api extends ApiClient.Api {
     * @param cookie  (optional)
    * @return GetResponse
    */
-  @RequestLine("GET /json/policies/{resourceId}?_fields={fields}&_prettyPrint={prettyPrint}&_mimeType={mimeType}")
+  @RequestLine("GET /json/realms/{realm}/policies/{resourceId}?_fields={fields}&_prettyPrint={prettyPrint}&_mimeType={mimeType}")
   @Headers({
     "Accept: application/json",
     "Accept-API-Version: {acceptAPIVersion}",
@@ -198,7 +198,7 @@ public interface PoliciesV21Api extends ApiClient.Api {
    *   </ul>
    * @return GetResponse
    */
-  @RequestLine("GET /json/policies/{resourceId}?_fields={fields}&_prettyPrint={prettyPrint}&_mimeType={mimeType}")
+  @RequestLine("GET /json/realms/{realm}/policies/{resourceId}?_fields={fields}&_prettyPrint={prettyPrint}&_mimeType={mimeType}")
   @Headers({
   "Accept: application/json",
       "Accept-API-Version: {acceptAPIVersion}",
@@ -230,6 +230,7 @@ public interface PoliciesV21Api extends ApiClient.Api {
    * Create Policy with Client-Assigned ID
    * Create or update policy
     * @param resourceId The unique identifier of the policy (required)
+    * @param realm The realm of the policy. (required)
     * @param acceptAPIVersion  (required)
     * @param requestPayload  (required)
     * @param fields Optional parameter containing a comma separated list of field references specifying which fields of the targeted JSON resource should be returned. (optional)
@@ -237,7 +238,7 @@ public interface PoliciesV21Api extends ApiClient.Api {
     * @param cookie  (optional)
    * @return PutResponse
    */
-  @RequestLine("PUT /json/policies/{resourceId}?_fields={fields}&_prettyPrint={prettyPrint}")
+  @RequestLine("PUT /json/realms/{realm}/policies/{resourceId}?_fields={fields}&_prettyPrint={prettyPrint}")
   @Headers({
     "Content-Type: application/json",
     "Accept: application/json",
@@ -245,7 +246,7 @@ public interface PoliciesV21Api extends ApiClient.Api {
 
     "Cookie: {cookie}"
   })
-  PutResponse put(@Param("resourceId") String resourceId, @Param("acceptAPIVersion") String acceptAPIVersion, PutRequest requestPayload, @Param("fields") String fields, @Param("prettyPrint") Boolean prettyPrint, @Param("cookie") String cookie);
+  PutResponse put(@Param("resourceId") String resourceId, @Param("realm") String realm, @Param("acceptAPIVersion") String acceptAPIVersion, PutRequest requestPayload, @Param("fields") String fields, @Param("prettyPrint") Boolean prettyPrint, @Param("cookie") String cookie);
 
   /**
    * Create Policy with Client-Assigned ID
@@ -256,6 +257,7 @@ public interface PoliciesV21Api extends ApiClient.Api {
    * used with the {@link PutQueryParams} class that allows for
    * building up this map in a fluent style.
    * @param resourceId The unique identifier of the policy (required)
+   * @param realm The realm of the policy. (required)
    * @param acceptAPIVersion  (required)
    * @param requestPayload  (required)
    * @param cookie  (optional)
@@ -267,7 +269,7 @@ public interface PoliciesV21Api extends ApiClient.Api {
    *   </ul>
    * @return PutResponse
    */
-  @RequestLine("PUT /json/policies/{resourceId}?_fields={fields}&_prettyPrint={prettyPrint}")
+  @RequestLine("PUT /json/realms/{realm}/policies/{resourceId}?_fields={fields}&_prettyPrint={prettyPrint}")
   @Headers({
   "Content-Type: application/json",
   "Accept: application/json",
@@ -275,7 +277,7 @@ public interface PoliciesV21Api extends ApiClient.Api {
 
       "Cookie: {cookie}"
   })
-  PutResponse put(@Param("resourceId") String resourceId, @Param("acceptAPIVersion") String acceptAPIVersion, PutRequest requestPayload, @Param("cookie") String cookie, @QueryMap(encoded = true) Map<String, Object> queryParams);
+  PutResponse put(@Param("resourceId") String resourceId, @Param("realm") String realm, @Param("acceptAPIVersion") String acceptAPIVersion, PutRequest requestPayload, @Param("cookie") String cookie, @QueryMap(encoded = true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the

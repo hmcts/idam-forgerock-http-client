@@ -25,7 +25,7 @@ import java.util.Objects;
  * Specifies environment conditions, where conditions can be combined by using the built-in types \&quot;AND\&quot;, \&quot;OR\&quot;, and \&quot;NOT\&quot;, and where condition implementations are pluggable
  */
 @ApiModel(description = "Specifies environment conditions, where conditions can be combined by using the built-in types \"AND\", \"OR\", and \"NOT\", and where condition implementations are pluggable")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-29T17:06:44.605+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-29T17:17:13.417+01:00")
 public class Condition {
   @JsonProperty("type")
   private String type = null;
