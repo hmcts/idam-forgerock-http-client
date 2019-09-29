@@ -22,7 +22,7 @@ import java.util.Objects;
  * Evaluate and evaluateTree schema response
  */
 @ApiModel(description = "Evaluate and evaluateTree schema response")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-28T17:00:41.196+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-29T17:06:44.605+01:00")
 public class EvaluateResponse extends ArrayList<EvaluateResponseInner> {
 
   @Override

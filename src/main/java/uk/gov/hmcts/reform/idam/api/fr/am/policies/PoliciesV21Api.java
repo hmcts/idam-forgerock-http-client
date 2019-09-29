@@ -16,7 +16,7 @@ import uk.gov.hmcts.reform.idam.api.fr.client.invoker.EncodingUtils;
 import java.util.HashMap;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-28T17:00:41.196+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-29T17:06:44.605+01:00")
 public interface PoliciesV21Api extends ApiClient.Api {
 
 
@@ -27,14 +27,17 @@ public interface PoliciesV21Api extends ApiClient.Api {
     * @param acceptAPIVersion  (required)
     * @param fields Optional parameter containing a comma separated list of field references specifying which fields of the targeted JSON resource should be returned. (optional)
     * @param prettyPrint Optional parameter requesting that the returned JSON resource content should be formatted to be more human readable. (optional)
+    * @param cookie  (optional)
    * @return DeleteResponse
    */
   @RequestLine("DELETE /json/policies/{resourceId}?_fields={fields}&_prettyPrint={prettyPrint}")
   @Headers({
     "Accept: application/json",
-    "Accept-API-Version: {acceptAPIVersion}"
+    "Accept-API-Version: {acceptAPIVersion}",
+    
+    "Cookie: {cookie}"
   })
-  DeleteResponse delete(@Param("resourceId") String resourceId, @Param("acceptAPIVersion") String acceptAPIVersion, @Param("fields") String fields, @Param("prettyPrint") Boolean prettyPrint);
+  DeleteResponse delete(@Param("resourceId") String resourceId, @Param("acceptAPIVersion") String acceptAPIVersion, @Param("fields") String fields, @Param("prettyPrint") Boolean prettyPrint, @Param("cookie") String cookie);
 
   /**
    * Delete
@@ -46,6 +49,7 @@ public interface PoliciesV21Api extends ApiClient.Api {
    * building up this map in a fluent style.
    * @param resourceId The unique identifier of the policy (required)
    * @param acceptAPIVersion  (required)
+   * @param cookie  (optional)
    * @param queryParams Map of query parameters as name-value pairs
    *   <p>The following elements may be specified in the query map:</p>
    *   <ul>
@@ -57,9 +61,11 @@ public interface PoliciesV21Api extends ApiClient.Api {
   @RequestLine("DELETE /json/policies/{resourceId}?_fields={fields}&_prettyPrint={prettyPrint}")
   @Headers({
   "Accept: application/json",
-      "Accept-API-Version: {acceptAPIVersion}"
+      "Accept-API-Version: {acceptAPIVersion}",
+      
+      "Cookie: {cookie}"
   })
-  DeleteResponse delete(@Param("resourceId") String resourceId, @Param("acceptAPIVersion") String acceptAPIVersion, @QueryMap(encoded = true) Map<String, Object> queryParams);
+  DeleteResponse delete(@Param("resourceId") String resourceId, @Param("acceptAPIVersion") String acceptAPIVersion, @Param("cookie") String cookie, @QueryMap(encoded = true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
@@ -160,14 +166,17 @@ public interface PoliciesV21Api extends ApiClient.Api {
     * @param fields Optional parameter containing a comma separated list of field references specifying which fields of the targeted JSON resource should be returned. (optional)
     * @param prettyPrint Optional parameter requesting that the returned JSON resource content should be formatted to be more human readable. (optional)
     * @param mimeType Optional parameter requesting that the response have the given MIME-Type. Use of this parameter requires a _fields parameter with a single field specified. (optional)
+    * @param cookie  (optional)
    * @return GetResponse
    */
   @RequestLine("GET /json/policies/{resourceId}?_fields={fields}&_prettyPrint={prettyPrint}&_mimeType={mimeType}")
   @Headers({
     "Accept: application/json",
-    "Accept-API-Version: {acceptAPIVersion}"
+    "Accept-API-Version: {acceptAPIVersion}",
+
+    "Cookie: {cookie}"
   })
-  GetResponse get(@Param("resourceId") String resourceId, @Param("acceptAPIVersion") String acceptAPIVersion, @Param("fields") String fields, @Param("prettyPrint") Boolean prettyPrint, @Param("mimeType") String mimeType);
+  GetResponse get(@Param("resourceId") String resourceId, @Param("acceptAPIVersion") String acceptAPIVersion, @Param("fields") String fields, @Param("prettyPrint") Boolean prettyPrint, @Param("mimeType") String mimeType, @Param("cookie") String cookie);
 
   /**
    * Read
@@ -179,6 +188,7 @@ public interface PoliciesV21Api extends ApiClient.Api {
    * building up this map in a fluent style.
    * @param resourceId The unique identifier of the policy (required)
    * @param acceptAPIVersion  (required)
+   * @param cookie  (optional)
    * @param queryParams Map of query parameters as name-value pairs
    *   <p>The following elements may be specified in the query map:</p>
    *   <ul>
@@ -191,9 +201,11 @@ public interface PoliciesV21Api extends ApiClient.Api {
   @RequestLine("GET /json/policies/{resourceId}?_fields={fields}&_prettyPrint={prettyPrint}&_mimeType={mimeType}")
   @Headers({
   "Accept: application/json",
-      "Accept-API-Version: {acceptAPIVersion}"
+      "Accept-API-Version: {acceptAPIVersion}",
+
+      "Cookie: {cookie}"
   })
-  GetResponse get(@Param("resourceId") String resourceId, @Param("acceptAPIVersion") String acceptAPIVersion, @QueryMap(encoded = true) Map<String, Object> queryParams);
+  GetResponse get(@Param("resourceId") String resourceId, @Param("acceptAPIVersion") String acceptAPIVersion, @Param("cookie") String cookie, @QueryMap(encoded = true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
@@ -215,25 +227,28 @@ public interface PoliciesV21Api extends ApiClient.Api {
   }
 
   /**
-   * Create with Client-Assigned ID
+   * Create Policy with Client-Assigned ID
    * Create or update policy
     * @param resourceId The unique identifier of the policy (required)
-    * @param requestPayload  (required)
     * @param acceptAPIVersion  (required)
+    * @param requestPayload  (required)
     * @param fields Optional parameter containing a comma separated list of field references specifying which fields of the targeted JSON resource should be returned. (optional)
     * @param prettyPrint Optional parameter requesting that the returned JSON resource content should be formatted to be more human readable. (optional)
+    * @param cookie  (optional)
    * @return PutResponse
    */
   @RequestLine("PUT /json/policies/{resourceId}?_fields={fields}&_prettyPrint={prettyPrint}")
   @Headers({
     "Content-Type: application/json",
     "Accept: application/json",
-    "Accept-API-Version: {acceptAPIVersion}"
+    "Accept-API-Version: {acceptAPIVersion}",
+
+    "Cookie: {cookie}"
   })
-  PutResponse put(@Param("resourceId") String resourceId, PutRequest requestPayload, @Param("acceptAPIVersion") String acceptAPIVersion, @Param("fields") String fields, @Param("prettyPrint") Boolean prettyPrint);
+  PutResponse put(@Param("resourceId") String resourceId, @Param("acceptAPIVersion") String acceptAPIVersion, PutRequest requestPayload, @Param("fields") String fields, @Param("prettyPrint") Boolean prettyPrint, @Param("cookie") String cookie);
 
   /**
-   * Create with Client-Assigned ID
+   * Create Policy with Client-Assigned ID
    * Create or update policy
    * Note, this is equivalent to the other <code>put</code> method,
    * but with the query parameters collected into a single Map parameter. This
@@ -241,8 +256,9 @@ public interface PoliciesV21Api extends ApiClient.Api {
    * used with the {@link PutQueryParams} class that allows for
    * building up this map in a fluent style.
    * @param resourceId The unique identifier of the policy (required)
-   * @param requestPayload  (required)
    * @param acceptAPIVersion  (required)
+   * @param requestPayload  (required)
+   * @param cookie  (optional)
    * @param queryParams Map of query parameters as name-value pairs
    *   <p>The following elements may be specified in the query map:</p>
    *   <ul>
@@ -255,9 +271,11 @@ public interface PoliciesV21Api extends ApiClient.Api {
   @Headers({
   "Content-Type: application/json",
   "Accept: application/json",
-      "Accept-API-Version: {acceptAPIVersion}"
+      "Accept-API-Version: {acceptAPIVersion}",
+
+      "Cookie: {cookie}"
   })
-  PutResponse put(@Param("resourceId") String resourceId, PutRequest requestPayload, @Param("acceptAPIVersion") String acceptAPIVersion, @QueryMap(encoded = true) Map<String, Object> queryParams);
+  PutResponse put(@Param("resourceId") String resourceId, @Param("acceptAPIVersion") String acceptAPIVersion, PutRequest requestPayload, @Param("cookie") String cookie, @QueryMap(encoded = true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
