@@ -16,13 +16,14 @@ import uk.gov.hmcts.reform.idam.api.fr.client.invoker.EncodingUtils;
 import java.util.HashMap;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-29T17:17:13.417+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-29T17:27:31.901+01:00")
 public interface PoliciesV21Api extends ApiClient.Api {
 
 
   /**
    * Delete
    * Delete policy
+    * @param realm Parameter specifying the realm. (required)
     * @param resourceId The unique identifier of the policy (required)
     * @param acceptAPIVersion  (required)
     * @param fields Optional parameter containing a comma separated list of field references specifying which fields of the targeted JSON resource should be returned. (optional)
@@ -37,7 +38,7 @@ public interface PoliciesV21Api extends ApiClient.Api {
     
     "Cookie: {cookie}"
   })
-  DeleteResponse delete(@Param("resourceId") String resourceId, @Param("acceptAPIVersion") String acceptAPIVersion, @Param("fields") String fields, @Param("prettyPrint") Boolean prettyPrint, @Param("cookie") String cookie);
+  DeleteResponse delete(@Param("realm") String realm, @Param("resourceId") String resourceId, @Param("acceptAPIVersion") String acceptAPIVersion, @Param("fields") String fields, @Param("prettyPrint") Boolean prettyPrint, @Param("cookie") String cookie);
 
   /**
    * Delete
@@ -47,6 +48,7 @@ public interface PoliciesV21Api extends ApiClient.Api {
    * is convenient for services with optional query parameters, especially when
    * used with the {@link DeleteQueryParams} class that allows for
    * building up this map in a fluent style.
+   * @param realm Parameter specifying the realm. (required)
    * @param resourceId The unique identifier of the policy (required)
    * @param acceptAPIVersion  (required)
    * @param cookie  (optional)
@@ -65,7 +67,7 @@ public interface PoliciesV21Api extends ApiClient.Api {
       
       "Cookie: {cookie}"
   })
-  DeleteResponse delete(@Param("resourceId") String resourceId, @Param("acceptAPIVersion") String acceptAPIVersion, @Param("cookie") String cookie, @QueryMap(encoded = true) Map<String, Object> queryParams);
+  DeleteResponse delete(@Param("realm") String realm, @Param("resourceId") String resourceId, @Param("acceptAPIVersion") String acceptAPIVersion, @Param("cookie") String cookie, @QueryMap(encoded = true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
@@ -161,6 +163,7 @@ public interface PoliciesV21Api extends ApiClient.Api {
   /**
    * Read
    * Read policy
+    * @param realm Parameter specifying the realm. (required)
     * @param resourceId The unique identifier of the policy (required)
     * @param acceptAPIVersion  (required)
     * @param fields Optional parameter containing a comma separated list of field references specifying which fields of the targeted JSON resource should be returned. (optional)
@@ -176,7 +179,7 @@ public interface PoliciesV21Api extends ApiClient.Api {
 
     "Cookie: {cookie}"
   })
-  GetResponse get(@Param("resourceId") String resourceId, @Param("acceptAPIVersion") String acceptAPIVersion, @Param("fields") String fields, @Param("prettyPrint") Boolean prettyPrint, @Param("mimeType") String mimeType, @Param("cookie") String cookie);
+  GetResponse get(@Param("realm") String realm, @Param("resourceId") String resourceId, @Param("acceptAPIVersion") String acceptAPIVersion, @Param("fields") String fields, @Param("prettyPrint") Boolean prettyPrint, @Param("mimeType") String mimeType, @Param("cookie") String cookie);
 
   /**
    * Read
@@ -186,6 +189,7 @@ public interface PoliciesV21Api extends ApiClient.Api {
    * is convenient for services with optional query parameters, especially when
    * used with the {@link GetQueryParams} class that allows for
    * building up this map in a fluent style.
+   * @param realm Parameter specifying the realm. (required)
    * @param resourceId The unique identifier of the policy (required)
    * @param acceptAPIVersion  (required)
    * @param cookie  (optional)
@@ -205,7 +209,7 @@ public interface PoliciesV21Api extends ApiClient.Api {
 
       "Cookie: {cookie}"
   })
-  GetResponse get(@Param("resourceId") String resourceId, @Param("acceptAPIVersion") String acceptAPIVersion, @Param("cookie") String cookie, @QueryMap(encoded = true) Map<String, Object> queryParams);
+  GetResponse get(@Param("realm") String realm, @Param("resourceId") String resourceId, @Param("acceptAPIVersion") String acceptAPIVersion, @Param("cookie") String cookie, @QueryMap(encoded = true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
@@ -229,8 +233,8 @@ public interface PoliciesV21Api extends ApiClient.Api {
   /**
    * Create Policy with Client-Assigned ID
    * Create or update policy
+    * @param realm Parameter specifying the realm. (required)
     * @param resourceId The unique identifier of the policy (required)
-    * @param realm The realm of the policy. (required)
     * @param acceptAPIVersion  (required)
     * @param requestPayload  (required)
     * @param fields Optional parameter containing a comma separated list of field references specifying which fields of the targeted JSON resource should be returned. (optional)
@@ -246,7 +250,7 @@ public interface PoliciesV21Api extends ApiClient.Api {
 
     "Cookie: {cookie}"
   })
-  PutResponse put(@Param("resourceId") String resourceId, @Param("realm") String realm, @Param("acceptAPIVersion") String acceptAPIVersion, PutRequest requestPayload, @Param("fields") String fields, @Param("prettyPrint") Boolean prettyPrint, @Param("cookie") String cookie);
+  PutResponse put(@Param("realm") String realm, @Param("resourceId") String resourceId, @Param("acceptAPIVersion") String acceptAPIVersion, PutRequest requestPayload, @Param("fields") String fields, @Param("prettyPrint") Boolean prettyPrint, @Param("cookie") String cookie);
 
   /**
    * Create Policy with Client-Assigned ID
@@ -256,8 +260,8 @@ public interface PoliciesV21Api extends ApiClient.Api {
    * is convenient for services with optional query parameters, especially when
    * used with the {@link PutQueryParams} class that allows for
    * building up this map in a fluent style.
+   * @param realm Parameter specifying the realm. (required)
    * @param resourceId The unique identifier of the policy (required)
-   * @param realm The realm of the policy. (required)
    * @param acceptAPIVersion  (required)
    * @param requestPayload  (required)
    * @param cookie  (optional)
@@ -277,7 +281,7 @@ public interface PoliciesV21Api extends ApiClient.Api {
 
       "Cookie: {cookie}"
   })
-  PutResponse put(@Param("resourceId") String resourceId, @Param("realm") String realm, @Param("acceptAPIVersion") String acceptAPIVersion, PutRequest requestPayload, @Param("cookie") String cookie, @QueryMap(encoded = true) Map<String, Object> queryParams);
+  PutResponse put(@Param("realm") String realm, @Param("resourceId") String resourceId, @Param("acceptAPIVersion") String acceptAPIVersion, PutRequest requestPayload, @Param("cookie") String cookie, @QueryMap(encoded = true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the

@@ -25,7 +25,7 @@ import java.util.Objects;
  * Json schema for the policy resource
  */
 @ApiModel(description = "Json schema for the policy resource")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-29T17:17:13.417+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-29T17:27:31.901+01:00")
 public class DeleteResponse {
   @JsonProperty("name")
   private String name = null;

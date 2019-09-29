@@ -69,14 +69,10 @@ paths:
         - Policies v2.1
       x-resourceVersion: '2.1'
       parameters:
+        - $ref: '#/parameters/realmInPath'
         - name: resourceId
           in: path
           description: The unique identifier of the policy
-          required: true
-          type: string
-        - name: realm
-          in: path
-          description: The realm of the policy.
           required: true
           type: string
         - $ref: '#/parameters/_fields'
@@ -128,6 +124,7 @@ paths:
       summary: Delete
       operationId: delete
       parameters:
+        - $ref: '#/parameters/realmInPath'
         - name: resourceId
           in: path
           description: The unique identifier of the policy
@@ -181,6 +178,7 @@ paths:
         - Policies v2.1
       x-resourceVersion: '2.1'
       parameters:
+        - $ref: '#/parameters/realmInPath'
         - name: resourceId
           in: path
           description: The unique identifier of the policy
@@ -597,6 +595,12 @@ parameters:
     in: query
     description: Optional parameter requesting that the response have the given MIME-Type. Use of this parameter requires a _fields parameter with a single field specified.
     required: false
+    type: string
+  realmInPath:
+    name: realm
+    in: path
+    description: Parameter specifying the realm.
+    required: true
     type: string
   realm:
     name: realm
