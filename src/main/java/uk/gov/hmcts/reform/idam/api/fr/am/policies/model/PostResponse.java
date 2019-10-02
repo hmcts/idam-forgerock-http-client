@@ -26,7 +26,7 @@ import java.util.Objects;
  */
 @ApiModel(description = "Json schema for the policy resource")
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-01T14:14:33.256+01:00")
-public class PutResponse {
+public class PostResponse {
   @JsonProperty("name")
   private String name = null;
 
@@ -69,7 +69,7 @@ public class PutResponse {
   @JsonProperty("creationDate")
   private String creationDate = null;
 
-  public PutResponse name(String name) {
+  public PostResponse name(String name) {
     this.name = name;
     return this;
   }
@@ -87,7 +87,7 @@ public class PutResponse {
     this.name = name;
   }
 
-  public PutResponse active(Boolean active) {
+  public PostResponse active(Boolean active) {
     this.active = active;
     return this;
   }
@@ -105,7 +105,7 @@ public class PutResponse {
     this.active = active;
   }
 
-  public PutResponse description(String description) {
+  public PostResponse description(String description) {
     this.description = description;
     return this;
   }
@@ -123,7 +123,7 @@ public class PutResponse {
     this.description = description;
   }
 
-  public PutResponse applicationName(String applicationName) {
+  public PostResponse applicationName(String applicationName) {
     this.applicationName = applicationName;
     return this;
   }
@@ -141,7 +141,7 @@ public class PutResponse {
     this.applicationName = applicationName;
   }
 
-  public PutResponse actionValues(Object actionValues) {
+  public PostResponse actionValues(Object actionValues) {
     this.actionValues = actionValues;
     return this;
   }
@@ -159,12 +159,12 @@ public class PutResponse {
     this.actionValues = actionValues;
   }
 
-  public PutResponse resources(List<String> resources) {
+  public PostResponse resources(List<String> resources) {
     this.resources = resources;
     return this;
   }
 
-  public PutResponse addResourcesItem(String resourcesItem) {
+  public PostResponse addResourcesItem(String resourcesItem) {
     if (this.resources == null) {
       this.resources = new ArrayList<>();
     }
@@ -185,7 +185,7 @@ public class PutResponse {
     this.resources = resources;
   }
 
-  public PutResponse subject(Object subject) {
+  public PostResponse subject(Object subject) {
     this.subject = subject;
     return this;
   }
@@ -203,7 +203,7 @@ public class PutResponse {
     this.subject = subject;
   }
 
-  public PutResponse condition(Condition condition) {
+  public PostResponse condition(Condition condition) {
     this.condition = condition;
     return this;
   }
@@ -221,7 +221,7 @@ public class PutResponse {
     this.condition = condition;
   }
 
-  public PutResponse resourceTypeUuid(String resourceTypeUuid) {
+  public PostResponse resourceTypeUuid(String resourceTypeUuid) {
     this.resourceTypeUuid = resourceTypeUuid;
     return this;
   }
@@ -239,12 +239,12 @@ public class PutResponse {
     this.resourceTypeUuid = resourceTypeUuid;
   }
 
-  public PutResponse resourceAttributes(List<Object> resourceAttributes) {
+  public PostResponse resourceAttributes(List<Object> resourceAttributes) {
     this.resourceAttributes = resourceAttributes;
     return this;
   }
 
-  public PutResponse addResourceAttributesItem(Object resourceAttributesItem) {
+  public PostResponse addResourceAttributesItem(Object resourceAttributesItem) {
     if (this.resourceAttributes == null) {
       this.resourceAttributes = new ArrayList<>();
     }
@@ -265,7 +265,7 @@ public class PutResponse {
     this.resourceAttributes = resourceAttributes;
   }
 
-  public PutResponse lastModifiedBy(String lastModifiedBy) {
+  public PostResponse lastModifiedBy(String lastModifiedBy) {
     this.lastModifiedBy = lastModifiedBy;
     return this;
   }
@@ -283,7 +283,7 @@ public class PutResponse {
     this.lastModifiedBy = lastModifiedBy;
   }
 
-  public PutResponse lastModifiedDate(String lastModifiedDate) {
+  public PostResponse lastModifiedDate(String lastModifiedDate) {
     this.lastModifiedDate = lastModifiedDate;
     return this;
   }
@@ -301,7 +301,7 @@ public class PutResponse {
     this.lastModifiedDate = lastModifiedDate;
   }
 
-  public PutResponse createdBy(String createdBy) {
+  public PostResponse createdBy(String createdBy) {
     this.createdBy = createdBy;
     return this;
   }
@@ -319,7 +319,7 @@ public class PutResponse {
     this.createdBy = createdBy;
   }
 
-  public PutResponse creationDate(String creationDate) {
+  public PostResponse creationDate(String creationDate) {
     this.creationDate = creationDate;
     return this;
   }
@@ -346,21 +346,21 @@ public class PutResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PutResponse putResponse = (PutResponse) o;
-    return Objects.equals(this.name, putResponse.name) &&
-        Objects.equals(this.active, putResponse.active) &&
-        Objects.equals(this.description, putResponse.description) &&
-        Objects.equals(this.applicationName, putResponse.applicationName) &&
-        Objects.equals(this.actionValues, putResponse.actionValues) &&
-        Objects.equals(this.resources, putResponse.resources) &&
-        Objects.equals(this.subject, putResponse.subject) &&
-        Objects.equals(this.condition, putResponse.condition) &&
-        Objects.equals(this.resourceTypeUuid, putResponse.resourceTypeUuid) &&
-        Objects.equals(this.resourceAttributes, putResponse.resourceAttributes) &&
-        Objects.equals(this.lastModifiedBy, putResponse.lastModifiedBy) &&
-        Objects.equals(this.lastModifiedDate, putResponse.lastModifiedDate) &&
-        Objects.equals(this.createdBy, putResponse.createdBy) &&
-        Objects.equals(this.creationDate, putResponse.creationDate);
+    PostResponse postResponse = (PostResponse) o;
+    return Objects.equals(this.name, postResponse.name) &&
+        Objects.equals(this.active, postResponse.active) &&
+        Objects.equals(this.description, postResponse.description) &&
+        Objects.equals(this.applicationName, postResponse.applicationName) &&
+        Objects.equals(this.actionValues, postResponse.actionValues) &&
+        Objects.equals(this.resources, postResponse.resources) &&
+        Objects.equals(this.subject, postResponse.subject) &&
+        Objects.equals(this.condition, postResponse.condition) &&
+        Objects.equals(this.resourceTypeUuid, postResponse.resourceTypeUuid) &&
+        Objects.equals(this.resourceAttributes, postResponse.resourceAttributes) &&
+        Objects.equals(this.lastModifiedBy, postResponse.lastModifiedBy) &&
+        Objects.equals(this.lastModifiedDate, postResponse.lastModifiedDate) &&
+        Objects.equals(this.createdBy, postResponse.createdBy) &&
+        Objects.equals(this.creationDate, postResponse.creationDate);
   }
 
   @Override
@@ -372,7 +372,7 @@ public class PutResponse {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PutResponse {\n");
+    sb.append("class PostResponse {\n");
 
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    active: ").append(toIndentedString(active)).append("\n");
