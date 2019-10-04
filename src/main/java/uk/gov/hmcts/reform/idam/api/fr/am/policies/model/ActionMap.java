@@ -15,15 +15,15 @@ package uk.gov.hmcts.reform.idam.api.fr.am.policies.model;
 
 import io.swagger.annotations.ApiModel;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 
 /**
- * Evaluate and evaluateTree schema response
+ * Set of string action names, each set to a boolean indicating whether the action is allowed. Chosen from the available actions provided by the associated Managing Resource Types resource type
  */
-@ApiModel(description = "Evaluate and evaluateTree schema response")
+@ApiModel(description = "Set of string action names, each set to a boolean indicating whether the action is allowed. Chosen from the available actions provided by the associated Managing Resource Types resource type")
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-04T13:59:55.834+01:00")
-public class EvaluateResponse extends ArrayList<EvaluateResponseInner> {
+public class ActionMap extends HashMap<String, Object> {
 
   @Override
   public boolean equals(Object o) {
@@ -45,7 +45,7 @@ public class EvaluateResponse extends ArrayList<EvaluateResponseInner> {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class EvaluateResponse {\n");
+    sb.append("class ActionMap {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("}");
     return sb.toString();

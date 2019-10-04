@@ -273,6 +273,24 @@ paths:
             * Policy defines invalid resource type
             * The provided resourceId does not match to the UUID in the json file
 definitions:
+  ActionMap:
+    title: Action values
+    description: 'Set of string action names, each set to a boolean indicating whether the action is allowed. Chosen from the available actions provided by the associated Managing Resource Types resource type'
+    type: string
+    additionalProperties:
+      type: object
+  ConditionMap:
+    title: Condition
+    description: 'Specifies environment conditions, where conditions can be combined by using the built-in types "AND", "OR", and "NOT", and where condition implementations are pluggable'
+    type: string
+    additionalProperties:
+      type: object
+  SubjectMap:
+    title: Subject
+    description: 'Specifies the subject conditions to which the policy applies, where subjects can be combined by using the built-in types "AND", "OR", and "NOT", and where subject implementations are pluggable'
+    type: string
+    additionalProperties:
+      type: object
   EvaluateRequest:
     title: Evaluate Request
     description: Evaluate Request
@@ -324,9 +342,7 @@ definitions:
           title: Resource
           description: Specifies the root resource for the decisions to return
         actions:
-          type: object
-          title: Actions
-          description: A map of action name keys to Boolean values that indicate whether the action is allowed (true) or denied (false) for the specified resource
+          $ref: '#/definitions/ActionMap'
         attributes:
           type: object
           title: Attributes
@@ -357,9 +373,7 @@ definitions:
         title: Application name
         description: 'String containing the application name, such as "iPlanetAMWebAgentService", or "mypolicyset"'
       actionValues:
-        type: object
-        title: Action values
-        description: 'Set of string action names, each set to a boolean indicating whether the action is allowed. Chosen from the available actions provided by the associated Managing Resource Types resource type'
+        $ref: '#/definitions/ActionMap'
       resources:
         type: array
         items:
@@ -367,22 +381,9 @@ definitions:
         title: Resources
         description: List of the resource name pattern strings to which the policy applies. Must conform to the pattern templates provided by the associated Managing Resource Types resource type
       subject:
-        type: object
-        title: Subject
-        description: 'Specifies the subject conditions to which the policy applies, where subjects can be combined by using the built-in types "AND", "OR", and "NOT", and where subject implementations are pluggable'
+        $ref: '#/definitions/SubjectMap'
       condition:
-        type: object
-        properties:
-          type:
-            type: string
-          conditions:
-            type: array
-            items:
-              type: object
-            title: Condition
-            description: 'Specifies environment conditions, where conditions can be combined by using the built-in types "AND", "OR", and "NOT", and where condition implementations are pluggable'
-        title: Condition
-        description: 'Specifies environment conditions, where conditions can be combined by using the built-in types "AND", "OR", and "NOT", and where condition implementations are pluggable'
+        $ref: '#/definitions/ConditionMap'
       resourceTypeUuid:
         type: string
         title: Resource Type UUID
@@ -431,9 +432,7 @@ definitions:
         title: Application name
         description: 'String containing the application name, such as "iPlanetAMWebAgentService", or "mypolicyset"'
       actionValues:
-        type: object
-        title: Action values
-        description: 'Set of string action names, each set to a boolean indicating whether the action is allowed. Chosen from the available actions provided by the associated Managing Resource Types resource type'
+        $ref: '#/definitions/ActionMap'
       resources:
         type: array
         items:
@@ -441,22 +440,9 @@ definitions:
         title: Resources
         description: List of the resource name pattern strings to which the policy applies. Must conform to the pattern templates provided by the associated Managing Resource Types resource type
       subject:
-        type: object
-        title: Subject
-        description: 'Specifies the subject conditions to which the policy applies, where subjects can be combined by using the built-in types "AND", "OR", and "NOT", and where subject implementations are pluggable'
+        $ref: '#/definitions/SubjectMap'
       condition:
-        type: object
-        properties:
-          type:
-            type: string
-          conditions:
-            type: array
-            items:
-              type: object
-            title: Condition
-            description: 'Specifies environment conditions, where conditions can be combined by using the built-in types "AND", "OR", and "NOT", and where condition implementations are pluggable'
-        title: Condition
-        description: 'Specifies environment conditions, where conditions can be combined by using the built-in types "AND", "OR", and "NOT", and where condition implementations are pluggable'
+        $ref: '#/definitions/ConditionMap'
       resourceTypeUuid:
         type: string
         title: Resource Type UUID
@@ -505,9 +491,7 @@ definitions:
         title: Application name
         description: 'String containing the application name, such as "iPlanetAMWebAgentService", or "mypolicyset"'
       actionValues:
-        type: object
-        title: Action values
-        description: 'Set of string action names, each set to a boolean indicating whether the action is allowed. Chosen from the available actions provided by the associated Managing Resource Types resource type'
+        $ref: '#/definitions/ActionMap'
       resources:
         type: array
         items:
@@ -515,22 +499,9 @@ definitions:
         title: Resources
         description: List of the resource name pattern strings to which the policy applies. Must conform to the pattern templates provided by the associated Managing Resource Types resource type
       subject:
-        type: object
-        title: Subject
-        description: 'Specifies the subject conditions to which the policy applies, where subjects can be combined by using the built-in types "AND", "OR", and "NOT", and where subject implementations are pluggable'
+        $ref: '#/definitions/SubjectMap'
       condition:
-        type: object
-        properties:
-          type:
-            type: string
-          conditions:
-            type: array
-            items:
-              type: object
-            title: Condition
-            description: 'Specifies environment conditions, where conditions can be combined by using the built-in types "AND", "OR", and "NOT", and where condition implementations are pluggable'
-        title: Condition
-        description: 'Specifies environment conditions, where conditions can be combined by using the built-in types "AND", "OR", and "NOT", and where condition implementations are pluggable'
+        $ref: '#/definitions/ConditionMap'
       resourceTypeUuid:
         type: string
         title: Resource Type UUID
@@ -579,9 +550,7 @@ definitions:
         title: Application name
         description: 'String containing the application name, such as "iPlanetAMWebAgentService", or "mypolicyset"'
       actionValues:
-        type: object
-        title: Action values
-        description: 'Set of string action names, each set to a boolean indicating whether the action is allowed. Chosen from the available actions provided by the associated Managing Resource Types resource type'
+        $ref: '#/definitions/ActionMap'
       resources:
         type: array
         items:
@@ -589,22 +558,9 @@ definitions:
         title: Resources
         description: List of the resource name pattern strings to which the policy applies. Must conform to the pattern templates provided by the associated Managing Resource Types resource type
       subject:
-        type: object
-        title: Subject
-        description: 'Specifies the subject conditions to which the policy applies, where subjects can be combined by using the built-in types "AND", "OR", and "NOT", and where subject implementations are pluggable'
+        $ref: '#/definitions/SubjectMap'
       condition:
-        type: object
-        properties:
-          type:
-            type: string
-          conditions:
-            type: array
-            items:
-              type: object
-            title: Condition
-            description: 'Specifies environment conditions, where conditions can be combined by using the built-in types "AND", "OR", and "NOT", and where condition implementations are pluggable'
-        title: Condition
-        description: 'Specifies environment conditions, where conditions can be combined by using the built-in types "AND", "OR", and "NOT", and where condition implementations are pluggable'
+        $ref: '#/definitions/ConditionMap'
       resourceTypeUuid:
         type: string
         title: Resource Type UUID
@@ -653,9 +609,7 @@ definitions:
         title: Application name
         description: 'String containing the application name, such as "iPlanetAMWebAgentService", or "mypolicyset"'
       actionValues:
-        type: object
-        title: Action values
-        description: 'Set of string action names, each set to a boolean indicating whether the action is allowed. Chosen from the available actions provided by the associated Managing Resource Types resource type'
+        $ref: '#/definitions/ActionMap'
       resources:
         type: array
         items:
@@ -663,22 +617,9 @@ definitions:
         title: Resources
         description: List of the resource name pattern strings to which the policy applies. Must conform to the pattern templates provided by the associated Managing Resource Types resource type
       subject:
-        type: object
-        title: Subject
-        description: 'Specifies the subject conditions to which the policy applies, where subjects can be combined by using the built-in types "AND", "OR", and "NOT", and where subject implementations are pluggable'
+        $ref: '#/definitions/SubjectMap'
       condition:
-        type: object
-        properties:
-          type:
-            type: string
-          conditions:
-            type: array
-            items:
-              type: object
-            title: Condition
-            description: 'Specifies environment conditions, where conditions can be combined by using the built-in types "AND", "OR", and "NOT", and where condition implementations are pluggable'
-        title: Condition
-        description: 'Specifies environment conditions, where conditions can be combined by using the built-in types "AND", "OR", and "NOT", and where condition implementations are pluggable'
+        $ref: '#/definitions/ConditionMap'
       resourceTypeUuid:
         type: string
         title: Resource Type UUID
@@ -727,9 +668,7 @@ definitions:
         title: Application name
         description: 'String containing the application name, such as "iPlanetAMWebAgentService", or "mypolicyset"'
       actionValues:
-        type: object
-        title: Action values
-        description: 'Set of string action names, each set to a boolean indicating whether the action is allowed. Chosen from the available actions provided by the associated Managing Resource Types resource type'
+        $ref: '#/definitions/ActionMap'
       resources:
         type: array
         items:
@@ -737,22 +676,9 @@ definitions:
         title: Resources
         description: List of the resource name pattern strings to which the policy applies. Must conform to the pattern templates provided by the associated Managing Resource Types resource type
       subject:
-        type: object
-        title: Subject
-        description: 'Specifies the subject conditions to which the policy applies, where subjects can be combined by using the built-in types "AND", "OR", and "NOT", and where subject implementations are pluggable'
+        $ref: '#/definitions/SubjectMap'
       condition:
-        type: object
-        properties:
-          type:
-            type: string
-          conditions:
-            type: array
-            items:
-              type: object
-            title: Condition
-            description: 'Specifies environment conditions, where conditions can be combined by using the built-in types "AND", "OR", and "NOT", and where condition implementations are pluggable'
-        title: Condition
-        description: 'Specifies environment conditions, where conditions can be combined by using the built-in types "AND", "OR", and "NOT", and where condition implementations are pluggable'
+        $ref: '#/definitions/ConditionMap'
       resourceTypeUuid:
         type: string
         title: Resource Type UUID

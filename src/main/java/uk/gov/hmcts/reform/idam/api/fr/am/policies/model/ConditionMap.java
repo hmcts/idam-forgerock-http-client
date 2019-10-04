@@ -15,15 +15,15 @@ package uk.gov.hmcts.reform.idam.api.fr.am.policies.model;
 
 import io.swagger.annotations.ApiModel;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 
 /**
- * Evaluate and evaluateTree schema response
+ * Specifies environment conditions, where conditions can be combined by using the built-in types \&quot;AND\&quot;, \&quot;OR\&quot;, and \&quot;NOT\&quot;, and where condition implementations are pluggable
  */
-@ApiModel(description = "Evaluate and evaluateTree schema response")
+@ApiModel(description = "Specifies environment conditions, where conditions can be combined by using the built-in types \"AND\", \"OR\", and \"NOT\", and where condition implementations are pluggable")
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-04T13:59:55.834+01:00")
-public class EvaluateResponse extends ArrayList<EvaluateResponseInner> {
+public class ConditionMap extends HashMap<String, Object> {
 
   @Override
   public boolean equals(Object o) {
@@ -45,7 +45,7 @@ public class EvaluateResponse extends ArrayList<EvaluateResponseInner> {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class EvaluateResponse {\n");
+    sb.append("class ConditionMap {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("}");
     return sb.toString();
