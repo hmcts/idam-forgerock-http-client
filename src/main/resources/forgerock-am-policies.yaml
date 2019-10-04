@@ -273,6 +273,142 @@ paths:
             * Policy defines invalid resource type
             * The provided resourceId does not match to the UUID in the json file
 definitions:
+  ActionMap:
+    title: Action values
+    description: 'Set of string action names, each set to a boolean indicating whether the action is allowed. Chosen from the available actions provided by the associated Managing Resource Types resource type'
+    type: string
+    additionalProperties:
+      type: object
+  ConditionMap:
+    title: Condition
+    description: 'Specifies environment conditions, where conditions can be combined by using the built-in types "AND", "OR", and "NOT", and where condition implementations are pluggable'
+    type: string
+    additionalProperties:
+      type: object
+  SubjectMap:
+    title: Subject
+    description: 'Specifies the subject conditions to which the policy applies, where subjects can be combined by using the built-in types "AND", "OR", and "NOT", and where subject implementations are pluggable'
+    type: string
+    additionalProperties:
+      type: object
+  GetResponse:
+    title: Policy Resource Schema
+    description: Json schema for the policy resource
+    type: object
+    properties:
+      name:
+        type: string
+        title: Name
+        description: String matching the name of the application
+      active:
+        type: boolean
+        title: Active flag
+        description: 'Boolean indicating whether OpenAM considers the policy active for evaluation purposes, defaults to false'
+      description:
+        type: string
+        title: Description
+        description: String describing the policy
+      applicationName:
+        type: string
+        title: Application name
+        description: 'String containing the application name, such as "iPlanetAMWebAgentService", or "mypolicyset"'
+      actionValues:
+        $ref: '#/definitions/ActionMap'
+      resources:
+        type: array
+        items:
+          type: string
+        title: Resources
+        description: List of the resource name pattern strings to which the policy applies. Must conform to the pattern templates provided by the associated Managing Resource Types resource type
+      subject:
+        $ref: '#/definitions/SubjectMap'
+      condition:
+        $ref: '#/definitions/ConditionMap'
+      resourceTypeUuid:
+        type: string
+        title: Resource Type UUID
+        description: The UUIDs of the resource type associated with the policy
+      resourceAttributes:
+        type: array
+        items:
+          type: object
+        title: Resource Attributes
+        description: List of attributes to return with decisions. These attributes are known as response attributes
+      lastModifiedBy:
+        type: string
+        title: Last Modified By
+        description: A string containing the universal identifier DN of the subject that most recently updated the policy
+      lastModifiedDate:
+        type: string
+        title: Last Modified date
+        description: 'An integer containing the last modified date and time, in number of seconds'
+      createdBy:
+        type: string
+        title: Created By
+        description: A string containing the universal identifier DN of the subject that created the policy
+      creationDate:
+        type: string
+        title: Creation Date
+        description: 'An integer containing the creation date and time, in number of seconds'
+  DeleteResponse:
+    title: Policy Resource Schema
+    description: Json schema for the policy resource
+    type: object
+    properties:
+      name:
+        type: string
+        title: Name
+        description: String matching the name of the application
+      active:
+        type: boolean
+        title: Active flag
+        description: 'Boolean indicating whether OpenAM considers the policy active for evaluation purposes, defaults to false'
+      description:
+        type: string
+        title: Description
+        description: String describing the policy
+      applicationName:
+        type: string
+        title: Application name
+        description: 'String containing the application name, such as "iPlanetAMWebAgentService", or "mypolicyset"'
+      actionValues:
+        $ref: '#/definitions/ActionMap'
+      resources:
+        type: array
+        items:
+          type: string
+        title: Resources
+        description: List of the resource name pattern strings to which the policy applies. Must conform to the pattern templates provided by the associated Managing Resource Types resource type
+      subject:
+        $ref: '#/definitions/SubjectMap'
+      condition:
+        $ref: '#/definitions/ConditionMap'
+      resourceTypeUuid:
+        type: string
+        title: Resource Type UUID
+        description: The UUIDs of the resource type associated with the policy
+      resourceAttributes:
+        type: array
+        items:
+          type: object
+        title: Resource Attributes
+        description: List of attributes to return with decisions. These attributes are known as response attributes
+      lastModifiedBy:
+        type: string
+        title: Last Modified By
+        description: A string containing the universal identifier DN of the subject that most recently updated the policy
+      lastModifiedDate:
+        type: string
+        title: Last Modified date
+        description: 'An integer containing the last modified date and time, in number of seconds'
+      createdBy:
+        type: string
+        title: Created By
+        description: A string containing the universal identifier DN of the subject that created the policy
+      creationDate:
+        type: string
+        title: Creation Date
+        description: 'An integer containing the creation date and time, in number of seconds'
   EvaluateRequest:
     title: Evaluate Request
     description: Evaluate Request
@@ -324,9 +460,7 @@ definitions:
           title: Resource
           description: Specifies the root resource for the decisions to return
         actions:
-          type: object
-          title: Actions
-          description: A map of action name keys to Boolean values that indicate whether the action is allowed (true) or denied (false) for the specified resource
+          $ref: '#/definitions/ActionMap'
         attributes:
           type: object
           title: Attributes
@@ -335,302 +469,6 @@ definitions:
           type: object
           title: Advices
           description: 'A map of advice names to their values, if any advice is returned according to applicable policies'
-  PutRequest:
-    title: Policy Resource Schema
-    description: Json schema for the policy resource
-    type: object
-    properties:
-      name:
-        type: string
-        title: Name
-        description: String matching the name of the application
-      active:
-        type: boolean
-        title: Active flag
-        description: 'Boolean indicating whether OpenAM considers the policy active for evaluation purposes, defaults to false'
-      description:
-        type: string
-        title: Description
-        description: String describing the policy
-      applicationName:
-        type: string
-        title: Application name
-        description: 'String containing the application name, such as "iPlanetAMWebAgentService", or "mypolicyset"'
-      actionValues:
-        type: object
-        title: Action values
-        description: 'Set of string action names, each set to a boolean indicating whether the action is allowed. Chosen from the available actions provided by the associated Managing Resource Types resource type'
-      resources:
-        type: array
-        items:
-          type: string
-        title: Resources
-        description: List of the resource name pattern strings to which the policy applies. Must conform to the pattern templates provided by the associated Managing Resource Types resource type
-      subject:
-        type: object
-        title: Subject
-        description: 'Specifies the subject conditions to which the policy applies, where subjects can be combined by using the built-in types "AND", "OR", and "NOT", and where subject implementations are pluggable'
-      condition:
-        type: object
-        properties:
-          type:
-            type: string
-          conditions:
-            type: array
-            items:
-              type: object
-            title: Condition
-            description: 'Specifies environment conditions, where conditions can be combined by using the built-in types "AND", "OR", and "NOT", and where condition implementations are pluggable'
-        title: Condition
-        description: 'Specifies environment conditions, where conditions can be combined by using the built-in types "AND", "OR", and "NOT", and where condition implementations are pluggable'
-      resourceTypeUuid:
-        type: string
-        title: Resource Type UUID
-        description: The UUIDs of the resource type associated with the policy
-      resourceAttributes:
-        type: array
-        items:
-          type: object
-        title: Resource Attributes
-        description: List of attributes to return with decisions. These attributes are known as response attributes
-      lastModifiedBy:
-        type: string
-        title: Last Modified By
-        description: A string containing the universal identifier DN of the subject that most recently updated the policy
-      lastModifiedDate:
-        type: string
-        title: Last Modified date
-        description: 'An integer containing the last modified date and time, in number of seconds'
-      createdBy:
-        type: string
-        title: Created By
-        description: A string containing the universal identifier DN of the subject that created the policy
-      creationDate:
-        type: string
-        title: Creation Date
-        description: 'An integer containing the creation date and time, in number of seconds'
-  PutResponse:
-    title: Policy Resource Schema
-    description: Json schema for the policy resource
-    type: object
-    properties:
-      name:
-        type: string
-        title: Name
-        description: String matching the name of the application
-      active:
-        type: boolean
-        title: Active flag
-        description: 'Boolean indicating whether OpenAM considers the policy active for evaluation purposes, defaults to false'
-      description:
-        type: string
-        title: Description
-        description: String describing the policy
-      applicationName:
-        type: string
-        title: Application name
-        description: 'String containing the application name, such as "iPlanetAMWebAgentService", or "mypolicyset"'
-      actionValues:
-        type: object
-        title: Action values
-        description: 'Set of string action names, each set to a boolean indicating whether the action is allowed. Chosen from the available actions provided by the associated Managing Resource Types resource type'
-      resources:
-        type: array
-        items:
-          type: string
-        title: Resources
-        description: List of the resource name pattern strings to which the policy applies. Must conform to the pattern templates provided by the associated Managing Resource Types resource type
-      subject:
-        type: object
-        title: Subject
-        description: 'Specifies the subject conditions to which the policy applies, where subjects can be combined by using the built-in types "AND", "OR", and "NOT", and where subject implementations are pluggable'
-      condition:
-        type: object
-        properties:
-          type:
-            type: string
-          conditions:
-            type: array
-            items:
-              type: object
-            title: Condition
-            description: 'Specifies environment conditions, where conditions can be combined by using the built-in types "AND", "OR", and "NOT", and where condition implementations are pluggable'
-        title: Condition
-        description: 'Specifies environment conditions, where conditions can be combined by using the built-in types "AND", "OR", and "NOT", and where condition implementations are pluggable'
-      resourceTypeUuid:
-        type: string
-        title: Resource Type UUID
-        description: The UUIDs of the resource type associated with the policy
-      resourceAttributes:
-        type: array
-        items:
-          type: object
-        title: Resource Attributes
-        description: List of attributes to return with decisions. These attributes are known as response attributes
-      lastModifiedBy:
-        type: string
-        title: Last Modified By
-        description: A string containing the universal identifier DN of the subject that most recently updated the policy
-      lastModifiedDate:
-        type: string
-        title: Last Modified date
-        description: 'An integer containing the last modified date and time, in number of seconds'
-      createdBy:
-        type: string
-        title: Created By
-        description: A string containing the universal identifier DN of the subject that created the policy
-      creationDate:
-        type: string
-        title: Creation Date
-        description: 'An integer containing the creation date and time, in number of seconds'
-  DeleteResponse:
-    title: Policy Resource Schema
-    description: Json schema for the policy resource
-    type: object
-    properties:
-      name:
-        type: string
-        title: Name
-        description: String matching the name of the application
-      active:
-        type: boolean
-        title: Active flag
-        description: 'Boolean indicating whether OpenAM considers the policy active for evaluation purposes, defaults to false'
-      description:
-        type: string
-        title: Description
-        description: String describing the policy
-      applicationName:
-        type: string
-        title: Application name
-        description: 'String containing the application name, such as "iPlanetAMWebAgentService", or "mypolicyset"'
-      actionValues:
-        type: object
-        title: Action values
-        description: 'Set of string action names, each set to a boolean indicating whether the action is allowed. Chosen from the available actions provided by the associated Managing Resource Types resource type'
-      resources:
-        type: array
-        items:
-          type: string
-        title: Resources
-        description: List of the resource name pattern strings to which the policy applies. Must conform to the pattern templates provided by the associated Managing Resource Types resource type
-      subject:
-        type: object
-        title: Subject
-        description: 'Specifies the subject conditions to which the policy applies, where subjects can be combined by using the built-in types "AND", "OR", and "NOT", and where subject implementations are pluggable'
-      condition:
-        type: object
-        properties:
-          type:
-            type: string
-          conditions:
-            type: array
-            items:
-              type: object
-            title: Condition
-            description: 'Specifies environment conditions, where conditions can be combined by using the built-in types "AND", "OR", and "NOT", and where condition implementations are pluggable'
-        title: Condition
-        description: 'Specifies environment conditions, where conditions can be combined by using the built-in types "AND", "OR", and "NOT", and where condition implementations are pluggable'
-      resourceTypeUuid:
-        type: string
-        title: Resource Type UUID
-        description: The UUIDs of the resource type associated with the policy
-      resourceAttributes:
-        type: array
-        items:
-          type: object
-        title: Resource Attributes
-        description: List of attributes to return with decisions. These attributes are known as response attributes
-      lastModifiedBy:
-        type: string
-        title: Last Modified By
-        description: A string containing the universal identifier DN of the subject that most recently updated the policy
-      lastModifiedDate:
-        type: string
-        title: Last Modified date
-        description: 'An integer containing the last modified date and time, in number of seconds'
-      createdBy:
-        type: string
-        title: Created By
-        description: A string containing the universal identifier DN of the subject that created the policy
-      creationDate:
-        type: string
-        title: Creation Date
-        description: 'An integer containing the creation date and time, in number of seconds'
-  GetResponse:
-    title: Policy Resource Schema
-    description: Json schema for the policy resource
-    type: object
-    properties:
-      name:
-        type: string
-        title: Name
-        description: String matching the name of the application
-      active:
-        type: boolean
-        title: Active flag
-        description: 'Boolean indicating whether OpenAM considers the policy active for evaluation purposes, defaults to false'
-      description:
-        type: string
-        title: Description
-        description: String describing the policy
-      applicationName:
-        type: string
-        title: Application name
-        description: 'String containing the application name, such as "iPlanetAMWebAgentService", or "mypolicyset"'
-      actionValues:
-        type: object
-        title: Action values
-        description: 'Set of string action names, each set to a boolean indicating whether the action is allowed. Chosen from the available actions provided by the associated Managing Resource Types resource type'
-      resources:
-        type: array
-        items:
-          type: string
-        title: Resources
-        description: List of the resource name pattern strings to which the policy applies. Must conform to the pattern templates provided by the associated Managing Resource Types resource type
-      subject:
-        type: object
-        title: Subject
-        description: 'Specifies the subject conditions to which the policy applies, where subjects can be combined by using the built-in types "AND", "OR", and "NOT", and where subject implementations are pluggable'
-      condition:
-        type: object
-        properties:
-          type:
-            type: string
-          conditions:
-            type: array
-            items:
-              type: object
-            title: Condition
-            description: 'Specifies environment conditions, where conditions can be combined by using the built-in types "AND", "OR", and "NOT", and where condition implementations are pluggable'
-        title: Condition
-        description: 'Specifies environment conditions, where conditions can be combined by using the built-in types "AND", "OR", and "NOT", and where condition implementations are pluggable'
-      resourceTypeUuid:
-        type: string
-        title: Resource Type UUID
-        description: The UUIDs of the resource type associated with the policy
-      resourceAttributes:
-        type: array
-        items:
-          type: object
-        title: Resource Attributes
-        description: List of attributes to return with decisions. These attributes are known as response attributes
-      lastModifiedBy:
-        type: string
-        title: Last Modified By
-        description: A string containing the universal identifier DN of the subject that most recently updated the policy
-      lastModifiedDate:
-        type: string
-        title: Last Modified date
-        description: 'An integer containing the last modified date and time, in number of seconds'
-      createdBy:
-        type: string
-        title: Created By
-        description: A string containing the universal identifier DN of the subject that created the policy
-      creationDate:
-        type: string
-        title: Creation Date
-        description: 'An integer containing the creation date and time, in number of seconds'
   PostRequest:
     title: Policy Resource Schema
     description: Json schema for the policy resource
@@ -653,9 +491,7 @@ definitions:
         title: Application name
         description: 'String containing the application name, such as "iPlanetAMWebAgentService", or "mypolicyset"'
       actionValues:
-        type: object
-        title: Action values
-        description: 'Set of string action names, each set to a boolean indicating whether the action is allowed. Chosen from the available actions provided by the associated Managing Resource Types resource type'
+        $ref: '#/definitions/ActionMap'
       resources:
         type: array
         items:
@@ -663,22 +499,9 @@ definitions:
         title: Resources
         description: List of the resource name pattern strings to which the policy applies. Must conform to the pattern templates provided by the associated Managing Resource Types resource type
       subject:
-        type: object
-        title: Subject
-        description: 'Specifies the subject conditions to which the policy applies, where subjects can be combined by using the built-in types "AND", "OR", and "NOT", and where subject implementations are pluggable'
+        $ref: '#/definitions/SubjectMap'
       condition:
-        type: object
-        properties:
-          type:
-            type: string
-          conditions:
-            type: array
-            items:
-              type: object
-            title: Condition
-            description: 'Specifies environment conditions, where conditions can be combined by using the built-in types "AND", "OR", and "NOT", and where condition implementations are pluggable'
-        title: Condition
-        description: 'Specifies environment conditions, where conditions can be combined by using the built-in types "AND", "OR", and "NOT", and where condition implementations are pluggable'
+        $ref: '#/definitions/ConditionMap'
       resourceTypeUuid:
         type: string
         title: Resource Type UUID
@@ -727,9 +550,7 @@ definitions:
         title: Application name
         description: 'String containing the application name, such as "iPlanetAMWebAgentService", or "mypolicyset"'
       actionValues:
-        type: object
-        title: Action values
-        description: 'Set of string action names, each set to a boolean indicating whether the action is allowed. Chosen from the available actions provided by the associated Managing Resource Types resource type'
+        $ref: '#/definitions/ActionMap'
       resources:
         type: array
         items:
@@ -737,22 +558,127 @@ definitions:
         title: Resources
         description: List of the resource name pattern strings to which the policy applies. Must conform to the pattern templates provided by the associated Managing Resource Types resource type
       subject:
-        type: object
-        title: Subject
-        description: 'Specifies the subject conditions to which the policy applies, where subjects can be combined by using the built-in types "AND", "OR", and "NOT", and where subject implementations are pluggable'
+        $ref: '#/definitions/SubjectMap'
       condition:
-        type: object
-        properties:
-          type:
-            type: string
-          conditions:
-            type: array
-            items:
-              type: object
-            title: Condition
-            description: 'Specifies environment conditions, where conditions can be combined by using the built-in types "AND", "OR", and "NOT", and where condition implementations are pluggable'
-        title: Condition
-        description: 'Specifies environment conditions, where conditions can be combined by using the built-in types "AND", "OR", and "NOT", and where condition implementations are pluggable'
+        $ref: '#/definitions/ConditionMap'
+      resourceTypeUuid:
+        type: string
+        title: Resource Type UUID
+        description: The UUIDs of the resource type associated with the policy
+      resourceAttributes:
+        type: array
+        items:
+          type: object
+        title: Resource Attributes
+        description: List of attributes to return with decisions. These attributes are known as response attributes
+      lastModifiedBy:
+        type: string
+        title: Last Modified By
+        description: A string containing the universal identifier DN of the subject that most recently updated the policy
+      lastModifiedDate:
+        type: string
+        title: Last Modified date
+        description: 'An integer containing the last modified date and time, in number of seconds'
+      createdBy:
+        type: string
+        title: Created By
+        description: A string containing the universal identifier DN of the subject that created the policy
+      creationDate:
+        type: string
+        title: Creation Date
+        description: 'An integer containing the creation date and time, in number of seconds'
+  PutRequest:
+    title: Policy Resource Schema
+    description: Json schema for the policy resource
+    type: object
+    properties:
+      name:
+        type: string
+        title: Name
+        description: String matching the name of the application
+      active:
+        type: boolean
+        title: Active flag
+        description: 'Boolean indicating whether OpenAM considers the policy active for evaluation purposes, defaults to false'
+      description:
+        type: string
+        title: Description
+        description: String describing the policy
+      applicationName:
+        type: string
+        title: Application name
+        description: 'String containing the application name, such as "iPlanetAMWebAgentService", or "mypolicyset"'
+      actionValues:
+        $ref: '#/definitions/ActionMap'
+      resources:
+        type: array
+        items:
+          type: string
+        title: Resources
+        description: List of the resource name pattern strings to which the policy applies. Must conform to the pattern templates provided by the associated Managing Resource Types resource type
+      subject:
+        $ref: '#/definitions/SubjectMap'
+      condition:
+        $ref: '#/definitions/ConditionMap'
+      resourceTypeUuid:
+        type: string
+        title: Resource Type UUID
+        description: The UUIDs of the resource type associated with the policy
+      resourceAttributes:
+        type: array
+        items:
+          type: object
+        title: Resource Attributes
+        description: List of attributes to return with decisions. These attributes are known as response attributes
+      lastModifiedBy:
+        type: string
+        title: Last Modified By
+        description: A string containing the universal identifier DN of the subject that most recently updated the policy
+      lastModifiedDate:
+        type: string
+        title: Last Modified date
+        description: 'An integer containing the last modified date and time, in number of seconds'
+      createdBy:
+        type: string
+        title: Created By
+        description: A string containing the universal identifier DN of the subject that created the policy
+      creationDate:
+        type: string
+        title: Creation Date
+        description: 'An integer containing the creation date and time, in number of seconds'
+  PutResponse:
+    title: Policy Resource Schema
+    description: Json schema for the policy resource
+    type: object
+    properties:
+      name:
+        type: string
+        title: Name
+        description: String matching the name of the application
+      active:
+        type: boolean
+        title: Active flag
+        description: 'Boolean indicating whether OpenAM considers the policy active for evaluation purposes, defaults to false'
+      description:
+        type: string
+        title: Description
+        description: String describing the policy
+      applicationName:
+        type: string
+        title: Application name
+        description: 'String containing the application name, such as "iPlanetAMWebAgentService", or "mypolicyset"'
+      actionValues:
+        $ref: '#/definitions/ActionMap'
+      resources:
+        type: array
+        items:
+          type: string
+        title: Resources
+        description: List of the resource name pattern strings to which the policy applies. Must conform to the pattern templates provided by the associated Managing Resource Types resource type
+      subject:
+        $ref: '#/definitions/SubjectMap'
+      condition:
+        $ref: '#/definitions/ConditionMap'
       resourceTypeUuid:
         type: string
         title: Resource Type UUID

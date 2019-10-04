@@ -25,7 +25,7 @@ import java.util.Objects;
  * Json schema for the policy resource
  */
 @ApiModel(description = "Json schema for the policy resource")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-01T14:14:33.256+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-04T13:59:55.834+01:00")
 public class GetResponse {
   @JsonProperty("name")
   private String name = null;
@@ -40,16 +40,16 @@ public class GetResponse {
   private String applicationName = null;
 
   @JsonProperty("actionValues")
-  private Object actionValues = null;
+  private ActionMap actionValues = null;
 
   @JsonProperty("resources")
   private List<String> resources = null;
 
   @JsonProperty("subject")
-  private Object subject = null;
+  private SubjectMap subject = null;
 
   @JsonProperty("condition")
-  private Condition condition = null;
+  private ConditionMap condition = null;
 
   @JsonProperty("resourceTypeUuid")
   private String resourceTypeUuid = null;
@@ -141,21 +141,21 @@ public class GetResponse {
     this.applicationName = applicationName;
   }
 
-  public GetResponse actionValues(Object actionValues) {
+  public GetResponse actionValues(ActionMap actionValues) {
     this.actionValues = actionValues;
     return this;
   }
 
    /**
-   * Set of string action names, each set to a boolean indicating whether the action is allowed. Chosen from the available actions provided by the associated Managing Resource Types resource type
+   * Get actionValues
    * @return actionValues
   **/
-  @ApiModelProperty(value = "Set of string action names, each set to a boolean indicating whether the action is allowed. Chosen from the available actions provided by the associated Managing Resource Types resource type")
-  public Object getActionValues() {
+  @ApiModelProperty(value = "")
+  public ActionMap getActionValues() {
     return actionValues;
   }
 
-  public void setActionValues(Object actionValues) {
+  public void setActionValues(ActionMap actionValues) {
     this.actionValues = actionValues;
   }
 
@@ -185,25 +185,25 @@ public class GetResponse {
     this.resources = resources;
   }
 
-  public GetResponse subject(Object subject) {
+  public GetResponse subject(SubjectMap subject) {
     this.subject = subject;
     return this;
   }
 
    /**
-   * Specifies the subject conditions to which the policy applies, where subjects can be combined by using the built-in types \&quot;AND\&quot;, \&quot;OR\&quot;, and \&quot;NOT\&quot;, and where subject implementations are pluggable
+   * Get subject
    * @return subject
   **/
-  @ApiModelProperty(value = "Specifies the subject conditions to which the policy applies, where subjects can be combined by using the built-in types \"AND\", \"OR\", and \"NOT\", and where subject implementations are pluggable")
-  public Object getSubject() {
+  @ApiModelProperty(value = "")
+  public SubjectMap getSubject() {
     return subject;
   }
 
-  public void setSubject(Object subject) {
+  public void setSubject(SubjectMap subject) {
     this.subject = subject;
   }
 
-  public GetResponse condition(Condition condition) {
+  public GetResponse condition(ConditionMap condition) {
     this.condition = condition;
     return this;
   }
@@ -213,11 +213,11 @@ public class GetResponse {
    * @return condition
   **/
   @ApiModelProperty(value = "")
-  public Condition getCondition() {
+  public ConditionMap getCondition() {
     return condition;
   }
 
-  public void setCondition(Condition condition) {
+  public void setCondition(ConditionMap condition) {
     this.condition = condition;
   }
 

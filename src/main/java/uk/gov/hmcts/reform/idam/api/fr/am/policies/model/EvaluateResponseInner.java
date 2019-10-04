@@ -21,13 +21,13 @@ import java.util.Objects;
 /**
  * EvaluateResponseInner
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-01T14:14:33.256+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-04T13:59:55.834+01:00")
 public class EvaluateResponseInner {
   @JsonProperty("resource")
   private String resource = null;
 
   @JsonProperty("actions")
-  private Object actions = null;
+  private ActionMap actions = null;
 
   @JsonProperty("attributes")
   private Object attributes = null;
@@ -53,21 +53,21 @@ public class EvaluateResponseInner {
     this.resource = resource;
   }
 
-  public EvaluateResponseInner actions(Object actions) {
+  public EvaluateResponseInner actions(ActionMap actions) {
     this.actions = actions;
     return this;
   }
 
    /**
-   * A map of action name keys to Boolean values that indicate whether the action is allowed (true) or denied (false) for the specified resource
+   * Get actions
    * @return actions
   **/
-  @ApiModelProperty(value = "A map of action name keys to Boolean values that indicate whether the action is allowed (true) or denied (false) for the specified resource")
-  public Object getActions() {
+  @ApiModelProperty(value = "")
+  public ActionMap getActions() {
     return actions;
   }
 
-  public void setActions(Object actions) {
+  public void setActions(ActionMap actions) {
     this.actions = actions;
   }
 
