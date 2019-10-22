@@ -11,7 +11,7 @@ import uk.gov.hmcts.reform.idam.api.fr.client.invoker.EncodingUtils;
 import java.util.HashMap;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-22T16:27:36.995+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-22T18:02:07.730+01:00")
 public interface AuthenticationChainApi extends ApiClient.Api {
 
 
@@ -21,6 +21,7 @@ public interface AuthenticationChainApi extends ApiClient.Api {
     * @param realm Parameter specifying the realm. (required)
     * @param authIndexType Specifies the indexType, such as service (required)
     * @param authIndexValue Specifies the identity of the module we are calling, such as hotpChain (required)
+    * @param cookie  (optional)
     * @param requestPayload  (optional)
    * @return AuthenticationChain
    */
@@ -28,10 +29,12 @@ public interface AuthenticationChainApi extends ApiClient.Api {
   @Headers({
     "Content-Type: application/json",
     "Accept: application/json",
+    "Cookie: {cookie}"
   })
   AuthenticationChain authenticate(@Param("realm") String realm,
                                    @Param("authIndexType") String authIndexType,
                                    @Param("authIndexValue") String authIndexValue,
+                                   @Param("cookie") String cookie,
                                    AuthenticationChain requestPayload);
 
   /**
@@ -43,6 +46,7 @@ public interface AuthenticationChainApi extends ApiClient.Api {
    * used with the {@link AuthenticateQueryParams} class that allows for
    * building up this map in a fluent style.
    * @param realm Parameter specifying the realm. (required)
+   * @param cookie  (optional)
    * @param requestPayload  (optional)
    * @param queryParams Map of query parameters as name-value pairs
    *   <p>The following elements may be specified in the query map:</p>
@@ -56,8 +60,10 @@ public interface AuthenticationChainApi extends ApiClient.Api {
   @Headers({
   "Content-Type: application/json",
   "Accept: application/json",
+      "Cookie: {cookie}"
   })
   AuthenticationChain authenticate(@Param("realm") String realm,
+                                   @Param("cookie") String cookie,
                                    AuthenticationChain requestPayload,
                                    @QueryMap(encoded = true) Map<String, Object> queryParams);
 

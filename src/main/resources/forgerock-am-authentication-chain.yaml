@@ -23,6 +23,7 @@ paths:
         - $ref: '#/parameters/realm'
         - $ref: '#/parameters/authIndexType'
         - $ref: '#/parameters/authIndexValue'
+        - $ref: '#/parameters/authorization'
         - in: body
           name: requestPayload
           required: false
@@ -133,4 +134,9 @@ parameters:
     in: query
     description: Specifies the identity of the module we are calling, such as hotpChain
     required: true
+    type: string
+  authorization:
+    name: Cookie
+    in: header
+    required: false
     type: string
