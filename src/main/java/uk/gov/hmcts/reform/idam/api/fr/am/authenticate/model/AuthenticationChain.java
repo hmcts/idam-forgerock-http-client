@@ -25,7 +25,7 @@ import java.util.Objects;
  * Keeps the authentication authId and callbacks
  */
 @ApiModel(description = "Keeps the authentication authId and callbacks")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-22T18:02:07.730+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-23T16:19:22.681+01:00")
 public class AuthenticationChain {
   @JsonProperty("tokenId")
   private String tokenId = null;

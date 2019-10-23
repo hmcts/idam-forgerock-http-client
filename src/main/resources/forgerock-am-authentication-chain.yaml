@@ -50,6 +50,46 @@ paths:
           schema:
             $ref: '#/definitions/ApiError'
           description: Unsupported operation
+  /json/realms/{myRealm}/authenticate:
+    post:
+      operationId: authenticateEmptyBody
+      summary: Submits an authentication chain or blank if initiating the chain
+      description: POST authentication chain
+      tags:
+        - AuthenticationChain
+      consumes:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/myRealm'
+        - $ref: '#/parameters/authIndexType'
+        - $ref: '#/parameters/authIndexValue'
+        - $ref: '#/parameters/authorization'
+        - in: body
+          name: requestPayload
+          required: false
+          schema:
+            type: string
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: '#/definitions/AuthenticationChain'
+        401:
+          schema:
+            $ref: '#/definitions/ApiError'
+          description: unauthorised
+        405:
+          schema:
+            $ref: '#/definitions/ApiError'
+          description: The requested action is not supported
+        500:
+          schema:
+            $ref: '#/definitions/ApiError'
+          description: Unexpected server error happened during the process
+        501:
+          schema:
+            $ref: '#/definitions/ApiError'
+          description: Unsupported operation
 definitions:
   AuthenticationChain:
     title: Authentication Chain
@@ -108,17 +148,23 @@ definitions:
     description: Holds name value pair information specifying input, output callback data
     type: object
     properties:
-      'name':
+      name:
         type: string
         title: Name
         description: Name of input or output
-      'value':
-        type: string
+      value:
+        type: object
         title: Value
         description: Value of input or output
 parameters:
   realm:
     name: realm
+    in: path
+    description: Parameter specifying the realm.
+    required: true
+    type: string
+  myRealm:
+    name: myRealm
     in: path
     description: Parameter specifying the realm.
     required: true

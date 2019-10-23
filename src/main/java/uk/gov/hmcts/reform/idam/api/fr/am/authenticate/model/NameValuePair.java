@@ -23,13 +23,13 @@ import java.util.Objects;
  * Holds name value pair information specifying input, output callback data
  */
 @ApiModel(description = "Holds name value pair information specifying input, output callback data")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-22T18:02:07.730+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-23T16:19:22.681+01:00")
 public class NameValuePair {
   @JsonProperty("name")
   private String name = null;
 
   @JsonProperty("value")
-  private String value = null;
+  private Object value = null;
 
   public NameValuePair name(String name) {
     this.name = name;
@@ -49,7 +49,7 @@ public class NameValuePair {
     this.name = name;
   }
 
-  public NameValuePair value(String value) {
+  public NameValuePair value(Object value) {
     this.value = value;
     return this;
   }
@@ -59,11 +59,11 @@ public class NameValuePair {
    * @return value
   **/
   @ApiModelProperty(value = "Value of input or output")
-  public String getValue() {
+  public Object getValue() {
     return value;
   }
 
-  public void setValue(String value) {
+  public void setValue(Object value) {
     this.value = value;
   }
 
