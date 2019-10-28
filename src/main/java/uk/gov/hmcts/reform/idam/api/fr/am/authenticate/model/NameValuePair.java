@@ -23,7 +23,7 @@ import java.util.Objects;
  * Holds name value pair information specifying input, output callback data
  */
 @ApiModel(description = "Holds name value pair information specifying input, output callback data")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-28T09:37:44.806Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-28T12:12:27.878Z")
 public class NameValuePair {
   @JsonProperty("name")
   private String name = null;

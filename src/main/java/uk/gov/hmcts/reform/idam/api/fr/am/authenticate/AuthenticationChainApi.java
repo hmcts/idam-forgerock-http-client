@@ -11,13 +11,13 @@ import uk.gov.hmcts.reform.idam.api.fr.client.invoker.EncodingUtils;
 import java.util.HashMap;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-28T09:37:44.806Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-28T12:12:27.878Z")
 public interface AuthenticationChainApi extends ApiClient.Api {
 
 
   /**
-   * Submits an authentication chain or blank if initiating the chain
-   * POST authentication chain
+   * Submits an authentication chain to AM
+   * POST an authentication chain back to AM
     * @param realm Parameter specifying the realm. (required)
     * @param authIndexType Specifies the indexType, such as service (required)
     * @param authIndexValue Specifies the identity of the module we are calling, such as hotpChain (required)
@@ -38,8 +38,8 @@ public interface AuthenticationChainApi extends ApiClient.Api {
                                    AuthenticationChain requestPayload);
 
   /**
-   * Submits an authentication chain or blank if initiating the chain
-   * POST authentication chain
+   * Submits an authentication chain to AM
+   * POST an authentication chain back to AM
    * Note, this is equivalent to the other <code>authenticate</code> method,
    * but with the query parameters collected into a single Map parameter. This
    * is convenient for services with optional query parameters, especially when
@@ -83,8 +83,8 @@ public interface AuthenticationChainApi extends ApiClient.Api {
   }
 
   /**
-   * Submits an authentication chain or blank if initiating the chain
-   * POST authentication chain
+   * Initiates an authentication chain with an empty body request
+   * POST call to initiate authentication flow
     * @param myRealm Parameter specifying the realm. (required)
     * @param authIndexType Specifies the indexType, such as service (required)
     * @param authIndexValue Specifies the identity of the module we are calling, such as hotpChain (required)
@@ -102,8 +102,8 @@ public interface AuthenticationChainApi extends ApiClient.Api {
                                             @Param("cookie") String cookie);
 
   /**
-   * Submits an authentication chain or blank if initiating the chain
-   * POST authentication chain
+   * Initiates an authentication chain with an empty body request
+   * POST call to initiate authentication flow
    * Note, this is equivalent to the other <code>authenticateEmptyBody</code> method,
    * but with the query parameters collected into a single Map parameter. This
    * is convenient for services with optional query parameters, especially when
