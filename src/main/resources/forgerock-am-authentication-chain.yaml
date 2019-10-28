@@ -15,8 +15,8 @@ paths:
   /json/realms/{realm}/authenticate:
     post:
       operationId: authenticate
-      summary: Submits an authentication chain or blank if initiating the chain
-      description: POST authentication chain
+      summary: Submits an authentication chain to AM
+      description: POST an authentication chain back to AM
       tags:
         - AuthenticationChain
       parameters:
@@ -53,8 +53,8 @@ paths:
   /json/realms/{myRealm}/authenticate:
     post:
       operationId: authenticateEmptyBody
-      summary: Submits an authentication chain or blank if initiating the chain
-      description: POST authentication chain
+      summary: Initiates an authentication chain with an empty body request
+      description: POST call to initiate authentication flow
       tags:
         - AuthenticationChain
       consumes:
