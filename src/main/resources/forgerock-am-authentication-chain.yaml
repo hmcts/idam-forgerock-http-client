@@ -1,0 +1,183 @@
+swagger: '2.0'
+info:
+  title: Forgerock AM Authentication Chain API
+  description: An OAuth2 Client for Forgerock AM based on tests
+  version: "1.0.0"
+schemes:
+  - http
+  - https
+basePath: /openam
+produces:
+  - application/json
+consumes:
+  - application/json
+paths:
+  /json/realms/{realm}/authenticate:
+    post:
+      operationId: authenticate
+      summary: Submits an authentication chain to AM
+      description: POST an authentication chain back to AM
+      tags:
+        - AuthenticationChain
+      parameters:
+        - $ref: '#/parameters/realm'
+        - $ref: '#/parameters/authIndexType'
+        - $ref: '#/parameters/authIndexValue'
+        - $ref: '#/parameters/authorization'
+        - in: body
+          name: requestPayload
+          required: false
+          schema:
+            $ref: '#/definitions/AuthenticationChain'
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: '#/definitions/AuthenticationChain'
+        401:
+          schema:
+            $ref: '#/definitions/ApiError'
+          description: unauthorised
+        405:
+          schema:
+            $ref: '#/definitions/ApiError'
+          description: The requested action is not supported
+        500:
+          schema:
+            $ref: '#/definitions/ApiError'
+          description: Unexpected server error happened during the process
+        501:
+          schema:
+            $ref: '#/definitions/ApiError'
+          description: Unsupported operation
+  /json/realms/{myRealm}/authenticate:
+    post:
+      operationId: authenticateEmptyBody
+      summary: Initiates an authentication chain with an empty body request
+      description: POST call to initiate authentication flow
+      tags:
+        - AuthenticationChain
+      consumes:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/myRealm'
+        - $ref: '#/parameters/authIndexType'
+        - $ref: '#/parameters/authIndexValue'
+        - $ref: '#/parameters/authorization'
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: '#/definitions/AuthenticationChain'
+        401:
+          schema:
+            $ref: '#/definitions/ApiError'
+          description: unauthorised
+        405:
+          schema:
+            $ref: '#/definitions/ApiError'
+          description: The requested action is not supported
+        500:
+          schema:
+            $ref: '#/definitions/ApiError'
+          description: Unexpected server error happened during the process
+        501:
+          schema:
+            $ref: '#/definitions/ApiError'
+          description: Unsupported operation
+definitions:
+  AuthenticationChain:
+    title: Authentication Chain
+    description: Keeps the authentication authId and callbacks
+    type: object
+    properties:
+      tokenId:
+        type: string
+        title: Token ID
+        description: Token ID, received when the chain is complete
+      successUrl:
+        type: string
+        title: Success Url
+        description: Success Url, received when the chain is complete
+      realm:
+        type: string
+        title: Realm
+        description: Realm name, received when the chain is complete
+      authId:
+        type: string
+        title: Auth ID
+        description: Identitfier of the current authentication chain
+      stage:
+        type: string
+        title: Stage, such as HOTP2
+        description: Identitfier of the current stage of the chain
+      callbacks:
+        title: Callbacks
+        description: List of callbacks required for this chain
+        type: array
+        items:
+          $ref: '#/definitions/Callback'
+  Callback:
+    title: Callback
+    description: Holds information about callbacks required for this chain flow
+    type: object
+    properties:
+      type:
+        type: string
+        title: Callback Type
+        description: Indicates the type of callback
+      output:
+        title: Output
+        description: List of name value pair output
+        type: array
+        items:
+          $ref: '#/definitions/NameValuePair'
+      input:
+        title: Input
+        description: List of name value pair input
+        type: array
+        items:
+          $ref: '#/definitions/NameValuePair'
+  NameValuePair:
+    title: Name Value Pair
+    description: Holds name value pair information specifying input, output callback data
+    type: object
+    properties:
+      name:
+        type: string
+        title: Name
+        description: Name of input or output
+      value:
+        type: object
+        title: Value
+        description: Value of input or output
+parameters:
+  realm:
+    name: realm
+    in: path
+    description: Parameter specifying the realm.
+    required: true
+    type: string
+  myRealm:
+    name: myRealm
+    in: path
+    description: Parameter specifying the realm.
+    required: true
+    type: string
+  authIndexType:
+    name: authIndexType
+    in: query
+    description: Specifies the indexType, such as service
+    required: true
+    type: string
+  authIndexValue:
+    name: authIndexValue
+    in: query
+    description: Specifies the identity of the module we are calling, such as hotpChain
+    required: true
+    type: string
+  authorization:
+    name: Cookie
+    in: header
+    required: false
+    type: string
