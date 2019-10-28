@@ -11,7 +11,7 @@ import uk.gov.hmcts.reform.idam.api.fr.client.invoker.EncodingUtils;
 import java.util.HashMap;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-23T16:19:22.681+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-28T09:37:44.806Z")
 public interface AuthenticationChainApi extends ApiClient.Api {
 
 
@@ -89,20 +89,17 @@ public interface AuthenticationChainApi extends ApiClient.Api {
     * @param authIndexType Specifies the indexType, such as service (required)
     * @param authIndexValue Specifies the identity of the module we are calling, such as hotpChain (required)
     * @param cookie  (optional)
-    * @param requestPayload  (optional)
    * @return AuthenticationChain
    */
   @RequestLine("POST /json/realms/{myRealm}/authenticate?authIndexType={authIndexType}&authIndexValue={authIndexValue}")
   @Headers({
-    "Content-Type: application/json",
     "Accept: application/json",
     "Cookie: {cookie}"
   })
   AuthenticationChain authenticateEmptyBody(@Param("myRealm") String myRealm,
                                             @Param("authIndexType") String authIndexType,
                                             @Param("authIndexValue") String authIndexValue,
-                                            @Param("cookie") String cookie,
-                                            String requestPayload);
+                                            @Param("cookie") String cookie);
 
   /**
    * Submits an authentication chain or blank if initiating the chain
@@ -114,7 +111,6 @@ public interface AuthenticationChainApi extends ApiClient.Api {
    * building up this map in a fluent style.
    * @param myRealm Parameter specifying the realm. (required)
    * @param cookie  (optional)
-   * @param requestPayload  (optional)
    * @param queryParams Map of query parameters as name-value pairs
    *   <p>The following elements may be specified in the query map:</p>
    *   <ul>
@@ -125,13 +121,11 @@ public interface AuthenticationChainApi extends ApiClient.Api {
    */
   @RequestLine("POST /json/realms/{myRealm}/authenticate?authIndexType={authIndexType}&authIndexValue={authIndexValue}")
   @Headers({
-  "Content-Type: application/json",
   "Accept: application/json",
       "Cookie: {cookie}"
   })
   AuthenticationChain authenticateEmptyBody(@Param("myRealm") String myRealm,
                                             @Param("cookie") String cookie,
-                                            String requestPayload,
                                             @QueryMap(encoded = true) Map<String, Object> queryParams);
 
   /**

@@ -64,11 +64,6 @@ paths:
         - $ref: '#/parameters/authIndexType'
         - $ref: '#/parameters/authIndexValue'
         - $ref: '#/parameters/authorization'
-        - in: body
-          name: requestPayload
-          required: false
-          schema:
-            type: string
       responses:
         200:
           description: success
