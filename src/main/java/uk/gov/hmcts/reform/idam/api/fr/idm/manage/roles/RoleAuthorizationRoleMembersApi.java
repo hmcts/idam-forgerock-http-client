@@ -20,7 +20,7 @@ public interface RoleAuthorizationRoleMembersApi extends ApiClient.Api {
    * Create with Client-Assigned ID
    *
    * @param roleId
-   * @param authzRolesId
+   * @param authzMembersId
    * @param requestPayload
    * @param cookie
    * @return RoleAuthzMembers

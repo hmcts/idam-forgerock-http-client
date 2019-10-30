@@ -45,9 +45,6 @@ public class IdmRole {
   @JsonProperty("assignments")
   private List<IdmRoleAssignments> assignments = null;
 
-  @JsonProperty("linkedRoles")
-  private List<String> linkedRoles = null;
-
   @JsonProperty("condition")
   private String condition = null;
 
@@ -192,32 +189,6 @@ public class IdmRole {
     this.assignments = assignments;
   }
 
-  public IdmRole linkedRoles(List<String> linkedRoles) {
-    this.linkedRoles = linkedRoles;
-    return this;
-  }
-
-  public IdmRole addLinkedRolesItem(String linkedRolesItem) {
-    if (this.linkedRoles == null) {
-      this.linkedRoles = new ArrayList<>();
-    }
-    this.linkedRoles.add(linkedRolesItem);
-    return this;
-  }
-
-  /**
-   * Internal roles that will be assigned to a user with parent role
-   * @return linkedRoles
-   **/
-  @ApiModelProperty(value = "Internal roles that will be assigned to a user with parent role")
-  public List<String> getLinkedRoles() {
-    return linkedRoles;
-  }
-
-  public void setLinkedRoles(List<String> linkedRoles) {
-    this.linkedRoles = linkedRoles;
-  }
-
   public IdmRole condition(String condition) {
     this.condition = condition;
     return this;
@@ -330,7 +301,6 @@ public class IdmRole {
             Objects.equals(this.members, idmRole.members) &&
             Objects.equals(this.authzMembers, idmRole.authzMembers) &&
             Objects.equals(this.assignments, idmRole.assignments) &&
-            Objects.equals(this.linkedRoles, idmRole.linkedRoles) &&
             Objects.equals(this.condition, idmRole.condition) &&
             Objects.equals(this.assignableRoles, idmRole.assignableRoles) &&
             Objects.equals(this.conflictingRoles, idmRole.conflictingRoles) &&
@@ -339,7 +309,7 @@ public class IdmRole {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, members, authzMembers, assignments, linkedRoles, condition, assignableRoles, conflictingRoles, temporalConstraints);
+    return Objects.hash(id, name, description, members, authzMembers, assignments, condition, assignableRoles, conflictingRoles, temporalConstraints);
   }
 
 
@@ -354,7 +324,6 @@ public class IdmRole {
     sb.append("    members: ").append(toIndentedString(members)).append("\n");
     sb.append("    authzMembers: ").append(toIndentedString(authzMembers)).append("\n");
     sb.append("    assignments: ").append(toIndentedString(assignments)).append("\n");
-    sb.append("    linkedRoles: ").append(toIndentedString(linkedRoles)).append("\n");
     sb.append("    condition: ").append(toIndentedString(condition)).append("\n");
     sb.append("    assignableRoles: ").append(toIndentedString(assignableRoles)).append("\n");
     sb.append("    conflictingRoles: ").append(toIndentedString(conflictingRoles)).append("\n");
