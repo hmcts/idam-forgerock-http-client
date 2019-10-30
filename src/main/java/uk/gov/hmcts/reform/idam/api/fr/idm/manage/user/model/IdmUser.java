@@ -70,9 +70,6 @@ public class IdmUser {
   @JsonProperty("roles")
   private List<IdmUserRoles> roles = null;
 
-  @JsonProperty("authzRoles")
-  private List<IdmUserAuthzRoles> authzRoles = null;
-
   @JsonProperty("reports")
   private List<IdmUserReports> reports = null;
 
@@ -398,32 +395,6 @@ public class IdmUser {
     this.roles = roles;
   }
 
-  public IdmUser authzRoles(List<IdmUserAuthzRoles> authzRoles) {
-    this.authzRoles = authzRoles;
-    return this;
-  }
-
-  public IdmUser addAuthzRolesItem(IdmUserAuthzRoles authzRolesItem) {
-    if (this.authzRoles == null) {
-      this.authzRoles = new ArrayList<>();
-    }
-    this.authzRoles.add(authzRolesItem);
-    return this;
-  }
-
-   /**
-   * Authorization Roles
-   * @return authzRoles
-  **/
-  @ApiModelProperty(value = "Authorization Roles")
-  public List<IdmUserAuthzRoles> getAuthzRoles() {
-    return authzRoles;
-  }
-
-  public void setAuthzRoles(List<IdmUserAuthzRoles> authzRoles) {
-    this.authzRoles = authzRoles;
-  }
-
   public IdmUser reports(List<IdmUserReports> reports) {
     this.reports = reports;
     return this;
@@ -714,7 +685,6 @@ public class IdmUser {
         Objects.equals(this.postalCode, user.postalCode) &&
         Objects.equals(this.accountStatus, user.accountStatus) &&
         Objects.equals(this.roles, user.roles) &&
-        Objects.equals(this.authzRoles, user.authzRoles) &&
         Objects.equals(this.reports, user.reports) &&
         Objects.equals(this.effectiveRoles, user.effectiveRoles) &&
         Objects.equals(this.effectiveAssignments, user.effectiveAssignments) &&
@@ -732,7 +702,7 @@ public class IdmUser {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, password, kbaInfo, preferences, mail, sn, description, address2, givenName, city, country, postalCode, accountStatus, roles, authzRoles, reports, effectiveRoles, effectiveAssignments, telephoneNumber, stateProvince, postalAddress, userName, manager, lastSync, termsAccepted, lastChanged, sunset, consentedMappings);
+    return Objects.hash(id, password, kbaInfo, preferences, mail, sn, description, address2, givenName, city, country, postalCode, accountStatus, roles, reports, effectiveRoles, effectiveAssignments, telephoneNumber, stateProvince, postalAddress, userName, manager, lastSync, termsAccepted, lastChanged, sunset, consentedMappings);
   }
 
 
@@ -755,7 +725,6 @@ public class IdmUser {
     sb.append("    postalCode: ").append(toIndentedString(postalCode)).append("\n");
     sb.append("    accountStatus: ").append(toIndentedString(accountStatus)).append("\n");
     sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
-    sb.append("    authzRoles: ").append(toIndentedString(authzRoles)).append("\n");
     sb.append("    reports: ").append(toIndentedString(reports)).append("\n");
     sb.append("    effectiveRoles: ").append(toIndentedString(effectiveRoles)).append("\n");
     sb.append("    effectiveAssignments: ").append(toIndentedString(effectiveAssignments)).append("\n");

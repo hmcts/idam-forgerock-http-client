@@ -202,177 +202,6 @@ paths:
             $ref: '#/definitions/Status'
       tags:
         - User
-  '/managed/user/{userId}/authzRoles':
-    get:
-      summary: Query by Filter
-      operationId: queryFilter
-      parameters:
-        - name: userId
-          in: path
-          required: true
-          type: string
-        - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/authorization'
-        - $ref: '#/parameters/_queryFilter'
-        - $ref: '#/parameters/_queryId'
-        - name: _pagedResultsOffset
-          in: query
-          required: false
-          type: string
-        - name: _pagedResultsCookie
-          in: query
-          required: false
-          type: string
-        - name: _pageSize
-          in: query
-          required: false
-          type: integer
-        - name: _totalPagedResultsPolicy
-          in: query
-          required: false
-          type: string
-          enum:
-            - NONE
-        - name: _sortKeys
-          in: query
-          required: false
-          type: string
-      responses:
-        '200':
-          description: Success
-          schema:
-            $ref: '#/definitions/UserAuthzRolesQueryResult'
-      tags:
-        - User - Authorization Roles
-    post:
-      summary: Create with Server-Assigned ID
-      operationId: post
-      parameters:
-        - name: userId
-          in: path
-          required: true
-          type: string
-        - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/authorization'
-        - in: body
-          name: requestPayload
-          required: true
-          schema:
-            $ref: '#/definitions/UserAuthzRoles'
-      responses:
-        '201':
-          description: Success
-          schema:
-            $ref: '#/definitions/UserAuthzRoles'
-          headers:
-            Location:
-              type: string
-              description: Resource location in response to successful create operation.
-      tags:
-        - User - Authorization Roles
-  '/managed/user/{userId}/authzRoles/{id}':
-    get:
-      summary: Read
-      operationId: get
-      parameters:
-        - name: userId
-          in: path
-          required: true
-          type: string
-        - name: id
-          in: path
-          required: true
-          type: string
-        - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/authorization'
-      responses:
-        '200':
-          description: Success
-          schema:
-            $ref: '#/definitions/UserAuthzRoles'
-      tags:
-        - User - Authorization Roles
-    put:
-      summary: Update or Create with Client-Assigned ID
-      operationId: putIfRevision
-      parameters:
-        - name: userId
-          in: path
-          required: true
-          type: string
-        - name: id
-          in: path
-          required: true
-          type: string
-        - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/authorization'
-        - in: body
-          name: requestPayload
-          required: true
-          schema:
-            $ref: '#/definitions/UserAuthzRoles'
-        - $ref: '#/parameters/If-None-Match-Star'
-        - $ref: '#/parameters/If-Match'
-      responses:
-        '201':
-          description: Success
-          schema:
-            $ref: '#/definitions/UserAuthzRoles'
-          headers:
-            Location:
-              type: string
-              description: Resource location in response to successful create operation.
-      tags:
-        - User - Authorization Roles
-    delete:
-      summary: Delete
-      operationId: deleteIfMatch
-      parameters:
-        - name: userId
-          in: path
-          required: true
-          type: string
-        - name: id
-          in: path
-          required: true
-          type: string
-        - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/authorization'
-        - $ref: '#/parameters/If-Match'
-      responses:
-        '200':
-          description: Success
-          schema:
-            $ref: '#/definitions/UserAuthzRoles'
-      tags:
-        - User - Authorization Roles
-    patch:
-      summary: Update via Patch Operations
-      operationId: patchIfMatch
-      parameters:
-        - name: userId
-          in: path
-          required: true
-          type: string
-        - name: id
-          in: path
-          required: true
-          type: string
-        - $ref: '#/parameters/_fields'
-        - $ref: '#/parameters/authorization'
-        - in: body
-          name: requestPayload
-          required: true
-          schema:
-            $ref: '#/definitions/PatchArray'
-        - $ref: '#/parameters/If-Match'
-      responses:
-        '200':
-          description: Success
-          schema:
-            $ref: '#/definitions/UserAuthzRoles'
-      tags:
-        - User - Authorization Roles
   '/managed/user/{userId}/reports':
     get:
       summary: Query by Filter
@@ -714,21 +543,6 @@ paths:
       tags:
         - User - Provisioning Roles
 definitions:
-  'UserAuthzRoles':
-    type: object
-    properties:
-      _ref:
-        type: string
-        description: References a relationship from a managed object
-      _refProperties:
-        type: object
-        properties:
-          _id:
-            type: string
-            description: _refProperties object ID
-        description: Supports metadata within the relationship
-        title: Authorization Roles Items _refProperties
-    title: Authorization Roles Items
   'UserReports':
     type: object
     properties:
@@ -744,37 +558,6 @@ definitions:
         description: Supports metadata within the relationship
         title: Direct Reports Items _refProperties
     title: Direct Reports Items
-  'UserAuthzRolesQueryResult':
-    type: object
-    properties:
-      result:
-        type: array
-        items:
-          $ref: '#/definitions/UserAuthzRoles'
-        description: Array of matching items
-      resultCount:
-        type: integer
-        format: int32
-        default: 0
-        description: Count of individual result items
-      pagedResultsCookie:
-        type: string
-        description: Opaque cookie used by the server to keep track of the position in the search results
-      totalPagedResultsPolicy:
-        type: string
-        default: NONE
-        description: 'Either NONE, EXACT, or ESTIMATE. Indicates the accuracy of the result count'
-      totalPagedResults:
-        type: integer
-        format: int32
-        default: -1
-        description: Total count of individual items
-      remainingPagedResults:
-        type: integer
-        format: int32
-        default: -1
-        description: Count of individual items remaining
-    title: User Authz Roles Query Response
   'UserRolesQueryResult':
     type: object
     properties:
@@ -922,12 +705,6 @@ definitions:
           $ref: '#/definitions/UserRoles'
         description: Provisioning Roles
         title: Provisioning Roles
-      authzRoles:
-        type: array
-        items:
-          $ref: '#/definitions/UserAuthzRoles'
-        description: Authorization Roles
-        title: Authorization Roles
       reports:
         type: array
         items:
