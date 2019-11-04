@@ -61,6 +61,67 @@ paths:
             $ref: '#/definitions/ApiError'
           description: Unsupported operation
   /json/realms/{realm}/policies:
+    get:
+      summary: Query by Filter
+      operationId: query
+      description: Query the stored policies
+      tags:
+        - Policies v2.1
+      x-resourceVersion: '2.1'
+      parameters:
+        - $ref: '#/parameters/realmInPath'
+        - $ref: '#/parameters/_fields'
+        - $ref: '#/parameters/_prettyPrint'
+        - name: _queryFilter
+          in: query
+          required: true
+          type: string
+        - name: _pageSize
+          in: query
+          required: false
+          type: integer
+        - name: _totalPagedResultsPolicy
+          in: query
+          required: false
+          type: string
+          enum:
+            - NONE
+            - EXACT
+            - ESTIMATE
+        - name: _sortKeys
+          in: query
+          required: false
+          type: string
+        - name: Accept-API-Version
+          in: header
+          required: true
+          type: string
+          enum:
+            - resource=2.1
+        - $ref: '#/parameters/authorization'
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: '#/definitions/QueryResponse'
+        400:
+          schema:
+            $ref: '#/definitions/ApiError'
+          description: |-
+            Bad request error. The cause can be the following:
+            * Missing privilege name
+            * Invalid json provided in the request
+            * Invalid value found in json
+            * Invalid policy name provided in json
+            * Resource name and JSON body name do not match
+            * Query id missing UID
+            * Invalid query id
+            * Invalid search filter
+            * Empty privilege name
+            * Entitlement value was NULL
+            * No resource type was expected
+            * Policy defines invalid resource type
+            * The provided resourceId does not match to the UUID in the json file
     post:
       summary: Create with Server-Assigned ID
       operationId: post
@@ -291,6 +352,94 @@ definitions:
     type: string
     additionalProperties:
       type: object
+  QueryResponse:
+    title: Query Response
+    type: object
+    properties:
+      result:
+        type: array
+        description: Array of matching items
+        items:
+          title: Policy Resource Schema
+          description: Json schema for the policy resource
+          type: object
+          properties:
+            name:
+              type: string
+              title: Name
+              description: String matching the name of the application
+            active:
+              type: boolean
+              title: Active flag
+              description: 'Boolean indicating whether OpenAM considers the policy active for evaluation purposes, defaults to false'
+            description:
+              type: string
+              title: Description
+              description: String describing the policy
+            applicationName:
+              type: string
+              title: Application name
+              description: 'String containing the application name, such as "iPlanetAMWebAgentService", or "mypolicyset"'
+            actionValues:
+              $ref: '#/definitions/ActionMap'
+            resources:
+              type: array
+              items:
+                type: string
+              title: Resources
+              description: List of the resource name pattern strings to which the policy applies. Must conform to the pattern templates provided by the associated Managing Resource Types resource type
+            subject:
+              $ref: '#/definitions/SubjectMap'
+            condition:
+              $ref: '#/definitions/ConditionMap'
+            resourceTypeUuid:
+              type: string
+              title: Resource Type UUID
+              description: The UUIDs of the resource type associated with the policy
+            resourceAttributes:
+              type: array
+              items:
+                type: object
+              title: Resource Attributes
+              description: List of attributes to return with decisions. These attributes are known as response attributes
+            lastModifiedBy:
+              type: string
+              title: Last Modified By
+              description: A string containing the universal identifier DN of the subject that most recently updated the policy
+            lastModifiedDate:
+              type: string
+              title: Last Modified date
+              description: 'An integer containing the last modified date and time, in number of seconds'
+            createdBy:
+              type: string
+              title: Created By
+              description: A string containing the universal identifier DN of the subject that created the policy
+            creationDate:
+              type: string
+              title: Creation Date
+              description: 'An integer containing the creation date and time, in number of seconds'
+      resultCount:
+        type: integer
+        format: int32
+        default: 0
+        description: Count of individual result items
+      pagedResultsCookie:
+        type: string
+        description: Opaque cookie used by the server to keep track of the position in the search results
+      totalPagedResultsPolicy:
+        type: string
+        default: NONE
+        description: 'Either NONE, EXACT, or ESTIMATE. Indicates the accuracy of the result count'
+      totalPagedResults:
+        type: integer
+        format: int32
+        default: -1
+        description: Total count of individual items
+      remainingPagedResults:
+        type: integer
+        format: int32
+        default: -1
+        description: Count of individual items remaining
   GetResponse:
     title: Policy Resource Schema
     description: Json schema for the policy resource
