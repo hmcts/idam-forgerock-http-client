@@ -34,6 +34,7 @@ public interface SelfServiceRegistrationApi extends ApiClient.Api {
   @Headers({
     "Content-Type: application/json",
     "Accept: application/json",
+    "Cookie: {cookie}",
   })
-  SelfServiceRegistrationResponse submitRequirements(SubmitRequirementsRequest requestPayload, @Param("fields") String fields);
+  SelfServiceRegistrationResponse submitRequirements(SubmitRequirementsRequest requestPayload, @Param("fields") String fields, @Param("cookie") String cookie);
 }
