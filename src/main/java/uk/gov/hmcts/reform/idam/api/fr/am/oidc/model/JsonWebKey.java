@@ -16,12 +16,14 @@ package uk.gov.hmcts.reform.idam.api.fr.am.oidc.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
  * JsonWebKey
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:58.839Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-12-03T15:51:28.389Z")
 public class JsonWebKey {
   @JsonProperty("alg")
   private String alg = null;
@@ -42,7 +44,7 @@ public class JsonWebKey {
   private String e = null;
 
   @JsonProperty("x5c")
-  private String x5c = null;
+  private List<String> x5c = null;
 
   @JsonProperty("x5t")
   private String x5t = null;
@@ -185,8 +187,16 @@ public class JsonWebKey {
     this.e = e;
   }
 
-  public JsonWebKey x5c(String x5c) {
+  public JsonWebKey x5c(List<String> x5c) {
     this.x5c = x5c;
+    return this;
+  }
+
+  public JsonWebKey addX5cItem(String x5cItem) {
+    if (this.x5c == null) {
+      this.x5c = new ArrayList<>();
+    }
+    this.x5c.add(x5cItem);
     return this;
   }
 
@@ -195,11 +205,11 @@ public class JsonWebKey {
    * @return x5c
   **/
   @ApiModelProperty(value = "")
-  public String getX5c() {
+  public List<String> getX5c() {
     return x5c;
   }
 
-  public void setX5c(String x5c) {
+  public void setX5c(List<String> x5c) {
     this.x5c = x5c;
   }
 
@@ -441,7 +451,7 @@ public class JsonWebKey {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class JsonWebKey {\n");
-    
+
     sb.append("    alg: ").append(toIndentedString(alg)).append("\n");
     sb.append("    kty: ").append(toIndentedString(kty)).append("\n");
     sb.append("    use: ").append(toIndentedString(use)).append("\n");

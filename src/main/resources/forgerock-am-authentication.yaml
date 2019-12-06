@@ -1037,7 +1037,9 @@ definitions:
       e:
         type: string
       x5c:
-        type: string
+        type: array
+        items:
+          type: string
       x5t:
         type: string
       crv:
