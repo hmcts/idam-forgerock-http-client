@@ -9,6 +9,7 @@ import uk.gov.hmcts.reform.idam.api.fr.idm.manage.user.model.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -60,12 +61,12 @@ public class IdmESUser extends IdmSearchableEntity<IdmESUser> {
     @JsonProperty("roles")
     private List<String> roles = null;
 
-    @JsonProperty("lastChanged")
-    public void setLastChanged(LastChanged lastChanged) {
-        this.lastModified = lastChanged.getDate();
+    @JsonProperty("_meta")
+    public void setLastChanged(Metadata metadata) {
+        Optional.ofNullable(metadata.getLastChanged())
+                .ifPresent(lastChanged -> this.lastModified = lastChanged.getDate());
     }
 
-    @JsonProperty("lastModified")
     private String lastModified = null;
 
     public IdmESUser email(String email) {

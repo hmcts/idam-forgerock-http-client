@@ -19,6 +19,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * User
@@ -100,7 +101,6 @@ public class IdmUser {
   @JsonProperty("termsAccepted")
   private TermsAccepted termsAccepted = null;
 
-  @JsonProperty("lastChanged")
   private LastChanged lastChanged = null;
 
   @JsonProperty("sunset")
@@ -661,6 +661,12 @@ public class IdmUser {
     this.consentedMappings = consentedMappings;
   }
 
+  @JsonProperty("_meta")
+  private void fetchMetadataValues(Metadata metadata) {
+    Optional.ofNullable(metadata).ifPresent(m -> {
+      this.lastChanged = m.getLastChanged();
+    });
+  }
 
   @Override
   public boolean equals(Object o) {
