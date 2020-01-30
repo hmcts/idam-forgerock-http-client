@@ -289,6 +289,7 @@ public class Advanced {
         Objects.equals(this.descriptions, advanced.descriptions) &&
         Objects.equals(this.requestUris, advanced.requestUris) &&
         Objects.equals(this.responseTypes, advanced.responseTypes) &&
+        Objects.equals(this.grantTypes, advanced.grantTypes) &&
         Objects.equals(this.contacts, advanced.contacts) &&
         Objects.equals(this.tokenEndpointAuthMethod, advanced.tokenEndpointAuthMethod) &&
         Objects.equals(this.sectorIdentifierUri, advanced.sectorIdentifierUri) &&
@@ -300,7 +301,7 @@ public class Advanced {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, descriptions, requestUris, responseTypes, contacts, tokenEndpointAuthMethod, sectorIdentifierUri, subjectType, updateAccessToken, isConsentImplied, mixUpMitigation);
+    return Objects.hash(name, descriptions, requestUris, responseTypes, grantTypes, contacts, tokenEndpointAuthMethod, sectorIdentifierUri, subjectType, updateAccessToken, isConsentImplied, mixUpMitigation);
   }
 
 
@@ -313,6 +314,7 @@ public class Advanced {
     sb.append("    descriptions: ").append(toIndentedString(descriptions)).append("\n");
     sb.append("    requestUris: ").append(toIndentedString(requestUris)).append("\n");
     sb.append("    responseTypes: ").append(toIndentedString(responseTypes)).append("\n");
+    sb.append("    grantTypes: ").append(toIndentedString(grantTypes)).append("\n");
     sb.append("    contacts: ").append(toIndentedString(contacts)).append("\n");
     sb.append("    tokenEndpointAuthMethod: ").append(toIndentedString(tokenEndpointAuthMethod)).append("\n");
     sb.append("    sectorIdentifierUri: ").append(toIndentedString(sectorIdentifierUri)).append("\n");
