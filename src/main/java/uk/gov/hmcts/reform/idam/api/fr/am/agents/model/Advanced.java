@@ -35,6 +35,9 @@ public class Advanced {
   @JsonProperty("responseTypes")
   private ResponseTypes responseTypes = null;
 
+  @JsonProperty("grantTypes")
+  private GrantTypes grantTypes = null;
+
   @JsonProperty("contacts")
   private Contacts contacts = null;
 
@@ -110,15 +113,33 @@ public class Advanced {
     this.requestUris = requestUris;
   }
 
+  public Advanced grantTypes(GrantTypes grantTypes) {
+    this.grantTypes = grantTypes;
+    return this;
+  }
+
+   /**
+   * Get grantTypes
+   * @return grantTypes
+  **/
+  @ApiModelProperty(value = "")
+  public GrantTypes getGrantTypes() {
+    return grantTypes;
+  }
+
+  public void setGrantTypes(GrantTypes grantTypes) {
+    this.grantTypes = grantTypes;
+  }
+
   public Advanced responseTypes(ResponseTypes responseTypes) {
     this.responseTypes = responseTypes;
     return this;
   }
 
-   /**
+  /**
    * Get responseTypes
    * @return responseTypes
-  **/
+   **/
   @ApiModelProperty(value = "")
   public ResponseTypes getResponseTypes() {
     return responseTypes;
