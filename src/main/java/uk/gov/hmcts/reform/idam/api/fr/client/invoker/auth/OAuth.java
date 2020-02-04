@@ -92,7 +92,7 @@ public class OAuth implements RequestInterceptor {
         try {
             accessTokenResponse = oauthClient.accessToken(tokenRequestBuilder.buildBodyMessage());
         } catch (Exception e) {
-            throw new RetryableException(500, e.getMessage(), Request.HttpMethod.GET, null);
+            throw new RetryableException(500, e.getMessage(), Request.HttpMethod.GET, null, null);
         }
         if (accessTokenResponse != null && accessTokenResponse.getAccessToken() != null) {
             setAccessToken(accessTokenResponse.getAccessToken(), accessTokenResponse.getExpiresIn());
