@@ -9,14 +9,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
 
+import java.util.Collection;
+import java.util.Optional;
+
 public interface LoginApi extends ApiClient.Api {
 
     default String getSessionJWT(String username, String password) {
         Response response = idmLogin(username, password);
-        return response.headers().get(HttpHeaders.SET_COOKIE)
-                .stream().findFirst()
+        return Optional.ofNullable(response.headers().get(HttpHeaders.SET_COOKIE))
+                .map(cookies -> String.join(" ", cookies))
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED,
-                        "invalid username or password"));
+                                                               "invalid username or password"));
     }
 
     /**

@@ -7,14 +7,14 @@ buildscript {
     }
     dependencies {
         classpath 'io.swagger:swagger-codegen:2.4.2'
-        classpath 'io.spring.gradle:dependency-management-plugin:1.0.7.RELEASE'
+        classpath 'io.spring.gradle:dependency-management-plugin:1.0.9.RELEASE'
     }
 }
 
 plugins {
     id 'java'
     id 'maven-publish'
-    id 'io.spring.dependency-management' version '1.0.7.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'com.jfrog.bintray' version '1.8.4'
 }
 
@@ -22,16 +22,12 @@ plugins {
 project.ext {
     swaggerTargetFolder = 'src/generated/java'
     swagger_annotations_version = "1.5.22"
-    jackson_version = "2.8.7"
-    feign_version = "10.2.0"
-    feign_form_version = "2.1.0"
-    junit_version = "4.12"
+    feign_version = "10.7.0"
+    feign_form_version = "3.8.0"
     oltu_version = "1.0.1"
-    spring_data_version = "2.1.9.RELEASE"
-    spring_data_elasticsearch = "3.1.9.RELEASE"
 }
 
-version = '2.0.1'
+version = '2.0.2'
 group = 'uk.gov.hmcts.reform.idam'
 
 description = """idam-forgerock-http-client"""
@@ -60,26 +56,26 @@ configurations {
 
 dependencyManagement {
     imports {
-        mavenBom 'uk.gov.hmcts.reform.idam:idam-bom:1.5.0'
+        mavenBom 'uk.gov.hmcts.reform.idam:idam-bom:2.0.1'
     }
 }
 
 dependencies {
-    compileOnly "org.springframework.data:spring-data-elasticsearch:$spring_data_elasticsearch"
-    compileOnly "org.springframework.data:spring-data-commons:$spring_data_version"
-    compile "io.swagger:swagger-annotations:$swagger_annotations_version"
-    compile "io.github.openfeign:feign-core:$feign_version"
-    compile "io.github.openfeign:feign-jackson:$feign_version"
-    compile "io.github.openfeign:feign-slf4j:$feign_version"
-    compile "io.github.openfeign.form:feign-form:$feign_form_version"
-    compile "com.fasterxml.jackson.core:jackson-core:$jackson_version"
-    compile "com.fasterxml.jackson.core:jackson-annotations:$jackson_version"
-    compile "com.fasterxml.jackson.core:jackson-databind:$jackson_version"
-    compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jackson_version"
-    compile "org.apache.oltu.oauth2:org.apache.oltu.oauth2.client:$oltu_version"
-    compile "org.springframework.boot:spring-boot-starter-web"
-    compile "com.brsanthu:migbase64:2.2"
-    testCompile "junit:junit:$junit_version"
+    implementation "org.springframework.data:spring-data-elasticsearch"
+    implementation "org.springframework.data:spring-data-commons"
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation "com.fasterxml.jackson.core:jackson-core"
+    implementation "com.fasterxml.jackson.core:jackson-annotations"
+    implementation "com.fasterxml.jackson.core:jackson-databind"
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
+    implementation "io.swagger:swagger-annotations:$swagger_annotations_version"
+    implementation "io.github.openfeign:feign-core:$feign_version"
+    implementation "io.github.openfeign:feign-jackson:$feign_version"
+    implementation "io.github.openfeign:feign-slf4j:$feign_version"
+    implementation "io.github.openfeign.form:feign-form:$feign_form_version"
+    implementation "org.apache.oltu.oauth2:org.apache.oltu.oauth2.client:$oltu_version"
+    implementation "com.brsanthu:migbase64:2.2"
+    testImplementation "junit:junit"
 }
 
 def generateCodeFromSwagger(swaggerSourceFile, packageName, importMappings) {
