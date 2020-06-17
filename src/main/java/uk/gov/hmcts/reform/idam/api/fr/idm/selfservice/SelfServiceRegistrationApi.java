@@ -34,6 +34,7 @@ public interface SelfServiceRegistrationApi extends ApiClient.Api {
   @Headers({
     "Content-Type: application/json",
     "Accept: application/json",
+    "X-emailType: {emailType}"
   })
-  SelfServiceRegistrationResponse submitRequirements(SubmitRequirementsRequest requestPayload, @Param("fields") String fields);
+  SelfServiceRegistrationResponse submitRequirements(SubmitRequirementsRequest requestPayload, @Param("emailType") String emailType);
 }
