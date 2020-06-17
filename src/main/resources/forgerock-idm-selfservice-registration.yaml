@@ -33,6 +33,10 @@ paths:
           default: "validateObject"
           enum:
             - validateObject
+        - name: emailType
+          in: header
+          required: false
+          type: string
       responses:
         '200':
           description: Success
