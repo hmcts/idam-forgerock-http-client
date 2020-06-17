@@ -36,5 +36,5 @@ public interface SelfServiceRegistrationApi extends ApiClient.Api {
     "Accept: application/json",
     "X-emailType: {emailType}"
   })
-  SelfServiceRegistrationResponse submitRequirements(SubmitRequirementsRequest requestPayload, @Param("emailType") String emailType);
+  SelfServiceRegistrationResponse submitRequirements(SubmitRequirementsRequest requestPayload, @Param("fields") String fields, @Param("emailType") String emailType);
 }
