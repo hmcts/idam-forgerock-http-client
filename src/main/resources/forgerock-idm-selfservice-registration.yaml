@@ -75,6 +75,10 @@ paths:
           type: string
           enum:
             - submitRequirements
+        - name: emailType
+          in: header
+          required: false
+          type: string
       responses:
         '200':
           description: Success
