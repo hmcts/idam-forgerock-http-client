@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-06-17T13:35:00.855+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-06-17T15:12:43.687+01:00")
 public interface AuthenticationChainApi extends ApiClient.Api {
 
 
@@ -28,10 +28,12 @@ public interface AuthenticationChainApi extends ApiClient.Api {
    * @param xRedirectURI Defines the redirectUri for the policies check (required)
    * @param xAdminUsername Defines the admin username for policies check (required)
    * @param xAdminPassword Defines the admin password for policies check (required)
+   * @param requestPayload  (optional)
    * @return AuthenticationChain
    */
   @RequestLine("POST /json/realms/{myRealm}/authenticate?authIndexType={authIndexType}&authIndexValue={authIndexValue}")
   @Headers({
+          "Content-Type: application/json",
           "Accept: application/json",
           "X-OpenAM-Cust-Username: {xOpenAMCustUsername}",
 
@@ -45,7 +47,7 @@ public interface AuthenticationChainApi extends ApiClient.Api {
 
           "X-Admin-Password: {xAdminPassword}"
   })
-  AuthenticationChain authenticate(@Param("myRealm") String myRealm, @Param("authIndexType") String authIndexType, @Param("authIndexValue") String authIndexValue, @Param("xOpenAMCustUsername") String xOpenAMCustUsername, @Param("xOpenAMCustPassword") String xOpenAMCustPassword, @Param("xOriginIP") String xOriginIP, @Param("xRedirectURI") String xRedirectURI, @Param("xAdminUsername") String xAdminUsername, @Param("xAdminPassword") String xAdminPassword);
+  AuthenticationChain authenticate(@Param("myRealm") String myRealm, @Param("authIndexType") String authIndexType, @Param("authIndexValue") String authIndexValue, @Param("xOpenAMCustUsername") String xOpenAMCustUsername, @Param("xOpenAMCustPassword") String xOpenAMCustPassword, @Param("xOriginIP") String xOriginIP, @Param("xRedirectURI") String xRedirectURI, @Param("xAdminUsername") String xAdminUsername, @Param("xAdminPassword") String xAdminPassword, AuthenticationChain requestPayload);
 
   /**
    * Authenticates a user or initiates an authentication flow when MFA is required
@@ -62,6 +64,7 @@ public interface AuthenticationChainApi extends ApiClient.Api {
    * @param xRedirectURI Defines the redirectUri for the policies check (required)
    * @param xAdminUsername Defines the admin username for policies check (required)
    * @param xAdminPassword Defines the admin password for policies check (required)
+   * @param requestPayload  (optional)
    * @param queryParams Map of query parameters as name-value pairs
    *   <p>The following elements may be specified in the query map:</p>
    *   <ul>
@@ -72,6 +75,7 @@ public interface AuthenticationChainApi extends ApiClient.Api {
    */
   @RequestLine("POST /json/realms/{myRealm}/authenticate?authIndexType={authIndexType}&authIndexValue={authIndexValue}")
   @Headers({
+          "Content-Type: application/json",
           "Accept: application/json",
           "X-OpenAM-Cust-Username: {xOpenAMCustUsername}",
 
@@ -85,7 +89,7 @@ public interface AuthenticationChainApi extends ApiClient.Api {
 
           "X-Admin-Password: {xAdminPassword}"
   })
-  AuthenticationChain authenticate(@Param("myRealm") String myRealm, @Param("xOpenAMCustUsername") String xOpenAMCustUsername, @Param("xOpenAMCustPassword") String xOpenAMCustPassword, @Param("xOriginIP") String xOriginIP, @Param("xRedirectURI") String xRedirectURI, @Param("xAdminUsername") String xAdminUsername, @Param("xAdminPassword") String xAdminPassword, @QueryMap(encoded=true) Map<String, Object> queryParams);
+  AuthenticationChain authenticate(@Param("myRealm") String myRealm, @Param("xOpenAMCustUsername") String xOpenAMCustUsername, @Param("xOpenAMCustPassword") String xOpenAMCustPassword, @Param("xOriginIP") String xOriginIP, @Param("xRedirectURI") String xRedirectURI, @Param("xAdminUsername") String xAdminUsername, @Param("xAdminPassword") String xAdminPassword, AuthenticationChain requestPayload, @QueryMap(encoded=true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
