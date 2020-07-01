@@ -827,6 +827,14 @@ definitions:
           title: Consented Mappings Items
         description: Consented Mappings
         title: Consented Mappings
+      ssoProvider:
+        type: string
+        description: SSO Provider
+        title: SSO Provider
+      ssoId:
+        type: string
+        description: User ID on SSO Provider
+        title: User ID on SSO Provider
     title: User
   'EffectiveRole':
     type: object

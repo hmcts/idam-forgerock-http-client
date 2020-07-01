@@ -109,6 +109,12 @@ public class IdmUser {
   @JsonProperty("consentedMappings")
   private List<List<Object>> consentedMappings = null;
 
+  @JsonProperty("ssoProvider")
+  private String ssoProvider = null;
+
+  @JsonProperty("ssoId")
+  private String ssoId = null;
+
   public IdmUser id(String id) {
     this.id = id;
     return this;
@@ -661,6 +667,42 @@ public class IdmUser {
     this.consentedMappings = consentedMappings;
   }
 
+  public IdmUser ssoProvider(String ssoProvider) {
+    this.ssoProvider = ssoProvider;
+    return this;
+  }
+
+  /**
+   * SSO Provider
+   * @return ssoProvider
+   **/
+  @ApiModelProperty(value = "SSO Provider")
+  public String getSsoProvider() {
+    return ssoProvider;
+  }
+
+  public void setSsoProvider(String ssoProvider) {
+    this.ssoProvider = ssoProvider;
+  }
+
+  public IdmUser ssoId(String ssoId) {
+    this.ssoId = ssoId;
+    return this;
+  }
+
+  /**
+   * User ID on SSO Provider
+   * @return ssoId
+   **/
+  @ApiModelProperty(value = "User ID on SSO Provider")
+  public String getSsoId() {
+    return ssoId;
+  }
+
+  public void setSsoId(String ssoId) {
+    this.ssoId = ssoId;
+  }
+
   @JsonProperty("_meta")
   private void fetchMetadataValues(Metadata metadata) {
     Optional.ofNullable(metadata).ifPresent(m -> {
@@ -703,12 +745,14 @@ public class IdmUser {
         Objects.equals(this.termsAccepted, user.termsAccepted) &&
         Objects.equals(this.lastChanged, user.lastChanged) &&
         Objects.equals(this.sunset, user.sunset) &&
-        Objects.equals(this.consentedMappings, user.consentedMappings);
+        Objects.equals(this.consentedMappings, user.consentedMappings) &&
+        Objects.equals(this.ssoProvider, user.ssoProvider) &&
+        Objects.equals(this.ssoId, user.ssoId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, password, kbaInfo, preferences, mail, sn, description, address2, givenName, city, country, postalCode, accountStatus, roles, reports, effectiveRoles, effectiveAssignments, telephoneNumber, stateProvince, postalAddress, userName, manager, lastSync, termsAccepted, lastChanged, sunset, consentedMappings);
+    return Objects.hash(id, password, kbaInfo, preferences, mail, sn, description, address2, givenName, city, country, postalCode, accountStatus, roles, reports, effectiveRoles, effectiveAssignments, telephoneNumber, stateProvince, postalAddress, userName, manager, lastSync, termsAccepted, lastChanged, sunset, consentedMappings, ssoProvider, ssoId);
   }
 
 
@@ -744,6 +788,8 @@ public class IdmUser {
     sb.append("    sunset: ").append(toIndentedString(sunset)).append("\n");
     sb.append("    lastChanged: ").append(toIndentedString(lastChanged)).append("\n");
     sb.append("    consentedMappings: ").append(toIndentedString(consentedMappings)).append("\n");
+    sb.append("    ssoProvider: ").append(toIndentedString(ssoProvider)).append("\n");
+    sb.append("    ssoId: ").append(toIndentedString(ssoId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
