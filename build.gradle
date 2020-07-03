@@ -29,7 +29,7 @@ project.ext {
     oltu_version = "1.0.1"
 }
 
-version = '2.2.0-SNAPSHOT'
+version = '2.2.0-RC1'
 group = 'uk.gov.hmcts.reform.idam'
 
 description = """idam-forgerock-http-client"""
