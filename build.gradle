@@ -3,8 +3,6 @@ import io.swagger.codegen.config.CodegenConfigurator
 
 buildscript {
     repositories {
-        // todo delete
-        mavenLocal()
         jcenter()
     }
     dependencies {
@@ -48,8 +46,6 @@ repositories {
         url 'https://dl.bintray.com/hmcts/hmcts-maven'
     }
     jcenter()
-    // todo delete
-    mavenLocal()
 }
 
 configurations {
