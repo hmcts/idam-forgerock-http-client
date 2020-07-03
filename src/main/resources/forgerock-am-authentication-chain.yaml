@@ -29,8 +29,6 @@ paths:
         - $ref: '#/parameters/password'
         - $ref: '#/parameters/originIp'
         - $ref: '#/parameters/redirectUri'
-        - $ref: '#/parameters/adminUsername'
-        - $ref: '#/parameters/adminPassword'
         - in: body
           name: requestPayload
           required: false

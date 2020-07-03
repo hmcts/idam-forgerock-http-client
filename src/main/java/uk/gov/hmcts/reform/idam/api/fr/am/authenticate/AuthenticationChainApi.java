@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-06-17T15:12:43.687+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-07-03T12:33:56.808+01:00")
 public interface AuthenticationChainApi extends ApiClient.Api {
 
 
@@ -26,8 +26,6 @@ public interface AuthenticationChainApi extends ApiClient.Api {
    * @param xOpenAMCustPassword Defines the user&#39;s password (required)
    * @param xOriginIP Defines the user&#39;s original IP address (required)
    * @param xRedirectURI Defines the redirectUri for the policies check (required)
-   * @param xAdminUsername Defines the admin username for policies check (required)
-   * @param xAdminPassword Defines the admin password for policies check (required)
    * @param requestPayload  (optional)
    * @return AuthenticationChain
    */
@@ -41,13 +39,9 @@ public interface AuthenticationChainApi extends ApiClient.Api {
 
           "X-Origin-IP: {xOriginIP}",
 
-          "X-Redirect-URI: {xRedirectURI}",
-
-          "X-Admin-Username: {xAdminUsername}",
-
-          "X-Admin-Password: {xAdminPassword}"
+          "X-Redirect-URI: {xRedirectURI}"
   })
-  AuthenticationChain authenticate(@Param("myRealm") String myRealm, @Param("authIndexType") String authIndexType, @Param("authIndexValue") String authIndexValue, @Param("xOpenAMCustUsername") String xOpenAMCustUsername, @Param("xOpenAMCustPassword") String xOpenAMCustPassword, @Param("xOriginIP") String xOriginIP, @Param("xRedirectURI") String xRedirectURI, @Param("xAdminUsername") String xAdminUsername, @Param("xAdminPassword") String xAdminPassword, AuthenticationChain requestPayload);
+  AuthenticationChain authenticate(@Param("myRealm") String myRealm, @Param("authIndexType") String authIndexType, @Param("authIndexValue") String authIndexValue, @Param("xOpenAMCustUsername") String xOpenAMCustUsername, @Param("xOpenAMCustPassword") String xOpenAMCustPassword, @Param("xOriginIP") String xOriginIP, @Param("xRedirectURI") String xRedirectURI, AuthenticationChain requestPayload);
 
   /**
    * Authenticates a user or initiates an authentication flow when MFA is required
@@ -62,8 +56,6 @@ public interface AuthenticationChainApi extends ApiClient.Api {
    * @param xOpenAMCustPassword Defines the user&#39;s password (required)
    * @param xOriginIP Defines the user&#39;s original IP address (required)
    * @param xRedirectURI Defines the redirectUri for the policies check (required)
-   * @param xAdminUsername Defines the admin username for policies check (required)
-   * @param xAdminPassword Defines the admin password for policies check (required)
    * @param requestPayload  (optional)
    * @param queryParams Map of query parameters as name-value pairs
    *   <p>The following elements may be specified in the query map:</p>
@@ -83,13 +75,9 @@ public interface AuthenticationChainApi extends ApiClient.Api {
 
           "X-Origin-IP: {xOriginIP}",
 
-          "X-Redirect-URI: {xRedirectURI}",
-
-          "X-Admin-Username: {xAdminUsername}",
-
-          "X-Admin-Password: {xAdminPassword}"
+          "X-Redirect-URI: {xRedirectURI}"
   })
-  AuthenticationChain authenticate(@Param("myRealm") String myRealm, @Param("xOpenAMCustUsername") String xOpenAMCustUsername, @Param("xOpenAMCustPassword") String xOpenAMCustPassword, @Param("xOriginIP") String xOriginIP, @Param("xRedirectURI") String xRedirectURI, @Param("xAdminUsername") String xAdminUsername, @Param("xAdminPassword") String xAdminPassword, AuthenticationChain requestPayload, @QueryMap(encoded=true) Map<String, Object> queryParams);
+  AuthenticationChain authenticate(@Param("myRealm") String myRealm, @Param("xOpenAMCustUsername") String xOpenAMCustUsername, @Param("xOpenAMCustPassword") String xOpenAMCustPassword, @Param("xOriginIP") String xOriginIP, @Param("xRedirectURI") String xRedirectURI, AuthenticationChain requestPayload, @QueryMap(encoded=true) Map<String, Object> queryParams);
 
   /**
    * A convenience class for generating query parameters for the
