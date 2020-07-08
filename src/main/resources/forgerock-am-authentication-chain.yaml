@@ -12,26 +12,20 @@ produces:
 consumes:
   - application/json
 paths:
-  /json/realms/{myRealm}/authenticate:
+  /json/realms/{realm}/authenticate:
     post:
-      operationId: authenticate
-      summary: Authenticates a user or initiates an authentication flow when MFA is required
+      operationId: authenticateSupplyOtp
+      summary: Completes the authentication flow when MFA is required
       description: POST call to initiate authentication flow
       tags:
         - AuthenticationChain
       consumes:
         - application/json
       parameters:
-        - $ref: '#/parameters/myRealm'
-        - $ref: '#/parameters/authIndexType'
-        - $ref: '#/parameters/authIndexValue'
-        - $ref: '#/parameters/username'
-        - $ref: '#/parameters/password'
-        - $ref: '#/parameters/originIp'
-        - $ref: '#/parameters/redirectUri'
+        - $ref: '#/parameters/realm'
         - in: body
           name: requestPayload
-          required: false
+          required: true
           schema:
             $ref: '#/definitions/AuthenticationChain'
       responses:
@@ -59,6 +53,51 @@ paths:
           schema:
             $ref: '#/definitions/ApiError'
           description: Unsupported operation
+  /json/realms/{myRealm}/authenticate:
+    post:
+      operationId: authenticate
+      summary: Authenticates a user or initiates an authentication flow if MFA is required
+      description: POST call to initiate authentication flow
+      tags:
+        - AuthenticationChain
+      consumes:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/myRealm'
+        - $ref: '#/parameters/authIndexType'
+        - $ref: '#/parameters/authIndexValue'
+        - $ref: '#/parameters/username'
+        - $ref: '#/parameters/password'
+        - $ref: '#/parameters/originIp'
+        - $ref: '#/parameters/redirectUri'
+        - $ref: '#/parameters/adminUsername'
+        - $ref: '#/parameters/adminPassword'
+      responses:
+        200:
+          description: success
+          schema:
+            $ref: '#/definitions/AuthenticationChain'
+        400:
+          schema:
+            $ref: '#/definitions/ApiError'
+          description: bad request
+        401:
+          schema:
+            $ref: '#/definitions/ApiError'
+          description: unauthorised
+        405:
+          schema:
+            $ref: '#/definitions/ApiError'
+          description: The requested action is not supported
+        500:
+          schema:
+            $ref: '#/definitions/ApiError'
+          description: Unexpected server error happened during the process
+        501:
+          schema:
+            $ref: '#/definitions/ApiError'
+          description: Unsupported operation
+
 definitions:
   AuthenticationChain:
     title: Authentication Chain

@@ -68,6 +68,9 @@ definitions:
         type: string
         description: Short description corresponding to apiError code
       detail:
-        type: string
-        description: Detailed apiError message
+        type: object
+        description: Error details
+        properties:
+          failureUrl:
+            type: string
     title: ApiError
