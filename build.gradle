@@ -6,7 +6,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'io.swagger:swagger-codegen:2.4.2'
+        classpath 'io.swagger:swagger-codegen:2.4.14'
         classpath 'io.spring.gradle:dependency-management-plugin:1.0.9.RELEASE'
     }
 }
@@ -27,14 +27,14 @@ project.ext {
     oltu_version = "1.0.1"
 }
 
-version = '2.1.0'
+version = '2.2.0'
 group = 'uk.gov.hmcts.reform.idam'
 
 description = """idam-forgerock-http-client"""
 
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 11
+targetCompatibility = 11
 
 
 tasks.withType(JavaCompile) {
@@ -56,7 +56,7 @@ configurations {
 
 dependencyManagement {
     imports {
-        mavenBom 'uk.gov.hmcts.reform.idam:idam-bom:2.0.1'
+        mavenBom 'uk.gov.hmcts.reform.idam:idam-bom:2.1.2'
     }
 }
 

@@ -14,19 +14,18 @@ consumes:
 paths:
   /json/realms/{realm}/authenticate:
     post:
-      operationId: authenticate
-      summary: Submits an authentication chain to AM
-      description: POST an authentication chain back to AM
+      operationId: authenticateSupplyOtp
+      summary: Completes the authentication flow when MFA is required
+      description: POST call to initiate authentication flow
       tags:
         - AuthenticationChain
+      consumes:
+        - application/json
       parameters:
         - $ref: '#/parameters/realm'
-        - $ref: '#/parameters/authIndexType'
-        - $ref: '#/parameters/authIndexValue'
-        - $ref: '#/parameters/authorization'
         - in: body
           name: requestPayload
-          required: false
+          required: true
           schema:
             $ref: '#/definitions/AuthenticationChain'
       responses:
@@ -34,6 +33,10 @@ paths:
           description: success
           schema:
             $ref: '#/definitions/AuthenticationChain'
+        400:
+          schema:
+            $ref: '#/definitions/ApiError'
+          description: bad request
         401:
           schema:
             $ref: '#/definitions/ApiError'
@@ -52,8 +55,8 @@ paths:
           description: Unsupported operation
   /json/realms/{myRealm}/authenticate:
     post:
-      operationId: authenticateEmptyBody
-      summary: Initiates an authentication chain with an empty body request
+      operationId: authenticate
+      summary: Authenticates a user or initiates an authentication flow if MFA is required
       description: POST call to initiate authentication flow
       tags:
         - AuthenticationChain
@@ -63,12 +66,21 @@ paths:
         - $ref: '#/parameters/myRealm'
         - $ref: '#/parameters/authIndexType'
         - $ref: '#/parameters/authIndexValue'
-        - $ref: '#/parameters/authorization'
+        - $ref: '#/parameters/username'
+        - $ref: '#/parameters/password'
+        - $ref: '#/parameters/originIp'
+        - $ref: '#/parameters/redirectUri'
+        - $ref: '#/parameters/adminUsername'
+        - $ref: '#/parameters/adminPassword'
       responses:
         200:
           description: success
           schema:
             $ref: '#/definitions/AuthenticationChain'
+        400:
+          schema:
+            $ref: '#/definitions/ApiError'
+          description: bad request
         401:
           schema:
             $ref: '#/definitions/ApiError'
@@ -85,6 +97,7 @@ paths:
           schema:
             $ref: '#/definitions/ApiError'
           description: Unsupported operation
+
 definitions:
   AuthenticationChain:
     title: Authentication Chain
@@ -180,4 +193,40 @@ parameters:
     name: Cookie
     in: header
     required: false
+    type: string
+  username:
+    in: header
+    description: Defines the user's username
+    name: X-OpenAM-Cust-Username
+    required: true
+    type: string
+  password:
+    in: header
+    description: Defines the user's password
+    name: X-OpenAM-Cust-Password
+    required: true
+    type: string
+  originIp:
+    in: header
+    description: Defines the user's original IP address
+    name: X-Origin-IP
+    required: true
+    type: string
+  redirectUri:
+    in: header
+    description: Defines the redirectUri for the policies check
+    name: X-Redirect-URI
+    required: true
+    type: string
+  adminUsername:
+    in: header
+    description: Defines the admin username for policies check
+    name: X-Admin-Username
+    required: true
+    type: string
+  adminPassword:
+    in: header
+    description: Defines the admin password for policies check
+    name: X-Admin-Password
+    required: true
     type: string
