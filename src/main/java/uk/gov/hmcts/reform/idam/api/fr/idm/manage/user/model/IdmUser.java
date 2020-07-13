@@ -98,6 +98,12 @@ public class IdmUser {
   @JsonProperty("lastSync")
   private LastSyncTimestamp lastSync = null;
 
+  @JsonProperty("ssoProvider")
+  private String ssoProvider = null;
+
+  @JsonProperty("ssoId")
+  private String ssoId = null;
+
   @JsonProperty("termsAccepted")
   private TermsAccepted termsAccepted = null;
 
@@ -549,6 +555,42 @@ public class IdmUser {
     this.manager = manager;
     return this;
   }
+
+    /**
+     * SSO Provider Name
+     * @return ssoProvider
+     **/
+    @ApiModelProperty(required = true, value = "SSO Provider Name")
+    public String getSsoProvider() {
+        return givenName;
+    }
+
+    public void setSsoProvider(String ssoProvider) {
+        this.ssoProvider = ssoProvider;
+    }
+
+    public IdmUser ssoProvider(String ssoProvider) {
+        this.ssoProvider = ssoProvider;
+        return this;
+    }
+
+    /**
+     * UID at SSO Provider
+     * @return ssoId
+     **/
+    @ApiModelProperty(required = true, value = "SSO Provider UID")
+    public String getSsoId() {
+        return ssoId;
+    }
+
+    public void setSsoId(String ssoId) {
+        this.ssoId = ssoId;
+    }
+
+    public IdmUser ssoId(String ssoId) {
+        this.ssoId = ssoId;
+        return this;
+    }
 
    /**
    * Get manager
