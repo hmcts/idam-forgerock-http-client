@@ -562,7 +562,7 @@ public class IdmUser {
      **/
     @ApiModelProperty(required = true, value = "SSO Provider Name")
     public String getSsoProvider() {
-        return givenName;
+        return ssoProvider;
     }
 
     public void setSsoProvider(String ssoProvider) {
