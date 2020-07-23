@@ -741,6 +741,12 @@ definitions:
         minLength: 1
         description: Username
         title: Username
+      ssoProvider:
+        type: string
+        description: The name of the SSO Provider the account was federated from.
+      ssoId:
+        type: string
+        description: The ID of the account within the SSO Provider the account was federated from.
       manager:
         type: object
         properties:
