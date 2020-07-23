@@ -27,7 +27,7 @@ project.ext {
     oltu_version = "1.0.1"
 }
 
-version = '2.3.2-BETA'
+version = '2.3.3'
 group = 'uk.gov.hmcts.reform.idam'
 
 description = """idam-forgerock-http-client"""
@@ -56,7 +56,7 @@ configurations {
 
 dependencyManagement {
     imports {
-        mavenBom 'uk.gov.hmcts.reform.idam:idam-bom:2.1.2'
+        mavenBom 'uk.gov.hmcts.reform.idam:idam-bom:2.2.6'
     }
 }
 
