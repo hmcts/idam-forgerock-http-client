@@ -8,6 +8,11 @@ public abstract class IdmSearchableEntity<T> {
     @Id
     protected String id = null;
 
+    @JsonProperty("_id")
+    public void setUuid(String id) {
+        this.id = id;
+    }
+
     @JsonProperty("id")
     public void setId(String id) {
         this.id = id;
