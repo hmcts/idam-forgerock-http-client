@@ -68,7 +68,6 @@ paths:
         - $ref: '#/parameters/authIndexValue'
         - $ref: '#/parameters/username'
         - $ref: '#/parameters/password'
-        - $ref: '#/parameters/tokenId'
         - $ref: '#/parameters/originIp'
         - $ref: '#/parameters/redirectUri'
       responses:
@@ -203,12 +202,6 @@ parameters:
     in: header
     description: Defines the user's password
     name: X-OpenAM-Cust-Password
-    required: false
-    type: string
-  tokenId:
-    in: header
-    description: Defines the user existing SSO token
-    name: Idam.Session
     required: false
     type: string
   originIp:

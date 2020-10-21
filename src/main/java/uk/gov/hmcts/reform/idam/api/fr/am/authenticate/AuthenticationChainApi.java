@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-10-16T15:12:54.143+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-10-21T11:40:28.748+01:00")
 public interface AuthenticationChainApi extends ApiClient.Api {
 
 
@@ -26,7 +26,6 @@ public interface AuthenticationChainApi extends ApiClient.Api {
      * @param xRedirectURI Defines the redirectUri for the policies check (required)
      * @param xOpenAMCustUsername Defines the user&#39;s username (optional)
      * @param xOpenAMCustPassword Defines the user&#39;s password (optional)
-     * @param idamSession Defines the user existing SSO token (optional)
      * @return AuthenticationChain
      */
     @RequestLine("POST /json/realms/{myRealm}/authenticate?authIndexType={authIndexType}&authIndexValue={authIndexValue}")
@@ -36,13 +35,11 @@ public interface AuthenticationChainApi extends ApiClient.Api {
 
             "X-OpenAM-Cust-Password: {xOpenAMCustPassword}",
 
-            "Idam.Session: {idamSession}",
-
             "X-Origin-IP: {xOriginIP}",
 
             "X-Redirect-URI: {xRedirectURI}"
     })
-    AuthenticationChain authenticate(@Param("myRealm") String myRealm, @Param("authIndexType") String authIndexType, @Param("authIndexValue") String authIndexValue, @Param("xOriginIP") String xOriginIP, @Param("xRedirectURI") String xRedirectURI, @Param("xOpenAMCustUsername") String xOpenAMCustUsername, @Param("xOpenAMCustPassword") String xOpenAMCustPassword, @Param("idamSession") String idamSession);
+    AuthenticationChain authenticate(@Param("myRealm") String myRealm, @Param("authIndexType") String authIndexType, @Param("authIndexValue") String authIndexValue, @Param("xOriginIP") String xOriginIP, @Param("xRedirectURI") String xRedirectURI, @Param("xOpenAMCustUsername") String xOpenAMCustUsername, @Param("xOpenAMCustPassword") String xOpenAMCustPassword);
 
     /**
      * Authenticates a user or initiates an authentication flow if MFA is required
@@ -57,7 +54,6 @@ public interface AuthenticationChainApi extends ApiClient.Api {
      * @param xRedirectURI Defines the redirectUri for the policies check (required)
      * @param xOpenAMCustUsername Defines the user&#39;s username (optional)
      * @param xOpenAMCustPassword Defines the user&#39;s password (optional)
-     * @param idamSession Defines the user existing SSO token (optional)
      * @param queryParams Map of query parameters as name-value pairs
      *   <p>The following elements may be specified in the query map:</p>
      *   <ul>
@@ -73,13 +69,11 @@ public interface AuthenticationChainApi extends ApiClient.Api {
 
             "X-OpenAM-Cust-Password: {xOpenAMCustPassword}",
 
-            "Idam.Session: {idamSession}",
-
             "X-Origin-IP: {xOriginIP}",
 
             "X-Redirect-URI: {xRedirectURI}"
     })
-    AuthenticationChain authenticate(@Param("myRealm") String myRealm, @Param("xOriginIP") String xOriginIP, @Param("xRedirectURI") String xRedirectURI, @Param("xOpenAMCustUsername") String xOpenAMCustUsername, @Param("xOpenAMCustPassword") String xOpenAMCustPassword, @Param("idamSession") String idamSession, @QueryMap(encoded=true) Map<String, Object> queryParams);
+    AuthenticationChain authenticate(@Param("myRealm") String myRealm, @Param("xOriginIP") String xOriginIP, @Param("xRedirectURI") String xRedirectURI, @Param("xOpenAMCustUsername") String xOpenAMCustUsername, @Param("xOpenAMCustPassword") String xOpenAMCustPassword, @QueryMap(encoded=true) Map<String, Object> queryParams);
 
     /**
      * A convenience class for generating query parameters for the
