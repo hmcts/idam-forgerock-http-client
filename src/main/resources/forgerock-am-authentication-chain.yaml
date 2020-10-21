@@ -70,8 +70,6 @@ paths:
         - $ref: '#/parameters/password'
         - $ref: '#/parameters/originIp'
         - $ref: '#/parameters/redirectUri'
-        - $ref: '#/parameters/adminUsername'
-        - $ref: '#/parameters/adminPassword'
       responses:
         200:
           description: success
@@ -198,13 +196,13 @@ parameters:
     in: header
     description: Defines the user's username
     name: X-OpenAM-Cust-Username
-    required: true
+    required: false
     type: string
   password:
     in: header
     description: Defines the user's password
     name: X-OpenAM-Cust-Password
-    required: true
+    required: false
     type: string
   originIp:
     in: header
@@ -216,17 +214,5 @@ parameters:
     in: header
     description: Defines the redirectUri for the policies check
     name: X-Redirect-URI
-    required: true
-    type: string
-  adminUsername:
-    in: header
-    description: Defines the admin username for policies check
-    name: X-Admin-Username
-    required: true
-    type: string
-  adminPassword:
-    in: header
-    description: Defines the admin password for policies check
-    name: X-Admin-Password
     required: true
     type: string
