@@ -109,6 +109,8 @@ public class IdmUser {
 
   private LastChanged lastChanged = null;
 
+  private String createDate = null;
+
   @JsonProperty("sunset")
   private Sunset sunset = null;
 
@@ -677,6 +679,14 @@ public class IdmUser {
     this.lastChanged = lastChanged;
   }
 
+  public String getCreateDate() {
+    return createDate;
+  }
+
+  public void setCreateDate(String createDate) {
+    this.createDate = createDate;
+  }
+
   public IdmUser consentedMappings(List<List<Object>> consentedMappings) {
     this.consentedMappings = consentedMappings;
     return this;
@@ -707,6 +717,7 @@ public class IdmUser {
   private void fetchMetadataValues(Metadata metadata) {
     Optional.ofNullable(metadata).ifPresent(m -> {
       this.lastChanged = m.getLastChanged();
+      this.createDate = m.getCreateDate();
     });
   }
 
@@ -744,13 +755,14 @@ public class IdmUser {
         Objects.equals(this.lastSync, user.lastSync) &&
         Objects.equals(this.termsAccepted, user.termsAccepted) &&
         Objects.equals(this.lastChanged, user.lastChanged) &&
+        Objects.equals(this.createDate, user.createDate) &&
         Objects.equals(this.sunset, user.sunset) &&
         Objects.equals(this.consentedMappings, user.consentedMappings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, password, kbaInfo, preferences, mail, sn, description, address2, givenName, city, country, postalCode, accountStatus, roles, reports, effectiveRoles, effectiveAssignments, telephoneNumber, stateProvince, postalAddress, userName, manager, lastSync, termsAccepted, lastChanged, sunset, consentedMappings);
+    return Objects.hash(id, password, kbaInfo, preferences, mail, sn, description, address2, givenName, city, country, postalCode, accountStatus, roles, reports, effectiveRoles, effectiveAssignments, telephoneNumber, stateProvince, postalAddress, userName, manager, lastSync, termsAccepted, lastChanged, createDate, sunset, consentedMappings);
   }
 
 
@@ -785,6 +797,7 @@ public class IdmUser {
     sb.append("    termsAccepted: ").append(toIndentedString(termsAccepted)).append("\n");
     sb.append("    sunset: ").append(toIndentedString(sunset)).append("\n");
     sb.append("    lastChanged: ").append(toIndentedString(lastChanged)).append("\n");
+    sb.append("    createDate: ").append(toIndentedString(createDate)).append("\n");
     sb.append("    consentedMappings: ").append(toIndentedString(consentedMappings)).append("\n");
     sb.append("}");
     return sb.toString();

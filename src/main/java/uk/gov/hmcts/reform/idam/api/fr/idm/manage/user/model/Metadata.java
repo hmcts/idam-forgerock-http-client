@@ -19,6 +19,9 @@ public class Metadata {
     @JsonProperty("lastChanged")
     private LastChanged lastChanged = null;
 
+    @JsonProperty("createDate")
+    private String createDate = null;
+
     public String getId() {
         return id;
     }
@@ -35,18 +38,27 @@ public class Metadata {
         this.lastChanged = lastChanged;
     }
 
+    public String getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Metadata)) return false;
         Metadata metadata = (Metadata) o;
         return getId().equals(metadata.getId()) &&
-                Objects.equals(getLastChanged(), metadata.getLastChanged());
+                Objects.equals(getLastChanged(), metadata.getLastChanged()) &&
+                Objects.equals(getCreateDate(), metadata.getCreateDate());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getLastChanged());
+        return Objects.hash(getId(), getLastChanged(), getCreateDate());
     }
 
     @Override
@@ -56,6 +68,7 @@ public class Metadata {
 
         sb.append("    id: ").append(toIndentedString(id)).append("\n");
         sb.append("    lastChanged: ").append(toIndentedString(lastChanged)).append("\n");
+        sb.append("    createDate: ").append(toIndentedString(createDate)).append("\n");
         sb.append("}");
         return sb.toString();
     }
