@@ -7,15 +7,12 @@ buildscript {
     }
     dependencies {
         classpath 'io.swagger:swagger-codegen:2.4.14'
-        classpath 'io.spring.gradle:dependency-management-plugin:1.0.9.RELEASE'
     }
 }
 
 plugins {
     id 'java'
     id 'maven-publish'
-    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
-    id 'com.jfrog.bintray' version '1.8.4'
 }
 
 
@@ -25,9 +22,13 @@ project.ext {
     feign_version = "10.7.0"
     feign_form_version = "3.8.0"
     oltu_version = "1.0.1"
+    spring_data_version = "2.2.8.RELEASE"
+    spring_data_elasticsearch_version = "3.2.8.RELEASE"
+    jackson_version = "2.10.4"
+    junit_version = "4.12"
 }
 
-version = '2.4.4'
+version = '2.5.0'
 group = 'uk.gov.hmcts.reform.idam'
 
 description = """idam-forgerock-http-client"""
@@ -42,9 +43,8 @@ tasks.withType(JavaCompile) {
 }
 
 repositories {
-    maven {
-        url 'https://dl.bintray.com/hmcts/hmcts-maven'
-    }
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
     jcenter()
 }
 
@@ -54,20 +54,14 @@ configurations {
     compile
 }
 
-dependencyManagement {
-    imports {
-        mavenBom 'uk.gov.hmcts.reform.idam:idam-bom:2.2.6'
-    }
-}
-
 dependencies {
-    implementation "org.springframework.data:spring-data-elasticsearch"
-    implementation "org.springframework.data:spring-data-commons"
-    implementation "org.springframework.boot:spring-boot-starter-web"
-    implementation "com.fasterxml.jackson.core:jackson-core"
-    implementation "com.fasterxml.jackson.core:jackson-annotations"
-    implementation "com.fasterxml.jackson.core:jackson-databind"
-    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
+    implementation "org.springframework.data:spring-data-elasticsearch:$spring_data_elasticsearch_version"
+    implementation "org.springframework.data:spring-data-commons:$spring_data_version"
+    implementation "org.springframework.boot:spring-boot-starter-web:$spring_data_version"
+    implementation "com.fasterxml.jackson.core:jackson-core:$jackson_version"
+    implementation "com.fasterxml.jackson.core:jackson-annotations:$jackson_version"
+    implementation "com.fasterxml.jackson.core:jackson-databind:$jackson_version"
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jackson_version"
     implementation "io.swagger:swagger-annotations:$swagger_annotations_version"
     implementation "io.github.openfeign:feign-core:$feign_version"
     implementation "io.github.openfeign:feign-jackson:$feign_version"
@@ -75,7 +69,7 @@ dependencies {
     implementation "io.github.openfeign.form:feign-form:$feign_form_version"
     implementation "org.apache.oltu.oauth2:org.apache.oltu.oauth2.client:$oltu_version"
     implementation "com.brsanthu:migbase64:2.2"
-    testImplementation "junit:junit"
+    testImplementation "junit:junit:$junit_version"
 }
 
 def generateCodeFromSwagger(swaggerSourceFile, packageName, importMappings) {
@@ -168,23 +162,6 @@ publishing {
             groupId project.group
             artifactId rootProject.name
             version project.version
-        }
-    }
-}
-
-bintray {
-    user = System.getenv('BINTRAY_USER')
-    key = System.getenv('BINTRAY_KEY')
-    publications = ['Main']
-    publish = true
-    pkg {
-        repo = 'hmcts-maven'
-        name = "${rootProject.name}"
-        userOrg = 'hmcts'
-        licenses = ['MIT']
-        vcsUrl = "https://github.com/hmcts/${rootProject.name}"
-        version {
-            name = project.version
         }
     }
 }
