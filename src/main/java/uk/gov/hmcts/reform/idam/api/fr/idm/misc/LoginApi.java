@@ -10,6 +10,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
 
+import java.util.Collection;
 import java.util.Optional;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
@@ -24,16 +25,16 @@ public interface LoginApi extends ApiClient.Api {
         } else if (responseStatus.is5xxServerError()) {
             throw HttpServerErrorException.create(response.reason(), responseStatus, response.reason(), HttpHeaders.EMPTY, null, UTF_8);
         }
-        return Optional.ofNullable(response.headers().get(HttpHeaders.SET_COOKIE))
-                .map(cookies -> String.join(" ", cookies))
-                .orElseThrow(() ->
-                        HttpClientErrorException.create(
-                                "invalid username or password",
-                                HttpStatus.UNAUTHORIZED,
-                                HttpStatus.UNAUTHORIZED.getReasonPhrase(),
-                                HttpHeaders.EMPTY,
-                                null,
-                                UTF_8));
+        return Optional.ofNullable(response.headers().get(HttpHeaders.SET_COOKIE)).stream().flatMap(Collection::stream)
+                .filter(cookie -> cookie.startsWith("session-jwt"))
+                .findFirst()
+                .orElseThrow(() -> HttpClientErrorException.create(
+                        "invalid username or password",
+                        HttpStatus.UNAUTHORIZED,
+                        HttpStatus.UNAUTHORIZED.getReasonPhrase(),
+                        HttpHeaders.EMPTY,
+                        null,
+                        UTF_8));
     }
 
     /**
