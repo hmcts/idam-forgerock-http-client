@@ -58,6 +58,9 @@ public class ConnectorObject {
   @JsonProperty("userPassword")
   private String userPassword = null;
 
+  @JsonProperty("ds-pwp-last-login-time")
+  private String dsPwpLastLoginTime = null;
+
   @JsonProperty("ldapGroups")
   private List<String> ldapGroups = null;
 
@@ -277,6 +280,24 @@ public class ConnectorObject {
     this.userPassword = userPassword;
   }
 
+  public ConnectorObject dsPwpLastLoginTime(String dsPwpLastLoginTime) {
+    this.dsPwpLastLoginTime = dsPwpLastLoginTime;
+    return this;
+  }
+
+  /**
+   * Get dsPwpLastLoginTime
+   * @return dsPwpLastLoginTime
+   **/
+  @ApiModelProperty(value = "")
+  public String getDsPwpLastLoginTime() {
+    return dsPwpLastLoginTime;
+  }
+
+  public void setDsPwpLastLoginTime(String dsPwpLastLoginTime) {
+    this.dsPwpLastLoginTime = dsPwpLastLoginTime;
+  }
+
   public ConnectorObject ldapGroups(List<String> ldapGroups) {
     this.ldapGroups = ldapGroups;
     return this;
@@ -456,6 +477,7 @@ public class ConnectorObject {
         Objects.equals(this.uid, connectorObject.uid) &&
         Objects.equals(this.dn, connectorObject.dn) &&
         Objects.equals(this.userPassword, connectorObject.userPassword) &&
+        Objects.equals(this.dsPwpLastLoginTime, connectorObject.dsPwpLastLoginTime) &&
         Objects.equals(this.ldapGroups, connectorObject.ldapGroups) &&
         Objects.equals(this.disabled, connectorObject.disabled) &&
         Objects.equals(this.aliasList, connectorObject.aliasList) &&
@@ -467,7 +489,7 @@ public class ConnectorObject {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, cn, employeeType, description, givenName, mail, telephoneNumber, sn, uid, dn, userPassword, ldapGroups, disabled, aliasList, objectClass, kbaInfo, pwdAccountLockedTime, inetUserStatus);
+    return Objects.hash(id, cn, employeeType, description, givenName, mail, telephoneNumber, sn, uid, dn, userPassword, dsPwpLastLoginTime, ldapGroups, disabled, aliasList, objectClass, kbaInfo, pwdAccountLockedTime, inetUserStatus);
   }
 
 
@@ -487,6 +509,7 @@ public class ConnectorObject {
     sb.append("    uid: ").append(toIndentedString(uid)).append("\n");
     sb.append("    dn: ").append(toIndentedString(dn)).append("\n");
     sb.append("    userPassword: ").append(toIndentedString(userPassword)).append("\n");
+    sb.append("    dsPwpLastLoginTime: ").append(toIndentedString(dsPwpLastLoginTime)).append("\n");
     sb.append("    ldapGroups: ").append(toIndentedString(ldapGroups)).append("\n");
     sb.append("    disabled: ").append(toIndentedString(disabled)).append("\n");
     sb.append("    aliasList: ").append(toIndentedString(aliasList)).append("\n");

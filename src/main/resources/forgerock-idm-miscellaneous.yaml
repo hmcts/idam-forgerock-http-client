@@ -296,6 +296,8 @@ definitions:
               type: string
             userPassword:
               type: string
+            ds-pwp-last-login-time:
+              type: string
             ldapGroups:
               type: array
               items:
