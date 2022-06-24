@@ -31,7 +31,8 @@ public interface OpenIdConnectApi extends ApiClient.Api {
                 params.get("client_id"), params.get("redirect_uri"), null, null,
                 "code", params.get("scope"), null, null,
                 null, null, null, null,
-                null, "Allow", null, params.get("token_id"));
+                null, null, null, "Allow",
+                null, params.get("token_id"));
 
         HttpStatus responseStatus = HttpStatus.valueOf(feignResponse.status());
 
@@ -97,6 +98,7 @@ public interface OpenIdConnectApi extends ApiClient.Api {
      * @param scope The (optional)
      * @param username The (optional)
      * @param password The (optional)
+     * @param codeVerifier Used in PKCE extension to Authorization Code flow. A base64 url encoded random string with a minimum length of 43 characters and a maximum length of 128 characters. (optional)
      * @return AmToken
      */
     @RequestLine("POST /oauth2/access_token?realm={realm}")
@@ -105,7 +107,7 @@ public interface OpenIdConnectApi extends ApiClient.Api {
             "Accept: application/json",
             "Authorization: {authorization}"
     })
-    AmToken accessToken(@Param("authorization") String authorization, @Param("grant_type") String grantType, @Param("realm") String realm, @Param("refresh_token") String refreshToken, @Param("code") String code, @Param("redirect_uri") String redirectUri, @Param("client_id") String clientId, @Param("client_secret") String clientSecret, @Param("scope") String scope, @Param("username") String username, @Param("password") String password);
+    AmToken accessToken(@Param("authorization") String authorization, @Param("grant_type") String grantType, @Param("realm") String realm, @Param("refresh_token") String refreshToken, @Param("code") String code, @Param("redirect_uri") String redirectUri, @Param("client_id") String clientId, @Param("client_secret") String clientSecret, @Param("scope") String scope, @Param("username") String username, @Param("password") String password, @Param("code_verifier") String codeVerifier);
 
     /**
      * Revoke an access token
@@ -136,6 +138,7 @@ public interface OpenIdConnectApi extends ApiClient.Api {
      * @param scope The (optional)
      * @param username The (optional)
      * @param password The (optional)
+     * @param codeVerifier Used in PKCE extension to Authorization Code flow. A base64 url encoded random string with a minimum length of 43 characters and a maximum length of 128 characters. (optional)
      * @return AmToken
      */
     @RequestLine("POST /oauth2/{realm}/access_token")
@@ -144,7 +147,7 @@ public interface OpenIdConnectApi extends ApiClient.Api {
             "Accept: application/json",
             "Authorization: {authorization}"
     })
-    AmToken accessTokenForRealm(@Param("realm") String realm, @Param("authorization") String authorization, @Param("grant_type") String grantType, @Param("refresh_token") String refreshToken, @Param("code") String code, @Param("redirect_uri") String redirectUri, @Param("client_id") String clientId, @Param("client_secret") String clientSecret, @Param("scope") String scope, @Param("username") String username, @Param("password") String password);
+    AmToken accessTokenForRealm(@Param("realm") String realm, @Param("authorization") String authorization, @Param("grant_type") String grantType, @Param("refresh_token") String refreshToken, @Param("code") String code, @Param("redirect_uri") String redirectUri, @Param("client_id") String clientId, @Param("client_secret") String clientSecret, @Param("scope") String scope, @Param("username") String username, @Param("password") String password, @Param("code_verifier") String codeVerifier);
 
     /**
      * Access Token Info
@@ -213,52 +216,56 @@ public interface OpenIdConnectApi extends ApiClient.Api {
      * OpenID Connect Authorize
      * Request redirect to login page
      *
-     * @param realm        (required)
-     * @param clientId     OAuth2 client id of the service initiating the OAuth2 flow. (optional)
-     * @param redirectUri  URI to redirect the user to after successful authentication. This URL must match one of the registered URLs for the OAuth2 application linked to the service initiating the authentication flow.  (optional)
-     * @param state        Optional state to be sent back to the initiating service after successful authentication. (optional)
-     * @param nonce        Optional parameter required for openid hybrid flow requests. (optional)
-     * @param responseType Response type to use for this request (optional, default to code)
-     * @param scope        Optional scopes to request. (optional)
-     * @param responseMode Informs Authorization server of the mechanism to be used for returning parameters. Use is not recommended.  (optional)
-     * @param display      ASCII string value that specifies how the Authorization Server displays the authentication and consent user interface pages to the End-User.  (optional)
-     * @param prompt       Space delimited, case sensitive list of ASCII string values that specifies whether the Authorization Server prompts the End-User for reauthentication and consent.  (optional)
-     * @param maxAge       Maximum Authentication Age (optional)
-     * @param acrValues    Requested Authentication Context Class Reference values (optional)
-     * @param idTokenHint  Token previously issued by the Authorization Server being passed as a hint about the End-User&#39;s current or past authenticated session with the Client.  (optional)
-     * @param loginHint    Hint to the Authorization Server about the login identifier the End-User might use to log in (if necessary). This hint can be used by an RP if it first asks the End-User for their e-mail address (or other identifier) and then wants to pass that value as a hint to the discovered authorization service.  (optional)
+     * @param realm               (required)
+     * @param clientId            OAuth2 client id of the service initiating the OAuth2 flow. (optional)
+     * @param redirectUri         URI to redirect the user to after successful authentication. This URL must match one of the registered URLs for the OAuth2 application linked to the service initiating the authentication flow.  (optional)
+     * @param state               Optional state to be sent back to the initiating service after successful authentication. (optional)
+     * @param nonce               Optional parameter required for openid hybrid flow requests. (optional)
+     * @param responseType        Response type to use for this request (optional, default to code)
+     * @param scope               Optional scopes to request. (optional)
+     * @param responseMode        Informs Authorization server of the mechanism to be used for returning parameters. Use is not recommended.  (optional)
+     * @param display             ASCII string value that specifies how the Authorization Server displays the authentication and consent user interface pages to the End-User.  (optional)
+     * @param prompt              Space delimited, case sensitive list of ASCII string values that specifies whether the Authorization Server prompts the End-User for reauthentication and consent.  (optional)
+     * @param maxAge              Maximum Authentication Age (optional)
+     * @param acrValues           Requested Authentication Context Class Reference values (optional)
+     * @param idTokenHint         Token previously issued by the Authorization Server being passed as a hint about the End-User&#39;s current or past authenticated session with the Client.  (optional)
+     * @param loginHint           Hint to the Authorization Server about the login identifier the End-User might use to log in (if necessary). This hint can be used by an RP if it first asks the End-User for their e-mail address (or other identifier) and then wants to pass that value as a hint to the discovered authorization service.  (optional)
+     * @param codeChallenge       Used in PKCE extension to Authorization Code flow. A base64 URL encoded string derived from the code verifier using one of the allowed transformation methods. (optional)
+     * @param codeChallengeMethod Used in PKCE extension to Authorization Code flow. Transformation method used to derive code challenge from the code verifier. The value can be either 'S256' or 'plain' only. (optional)
      * @return feign.Response
      */
-    @RequestLine("GET /oauth2/{realm}/authorize?client_id={clientId}&redirect_uri={redirectUri}&state={state}&nonce={nonce}&response_type={responseType}&scope={scope}&response_mode={responseMode}&display={display}&prompt={prompt}&max_age={maxAge}&acr_values={acrValues}&id_token_hint={idTokenHint}&login_hint={loginHint}")
+    @RequestLine("GET /oauth2/{realm}/authorize?client_id={clientId}&redirect_uri={redirectUri}&state={state}&nonce={nonce}&response_type={responseType}&scope={scope}&response_mode={responseMode}&display={display}&prompt={prompt}&max_age={maxAge}&acr_values={acrValues}&id_token_hint={idTokenHint}&login_hint={loginHint}&code_challenge={codeChallenge}&code_challenge_method={codeChallengeMethod}")
     @Headers({
             "Accept: application/json",
             "Connection: Keep-Alive",
             "Cookie: {cookie}"
     })
-    feign.Response getOauth2Authorize(@Param("realm") String realm, @Param("clientId") String clientId, @Param("redirectUri") String redirectUri, @Param("state") String state, @Param("nonce") String nonce, @Param("responseType") String responseType, @Param("scope") String scope, @Param("responseMode") String responseMode, @Param("display") String display, @Param("prompt") String prompt, @Param("maxAge") String maxAge, @Param("acrValues") String acrValues, @Param("idTokenHint") String idTokenHint, @Param("loginHint") String loginHint, @Param("cookie") String cookie);
+    feign.Response getOauth2Authorize(@Param("realm") String realm, @Param("clientId") String clientId, @Param("redirectUri") String redirectUri, @Param("state") String state, @Param("nonce") String nonce, @Param("responseType") String responseType, @Param("scope") String scope, @Param("responseMode") String responseMode, @Param("display") String display, @Param("prompt") String prompt, @Param("maxAge") String maxAge, @Param("acrValues") String acrValues, @Param("idTokenHint") String idTokenHint, @Param("loginHint") String loginHint, @Param("codeChallenge") String codeChallenge, @Param("codeChallengeMethod") String codeChallengeMethod, @Param("cookie") String cookie);
 
     /**
      * OpenID Connect Authorize
      * Use token ID to get Authorization code
      *
-     * @param realm        (required)
-     * @param cookie       (optional)
-     * @param clientId     OAuth2 client id of the service initiating the OAuth2 flow. (optional)
-     * @param redirectUri  URI to redirect the user to after successful authentication. This URL must match one of the registered URLs for the OAuth2 application linked to the service initiating the authentication flow.  (optional)
-     * @param state        Optional state to be sent back to the initiating service after successful authentication. (optional)
-     * @param nonce        Optional parameter required for openid hybrid flow requests. (optional)
-     * @param responseType Response type to use for this request (optional, default to code)
-     * @param scope        Optional scopes to request. (optional)
-     * @param responseMode Informs Authorization server of the mechanism to be used for returning parameters. Use is not recommended.  (optional)
-     * @param display      ASCII string value that specifies how the Authorization Server displays the authentication and consent user interface pages to the End-User.  (optional)
-     * @param prompt       Space delimited, case sensitive list of ASCII string values that specifies whether the Authorization Server prompts the End-User for reauthentication and consent.  (optional)
-     * @param maxAge       Maximum Authentication Age (optional)
-     * @param acrValues    Requested Authentication Context Class Reference values (optional)
-     * @param idTokenHint  Token previously issued by the Authorization Server being passed as a hint about the End-User&#39;s current or past authenticated session with the Client.  (optional)
-     * @param loginHint    Hint to the Authorization Server about the login identifier the End-User might use to log in (if necessary). This hint can be used by an RP if it first asks the End-User for their e-mail address (or other identifier) and then wants to pass that value as a hint to the discovered authorization service.  (optional)
-     * @param decision     (optional, default to Allow)
-     * @param saveConsent  (optional)
-     * @param csrf         The ID of the token (optional)
+     * @param realm               (required)
+     * @param cookie              (optional)
+     * @param clientId            OAuth2 client id of the service initiating the OAuth2 flow. (optional)
+     * @param redirectUri         URI to redirect the user to after successful authentication. This URL must match one of the registered URLs for the OAuth2 application linked to the service initiating the authentication flow.  (optional)
+     * @param state               Optional state to be sent back to the initiating service after successful authentication. (optional)
+     * @param nonce               Optional parameter required for openid hybrid flow requests. (optional)
+     * @param responseType        Response type to use for this request (optional, default to code)
+     * @param scope               Optional scopes to request. (optional)
+     * @param responseMode        Informs Authorization server of the mechanism to be used for returning parameters. Use is not recommended.  (optional)
+     * @param display             ASCII string value that specifies how the Authorization Server displays the authentication and consent user interface pages to the End-User.  (optional)
+     * @param prompt              Space delimited, case sensitive list of ASCII string values that specifies whether the Authorization Server prompts the End-User for reauthentication and consent.  (optional)
+     * @param maxAge              Maximum Authentication Age (optional)
+     * @param acrValues           Requested Authentication Context Class Reference values (optional)
+     * @param idTokenHint         Token previously issued by the Authorization Server being passed as a hint about the End-User&#39;s current or past authenticated session with the Client.  (optional)
+     * @param loginHint           Hint to the Authorization Server about the login identifier the End-User might use to log in (if necessary). This hint can be used by an RP if it first asks the End-User for their e-mail address (or other identifier) and then wants to pass that value as a hint to the discovered authorization service.  (optional)
+     * @param codeChallenge       Used in PKCE extension to Authorization Code flow. A base64 URL encoded string derived from the code verifier using one of the allowed transformation methods. (optional)
+     * @param codeChallengeMethod Used in PKCE extension to Authorization Code flow. Transformation method used to derive code challenge from the code verifier. The value can be either 'S256' or 'plain' only. (optional)
+     * @param decision            (optional, default to Allow)
+     * @param saveConsent         (optional)
+     * @param csrf                The ID of the token (optional)
      * @return feign.Response
      */
     @RequestLine("POST /oauth2/{realm}/authorize")
@@ -268,7 +275,7 @@ public interface OpenIdConnectApi extends ApiClient.Api {
             "Connection: Keep-Alive",
             "Cookie: {cookie}"
     })
-    feign.Response oauth2Authorize(@Param("realm") String realm, @Param("cookie") String cookie, @Param("client_id") String clientId, @Param("redirect_uri") String redirectUri, @Param("state") String state, @Param("nonce") String nonce, @Param("response_type") String responseType, @Param("scope") String scope, @Param("response_mode") String responseMode, @Param("display") String display, @Param("prompt") String prompt, @Param("max_age") String maxAge, @Param("acr_values") String acrValues, @Param("id_token_hint") String idTokenHint, @Param("login_hint") String loginHint, @Param("decision") String decision, @Param("save_concent") String saveConsent, @Param("csrf") String csrf);
+    feign.Response oauth2Authorize(@Param("realm") String realm, @Param("cookie") String cookie, @Param("client_id") String clientId, @Param("redirect_uri") String redirectUri, @Param("state") String state, @Param("nonce") String nonce, @Param("response_type") String responseType, @Param("scope") String scope, @Param("response_mode") String responseMode, @Param("display") String display, @Param("prompt") String prompt, @Param("max_age") String maxAge, @Param("acr_values") String acrValues, @Param("id_token_hint") String idTokenHint, @Param("login_hint") String loginHint, @Param("code_challenge") String codeChallenge, @Param("code_challenge_method") String codeChallengeMethod, @Param("decision") String decision, @Param("save_concent") String saveConsent, @Param("csrf") String csrf);
 
     /**
      * Request Info For User of the Authorization token
