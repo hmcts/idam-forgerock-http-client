@@ -110,7 +110,7 @@ public interface UserApi extends ApiClient.Api {
     "Accept: application/json",
     "Cookie: {cookie}"
   })
-  IdmUser get(@Param("userId") String userId, @Param(value = "fields", encoded=true) String fields, @Param("cookie") String cookie);
+  IdmUser get(@Param("userId") String userId, @Param("fields") String fields, @Param("cookie") String cookie);
 
   /**
    * Update via Patch Operations
