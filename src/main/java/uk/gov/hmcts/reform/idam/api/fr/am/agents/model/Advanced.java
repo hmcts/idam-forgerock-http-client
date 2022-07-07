@@ -37,6 +37,9 @@ public class Advanced {
   @JsonProperty("responseTypes")
   private ResponseTypes responseTypes = null;
 
+  @JsonProperty("grantTypes")
+  private GrantTypes grantTypes = null;
+
   @JsonProperty("contacts")
   private Contacts contacts = null;
 
@@ -113,6 +116,24 @@ public class Advanced {
 
   public void setRequestUris(RequestUris requestUris) {
     this.requestUris = requestUris;
+  }
+
+  public Advanced grantTypes(GrantTypes grantTypes) {
+    this.grantTypes = grantTypes;
+    return this;
+  }
+
+  /**
+   * Get grantTypes
+   * @return grantTypes
+   **/
+  @ApiModelProperty(value = "")
+  public GrantTypes getGrantTypes() {
+    return grantTypes;
+  }
+
+  public void setGrantTypes(GrantTypes grantTypes) {
+    this.grantTypes = grantTypes;
   }
 
   public Advanced responseTypes(ResponseTypes responseTypes) {
@@ -299,6 +320,7 @@ public class Advanced {
             Objects.equals(this.descriptions, advanced.descriptions) &&
             Objects.equals(this.requestUris, advanced.requestUris) &&
             Objects.equals(this.responseTypes, advanced.responseTypes) &&
+            Objects.equals(this.grantTypes, advanced.grantTypes) &&
             Objects.equals(this.contacts, advanced.contacts) &&
             Objects.equals(this.customProperties, advanced.customProperties) &&
             Objects.equals(this.tokenEndpointAuthMethod, advanced.tokenEndpointAuthMethod) &&
@@ -311,7 +333,7 @@ public class Advanced {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, descriptions, requestUris, responseTypes, contacts, customProperties, tokenEndpointAuthMethod, sectorIdentifierUri, subjectType, updateAccessToken, isConsentImplied, mixUpMitigation);
+    return Objects.hash(name, descriptions, requestUris, responseTypes, grantTypes, contacts, customProperties, tokenEndpointAuthMethod, sectorIdentifierUri, subjectType, updateAccessToken, isConsentImplied, mixUpMitigation);
   }
 
 
@@ -324,6 +346,7 @@ public class Advanced {
     sb.append("    descriptions: ").append(toIndentedString(descriptions)).append("\n");
     sb.append("    requestUris: ").append(toIndentedString(requestUris)).append("\n");
     sb.append("    responseTypes: ").append(toIndentedString(responseTypes)).append("\n");
+    sb.append("    grantTypes: ").append(toIndentedString(grantTypes)).append("\n");
     sb.append("    contacts: ").append(toIndentedString(contacts)).append("\n");
     sb.append("    customProperties: ").append(toIndentedString(customProperties)).append("\n");
     sb.append("    tokenEndpointAuthMethod: ").append(toIndentedString(tokenEndpointAuthMethod)).append("\n");
