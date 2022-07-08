@@ -301,13 +301,30 @@ definitions:
             title: Contacts
             description: Email addresses of users who can administrate this client.
             x-propertyOrder: 23900
+          grantTypes:
+            type: object
+            description: 'Response types this client will support and use.'
+            title: Grant Types
+            x-propertyOrder: 35100
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: array
+                items:
+                  type: string
           customProperties:
-            type: array
-            items:
-              type: string
+            type: object
             description: 'Additional properties that allow users to augment the set of properties supported by the OAuth2 Client. <br> Examples: <br> customproperty=custom-value1 <br> customlist[0]=customlist-value-0 <br> customlist[1]=customlist-value-1 <br> custommap[key1]=custommap-value-1 <br> custommap[key2]=custommap-value-2'
             title: Custom Properties
             x-propertyOrder: 35100
+            properties:
+              inherited:
+                type: boolean
+              value:
+                type: array
+                items:
+                  type: string
           tokenEndpointAuthMethod:
             type: object
             properties:

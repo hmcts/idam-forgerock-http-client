@@ -13,17 +13,31 @@
 
 package uk.gov.hmcts.reform.idam.api.fr.am.agents.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
+import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.AccessToken;
+import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.Contacts;
+import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.CustomProperties;
+import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.DisplayDescription;
+import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.DisplayName;
+import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.GrantTypes;
+import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.ImpliedConsent;
+import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.OAuth20MixUpMitigationEnabled;
+import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.RequestUris;
+import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.ResponseTypes;
+import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.SectorIdentifierURI;
+import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.SubjectType;
+import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.TokenEndpointAuthenticationMethod;
 
 /**
  * Advanced
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2022-07-07T07:40:50.444+01:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2022-07-08T06:31:38.266+01:00")
 public class Advanced {
   @JsonProperty("name")
   private DisplayName name = null;
@@ -37,14 +51,14 @@ public class Advanced {
   @JsonProperty("responseTypes")
   private ResponseTypes responseTypes = null;
 
-  @JsonProperty("grantTypes")
-  private GrantTypes grantTypes = null;
-
   @JsonProperty("contacts")
   private Contacts contacts = null;
 
+  @JsonProperty("grantTypes")
+  private GrantTypes grantTypes = null;
+
   @JsonProperty("customProperties")
-  private List<String> customProperties = null;
+  private CustomProperties customProperties = null;
 
   @JsonProperty("tokenEndpointAuthMethod")
   private TokenEndpointAuthenticationMethod tokenEndpointAuthMethod = null;
@@ -118,24 +132,6 @@ public class Advanced {
     this.requestUris = requestUris;
   }
 
-  public Advanced grantTypes(GrantTypes grantTypes) {
-    this.grantTypes = grantTypes;
-    return this;
-  }
-
-  /**
-   * Get grantTypes
-   * @return grantTypes
-   **/
-  @ApiModelProperty(value = "")
-  public GrantTypes getGrantTypes() {
-    return grantTypes;
-  }
-
-  public void setGrantTypes(GrantTypes grantTypes) {
-    this.grantTypes = grantTypes;
-  }
-
   public Advanced responseTypes(ResponseTypes responseTypes) {
     this.responseTypes = responseTypes;
     return this;
@@ -172,29 +168,39 @@ public class Advanced {
     this.contacts = contacts;
   }
 
-  public Advanced customProperties(List<String> customProperties) {
-    this.customProperties = customProperties;
-    return this;
-  }
-
-  public Advanced addCustomPropertiesItem(String customPropertiesItem) {
-    if (this.customProperties == null) {
-      this.customProperties = new ArrayList<>();
-    }
-    this.customProperties.add(customPropertiesItem);
+  public Advanced grantTypes(GrantTypes grantTypes) {
+    this.grantTypes = grantTypes;
     return this;
   }
 
   /**
-   * Additional properties that allow users to augment the set of properties supported by the OAuth2 Client. &lt;br&gt; Examples: &lt;br&gt; customproperty&#x3D;custom-value1 &lt;br&gt; customlist[0]&#x3D;customlist-value-0 &lt;br&gt; customlist[1]&#x3D;customlist-value-1 &lt;br&gt; custommap[key1]&#x3D;custommap-value-1 &lt;br&gt; custommap[key2]&#x3D;custommap-value-2
+   * Get grantTypes
+   * @return grantTypes
+   **/
+  @ApiModelProperty(value = "")
+  public GrantTypes getGrantTypes() {
+    return grantTypes;
+  }
+
+  public void setGrantTypes(GrantTypes grantTypes) {
+    this.grantTypes = grantTypes;
+  }
+
+  public Advanced customProperties(CustomProperties customProperties) {
+    this.customProperties = customProperties;
+    return this;
+  }
+
+  /**
+   * Get customProperties
    * @return customProperties
    **/
-  @ApiModelProperty(value = "Additional properties that allow users to augment the set of properties supported by the OAuth2 Client. <br> Examples: <br> customproperty=custom-value1 <br> customlist[0]=customlist-value-0 <br> customlist[1]=customlist-value-1 <br> custommap[key1]=custommap-value-1 <br> custommap[key2]=custommap-value-2")
-  public List<String> getCustomProperties() {
+  @ApiModelProperty(value = "")
+  public CustomProperties getCustomProperties() {
     return customProperties;
   }
 
-  public void setCustomProperties(List<String> customProperties) {
+  public void setCustomProperties(CustomProperties customProperties) {
     this.customProperties = customProperties;
   }
 
@@ -320,8 +326,8 @@ public class Advanced {
             Objects.equals(this.descriptions, advanced.descriptions) &&
             Objects.equals(this.requestUris, advanced.requestUris) &&
             Objects.equals(this.responseTypes, advanced.responseTypes) &&
-            Objects.equals(this.grantTypes, advanced.grantTypes) &&
             Objects.equals(this.contacts, advanced.contacts) &&
+            Objects.equals(this.grantTypes, advanced.grantTypes) &&
             Objects.equals(this.customProperties, advanced.customProperties) &&
             Objects.equals(this.tokenEndpointAuthMethod, advanced.tokenEndpointAuthMethod) &&
             Objects.equals(this.sectorIdentifierUri, advanced.sectorIdentifierUri) &&
@@ -333,7 +339,7 @@ public class Advanced {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, descriptions, requestUris, responseTypes, grantTypes, contacts, customProperties, tokenEndpointAuthMethod, sectorIdentifierUri, subjectType, updateAccessToken, isConsentImplied, mixUpMitigation);
+    return Objects.hash(name, descriptions, requestUris, responseTypes, contacts, grantTypes, customProperties, tokenEndpointAuthMethod, sectorIdentifierUri, subjectType, updateAccessToken, isConsentImplied, mixUpMitigation);
   }
 
 
@@ -346,8 +352,8 @@ public class Advanced {
     sb.append("    descriptions: ").append(toIndentedString(descriptions)).append("\n");
     sb.append("    requestUris: ").append(toIndentedString(requestUris)).append("\n");
     sb.append("    responseTypes: ").append(toIndentedString(responseTypes)).append("\n");
-    sb.append("    grantTypes: ").append(toIndentedString(grantTypes)).append("\n");
     sb.append("    contacts: ").append(toIndentedString(contacts)).append("\n");
+    sb.append("    grantTypes: ").append(toIndentedString(grantTypes)).append("\n");
     sb.append("    customProperties: ").append(toIndentedString(customProperties)).append("\n");
     sb.append("    tokenEndpointAuthMethod: ").append(toIndentedString(tokenEndpointAuthMethod)).append("\n");
     sb.append("    sectorIdentifierUri: ").append(toIndentedString(sectorIdentifierUri)).append("\n");
