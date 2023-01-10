@@ -23,7 +23,7 @@ import java.util.Objects;
 /**
  * FailedPolicyRequirements
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.636Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.636Z")
 public class FailedPolicyRequirements {
   @JsonProperty("policyRequirements")
   private List<PolicyRequirements> policyRequirements = null;

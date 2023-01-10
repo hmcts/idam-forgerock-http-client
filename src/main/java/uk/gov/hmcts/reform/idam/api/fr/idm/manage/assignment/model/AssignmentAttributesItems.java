@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * AssignmentAttributesItems
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-07T14:02:15.087+01:00")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-07T14:02:15.087+01:00")
 public class AssignmentAttributesItems {
   @JsonProperty("assignmentOperation")
   private String assignmentOperation = null;

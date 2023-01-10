@@ -25,7 +25,7 @@ import java.util.Objects;
  * The collection of next descendents beneath this endpoint
  */
 @ApiModel(description = "The collection of next descendents beneath this endpoint")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
 public class AmAgentNextDescendents {
   @JsonProperty("result")
   private List<Item> result = null;

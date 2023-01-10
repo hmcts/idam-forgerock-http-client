@@ -37,7 +37,7 @@ import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.TokenEndpointAuthenticati
 /**
  * Advanced
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2022-07-08T06:31:38.266+01:00")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2022-07-08T06:31:38.266+01:00")
 public class Advanced {
   @JsonProperty("name")
   private DisplayName name = null;

@@ -23,7 +23,7 @@ import java.util.Objects;
  * If all the requirements have been fulfilled and the user registration process is complete, this response structure will be used.
  */
 @ApiModel(description = "If all the requirements have been fulfilled and the user registration process is complete, this response structure will be used.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.636Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.636Z")
 public class SuccessObject {
   @JsonProperty("success")
   private String success = null;

@@ -22,7 +22,7 @@ import java.util.Objects;
  * Specifies the subject conditions to which the policy applies, where subjects can be combined by using the built-in types \&quot;AND\&quot;, \&quot;OR\&quot;, and \&quot;NOT\&quot;, and where subject implementations are pluggable
  */
 @ApiModel(description = "Specifies the subject conditions to which the policy applies, where subjects can be combined by using the built-in types \"AND\", \"OR\", and \"NOT\", and where subject implementations are pluggable")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-04T13:59:55.834+01:00")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-04T13:59:55.834+01:00")
 public class SubjectMap extends HashMap<String, Object> {
 
   @Override

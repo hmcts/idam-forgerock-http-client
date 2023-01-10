@@ -23,7 +23,7 @@ import java.util.Objects;
  * Last Changed
  */
 @ApiModel(description = "Last Changed")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:59.475Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:59.475Z")
 public class LastChanged {
   @JsonProperty("date")
   private String date = null;

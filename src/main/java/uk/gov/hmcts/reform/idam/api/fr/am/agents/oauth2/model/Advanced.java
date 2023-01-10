@@ -23,7 +23,7 @@ import java.util.Objects;
 /**
  * Advanced
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2022-07-07T07:40:50.788+01:00")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2022-07-07T07:40:50.788+01:00")
 public class Advanced {
   @JsonProperty("name")
   private List<String> name = null;

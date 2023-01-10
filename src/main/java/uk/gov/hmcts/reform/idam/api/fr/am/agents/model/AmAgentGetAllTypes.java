@@ -25,7 +25,7 @@ import java.util.Objects;
  * A collection of type objects in response to the request
  */
 @ApiModel(description = "A collection of type objects in response to the request")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
 public class AmAgentGetAllTypes {
   @JsonProperty("result")
   private List<RestsmsType> result = null;

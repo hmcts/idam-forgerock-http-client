@@ -9,7 +9,7 @@ import java.util.Objects;
  * Metadata
  */
 @ApiModel(description = "Metadata")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "20202-01-25T17:14:09.475Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "20202-01-25T17:14:09.475Z")
 
 public class Metadata {
 

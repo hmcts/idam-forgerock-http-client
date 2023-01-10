@@ -23,7 +23,7 @@ import java.util.Objects;
  * Status of the agent configuration.
  */
 @ApiModel(description = "Status of the agent configuration.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
 public class Status {
   @JsonProperty("inherited")
   private Boolean inherited = null;

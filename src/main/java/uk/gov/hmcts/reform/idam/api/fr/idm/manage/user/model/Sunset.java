@@ -25,7 +25,7 @@ import java.util.Objects;
  * Account Expiry
  */
 @ApiModel(description = "Account Expiry")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-06-24T15:01:49.212+01:00")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-06-24T15:01:49.212+01:00")
 public class Sunset {
   @JsonProperty("date")
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")

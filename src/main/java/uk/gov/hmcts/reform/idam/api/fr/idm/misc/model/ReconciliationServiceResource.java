@@ -22,7 +22,7 @@ import java.util.Objects;
 /**
  * ReconciliationServiceResource
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.022Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.022Z")
 public class ReconciliationServiceResource {
   @JsonProperty("mapping")
   private String mapping = null;

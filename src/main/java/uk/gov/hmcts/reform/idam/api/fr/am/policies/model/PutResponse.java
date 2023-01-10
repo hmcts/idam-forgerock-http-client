@@ -25,7 +25,7 @@ import java.util.Objects;
  * Json schema for the policy resource
  */
 @ApiModel(description = "Json schema for the policy resource")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-04T13:59:55.834+01:00")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-04T13:59:55.834+01:00")
 public class PutResponse {
   @JsonProperty("name")
   private String name = null;

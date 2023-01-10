@@ -23,7 +23,7 @@ import java.util.Objects;
  * Select the public key for this client to come from either the jwks_uri, manual jwks or X509 field.
  */
 @ApiModel(description = "Select the public key for this client to come from either the jwks_uri, manual jwks or X509 field.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
 public class PublicKeySelector {
   @JsonProperty("inherited")
   private Boolean inherited = null;

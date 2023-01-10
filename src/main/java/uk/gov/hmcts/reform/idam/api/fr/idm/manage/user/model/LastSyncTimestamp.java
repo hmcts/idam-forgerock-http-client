@@ -25,7 +25,7 @@ import java.util.Objects;
  * Last Sync timestamp
  */
 @ApiModel(description = "Last Sync timestamp")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:59.475Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:59.475Z")
 public class LastSyncTimestamp {
   @JsonProperty("effectiveAssignments")
   private List<Object> effectiveAssignments = null;

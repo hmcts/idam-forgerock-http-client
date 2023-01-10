@@ -744,6 +744,12 @@ definitions:
       ssoProvider:
         type: string
         description: The name of the SSO Provider the account was federated from.
+      pwdAccountLockedTime:
+        type: string
+        description: The DateTime of the most recent instance the account was locked.
+      lastLoginTime:
+        type: string
+        description: The DateTime of the most recent successful login.
       ssoId:
         type: string
         description: The ID of the account within the SSO Provider the account was federated from.

@@ -25,7 +25,7 @@ import java.util.Objects;
  * Authorization details
  */
 @ApiModel(description = "Authorization details")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-09T09:18:53.032+01:00")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-09T09:18:53.032+01:00")
 public class Authorization {
   @JsonProperty("component")
   private String component = null;

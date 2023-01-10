@@ -25,7 +25,7 @@ import java.util.Objects;
  * Redirection URIs for returning to the client from UMA claims collection (not yet supported). If multiple URIs are registered, the client MUST specify the URI that the user should be redirected to following approval. May not contain a fragment (#).
  */
 @ApiModel(description = "Redirection URIs for returning to the client from UMA claims collection (not yet supported). If multiple URIs are registered, the client MUST specify the URI that the user should be redirected to following approval. May not contain a fragment (#).")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
 public class ClaimsRedirectionURIs {
   @JsonProperty("inherited")
   private Boolean inherited = null;

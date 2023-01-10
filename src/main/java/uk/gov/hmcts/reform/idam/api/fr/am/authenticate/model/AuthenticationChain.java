@@ -28,7 +28,7 @@ import uk.gov.hmcts.reform.idam.api.fr.am.authenticate.model.Callback;
  * Keeps the authentication authId and callbacks
  */
 @ApiModel(description = "Keeps the authentication authId and callbacks")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-07-03T12:33:56.808+01:00")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-07-03T12:33:56.808+01:00")
 public class AuthenticationChain {
     @JsonProperty("tokenId")
     private String tokenId = null;

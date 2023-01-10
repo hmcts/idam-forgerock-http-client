@@ -23,7 +23,7 @@ import java.util.Objects;
 /**
  * AmWellKnownConfig
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-05-24T11:22:30.749+01:00")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-05-24T11:22:30.749+01:00")
 public class AmWellKnownConfig {
   @JsonProperty("request_parameter_supported")
   private Boolean requestParameterSupported = false;

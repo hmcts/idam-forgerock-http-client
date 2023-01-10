@@ -25,7 +25,7 @@ import java.util.Objects;
  * A client name that may be relevant to the resource owner when considering approval.&lt;br&gt;&lt;br&gt;The name may be entered as a single string or as pipe separated strings for locale and localized name; e.g. \&quot;en|The ExampleCo Intranet\&quot;. Locale strings are in the format &lt;code&gt;language + \&quot;_\&quot; + country + \&quot;_\&quot; + variant&lt;/code&gt;, e.g. en, en_GB, en_US_WIN. If the locale is omitted, the name is displayed to all users having undefined locales. e.g. \&quot;The ExampleCo Intranet\&quot;.
  */
 @ApiModel(description = "A client name that may be relevant to the resource owner when considering approval.<br><br>The name may be entered as a single string or as pipe separated strings for locale and localized name; e.g. \"en|The ExampleCo Intranet\". Locale strings are in the format <code>language + \"_\" + country + \"_\" + variant</code>, e.g. en, en_GB, en_US_WIN. If the locale is omitted, the name is displayed to all users having undefined locales. e.g. \"The ExampleCo Intranet\".")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
 public class DisplayName {
   @JsonProperty("inherited")
   private Boolean inherited = null;

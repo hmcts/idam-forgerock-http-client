@@ -23,7 +23,7 @@ import java.util.Objects;
  * Select to enable ID token encryption.
  */
 @ApiModel(description = "Select to enable ID token encryption.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
 public class EnableIDTokenEncryption {
   @JsonProperty("inherited")
   private Boolean inherited = null;

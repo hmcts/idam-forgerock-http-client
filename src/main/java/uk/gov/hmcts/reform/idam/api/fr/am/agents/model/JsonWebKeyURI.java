@@ -23,7 +23,7 @@ import java.util.Objects;
  * The uri that contains the client&#39;s public keys in Json Web Key format.
  */
 @ApiModel(description = "The uri that contains the client's public keys in Json Web Key format.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
 public class JsonWebKeyURI {
   @JsonProperty("inherited")
   private Boolean inherited = null;

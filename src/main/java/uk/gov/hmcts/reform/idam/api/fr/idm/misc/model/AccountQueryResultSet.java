@@ -23,7 +23,7 @@ import java.util.Objects;
 /**
  * AccountQueryResultSet
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.022Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.022Z")
 public class AccountQueryResultSet {
   @JsonProperty("result")
   private List<ConnectorObject> result = null;

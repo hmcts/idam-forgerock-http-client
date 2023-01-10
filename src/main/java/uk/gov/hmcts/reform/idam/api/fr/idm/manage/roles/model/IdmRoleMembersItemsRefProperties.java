@@ -23,7 +23,7 @@ import java.util.Objects;
  * Supports metadata within the relationship
  */
 @ApiModel(description = "Supports metadata within the relationship")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.261Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.261Z")
 public class IdmRoleMembersItemsRefProperties {
   @JsonProperty("_id")
   private String id = null;

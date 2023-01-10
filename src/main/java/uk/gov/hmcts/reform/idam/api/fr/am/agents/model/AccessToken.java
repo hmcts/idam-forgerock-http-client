@@ -23,7 +23,7 @@ import java.util.Objects;
  * The access token used to update the client.
  */
 @ApiModel(description = "The access token used to update the client.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
 public class AccessToken {
   @JsonProperty("inherited")
   private Boolean inherited = null;

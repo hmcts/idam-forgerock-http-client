@@ -23,7 +23,7 @@ import java.util.Objects;
 /**
  * Core
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:59.013Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:59.013Z")
 public class Core {
   @JsonProperty("agentgroup")
   private String agentgroup = null;

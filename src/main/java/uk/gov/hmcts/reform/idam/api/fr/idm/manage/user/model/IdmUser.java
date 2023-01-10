@@ -24,542 +24,571 @@ import java.util.Optional;
 /**
  * User
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:59.475Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:59.475Z")
 public class IdmUser {
-  @JsonProperty("_id")
-  private String id = null;
+    @JsonProperty("_id")
+    private String id = null;
 
-  @JsonProperty("_rev")
-  private String rev = null;
+    @JsonProperty("_rev")
+    private String rev = null;
 
-  @JsonProperty("password")
-  private String password = null;
+    @JsonProperty("password")
+    private String password = null;
 
-  @JsonProperty("kbaInfo")
-  private List<KBAInfoItems> kbaInfo = null;
+    @JsonProperty("kbaInfo")
+    private List<KBAInfoItems> kbaInfo = null;
 
-  @JsonProperty("preferences")
-  private Preferences preferences = null;
+    @JsonProperty("preferences")
+    private Preferences preferences = null;
 
-  @JsonProperty("mail")
-  private String mail = null;
+    @JsonProperty("mail")
+    private String mail = null;
 
-  @JsonProperty("sn")
-  private String sn = null;
+    @JsonProperty("sn")
+    private String sn = null;
 
-  @JsonProperty("description")
-  private String description = null;
+    @JsonProperty("description")
+    private String description = null;
 
-  @JsonProperty("address2")
-  private String address2 = null;
+    @JsonProperty("address2")
+    private String address2 = null;
 
-  @JsonProperty("givenName")
-  private String givenName = null;
+    @JsonProperty("givenName")
+    private String givenName = null;
 
-  @JsonProperty("city")
-  private String city = null;
+    @JsonProperty("city")
+    private String city = null;
 
-  @JsonProperty("country")
-  private String country = null;
+    @JsonProperty("country")
+    private String country = null;
 
-  @JsonProperty("postalCode")
-  private String postalCode = null;
+    @JsonProperty("postalCode")
+    private String postalCode = null;
 
-  @JsonProperty("accountStatus")
-  private String accountStatus = null;
+    @JsonProperty("accountStatus")
+    private String accountStatus = null;
 
-  @JsonProperty("roles")
-  private List<IdmUserRoles> roles = null;
+    @JsonProperty("roles")
+    private List<IdmUserRoles> roles = null;
 
-  @JsonProperty("reports")
-  private List<IdmUserReports> reports = null;
+    @JsonProperty("reports")
+    private List<IdmUserReports> reports = null;
 
-  @JsonProperty("effectiveRoles")
-  private List<EffectiveRole> effectiveRoles = null;
+    @JsonProperty("effectiveRoles")
+    private List<EffectiveRole> effectiveRoles = null;
 
-  @JsonProperty("effectiveAssignments")
-  private List<EffectiveAssignment> effectiveAssignments = null;
+    @JsonProperty("effectiveAssignments")
+    private List<EffectiveAssignment> effectiveAssignments = null;
 
-  @JsonProperty("telephoneNumber")
-  private String telephoneNumber = null;
+    @JsonProperty("telephoneNumber")
+    private String telephoneNumber = null;
 
-  @JsonProperty("stateProvince")
-  private String stateProvince = null;
+    @JsonProperty("stateProvince")
+    private String stateProvince = null;
 
-  @JsonProperty("postalAddress")
-  private String postalAddress = null;
+    @JsonProperty("postalAddress")
+    private String postalAddress = null;
 
-  @JsonProperty("userName")
-  private String userName = null;
+    @JsonProperty("userName")
+    private String userName = null;
 
-  @JsonProperty("manager")
-  private Manager manager = null;
+    @JsonProperty("manager")
+    private Manager manager = null;
 
-  @JsonProperty("lastSync")
-  private LastSyncTimestamp lastSync = null;
+    @JsonProperty("lastSync")
+    private LastSyncTimestamp lastSync = null;
 
-  @JsonProperty("ssoProvider")
-  private String ssoProvider = null;
+    @JsonProperty("pwdAccountLockedTime")
+    private String pwdAccountLockedTime = null;
 
-  @JsonProperty("ssoId")
-  private String ssoId = null;
+    @JsonProperty("lastLoginTime")
+    private String lastLoginTime = null;
 
-  @JsonProperty("termsAccepted")
-  private TermsAccepted termsAccepted = null;
+    @JsonProperty("ssoProvider")
+    private String ssoProvider = null;
 
-  private LastChanged lastChanged = null;
+    @JsonProperty("ssoId")
+    private String ssoId = null;
 
-  private String createDate = null;
+    @JsonProperty("termsAccepted")
+    private TermsAccepted termsAccepted = null;
 
-  @JsonProperty("sunset")
-  private Sunset sunset = null;
+    private LastChanged lastChanged = null;
 
-  @JsonProperty("consentedMappings")
-  private List<List<Object>> consentedMappings = null;
+    private String createDate = null;
 
-  public IdmUser id(String id) {
-    this.id = id;
-    return this;
-  }
+    @JsonProperty("sunset")
+    private Sunset sunset = null;
 
-   /**
-   * User ID
-   * @return id
-  **/
-  @ApiModelProperty(value = "User ID")
-  public String getId() {
-    return id;
-  }
+    @JsonProperty("consentedMappings")
+    private List<List<Object>> consentedMappings = null;
 
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public IdmUser password(String password) {
-    this.password = password;
-    return this;
-  }
-
-   /**
-   * Password
-   * @return password
-  **/
-  @ApiModelProperty(value = "Password")
-  public String getPassword() {
-    return password;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
-  }
-
-  public IdmUser kbaInfo(List<KBAInfoItems> kbaInfo) {
-    this.kbaInfo = kbaInfo;
-    return this;
-  }
-
-  public IdmUser addKbaInfoItem(KBAInfoItems kbaInfoItem) {
-    if (this.kbaInfo == null) {
-      this.kbaInfo = new ArrayList<>();
+    public IdmUser id(String id) {
+        this.id = id;
+        return this;
     }
-    this.kbaInfo.add(kbaInfoItem);
-    return this;
-  }
 
-   /**
-   * KBA Info
-   * @return kbaInfo
-  **/
-  @ApiModelProperty(value = "KBA Info")
-  public List<KBAInfoItems> getKbaInfo() {
-    return kbaInfo;
-  }
-
-  public void setKbaInfo(List<KBAInfoItems> kbaInfo) {
-    this.kbaInfo = kbaInfo;
-  }
-
-  public IdmUser preferences(Preferences preferences) {
-    this.preferences = preferences;
-    return this;
-  }
-
-   /**
-   * Get preferences
-   * @return preferences
-  **/
-  @ApiModelProperty(value = "")
-  public Preferences getPreferences() {
-    return preferences;
-  }
-
-  public void setPreferences(Preferences preferences) {
-    this.preferences = preferences;
-  }
-
-  public IdmUser mail(String mail) {
-    this.mail = mail;
-    return this;
-  }
-
-   /**
-   * Email Address
-   * @return mail
-  **/
-  @ApiModelProperty(required = true, value = "Email Address")
-  public String getMail() {
-    return mail;
-  }
-
-  public void setMail(String mail) {
-    this.mail = mail;
-  }
-
-  public IdmUser sn(String sn) {
-    this.sn = sn;
-    return this;
-  }
-
-   /**
-   * Last Name
-   * @return sn
-  **/
-  @ApiModelProperty(required = true, value = "Last Name")
-  public String getSn() {
-    return sn;
-  }
-
-  public void setSn(String sn) {
-    this.sn = sn;
-  }
-
-  public IdmUser description(String description) {
-    this.description = description;
-    return this;
-  }
-
-   /**
-   * Description
-   * @return description
-  **/
-  @ApiModelProperty(value = "Description")
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public IdmUser address2(String address2) {
-    this.address2 = address2;
-    return this;
-  }
-
-  /**
-   * Revision
-   * @return rev
-   **/
-  @ApiModelProperty(value = "Revision")
-  public String getRev() {
-    return rev;
-  }
-
-  public void setRev(String rev) {
-    this.rev = rev;
-  }
-
-  public IdmUser rev(String rev) {
-    this.rev = rev;
-    return this;
-  }
-
-   /**
-   * Address 2
-   * @return address2
-  **/
-  @ApiModelProperty(value = "Address 2")
-  public String getAddress2() {
-    return address2;
-  }
-
-  public void setAddress2(String address2) {
-    this.address2 = address2;
-  }
-
-  public IdmUser givenName(String givenName) {
-    this.givenName = givenName;
-    return this;
-  }
-
-   /**
-   * First Name
-   * @return givenName
-  **/
-  @ApiModelProperty(required = true, value = "First Name")
-  public String getGivenName() {
-    return givenName;
-  }
-
-  public void setGivenName(String givenName) {
-    this.givenName = givenName;
-  }
-
-  public IdmUser city(String city) {
-    this.city = city;
-    return this;
-  }
-
-   /**
-   * City
-   * @return city
-  **/
-  @ApiModelProperty(value = "City")
-  public String getCity() {
-    return city;
-  }
-
-  public void setCity(String city) {
-    this.city = city;
-  }
-
-  public IdmUser country(String country) {
-    this.country = country;
-    return this;
-  }
-
-   /**
-   * Country
-   * @return country
-  **/
-  @ApiModelProperty(value = "Country")
-  public String getCountry() {
-    return country;
-  }
-
-  public void setCountry(String country) {
-    this.country = country;
-  }
-
-  public IdmUser postalCode(String postalCode) {
-    this.postalCode = postalCode;
-    return this;
-  }
-
-   /**
-   * Postal Code
-   * @return postalCode
-  **/
-  @ApiModelProperty(value = "Postal Code")
-  public String getPostalCode() {
-    return postalCode;
-  }
-
-  public void setPostalCode(String postalCode) {
-    this.postalCode = postalCode;
-  }
-
-  public IdmUser accountStatus(String accountStatus) {
-    this.accountStatus = accountStatus;
-    return this;
-  }
-
-   /**
-   * Status
-   * @return accountStatus
-  **/
-  @ApiModelProperty(value = "Status")
-  public String getAccountStatus() {
-    return accountStatus;
-  }
-
-  public void setAccountStatus(String accountStatus) {
-    this.accountStatus = accountStatus;
-  }
-
-  public IdmUser roles(List<IdmUserRoles> roles) {
-    this.roles = roles;
-    return this;
-  }
-
-  public IdmUser addRolesItem(IdmUserRoles rolesItem) {
-    if (this.roles == null) {
-      this.roles = new ArrayList<>();
+    /**
+     * User ID
+     *
+     * @return id
+     **/
+    @ApiModelProperty(value = "User ID")
+    public String getId() {
+        return id;
     }
-    this.roles.add(rolesItem);
-    return this;
-  }
 
-   /**
-   * Provisioning Roles
-   * @return roles
-  **/
-  @ApiModelProperty(value = "Provisioning Roles")
-  public List<IdmUserRoles> getRoles() {
-    return roles;
-  }
-
-  public void setRoles(List<IdmUserRoles> roles) {
-    this.roles = roles;
-  }
-
-  public IdmUser reports(List<IdmUserReports> reports) {
-    this.reports = reports;
-    return this;
-  }
-
-  public IdmUser addReportsItem(IdmUserReports reportsItem) {
-    if (this.reports == null) {
-      this.reports = new ArrayList<>();
+    public void setId(String id) {
+        this.id = id;
     }
-    this.reports.add(reportsItem);
-    return this;
-  }
 
-   /**
-   * Direct Reports
-   * @return reports
-  **/
-  @ApiModelProperty(value = "Direct Reports")
-  public List<IdmUserReports> getReports() {
-    return reports;
-  }
-
-  public void setReports(List<IdmUserReports> reports) {
-    this.reports = reports;
-  }
-
-  public IdmUser effectiveRoles(List<EffectiveRole> effectiveRoles) {
-    this.effectiveRoles = effectiveRoles;
-    return this;
-  }
-
-  public IdmUser addEffectiveRolesItem(EffectiveRole effectiveRolesItem) {
-    if (this.effectiveRoles == null) {
-      this.effectiveRoles = new ArrayList<>();
+    public IdmUser password(String password) {
+        this.password = password;
+        return this;
     }
-    this.effectiveRoles.add(effectiveRolesItem);
-    return this;
-  }
 
-   /**
-   * Effective Roles
-   * @return effectiveRoles
-  **/
-  @ApiModelProperty(value = "Effective Roles")
-  public List<EffectiveRole> getEffectiveRoles() {
-    return effectiveRoles;
-  }
-
-  public void setEffectiveRoles(List<EffectiveRole> effectiveRoles) {
-    this.effectiveRoles = effectiveRoles;
-  }
-
-  public IdmUser effectiveAssignments(List<EffectiveAssignment> effectiveAssignments) {
-    this.effectiveAssignments = effectiveAssignments;
-    return this;
-  }
-
-  public IdmUser addEffectiveAssignmentsItem(EffectiveAssignment effectiveAssignmentsItem) {
-    if (this.effectiveAssignments == null) {
-      this.effectiveAssignments = new ArrayList<>();
+    /**
+     * Password
+     *
+     * @return password
+     **/
+    @ApiModelProperty(value = "Password")
+    public String getPassword() {
+        return password;
     }
-    this.effectiveAssignments.add(effectiveAssignmentsItem);
-    return this;
-  }
 
-   /**
-   * Effective Assignments
-   * @return effectiveAssignments
-  **/
-  @ApiModelProperty(value = "Effective Assignments")
-  public List<EffectiveAssignment> getEffectiveAssignments() {
-    return effectiveAssignments;
-  }
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-  public void setEffectiveAssignments(List<EffectiveAssignment> effectiveAssignments) {
-    this.effectiveAssignments = effectiveAssignments;
-  }
+    public IdmUser kbaInfo(List<KBAInfoItems> kbaInfo) {
+        this.kbaInfo = kbaInfo;
+        return this;
+    }
 
-  public IdmUser telephoneNumber(String telephoneNumber) {
-    this.telephoneNumber = telephoneNumber;
-    return this;
-  }
+    public IdmUser addKbaInfoItem(KBAInfoItems kbaInfoItem) {
+        if (this.kbaInfo == null) {
+            this.kbaInfo = new ArrayList<>();
+        }
+        this.kbaInfo.add(kbaInfoItem);
+        return this;
+    }
 
-   /**
-   * Mobile Phone
-   * @return telephoneNumber
-  **/
-  @ApiModelProperty(value = "Mobile Phone")
-  public String getTelephoneNumber() {
-    return telephoneNumber;
-  }
+    /**
+     * KBA Info
+     *
+     * @return kbaInfo
+     **/
+    @ApiModelProperty(value = "KBA Info")
+    public List<KBAInfoItems> getKbaInfo() {
+        return kbaInfo;
+    }
 
-  public void setTelephoneNumber(String telephoneNumber) {
-    this.telephoneNumber = telephoneNumber;
-  }
+    public void setKbaInfo(List<KBAInfoItems> kbaInfo) {
+        this.kbaInfo = kbaInfo;
+    }
 
-  public IdmUser stateProvince(String stateProvince) {
-    this.stateProvince = stateProvince;
-    return this;
-  }
+    public IdmUser preferences(Preferences preferences) {
+        this.preferences = preferences;
+        return this;
+    }
 
-   /**
-   * State/Province
-   * @return stateProvince
-  **/
-  @ApiModelProperty(value = "State/Province")
-  public String getStateProvince() {
-    return stateProvince;
-  }
+    /**
+     * Get preferences
+     *
+     * @return preferences
+     **/
+    @ApiModelProperty(value = "")
+    public Preferences getPreferences() {
+        return preferences;
+    }
 
-  public void setStateProvince(String stateProvince) {
-    this.stateProvince = stateProvince;
-  }
+    public void setPreferences(Preferences preferences) {
+        this.preferences = preferences;
+    }
 
-  public IdmUser postalAddress(String postalAddress) {
-    this.postalAddress = postalAddress;
-    return this;
-  }
+    public IdmUser mail(String mail) {
+        this.mail = mail;
+        return this;
+    }
 
-   /**
-   * Address 1
-   * @return postalAddress
-  **/
-  @ApiModelProperty(value = "Address 1")
-  public String getPostalAddress() {
-    return postalAddress;
-  }
+    /**
+     * Email Address
+     *
+     * @return mail
+     **/
+    @ApiModelProperty(required = true, value = "Email Address")
+    public String getMail() {
+        return mail;
+    }
 
-  public void setPostalAddress(String postalAddress) {
-    this.postalAddress = postalAddress;
-  }
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
 
-  public IdmUser userName(String userName) {
-    this.userName = userName;
-    return this;
-  }
+    public IdmUser sn(String sn) {
+        this.sn = sn;
+        return this;
+    }
 
-   /**
-   * Username
-   * @return userName
-  **/
-  @ApiModelProperty(required = true, value = "Username")
-  public String getUserName() {
-    return userName;
-  }
+    /**
+     * Last Name
+     *
+     * @return sn
+     **/
+    @ApiModelProperty(required = true, value = "Last Name")
+    public String getSn() {
+        return sn;
+    }
 
-  public void setUserName(String userName) {
-    this.userName = userName;
-  }
+    public void setSn(String sn) {
+        this.sn = sn;
+    }
 
-  public IdmUser manager(Manager manager) {
-    this.manager = manager;
-    return this;
-  }
+    public IdmUser description(String description) {
+        this.description = description;
+        return this;
+    }
+
+    /**
+     * Description
+     *
+     * @return description
+     **/
+    @ApiModelProperty(value = "Description")
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public IdmUser address2(String address2) {
+        this.address2 = address2;
+        return this;
+    }
+
+    /**
+     * Revision
+     *
+     * @return rev
+     **/
+    @ApiModelProperty(value = "Revision")
+    public String getRev() {
+        return rev;
+    }
+
+    public void setRev(String rev) {
+        this.rev = rev;
+    }
+
+    public IdmUser rev(String rev) {
+        this.rev = rev;
+        return this;
+    }
+
+    /**
+     * Address 2
+     *
+     * @return address2
+     **/
+    @ApiModelProperty(value = "Address 2")
+    public String getAddress2() {
+        return address2;
+    }
+
+    public void setAddress2(String address2) {
+        this.address2 = address2;
+    }
+
+    public IdmUser givenName(String givenName) {
+        this.givenName = givenName;
+        return this;
+    }
+
+    /**
+     * First Name
+     *
+     * @return givenName
+     **/
+    @ApiModelProperty(required = true, value = "First Name")
+    public String getGivenName() {
+        return givenName;
+    }
+
+    public void setGivenName(String givenName) {
+        this.givenName = givenName;
+    }
+
+    public IdmUser city(String city) {
+        this.city = city;
+        return this;
+    }
+
+    /**
+     * City
+     *
+     * @return city
+     **/
+    @ApiModelProperty(value = "City")
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public IdmUser country(String country) {
+        this.country = country;
+        return this;
+    }
+
+    /**
+     * Country
+     *
+     * @return country
+     **/
+    @ApiModelProperty(value = "Country")
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public IdmUser postalCode(String postalCode) {
+        this.postalCode = postalCode;
+        return this;
+    }
+
+    /**
+     * Postal Code
+     *
+     * @return postalCode
+     **/
+    @ApiModelProperty(value = "Postal Code")
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public IdmUser accountStatus(String accountStatus) {
+        this.accountStatus = accountStatus;
+        return this;
+    }
+
+    /**
+     * Status
+     *
+     * @return accountStatus
+     **/
+    @ApiModelProperty(value = "Status")
+    public String getAccountStatus() {
+        return accountStatus;
+    }
+
+    public void setAccountStatus(String accountStatus) {
+        this.accountStatus = accountStatus;
+    }
+
+    public IdmUser roles(List<IdmUserRoles> roles) {
+        this.roles = roles;
+        return this;
+    }
+
+    public IdmUser addRolesItem(IdmUserRoles rolesItem) {
+        if (this.roles == null) {
+            this.roles = new ArrayList<>();
+        }
+        this.roles.add(rolesItem);
+        return this;
+    }
+
+    /**
+     * Provisioning Roles
+     *
+     * @return roles
+     **/
+    @ApiModelProperty(value = "Provisioning Roles")
+    public List<IdmUserRoles> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<IdmUserRoles> roles) {
+        this.roles = roles;
+    }
+
+    public IdmUser reports(List<IdmUserReports> reports) {
+        this.reports = reports;
+        return this;
+    }
+
+    public IdmUser addReportsItem(IdmUserReports reportsItem) {
+        if (this.reports == null) {
+            this.reports = new ArrayList<>();
+        }
+        this.reports.add(reportsItem);
+        return this;
+    }
+
+    /**
+     * Direct Reports
+     *
+     * @return reports
+     **/
+    @ApiModelProperty(value = "Direct Reports")
+    public List<IdmUserReports> getReports() {
+        return reports;
+    }
+
+    public void setReports(List<IdmUserReports> reports) {
+        this.reports = reports;
+    }
+
+    public IdmUser effectiveRoles(List<EffectiveRole> effectiveRoles) {
+        this.effectiveRoles = effectiveRoles;
+        return this;
+    }
+
+    public IdmUser addEffectiveRolesItem(EffectiveRole effectiveRolesItem) {
+        if (this.effectiveRoles == null) {
+            this.effectiveRoles = new ArrayList<>();
+        }
+        this.effectiveRoles.add(effectiveRolesItem);
+        return this;
+    }
+
+    /**
+     * Effective Roles
+     *
+     * @return effectiveRoles
+     **/
+    @ApiModelProperty(value = "Effective Roles")
+    public List<EffectiveRole> getEffectiveRoles() {
+        return effectiveRoles;
+    }
+
+    public void setEffectiveRoles(List<EffectiveRole> effectiveRoles) {
+        this.effectiveRoles = effectiveRoles;
+    }
+
+    public IdmUser effectiveAssignments(List<EffectiveAssignment> effectiveAssignments) {
+        this.effectiveAssignments = effectiveAssignments;
+        return this;
+    }
+
+    public IdmUser addEffectiveAssignmentsItem(EffectiveAssignment effectiveAssignmentsItem) {
+        if (this.effectiveAssignments == null) {
+            this.effectiveAssignments = new ArrayList<>();
+        }
+        this.effectiveAssignments.add(effectiveAssignmentsItem);
+        return this;
+    }
+
+    /**
+     * Effective Assignments
+     *
+     * @return effectiveAssignments
+     **/
+    @ApiModelProperty(value = "Effective Assignments")
+    public List<EffectiveAssignment> getEffectiveAssignments() {
+        return effectiveAssignments;
+    }
+
+    public void setEffectiveAssignments(List<EffectiveAssignment> effectiveAssignments) {
+        this.effectiveAssignments = effectiveAssignments;
+    }
+
+    public IdmUser telephoneNumber(String telephoneNumber) {
+        this.telephoneNumber = telephoneNumber;
+        return this;
+    }
+
+    /**
+     * Mobile Phone
+     *
+     * @return telephoneNumber
+     **/
+    @ApiModelProperty(value = "Mobile Phone")
+    public String getTelephoneNumber() {
+        return telephoneNumber;
+    }
+
+    public void setTelephoneNumber(String telephoneNumber) {
+        this.telephoneNumber = telephoneNumber;
+    }
+
+    public IdmUser stateProvince(String stateProvince) {
+        this.stateProvince = stateProvince;
+        return this;
+    }
+
+    /**
+     * State/Province
+     *
+     * @return stateProvince
+     **/
+    @ApiModelProperty(value = "State/Province")
+    public String getStateProvince() {
+        return stateProvince;
+    }
+
+    public void setStateProvince(String stateProvince) {
+        this.stateProvince = stateProvince;
+    }
+
+    public IdmUser postalAddress(String postalAddress) {
+        this.postalAddress = postalAddress;
+        return this;
+    }
+
+    /**
+     * Address 1
+     *
+     * @return postalAddress
+     **/
+    @ApiModelProperty(value = "Address 1")
+    public String getPostalAddress() {
+        return postalAddress;
+    }
+
+    public void setPostalAddress(String postalAddress) {
+        this.postalAddress = postalAddress;
+    }
+
+    public IdmUser userName(String userName) {
+        this.userName = userName;
+        return this;
+    }
+
+    /**
+     * Username
+     *
+     * @return userName
+     **/
+    @ApiModelProperty(required = true, value = "Username")
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public IdmUser manager(Manager manager) {
+        this.manager = manager;
+        return this;
+    }
 
     /**
      * SSO Provider Name
+     *
      * @return ssoProvider
      **/
     @ApiModelProperty(required = true, value = "SSO Provider Name")
@@ -576,8 +605,47 @@ public class IdmUser {
         return this;
     }
 
+    public IdmUser pwdAccountLockedTime(String pwdAccountLockedTime) {
+        this.pwdAccountLockedTime = pwdAccountLockedTime;
+        return this;
+    }
+
+    /**
+     * The DateTime of the most recent instance the account was locked.
+     *
+     * @return pwdAccountLockedTime
+     **/
+    @ApiModelProperty(value = "The DateTime of the most recent instance the account was locked.")
+    public String getPwdAccountLockedTime() {
+        return pwdAccountLockedTime;
+    }
+
+    public void setPwdAccountLockedTime(String pwdAccountLockedTime) {
+        this.pwdAccountLockedTime = pwdAccountLockedTime;
+    }
+
+    public IdmUser lastLoginTime(String lastLoginTime) {
+        this.lastLoginTime = lastLoginTime;
+        return this;
+    }
+
+    /**
+     * The DateTime of the most recent successful login.
+     *
+     * @return lastLoginTime
+     **/
+    @ApiModelProperty(value = "The DateTime of the most recent successful login.")
+    public String getLastLoginTime() {
+        return lastLoginTime;
+    }
+
+    public void setLastLoginTime(String lastLoginTime) {
+        this.lastLoginTime = lastLoginTime;
+    }
+
     /**
      * UID at SSO Provider
+     *
      * @return ssoId
      **/
     @ApiModelProperty(required = true, value = "SSO Provider UID")
@@ -594,225 +662,235 @@ public class IdmUser {
         return this;
     }
 
-   /**
-   * Get manager
-   * @return manager
-  **/
-  @ApiModelProperty(value = "")
-  public Manager getManager() {
-    return manager;
-  }
-
-  public void setManager(Manager manager) {
-    this.manager = manager;
-  }
-
-  public IdmUser lastSync(LastSyncTimestamp lastSync) {
-    this.lastSync = lastSync;
-    return this;
-  }
-
-   /**
-   * Get lastSync
-   * @return lastSync
-  **/
-  @ApiModelProperty(value = "")
-  public LastSyncTimestamp getLastSync() {
-    return lastSync;
-  }
-
-  public void setLastSync(LastSyncTimestamp lastSync) {
-    this.lastSync = lastSync;
-  }
-
-  public IdmUser termsAccepted(TermsAccepted termsAccepted) {
-    this.termsAccepted = termsAccepted;
-    return this;
-  }
-
-   /**
-   * Get termsAccepted
-   * @return termsAccepted
-  **/
-  @ApiModelProperty(value = "")
-  public TermsAccepted getTermsAccepted() {
-    return termsAccepted;
-  }
-
-  public void setTermsAccepted(TermsAccepted termsAccepted) {
-    this.termsAccepted = termsAccepted;
-  }
-
-  public IdmUser lastChanged(LastChanged lastChanged) {
-    this.lastChanged = lastChanged;
-    return this;
-  }
-
-  public IdmUser sunset(Sunset sunset) {
-    this.sunset = sunset;
-    return this;
-  }
-
-  /**
-   * Get sunset
-   * @return sunset
-   **/
-  @ApiModelProperty(value = "")
-  public Sunset getSunset() {
-    return sunset;
-  }
-
-  public void setSunset(Sunset sunset) {
-    this.sunset = sunset;
-  }
-
-   /**
-   * Get lastChanged
-   * @return lastChanged
-  **/
-  @ApiModelProperty(value = "")
-  public LastChanged getLastChanged() {
-    return lastChanged;
-  }
-
-  public void setLastChanged(LastChanged lastChanged) {
-    this.lastChanged = lastChanged;
-  }
-
-  public String getCreateDate() {
-    return createDate;
-  }
-
-  public void setCreateDate(String createDate) {
-    this.createDate = createDate;
-  }
-
-  public IdmUser consentedMappings(List<List<Object>> consentedMappings) {
-    this.consentedMappings = consentedMappings;
-    return this;
-  }
-
-  public IdmUser addConsentedMappingsItem(List<Object> consentedMappingsItem) {
-    if (this.consentedMappings == null) {
-      this.consentedMappings = new ArrayList<>();
+    /**
+     * Get manager
+     *
+     * @return manager
+     **/
+    @ApiModelProperty(value = "")
+    public Manager getManager() {
+        return manager;
     }
-    this.consentedMappings.add(consentedMappingsItem);
-    return this;
-  }
 
-   /**
-   * Consented Mappings
-   * @return consentedMappings
-  **/
-  @ApiModelProperty(value = "Consented Mappings")
-  public List<List<Object>> getConsentedMappings() {
-    return consentedMappings;
-  }
-
-  public void setConsentedMappings(List<List<Object>> consentedMappings) {
-    this.consentedMappings = consentedMappings;
-  }
-
-  @JsonProperty("_meta")
-  private void fetchMetadataValues(Metadata metadata) {
-    Optional.ofNullable(metadata).ifPresent(m -> {
-      this.lastChanged = m.getLastChanged();
-      this.createDate = m.getCreateDate();
-    });
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+    public void setManager(Manager manager) {
+        this.manager = manager;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    public IdmUser lastSync(LastSyncTimestamp lastSync) {
+        this.lastSync = lastSync;
+        return this;
     }
-    IdmUser user = (IdmUser) o;
-    return Objects.equals(this.id, user.id) &&
-        Objects.equals(this.password, user.password) &&
-        Objects.equals(this.kbaInfo, user.kbaInfo) &&
-        Objects.equals(this.preferences, user.preferences) &&
-        Objects.equals(this.mail, user.mail) &&
-        Objects.equals(this.sn, user.sn) &&
-        Objects.equals(this.description, user.description) &&
-        Objects.equals(this.address2, user.address2) &&
-        Objects.equals(this.givenName, user.givenName) &&
-        Objects.equals(this.city, user.city) &&
-        Objects.equals(this.country, user.country) &&
-        Objects.equals(this.postalCode, user.postalCode) &&
-        Objects.equals(this.accountStatus, user.accountStatus) &&
-        Objects.equals(this.roles, user.roles) &&
-        Objects.equals(this.reports, user.reports) &&
-        Objects.equals(this.effectiveRoles, user.effectiveRoles) &&
-        Objects.equals(this.effectiveAssignments, user.effectiveAssignments) &&
-        Objects.equals(this.telephoneNumber, user.telephoneNumber) &&
-        Objects.equals(this.stateProvince, user.stateProvince) &&
-        Objects.equals(this.postalAddress, user.postalAddress) &&
-        Objects.equals(this.userName, user.userName) &&
-        Objects.equals(this.manager, user.manager) &&
-        Objects.equals(this.lastSync, user.lastSync) &&
-        Objects.equals(this.termsAccepted, user.termsAccepted) &&
-        Objects.equals(this.lastChanged, user.lastChanged) &&
-        Objects.equals(this.createDate, user.createDate) &&
-        Objects.equals(this.sunset, user.sunset) &&
-        Objects.equals(this.consentedMappings, user.consentedMappings);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, password, kbaInfo, preferences, mail, sn, description, address2, givenName, city, country, postalCode, accountStatus, roles, reports, effectiveRoles, effectiveAssignments, telephoneNumber, stateProvince, postalAddress, userName, manager, lastSync, termsAccepted, lastChanged, createDate, sunset, consentedMappings);
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class User {\n");
-
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    password: ").append(toIndentedString(password)).append("\n");
-    sb.append("    kbaInfo: ").append(toIndentedString(kbaInfo)).append("\n");
-    sb.append("    preferences: ").append(toIndentedString(preferences)).append("\n");
-    sb.append("    mail: ").append(toIndentedString(mail)).append("\n");
-    sb.append("    sn: ").append(toIndentedString(sn)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    address2: ").append(toIndentedString(address2)).append("\n");
-    sb.append("    givenName: ").append(toIndentedString(givenName)).append("\n");
-    sb.append("    city: ").append(toIndentedString(city)).append("\n");
-    sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    postalCode: ").append(toIndentedString(postalCode)).append("\n");
-    sb.append("    accountStatus: ").append(toIndentedString(accountStatus)).append("\n");
-    sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
-    sb.append("    reports: ").append(toIndentedString(reports)).append("\n");
-    sb.append("    effectiveRoles: ").append(toIndentedString(effectiveRoles)).append("\n");
-    sb.append("    effectiveAssignments: ").append(toIndentedString(effectiveAssignments)).append("\n");
-    sb.append("    telephoneNumber: ").append(toIndentedString(telephoneNumber)).append("\n");
-    sb.append("    stateProvince: ").append(toIndentedString(stateProvince)).append("\n");
-    sb.append("    postalAddress: ").append(toIndentedString(postalAddress)).append("\n");
-    sb.append("    userName: ").append(toIndentedString(userName)).append("\n");
-    sb.append("    manager: ").append(toIndentedString(manager)).append("\n");
-    sb.append("    lastSync: ").append(toIndentedString(lastSync)).append("\n");
-    sb.append("    termsAccepted: ").append(toIndentedString(termsAccepted)).append("\n");
-    sb.append("    sunset: ").append(toIndentedString(sunset)).append("\n");
-    sb.append("    lastChanged: ").append(toIndentedString(lastChanged)).append("\n");
-    sb.append("    createDate: ").append(toIndentedString(createDate)).append("\n");
-    sb.append("    consentedMappings: ").append(toIndentedString(consentedMappings)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Get lastSync
+     *
+     * @return lastSync
+     **/
+    @ApiModelProperty(value = "")
+    public LastSyncTimestamp getLastSync() {
+        return lastSync;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setLastSync(LastSyncTimestamp lastSync) {
+        this.lastSync = lastSync;
+    }
+
+    public IdmUser termsAccepted(TermsAccepted termsAccepted) {
+        this.termsAccepted = termsAccepted;
+        return this;
+    }
+
+    /**
+     * Get termsAccepted
+     *
+     * @return termsAccepted
+     **/
+    @ApiModelProperty(value = "")
+    public TermsAccepted getTermsAccepted() {
+        return termsAccepted;
+    }
+
+    public void setTermsAccepted(TermsAccepted termsAccepted) {
+        this.termsAccepted = termsAccepted;
+    }
+
+    public IdmUser lastChanged(LastChanged lastChanged) {
+        this.lastChanged = lastChanged;
+        return this;
+    }
+
+    public IdmUser sunset(Sunset sunset) {
+        this.sunset = sunset;
+        return this;
+    }
+
+    /**
+     * Get sunset
+     *
+     * @return sunset
+     **/
+    @ApiModelProperty(value = "")
+    public Sunset getSunset() {
+        return sunset;
+    }
+
+    public void setSunset(Sunset sunset) {
+        this.sunset = sunset;
+    }
+
+    /**
+     * Get lastChanged
+     *
+     * @return lastChanged
+     **/
+    @ApiModelProperty(value = "")
+    public LastChanged getLastChanged() {
+        return lastChanged;
+    }
+
+    public void setLastChanged(LastChanged lastChanged) {
+        this.lastChanged = lastChanged;
+    }
+
+    public String getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
+    }
+
+    public IdmUser consentedMappings(List<List<Object>> consentedMappings) {
+        this.consentedMappings = consentedMappings;
+        return this;
+    }
+
+    public IdmUser addConsentedMappingsItem(List<Object> consentedMappingsItem) {
+        if (this.consentedMappings == null) {
+            this.consentedMappings = new ArrayList<>();
+        }
+        this.consentedMappings.add(consentedMappingsItem);
+        return this;
+    }
+
+    /**
+     * Consented Mappings
+     *
+     * @return consentedMappings
+     **/
+    @ApiModelProperty(value = "Consented Mappings")
+    public List<List<Object>> getConsentedMappings() {
+        return consentedMappings;
+    }
+
+    public void setConsentedMappings(List<List<Object>> consentedMappings) {
+        this.consentedMappings = consentedMappings;
+    }
+
+    @JsonProperty("_meta")
+    private void fetchMetadataValues(Metadata metadata) {
+        Optional.ofNullable(metadata).ifPresent(m -> {
+            this.lastChanged = m.getLastChanged();
+            this.createDate = m.getCreateDate();
+        });
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        IdmUser user = (IdmUser) o;
+        return Objects.equals(this.id, user.id) &&
+                Objects.equals(this.password, user.password) &&
+                Objects.equals(this.kbaInfo, user.kbaInfo) &&
+                Objects.equals(this.preferences, user.preferences) &&
+                Objects.equals(this.mail, user.mail) &&
+                Objects.equals(this.sn, user.sn) &&
+                Objects.equals(this.description, user.description) &&
+                Objects.equals(this.address2, user.address2) &&
+                Objects.equals(this.givenName, user.givenName) &&
+                Objects.equals(this.city, user.city) &&
+                Objects.equals(this.country, user.country) &&
+                Objects.equals(this.postalCode, user.postalCode) &&
+                Objects.equals(this.accountStatus, user.accountStatus) &&
+                Objects.equals(this.roles, user.roles) &&
+                Objects.equals(this.reports, user.reports) &&
+                Objects.equals(this.effectiveRoles, user.effectiveRoles) &&
+                Objects.equals(this.effectiveAssignments, user.effectiveAssignments) &&
+                Objects.equals(this.telephoneNumber, user.telephoneNumber) &&
+                Objects.equals(this.stateProvince, user.stateProvince) &&
+                Objects.equals(this.postalAddress, user.postalAddress) &&
+                Objects.equals(this.userName, user.userName) &&
+                Objects.equals(this.manager, user.manager) &&
+                Objects.equals(this.lastSync, user.lastSync) &&
+                Objects.equals(this.pwdAccountLockedTime, user.pwdAccountLockedTime) &&
+                Objects.equals(this.lastLoginTime, user.lastLoginTime) &&
+                Objects.equals(this.termsAccepted, user.termsAccepted) &&
+                Objects.equals(this.lastChanged, user.lastChanged) &&
+                Objects.equals(this.createDate, user.createDate) &&
+                Objects.equals(this.sunset, user.sunset) &&
+                Objects.equals(this.consentedMappings, user.consentedMappings);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, password, kbaInfo, preferences, mail, sn, description, address2, givenName, city, country, postalCode, accountStatus, roles, reports, effectiveRoles, effectiveAssignments, telephoneNumber, stateProvince, postalAddress, userName, manager, lastSync, termsAccepted, lastChanged, createDate, sunset, consentedMappings);
+    }
+
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class User {\n");
+
+        sb.append("    id: ").append(toIndentedString(id)).append("\n");
+        sb.append("    password: ").append(toIndentedString(password)).append("\n");
+        sb.append("    kbaInfo: ").append(toIndentedString(kbaInfo)).append("\n");
+        sb.append("    preferences: ").append(toIndentedString(preferences)).append("\n");
+        sb.append("    mail: ").append(toIndentedString(mail)).append("\n");
+        sb.append("    sn: ").append(toIndentedString(sn)).append("\n");
+        sb.append("    description: ").append(toIndentedString(description)).append("\n");
+        sb.append("    address2: ").append(toIndentedString(address2)).append("\n");
+        sb.append("    givenName: ").append(toIndentedString(givenName)).append("\n");
+        sb.append("    city: ").append(toIndentedString(city)).append("\n");
+        sb.append("    country: ").append(toIndentedString(country)).append("\n");
+        sb.append("    postalCode: ").append(toIndentedString(postalCode)).append("\n");
+        sb.append("    accountStatus: ").append(toIndentedString(accountStatus)).append("\n");
+        sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
+        sb.append("    reports: ").append(toIndentedString(reports)).append("\n");
+        sb.append("    effectiveRoles: ").append(toIndentedString(effectiveRoles)).append("\n");
+        sb.append("    effectiveAssignments: ").append(toIndentedString(effectiveAssignments)).append("\n");
+        sb.append("    telephoneNumber: ").append(toIndentedString(telephoneNumber)).append("\n");
+        sb.append("    stateProvince: ").append(toIndentedString(stateProvince)).append("\n");
+        sb.append("    postalAddress: ").append(toIndentedString(postalAddress)).append("\n");
+        sb.append("    userName: ").append(toIndentedString(userName)).append("\n");
+        sb.append("    manager: ").append(toIndentedString(manager)).append("\n");
+        sb.append("    pwdAccountLockedTime: ").append(toIndentedString(pwdAccountLockedTime)).append("\n");
+        sb.append("    lastLoginTime: ").append(toIndentedString(lastLoginTime)).append("\n");
+        sb.append("    lastSync: ").append(toIndentedString(lastSync)).append("\n");
+        sb.append("    termsAccepted: ").append(toIndentedString(termsAccepted)).append("\n");
+        sb.append("    sunset: ").append(toIndentedString(sunset)).append("\n");
+        sb.append("    lastChanged: ").append(toIndentedString(lastChanged)).append("\n");
+        sb.append("    createDate: ").append(toIndentedString(createDate)).append("\n");
+        sb.append("    consentedMappings: ").append(toIndentedString(consentedMappings)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 
 }
 
