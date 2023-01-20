@@ -747,6 +747,9 @@ definitions:
       pwdAccountLockedTime:
         type: string
         description: The DateTime of the most recent instance the account was locked.
+      accountExpirationTime:
+        type: string
+        description: The DateTime that account should be disabled automatically.
       lastLoginTime:
         type: string
         description: The DateTime of the most recent successful login.
@@ -808,15 +811,6 @@ definitions:
         title: Last Changed
         required:
           - date
-      sunset:
-        type: object
-        properties:
-          date:
-            type: string
-            description: Account expiry date
-            title: ''
-        description: Account Expiry
-        title: Sunset
       consentedMappings:
         type: array
         items:

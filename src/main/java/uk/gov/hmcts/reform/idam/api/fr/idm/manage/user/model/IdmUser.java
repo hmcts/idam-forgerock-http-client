@@ -101,6 +101,9 @@ public class IdmUser {
     @JsonProperty("pwdAccountLockedTime")
     private String pwdAccountLockedTime = null;
 
+    @JsonProperty("accountExpirationTime")
+    private String accountExpirationTime = null;
+
     @JsonProperty("lastLoginTime")
     private String lastLoginTime = null;
 
@@ -116,9 +119,6 @@ public class IdmUser {
     private LastChanged lastChanged = null;
 
     private String createDate = null;
-
-    @JsonProperty("sunset")
-    private Sunset sunset = null;
 
     @JsonProperty("consentedMappings")
     private List<List<Object>> consentedMappings = null;
@@ -624,6 +624,24 @@ public class IdmUser {
         this.pwdAccountLockedTime = pwdAccountLockedTime;
     }
 
+    public IdmUser accountExpirationTime(String accountExpirationTime) {
+        this.accountExpirationTime = accountExpirationTime;
+        return this;
+    }
+
+    /**
+     * The DateTime that account should be disabled automatically.
+     * @return accountExpirationTime
+     **/
+    @ApiModelProperty(value = "The DateTime that account should be disabled automatically.")
+    public String getAccountExpirationTime() {
+        return accountExpirationTime;
+    }
+
+    public void setAccountExpirationTime(String accountExpirationTime) {
+        this.accountExpirationTime = accountExpirationTime;
+    }
+
     public IdmUser lastLoginTime(String lastLoginTime) {
         this.lastLoginTime = lastLoginTime;
         return this;
@@ -719,25 +737,6 @@ public class IdmUser {
         return this;
     }
 
-    public IdmUser sunset(Sunset sunset) {
-        this.sunset = sunset;
-        return this;
-    }
-
-    /**
-     * Get sunset
-     *
-     * @return sunset
-     **/
-    @ApiModelProperty(value = "")
-    public Sunset getSunset() {
-        return sunset;
-    }
-
-    public void setSunset(Sunset sunset) {
-        this.sunset = sunset;
-    }
-
     /**
      * Get lastChanged
      *
@@ -828,17 +827,17 @@ public class IdmUser {
                 Objects.equals(this.manager, user.manager) &&
                 Objects.equals(this.lastSync, user.lastSync) &&
                 Objects.equals(this.pwdAccountLockedTime, user.pwdAccountLockedTime) &&
+                Objects.equals(this.accountExpirationTime, user.accountExpirationTime) &&
                 Objects.equals(this.lastLoginTime, user.lastLoginTime) &&
                 Objects.equals(this.termsAccepted, user.termsAccepted) &&
                 Objects.equals(this.lastChanged, user.lastChanged) &&
                 Objects.equals(this.createDate, user.createDate) &&
-                Objects.equals(this.sunset, user.sunset) &&
                 Objects.equals(this.consentedMappings, user.consentedMappings);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, password, kbaInfo, preferences, mail, sn, description, address2, givenName, city, country, postalCode, accountStatus, roles, reports, effectiveRoles, effectiveAssignments, telephoneNumber, stateProvince, postalAddress, userName, manager, lastSync, termsAccepted, lastChanged, createDate, sunset, consentedMappings);
+        return Objects.hash(id, password, kbaInfo, preferences, mail, sn, description, address2, givenName, city, country, postalCode, accountStatus, roles, reports, effectiveRoles, effectiveAssignments, telephoneNumber, stateProvince, postalAddress, userName, manager, lastSync, termsAccepted, lastChanged, createDate, accountExpirationTime, consentedMappings);
     }
 
 
@@ -870,10 +869,10 @@ public class IdmUser {
         sb.append("    userName: ").append(toIndentedString(userName)).append("\n");
         sb.append("    manager: ").append(toIndentedString(manager)).append("\n");
         sb.append("    pwdAccountLockedTime: ").append(toIndentedString(pwdAccountLockedTime)).append("\n");
+        sb.append("    accountExpirationTime: ").append(toIndentedString(accountExpirationTime)).append("\n");
         sb.append("    lastLoginTime: ").append(toIndentedString(lastLoginTime)).append("\n");
         sb.append("    lastSync: ").append(toIndentedString(lastSync)).append("\n");
         sb.append("    termsAccepted: ").append(toIndentedString(termsAccepted)).append("\n");
-        sb.append("    sunset: ").append(toIndentedString(sunset)).append("\n");
         sb.append("    lastChanged: ").append(toIndentedString(lastChanged)).append("\n");
         sb.append("    createDate: ").append(toIndentedString(createDate)).append("\n");
         sb.append("    consentedMappings: ").append(toIndentedString(consentedMappings)).append("\n");
