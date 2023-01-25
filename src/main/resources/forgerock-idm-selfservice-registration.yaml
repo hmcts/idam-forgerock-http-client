@@ -16,7 +16,7 @@ consumes:
 produces:
   - application/json
 paths:
-  /policy/selfservice/registration:
+  /policy/managed/user/registration:
     post:
       summary: 'Action: validateObject'
       operationId: selfserviceRegistrationValidation

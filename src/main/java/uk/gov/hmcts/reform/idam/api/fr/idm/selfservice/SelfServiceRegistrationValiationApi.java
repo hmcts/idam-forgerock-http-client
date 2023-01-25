@@ -14,7 +14,7 @@ public interface SelfServiceRegistrationValiationApi extends ApiClient.Api {
     * @param requestPayload  (required)
    * @return ValidateObjectResponse
    */
-  @RequestLine("POST /policy/selfservice/registration?_action=validateObject")
+  @RequestLine("POST /openidm/policy/managed/user/registration?_action=validateObject")
   @Headers({
     "Content-Type: application/json",
     "Accept: application/json",
