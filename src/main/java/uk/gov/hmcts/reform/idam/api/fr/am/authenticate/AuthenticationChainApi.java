@@ -15,7 +15,6 @@ import feign.*;
 @javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-10-16T15:12:54.143+01:00")
 public interface AuthenticationChainApi extends ApiClient.Api {
 
-
     /**
      * Authenticates a user or initiates an authentication flow if MFA is required
      * POST call to initiate authentication flow
@@ -24,12 +23,13 @@ public interface AuthenticationChainApi extends ApiClient.Api {
      * @param authIndexValue Specifies the identity of the module we are calling, such as hotpChain (required)
      * @param xOriginIP Defines the user&#39;s original IP address (required)
      * @param xRedirectURI Defines the redirectUri for the policies check (required)
+     * @param forceAuth Forces authentication even if an active session cookie is present. (optional)
      * @param xOpenAMCustUsername Defines the user&#39;s username (optional)
      * @param xOpenAMCustPassword Defines the user&#39;s password (optional)
      * @param idamSession Defines the user existing SSO token (optional)
      * @return AuthenticationChain
      */
-    @RequestLine("POST /json/realms/{myRealm}/authenticate?authIndexType={authIndexType}&authIndexValue={authIndexValue}")
+    @RequestLine("POST /json/realms/{myRealm}/authenticate?authIndexType={authIndexType}&authIndexValue={authIndexValue}&ForceAuth={forceAuth}")
     @Headers({
             "Accept: application/json",
             "X-OpenAM-Cust-Username: {xOpenAMCustUsername}",
@@ -42,7 +42,7 @@ public interface AuthenticationChainApi extends ApiClient.Api {
 
             "X-Redirect-URI: {xRedirectURI}"
     })
-    AuthenticationChain authenticate(@Param("myRealm") String myRealm, @Param("authIndexType") String authIndexType, @Param("authIndexValue") String authIndexValue, @Param("xOriginIP") String xOriginIP, @Param("xRedirectURI") String xRedirectURI, @Param("xOpenAMCustUsername") String xOpenAMCustUsername, @Param("xOpenAMCustPassword") String xOpenAMCustPassword, @Param("idamSession") String idamSession);
+    AuthenticationChain authenticate(@Param("myRealm") String myRealm, @Param("authIndexType") String authIndexType, @Param("authIndexValue") String authIndexValue, @Param("xOriginIP") String xOriginIP, @Param("xRedirectURI") String xRedirectURI, @Param("forceAuth") String forceAuth, @Param("xOpenAMCustUsername") String xOpenAMCustUsername, @Param("xOpenAMCustPassword") String xOpenAMCustPassword, @Param("idamSession") String idamSession);
 
     /**
      * Authenticates a user or initiates an authentication flow if MFA is required
@@ -63,10 +63,11 @@ public interface AuthenticationChainApi extends ApiClient.Api {
      *   <ul>
      *   <li>authIndexType - Specifies the indexType, such as service (required)</li>
      *   <li>authIndexValue - Specifies the identity of the module we are calling, such as hotpChain (required)</li>
+     *   <li>forceAuth - Forces authentication even if an active session cookie is present. (optional)</li>
      *   </ul>
      * @return AuthenticationChain
      */
-    @RequestLine("POST /json/realms/{myRealm}/authenticate?authIndexType={authIndexType}&authIndexValue={authIndexValue}")
+    @RequestLine("POST /json/realms/{myRealm}/authenticate?authIndexType={authIndexType}&authIndexValue={authIndexValue}&ForceAuth={forceAuth}")
     @Headers({
             "Accept: application/json",
             "X-OpenAM-Cust-Username: {xOpenAMCustUsername}",
@@ -92,6 +93,10 @@ public interface AuthenticationChainApi extends ApiClient.Api {
         }
         public AuthenticateQueryParams authIndexValue(final String value) {
             put("authIndexValue", EncodingUtils.encode(value));
+            return this;
+        }
+        public AuthenticateQueryParams forceAuth(final String value) {
+            put("ForceAuth", EncodingUtils.encode(value));
             return this;
         }
     }

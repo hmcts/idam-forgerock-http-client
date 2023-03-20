@@ -66,6 +66,7 @@ paths:
         - $ref: '#/parameters/myRealm'
         - $ref: '#/parameters/authIndexType'
         - $ref: '#/parameters/authIndexValue'
+        - $ref: '#/parameters/ForceAuth'
         - $ref: '#/parameters/username'
         - $ref: '#/parameters/password'
         - $ref: '#/parameters/tokenId'
@@ -187,6 +188,12 @@ parameters:
     in: query
     description: Specifies the identity of the module we are calling, such as hotpChain
     required: true
+    type: string
+  ForceAuth:
+    name: ForceAuth
+    in: query
+    description: Forces authentication even if an active session cookie is present.
+    required: false
     type: string
   authorization:
     name: Cookie
