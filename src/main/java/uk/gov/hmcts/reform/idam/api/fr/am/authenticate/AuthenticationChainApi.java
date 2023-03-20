@@ -29,7 +29,7 @@ public interface AuthenticationChainApi extends ApiClient.Api {
      * @param idamSession Defines the user existing SSO token (optional)
      * @return AuthenticationChain
      */
-    @RequestLine("POST /json/realms/{myRealm}/authenticate?authIndexType={authIndexType}&authIndexValue={authIndexValue}")
+    @RequestLine("POST /json/realms/{myRealm}/authenticate?authIndexType={authIndexType}&authIndexValue={authIndexValue}&ForceAuth=true")
     @Headers({
             "Accept: application/json",
             "X-OpenAM-Cust-Username: {xOpenAMCustUsername}",
@@ -66,7 +66,7 @@ public interface AuthenticationChainApi extends ApiClient.Api {
      *   </ul>
      * @return AuthenticationChain
      */
-    @RequestLine("POST /json/realms/{myRealm}/authenticate?authIndexType={authIndexType}&authIndexValue={authIndexValue}")
+    @RequestLine("POST /json/realms/{myRealm}/authenticate?authIndexType={authIndexType}&authIndexValue={authIndexValue}&ForceAuth=true")
     @Headers({
             "Accept: application/json",
             "X-OpenAM-Cust-Username: {xOpenAMCustUsername}",
