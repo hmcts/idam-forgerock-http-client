@@ -28,7 +28,7 @@ project.ext {
     junit_version = "4.12"
 }
 
-version = '2.5.7'
+version = '3.0.3'
 group = 'uk.gov.hmcts.reform.idam'
 
 description = """idam-forgerock-http-client"""

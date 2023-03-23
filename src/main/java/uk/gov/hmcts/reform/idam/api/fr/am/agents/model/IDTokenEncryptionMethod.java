@@ -23,7 +23,7 @@ import java.util.Objects;
  * Encryption method the ID Token for this client must be encrypted with.
  */
 @ApiModel(description = "Encryption method the ID Token for this client must be encrypted with.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
 public class IDTokenEncryptionMethod {
   @JsonProperty("inherited")
   private Boolean inherited = null;

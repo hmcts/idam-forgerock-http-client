@@ -19,7 +19,7 @@ import java.util.Objects;
 /**
  * PatchArray
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.386Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.386Z")
 public class PatchArray extends ArrayList<PatchOperation> {
 
   @Override

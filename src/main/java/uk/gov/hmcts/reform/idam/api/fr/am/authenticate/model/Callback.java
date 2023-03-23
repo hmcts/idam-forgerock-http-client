@@ -25,7 +25,7 @@ import java.util.Objects;
  * Holds information about callbacks required for this chain flow
  */
 @ApiModel(description = "Holds information about callbacks required for this chain flow")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-28T12:12:27.878Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-28T12:12:27.878Z")
 public class Callback {
   @JsonProperty("type")
   private String type = null;

@@ -23,7 +23,7 @@ import java.util.Objects;
 /**
  * QueryResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-11-04T13:43:51.856Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-11-04T13:43:51.856Z")
 public class QueryResponse {
   @JsonProperty("result")
   private List<PolicyResourceSchema> result = null;

@@ -25,7 +25,7 @@ import uk.gov.hmcts.reform.idam.api.fr.shared.model.ApiErrorDetail;
 /**
  * ApiError
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-07-06T10:48:16.162+01:00")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-07-06T10:48:16.162+01:00")
 public class ApiError {
   @JsonProperty("code")
   private Integer code = null;

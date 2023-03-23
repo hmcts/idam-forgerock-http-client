@@ -14,7 +14,7 @@ import uk.gov.hmcts.reform.idam.api.fr.client.invoker.EncodingUtils;
 import java.util.HashMap;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
 public interface AggregatingAgentsApi extends ApiClient.Api {
 
   /**

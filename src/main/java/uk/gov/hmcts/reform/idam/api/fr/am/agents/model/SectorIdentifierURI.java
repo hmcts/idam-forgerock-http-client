@@ -23,7 +23,7 @@ import java.util.Objects;
  * The Host component of this URL is used in the computation of pairwise Subject Identifiers.
  */
 @ApiModel(description = "The Host component of this URL is used in the computation of pairwise Subject Identifiers.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
 public class SectorIdentifierURI {
   @JsonProperty("inherited")
   private Boolean inherited = null;

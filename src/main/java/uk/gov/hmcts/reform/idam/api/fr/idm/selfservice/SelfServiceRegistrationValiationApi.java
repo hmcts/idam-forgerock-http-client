@@ -5,7 +5,7 @@ import feign.RequestLine;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
 import uk.gov.hmcts.reform.idam.api.fr.idm.selfservice.model.ValidateObjectResponse;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.636Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.636Z")
 public interface SelfServiceRegistrationValiationApi extends ApiClient.Api {
 
   /**
@@ -14,7 +14,7 @@ public interface SelfServiceRegistrationValiationApi extends ApiClient.Api {
     * @param requestPayload  (required)
    * @return ValidateObjectResponse
    */
-  @RequestLine("POST /policy/selfservice/registration?_action=validateObject")
+  @RequestLine("POST /policy/managed/user/registration?_action=validateObject")
   @Headers({
     "Content-Type: application/json",
     "Accept: application/json",

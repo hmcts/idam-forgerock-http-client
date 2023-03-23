@@ -25,7 +25,7 @@ import java.util.Objects;
  * This value is a readable name for this client.
  */
 @ApiModel(description = "This value is a readable name for this client.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
 public class ClientName {
   @JsonProperty("inherited")
   private Boolean inherited = null;

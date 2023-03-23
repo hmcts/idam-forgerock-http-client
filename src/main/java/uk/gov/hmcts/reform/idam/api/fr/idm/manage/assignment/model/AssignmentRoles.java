@@ -21,7 +21,7 @@ import java.util.Objects;
 /**
  * AssignmentRoles
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:59.251Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:59.251Z")
 public class AssignmentRoles {
   @JsonProperty("_ref")
   private String ref = null;

@@ -23,7 +23,7 @@ import java.util.Objects;
  * Minimum value 1. Sets the maximum length of time in seconds a session may be active after the authorization service has succeeded before the user must actively re-authenticate.
  */
 @ApiModel(description = "Minimum value 1. Sets the maximum length of time in seconds a session may be active after the authorization service has succeeded before the user must actively re-authenticate.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
 public class DefaultMaxAge {
   @JsonProperty("inherited")
   private Boolean inherited = null;

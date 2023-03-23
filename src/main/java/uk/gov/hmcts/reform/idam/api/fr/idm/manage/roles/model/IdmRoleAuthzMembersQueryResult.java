@@ -23,7 +23,7 @@ import java.util.Objects;
 /**
  * RoleAuthzMembersQueryResult
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.261Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.261Z")
 public class IdmRoleAuthzMembersQueryResult {
   @JsonProperty("result")
   private List<IdmRoleAuthzMembers> result = null;

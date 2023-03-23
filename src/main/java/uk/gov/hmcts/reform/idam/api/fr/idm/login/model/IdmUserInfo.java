@@ -21,7 +21,7 @@ import java.util.Objects;
 /**
  * IdmUserInfo
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-09T09:18:53.032+01:00")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-09T09:18:53.032+01:00")
 public class IdmUserInfo {
   @JsonProperty("authorization")
   private Authorization authorization = null;

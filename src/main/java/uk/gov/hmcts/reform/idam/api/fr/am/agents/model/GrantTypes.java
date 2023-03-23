@@ -12,7 +12,7 @@ import java.util.Objects;
  * Response types this client will support and use.
  */
 @ApiModel(description = "Response types this client will support and use.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-29T13:48:57.857Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-29T13:48:57.857Z")
 public class GrantTypes {
     @JsonProperty("inherited")
     private Boolean inherited = null;

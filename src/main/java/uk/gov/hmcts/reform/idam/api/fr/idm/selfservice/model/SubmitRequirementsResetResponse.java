@@ -23,7 +23,7 @@ import java.util.Objects;
  * If more requirements need fulfilling before the user registration process is completed, this response structure will be returned.
  */
 @ApiModel(description = "If more requirements need fulfilling before the user registration process is completed, this response structure will be returned.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-13T13:49:38.439+01:00")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-13T13:49:38.439+01:00")
 public class SubmitRequirementsResetResponse {
   @JsonProperty("token")
   private String token = null;

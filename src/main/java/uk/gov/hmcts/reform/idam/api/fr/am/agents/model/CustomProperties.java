@@ -25,7 +25,7 @@ import java.util.Objects;
  * Additional properties that allow users to augment the set of properties supported by the OAuth2 Client. &lt;br&gt; Examples: &lt;br&gt; customproperty&#x3D;custom-value1 &lt;br&gt; customlist[0]&#x3D;customlist-value-0 &lt;br&gt; customlist[1]&#x3D;customlist-value-1 &lt;br&gt; custommap[key1]&#x3D;custommap-value-1 &lt;br&gt; custommap[key2]&#x3D;custommap-value-2
  */
 @ApiModel(description = "Additional properties that allow users to augment the set of properties supported by the OAuth2 Client. <br> Examples: <br> customproperty=custom-value1 <br> customlist[0]=customlist-value-0 <br> customlist[1]=customlist-value-1 <br> custommap[key1]=custommap-value-1 <br> custommap[key2]=custommap-value-2")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2022-07-08T06:31:38.266+01:00")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2022-07-08T06:31:38.266+01:00")
 public class CustomProperties {
   @JsonProperty("inherited")
   private Boolean inherited = null;

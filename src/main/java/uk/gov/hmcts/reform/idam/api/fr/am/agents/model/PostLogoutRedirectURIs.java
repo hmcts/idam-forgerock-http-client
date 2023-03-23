@@ -25,7 +25,7 @@ import java.util.Objects;
  * URIs that can be redirected to after the client logout process.
  */
 @ApiModel(description = "URIs that can be redirected to after the client logout process.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
 public class PostLogoutRedirectURIs {
   @JsonProperty("inherited")
   private Boolean inherited = null;

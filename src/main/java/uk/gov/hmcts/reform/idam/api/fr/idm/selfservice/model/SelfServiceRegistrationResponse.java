@@ -23,7 +23,7 @@ import java.util.Objects;
  * If more requirements need fulfilling before the user registration process is completed, this response structure will be returned.
  */
 @ApiModel(description = "If more requirements need fulfilling before the user registration process is completed, this response structure will be returned.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.636Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.636Z")
 public class SelfServiceRegistrationResponse {
   @JsonProperty("status")
   private SuccessObject status = null;

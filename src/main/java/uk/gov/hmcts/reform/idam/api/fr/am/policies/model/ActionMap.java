@@ -22,7 +22,7 @@ import java.util.Objects;
  * Set of string action names, each set to a boolean indicating whether the action is allowed. Chosen from the available actions provided by the associated Managing Resource Types resource type
  */
 @ApiModel(description = "Set of string action names, each set to a boolean indicating whether the action is allowed. Chosen from the available actions provided by the associated Managing Resource Types resource type")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-04T13:59:55.834+01:00")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-10-04T13:59:55.834+01:00")
 public class ActionMap extends HashMap<String, Object> {
 
   @Override

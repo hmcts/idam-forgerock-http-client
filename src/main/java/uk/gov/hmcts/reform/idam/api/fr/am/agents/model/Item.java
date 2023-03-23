@@ -23,7 +23,7 @@ import java.util.Objects;
  * A single descendent item
  */
 @ApiModel(description = "A single descendent item")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
 public class Item {
   @JsonProperty("_id")
   private String id = null;

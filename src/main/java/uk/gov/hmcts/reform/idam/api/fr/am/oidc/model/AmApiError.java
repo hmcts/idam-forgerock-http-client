@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * AmApiError
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-05-13T13:57:44.853+01:00")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-05-13T13:57:44.853+01:00")
 public class AmApiError {
   @JsonProperty("error_description")
   private String errorDescription = null;

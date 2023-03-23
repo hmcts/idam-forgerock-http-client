@@ -23,7 +23,7 @@ import java.util.Objects;
  * The time in seconds an access token is valid for. &lt;i&gt;NB&lt;/i&gt; If this field is set to zero, Access Token Lifetime of the OAuth2 Provider is used instead of.
  */
 @ApiModel(description = "The time in seconds an access token is valid for. <i>NB</i> If this field is set to zero, Access Token Lifetime of the OAuth2 Provider is used instead of.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
 public class AccessTokenLifetimeSeconds {
   @JsonProperty("inherited")
   private Boolean inherited = null;

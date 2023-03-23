@@ -25,7 +25,7 @@ import java.util.Objects;
  *
  */
 @ApiModel(description = "")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-07-25T15:38:49.308+01:00")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-07-25T15:38:49.308+01:00")
 public class IdmRole {
   @JsonProperty("_id")
   private String id = null;

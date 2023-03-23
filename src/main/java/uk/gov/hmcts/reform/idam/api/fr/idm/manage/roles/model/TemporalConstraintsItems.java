@@ -21,7 +21,7 @@ import java.util.Objects;
 /**
  * TemporalConstraintsItems
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.261Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.261Z")
 public class TemporalConstraintsItems {
   @JsonProperty("duration")
   private String duration = null;

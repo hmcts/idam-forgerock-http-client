@@ -23,7 +23,7 @@ import java.util.Objects;
  * The type of a configuration entity is described as its ID, its name and whether or not it is a collection
  */
 @ApiModel(description = "The type of a configuration entity is described as its ID, its name and whether or not it is a collection")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
 public class RestsmsType {
   @JsonProperty("_id")
   private String id = null;

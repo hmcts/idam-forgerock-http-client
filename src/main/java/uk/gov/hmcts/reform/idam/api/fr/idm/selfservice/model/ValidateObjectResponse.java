@@ -23,7 +23,7 @@ import java.util.Objects;
 /**
  * ValidateObjectResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.636Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.636Z")
 public class ValidateObjectResponse {
   @JsonProperty("result")
   private Boolean result = null;

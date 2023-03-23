@@ -23,7 +23,7 @@ import java.util.Objects;
  * Returns either a completion status, or a token along with some more requirements.
  */
 @ApiModel(description = "Returns either a completion status, or a token along with some more requirements.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-07-29T16:19:52.490+01:00")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-07-29T16:19:52.490+01:00")
 public class SubmitRequirementsResponse {
   @JsonProperty("token")
   private String token = null;

@@ -14,7 +14,7 @@ import uk.gov.hmcts.reform.idam.api.fr.shared.model.Status;
 import java.util.HashMap;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:59.251Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:59.251Z")
 public interface AssignmentApi extends ApiClient.Api {
 
   /**

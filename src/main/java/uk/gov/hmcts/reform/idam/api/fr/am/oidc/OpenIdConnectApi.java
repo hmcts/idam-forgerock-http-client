@@ -17,7 +17,7 @@ import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
 import java.util.HashMap;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:58.839Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:58.839Z")
 public interface OpenIdConnectApi extends ApiClient.Api {
 
     /**

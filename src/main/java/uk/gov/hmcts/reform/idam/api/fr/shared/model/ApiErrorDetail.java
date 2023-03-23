@@ -23,7 +23,7 @@ import java.util.Objects;
  * Error details
  */
 @ApiModel(description = "Error details")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-07-06T10:48:16.162+01:00")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-07-06T10:48:16.162+01:00")
 public class ApiErrorDetail {
   @JsonProperty("failureUrl")
   private String failureUrl = null;

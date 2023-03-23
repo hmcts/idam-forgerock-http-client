@@ -21,7 +21,7 @@ import java.util.Objects;
 /**
  * AmToken
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:58.839Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:58.839Z")
 public class AmToken {
   @JsonProperty("code")
   private String code = null;

@@ -25,7 +25,7 @@ import java.util.Objects;
  * Array of request_uri values that are pre-registered by the RP for use at the OP.&lt;br&gt;&lt;br&gt;The entire Request URI MUST NOT exceed 512 ASCII characters. Otherwise the value will be ignored.
  */
 @ApiModel(description = "Array of request_uri values that are pre-registered by the RP for use at the OP.<br><br>The entire Request URI MUST NOT exceed 512 ASCII characters. Otherwise the value will be ignored.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:57.857Z")
 public class RequestUris {
   @JsonProperty("inherited")
   private Boolean inherited = null;

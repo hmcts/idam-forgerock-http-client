@@ -16,12 +16,13 @@ package uk.gov.hmcts.reform.idam.api.fr.am.agents.oauth2.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.annotation.processing.Generated;
 import java.util.Objects;
 
 /**
  * SigningAndEncryption
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:59.013Z")
+@javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:59.013Z")
 public class SigningAndEncryption {
   @JsonProperty("jwksUri")
   private String jwksUri = null;
