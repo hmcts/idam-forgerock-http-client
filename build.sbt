@@ -11,7 +11,7 @@ lazy val root = (project in file(".")).
     libraryDependencies ++= Seq(
       "io.swagger" % "swagger-annotations" % "1.5.9" % "compile",
       "io.github.openfeign" % "feign-core" % "9.7.0" % "compile",
-      "io.github.openfeign" % "feign-jackson" % "9.4.0" % "compile",
+      "io.github.openfeign" % "feign-jackson" % "9.7.0" % "compile",
       "io.github.openfeign" % "feign-slf4j" % "9.4.0" % "compile",
       "io.github.openfeign.form" % "feign-form" % "2.2.1" % "compile",
       "com.fasterxml.jackson.core" % "jackson-core" % "2.15.2" % "compile",
