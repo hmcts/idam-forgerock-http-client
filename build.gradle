@@ -18,7 +18,7 @@ plugins {
 
 project.ext {
     swaggerTargetFolder = 'src/generated/java'
-    swagger_annotations_version = "1.5.22"
+    swagger_annotations_version = "1.6.11"
     feign_version = "10.7.0"
     feign_form_version = "3.8.0"
     oltu_version = "1.0.1"
