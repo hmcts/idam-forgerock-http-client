@@ -9,7 +9,7 @@ lazy val root = (project in file(".")).
     publishArtifact in (Compile, packageDoc) := false,
     resolvers += Resolver.mavenLocal,
     libraryDependencies ++= Seq(
-      "io.swagger" % "swagger-annotations" % "1.6.11" % "compile",
+      "io.swagger" % "swagger-annotations" % "1.6.12" % "compile",
       "io.github.openfeign" % "feign-core" % "12.5" % "compile",
       "io.github.openfeign" % "feign-jackson" % "12.5" % "compile",
       "io.github.openfeign" % "feign-slf4j" % "12.5" % "compile",
