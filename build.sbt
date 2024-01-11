@@ -15,7 +15,7 @@ lazy val root = (project in file(".")).
       "io.github.openfeign" % "feign-slf4j" % "13.1" % "compile",
       "io.github.openfeign.form" % "feign-form" % "3.8.0" % "compile",
       "com.fasterxml.jackson.core" % "jackson-core" % "2.16.1" % "compile",
-      "com.fasterxml.jackson.core" % "jackson-annotations" % "2.16.0" % "compile",
+      "com.fasterxml.jackson.core" % "jackson-annotations" % "2.16.1" % "compile",
       "com.fasterxml.jackson.core" % "jackson-databind" % "2.16.1" % "compile",
       "com.fasterxml.jackson.datatype" % "jackson-datatype-jsr310" % "2.16.0" % "compile",
       "org.apache.oltu.oauth2" % "org.apache.oltu.oauth2.client" % "1.0.2" % "compile",
