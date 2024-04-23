@@ -6,7 +6,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'io.swagger:swagger-codegen:2.4.39'
+        classpath 'io.swagger:swagger-codegen:2.4.41'
     }
 }
 
