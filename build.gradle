@@ -24,7 +24,7 @@ project.ext {
     oltu_version = "1.0.1"
     spring_data_version = "2.7.18"
     spring_data_elasticsearch_version = "3.2.12.RELEASE"
-    jackson_version = "2.17.0"
+    jackson_version = "2.17.1"
     junit_version = "4.13.2"
 }
 
