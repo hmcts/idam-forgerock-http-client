@@ -12,7 +12,7 @@ lazy val root = (project in file(".")).
       "io.swagger" % "swagger-annotations" % "1.6.14" % "compile",
       "io.github.openfeign" % "feign-core" % "13.3" % "compile",
       "io.github.openfeign" % "feign-jackson" % "13.3" % "compile",
-      "io.github.openfeign" % "feign-slf4j" % "13.2.1" % "compile",
+      "io.github.openfeign" % "feign-slf4j" % "13.3" % "compile",
       "io.github.openfeign.form" % "feign-form" % "3.8.0" % "compile",
       "com.fasterxml.jackson.core" % "jackson-core" % "2.17.1" % "compile",
       "com.fasterxml.jackson.core" % "jackson-annotations" % "2.17.1" % "compile",
