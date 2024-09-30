@@ -19,7 +19,7 @@ plugins {
 project.ext {
     swaggerTargetFolder = 'src/generated/java'
     swagger_annotations_version = "1.6.14"
-    feign_version = "12.5"
+    feign_version = "13.4"
     feign_form_version = "3.8.0"
     oltu_version = "1.0.1"
     spring_data_version = "2.7.18"
