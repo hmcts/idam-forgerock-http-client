@@ -10,7 +10,7 @@ lazy val root = (project in file(".")).
     resolvers += Resolver.mavenLocal,
     libraryDependencies ++= Seq(
       "io.swagger" % "swagger-annotations" % "1.6.14" % "compile",
-      "io.github.openfeign" % "feign-core" % "13.4" % "compile",
+      "io.github.openfeign" % "feign-core" % "13.5" % "compile",
       "io.github.openfeign" % "feign-jackson" % "13.4" % "compile",
       "io.github.openfeign" % "feign-slf4j" % "13.4" % "compile",
       "io.github.openfeign.form" % "feign-form" % "3.8.0" % "compile",
