@@ -22,8 +22,8 @@ project.ext {
     feign_version = "12.5"
     feign_form_version = "3.8.0"
     oltu_version = "1.0.1"
-    spring_data_version = "2.7.18"
-    spring_data_elasticsearch_version = "3.2.12.RELEASE"
+    spring_data_version = "3.3.5"
+    spring_data_elasticsearch_version = "5.3.5"
     jackson_version = "2.18.0"
     junit_version = "4.13.2"
 }
