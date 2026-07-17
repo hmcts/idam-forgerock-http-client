@@ -2,6 +2,7 @@ package uk.gov.hmcts.reform.idam.api.fr.am.authenticate;
 
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.EncodingUtils;
+import uk.gov.hmcts.reform.idam.api.fr.client.invoker.Rfc2047Utf8Base64Expander;
 
 import uk.gov.hmcts.reform.idam.api.fr.shared.model.ApiError;
 import uk.gov.hmcts.reform.idam.api.fr.am.authenticate.model.AuthenticationChain;
@@ -42,7 +43,7 @@ public interface AuthenticationChainApi extends ApiClient.Api {
 
             "X-Redirect-URI: {xRedirectURI}"
     })
-    AuthenticationChain authenticate(@Param("myRealm") String myRealm, @Param("authIndexType") String authIndexType, @Param("authIndexValue") String authIndexValue, @Param("xOriginIP") String xOriginIP, @Param("xRedirectURI") String xRedirectURI, @Param("xOpenAMCustUsername") String xOpenAMCustUsername, @Param("xOpenAMCustPassword") String xOpenAMCustPassword, @Param("idamSession") String idamSession);
+    AuthenticationChain authenticate(@Param("myRealm") String myRealm, @Param("authIndexType") String authIndexType, @Param("authIndexValue") String authIndexValue, @Param("xOriginIP") String xOriginIP, @Param("xRedirectURI") String xRedirectURI, @Param("xOpenAMCustUsername") String xOpenAMCustUsername, @Param(value = "xOpenAMCustPassword", expander = Rfc2047Utf8Base64Expander.class) String xOpenAMCustPassword, @Param("idamSession") String idamSession);
 
    /**
      * Authenticates a user or initiates an authentication flow if MFA is required
@@ -71,7 +72,7 @@ public interface AuthenticationChainApi extends ApiClient.Api {
 
             "X-Redirect-URI: {xRedirectURI}"
     })
-    AuthenticationChain authenticate(@Param("myRealm") String myRealm, @Param("authIndexType") String authIndexType, @Param("authIndexValue") String authIndexValue, @Param("xOriginIP") String xOriginIP, @Param("xRedirectURI") String xRedirectURI, @Param("forceAuth") String forceAuth, @Param("xOpenAMCustUsername") String xOpenAMCustUsername, @Param("xOpenAMCustPassword") String xOpenAMCustPassword, @Param("idamSession") String idamSession);
+    AuthenticationChain authenticate(@Param("myRealm") String myRealm, @Param("authIndexType") String authIndexType, @Param("authIndexValue") String authIndexValue, @Param("xOriginIP") String xOriginIP, @Param("xRedirectURI") String xRedirectURI, @Param("forceAuth") String forceAuth, @Param("xOpenAMCustUsername") String xOpenAMCustUsername, @Param(value = "xOpenAMCustPassword", expander = Rfc2047Utf8Base64Expander.class) String xOpenAMCustPassword, @Param("idamSession") String idamSession);
 
     /**
      * Authenticates a user or initiates an authentication flow if MFA is required
@@ -109,7 +110,7 @@ public interface AuthenticationChainApi extends ApiClient.Api {
 
             "X-Redirect-URI: {xRedirectURI}"
     })
-    AuthenticationChain authenticate(@Param("myRealm") String myRealm, @Param("xOriginIP") String xOriginIP, @Param("xRedirectURI") String xRedirectURI, @Param("xOpenAMCustUsername") String xOpenAMCustUsername, @Param("xOpenAMCustPassword") String xOpenAMCustPassword, @Param("idamSession") String idamSession, @QueryMap(encoded=true) Map<String, Object> queryParams);
+    AuthenticationChain authenticate(@Param("myRealm") String myRealm, @Param("xOriginIP") String xOriginIP, @Param("xRedirectURI") String xRedirectURI, @Param("xOpenAMCustUsername") String xOpenAMCustUsername, @Param(value = "xOpenAMCustPassword", expander = Rfc2047Utf8Base64Expander.class) String xOpenAMCustPassword, @Param("idamSession") String idamSession, @QueryMap(encoded=true) Map<String, Object> queryParams);
 
     /**
      * A convenience class for generating query parameters for the
