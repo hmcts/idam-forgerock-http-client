@@ -47,6 +47,24 @@ public class AuthenticationChainApiTest {
         assertThat(passwordHeaders.iterator().next(), is("=?UTF-8?B?V2VsY29tZTEyMyA=?="));
     }
 
+    @Test
+    public void authenticateKeepsRawPasswordHeaderWhenThereIsNoBoundaryWhitespace() {
+        api.authenticate(
+                "root",
+                "service",
+                "hotpChain",
+                "127.0.0.1",
+                "https://redirect.example",
+                "test-user",
+                "Welcome123",
+                null
+        );
+
+        Collection<String> passwordHeaders = client.request.headers().get("X-OpenAM-Cust-Password");
+        assertThat(passwordHeaders.size(), is(1));
+        assertThat(passwordHeaders.iterator().next(), is("Welcome123"));
+    }
+
     private static class CapturingClient implements Client {
         private Request request;
 

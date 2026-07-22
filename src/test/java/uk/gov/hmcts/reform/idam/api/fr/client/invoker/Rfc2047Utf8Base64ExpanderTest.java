@@ -15,7 +15,22 @@ public class Rfc2047Utf8Base64ExpanderTest {
     }
 
     @Test
-    public void encodesUtf8Value() {
-        assertThat(underTest.expand("ɗëɱø"), is("=?UTF-8?B?yZfDq8mxw7g=?="));
+    public void encodesPasswordWithLeadingSpace() {
+        assertThat(underTest.expand(" Welcome123"), is("=?UTF-8?B?IFdlbGNvbWUxMjM=?="));
+    }
+
+    @Test
+    public void encodesWhitespaceOnlyPassword() {
+        assertThat(underTest.expand(" "), is("=?UTF-8?B?IA==?="));
+    }
+
+    @Test
+    public void returnsRawPasswordWithoutBoundaryWhitespace() {
+        assertThat(underTest.expand("Welcome123"), is("Welcome123"));
+    }
+
+    @Test
+    public void returnsRawUtf8ValueWithoutBoundaryWhitespace() {
+        assertThat(underTest.expand("ɗëɱø"), is("ɗëɱø"));
     }
 }
