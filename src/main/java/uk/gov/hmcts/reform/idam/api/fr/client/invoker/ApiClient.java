@@ -35,7 +35,8 @@ public class ApiClient {
     feignBuilder = Feign.builder()
                 .encoder(new FormEncoder(new JacksonEncoder(objectMapper)))
                 .decoder(new JacksonDecoder(objectMapper))
-                .logger(new Slf4jLogger());
+                .logger(new Slf4jLogger())
+                .requestInterceptor(new Rfc2047Utf8Base64HeaderInterceptor());
   }
 
   public ApiClient(String[] authNames) {
