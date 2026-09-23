@@ -1,6 +1,5 @@
 package uk.gov.hmcts.reform.idam.api.fr.idm.login;
 
-import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.EncodingUtils;
 
 import uk.gov.hmcts.reform.idam.api.fr.idm.login.model.IdmUserInfo;
@@ -12,7 +11,7 @@ import java.util.Map;
 import feign.*;
 
 @javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-09T09:34:50.756+01:00")
-public interface InformationApi extends ApiClient.Api {
+public interface InformationApi {
 
 
   /**

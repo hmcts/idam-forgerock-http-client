@@ -4,7 +4,6 @@ import feign.Headers;
 import feign.Param;
 import feign.QueryMap;
 import feign.RequestLine;
-import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.EncodingUtils;
 import uk.gov.hmcts.reform.idam.api.fr.idm.manage.roles.model.IdmRole;
 import uk.gov.hmcts.reform.idam.api.fr.idm.manage.roles.model.IdmRoleQueryResult;
@@ -15,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.261Z")
-public interface RoleApi extends ApiClient.Api {
+public interface RoleApi {
 
   /**
    * Create with Client-Assigned ID

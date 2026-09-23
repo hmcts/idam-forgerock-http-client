@@ -4,38 +4,11 @@ import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
 import feign.Response;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.HttpServerErrorException;
-import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
 
-import java.util.Collection;
-import java.util.Optional;
+public interface LoginApi {
 
-import static java.nio.charset.StandardCharsets.UTF_8;
-
-public interface LoginApi extends ApiClient.Api {
-
-    default String getSessionJWT(String username, String password) {
-        Response response = idmLogin(username, password);
-        HttpStatus responseStatus = HttpStatus.valueOf(response.status());
-        if (responseStatus.is4xxClientError() && responseStatus != HttpStatus.UNAUTHORIZED) {
-            throw HttpClientErrorException.create(response.reason(), responseStatus, response.reason(), HttpHeaders.EMPTY, null, UTF_8);
-        } else if (responseStatus.is5xxServerError()) {
-            throw HttpServerErrorException.create(response.reason(), responseStatus, response.reason(), HttpHeaders.EMPTY, null, UTF_8);
-        }
-        return Optional.ofNullable(response.headers().get(HttpHeaders.SET_COOKIE)).stream().flatMap(Collection::stream)
-                .filter(cookie -> cookie.startsWith("session-jwt"))
-                .findFirst()
-                .orElseThrow(() -> HttpClientErrorException.create(
-                        "invalid username or password",
-                        HttpStatus.UNAUTHORIZED,
-                        HttpStatus.UNAUTHORIZED.getReasonPhrase(),
-                        HttpHeaders.EMPTY,
-                        null,
-                        UTF_8));
-    }
+    // Session-cookie extraction and error mapping intentionally belong to consumers.
+    // Call idmLogin directly and apply application-specific response and exception policies.
 
     /**
      * Send a login request to IDM

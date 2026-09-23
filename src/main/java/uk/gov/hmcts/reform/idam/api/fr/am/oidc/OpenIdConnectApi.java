@@ -3,86 +3,22 @@ package uk.gov.hmcts.reform.idam.api.fr.am.oidc;
 import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
-import feign.Response;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.server.ResponseStatusException;
-import org.springframework.web.util.UriComponentsBuilder;
 import uk.gov.hmcts.reform.idam.api.fr.am.oidc.model.AmAuthenticateToken;
 import uk.gov.hmcts.reform.idam.api.fr.am.oidc.model.AmToken;
 import uk.gov.hmcts.reform.idam.api.fr.am.oidc.model.AmWellKnownConfig;
 import uk.gov.hmcts.reform.idam.api.fr.am.oidc.model.JsonWebKeySet;
-import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
 
-import java.util.HashMap;
 import java.util.Map;
 
 @javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:58.839Z")
-public interface OpenIdConnectApi extends ApiClient.Api {
+public interface OpenIdConnectApi {
 
     /**
-     * Call OAuth2Authorize specifically to get the authorization code
-     *
-     * @param params
-     * @return The Auth Code
+     * Authorization-code response handling intentionally belongs to consumers.
+     * Applications should call {@link #oauth2Authorize} and apply their own status,
+     * redirect and exception policies.
      */
-    default String getAuthorizationCode(GetAuthorizationCodeParams params) {
-        Response feignResponse = oauth2Authorize(params.get("realm"), params.get("cookie"),
-                params.get("client_id"), params.get("redirect_uri"), null, null,
-                "code", params.get("scope"), null, null,
-                null, null, null, null,
-                null, null, null, "Allow",
-                null, params.get("token_id"));
-
-        HttpStatus responseStatus = HttpStatus.valueOf(feignResponse.status());
-
-        if (responseStatus.is4xxClientError() || responseStatus.is5xxServerError()) {
-            throw new ResponseStatusException(HttpStatus.valueOf(feignResponse.status()));
-        }
-
-        return UriComponentsBuilder.fromUriString(feignResponse.headers()
-                .get(HttpHeaders.LOCATION)
-                .stream().findFirst().orElse(""))
-                .build()
-                .getQueryParams().getFirst("code");
-    }
-
-
-    /**
-     * A convenience class for generating query parameters for the
-     * <code>getAuthorizationCode</code> method in a fluent style.
-     */
-    public static class GetAuthorizationCodeParams extends HashMap<String, String> {
-        public GetAuthorizationCodeParams cookie(final String value) {
-            put("cookie", value);
-            return this;
-        }
-
-        public GetAuthorizationCodeParams clientId(final String value) {
-            put("client_id", value);
-            return this;
-        }
-
-        public GetAuthorizationCodeParams redirectUri(final String value) {
-            put("redirect_uri", value);
-            return this;
-        }
-
-        public GetAuthorizationCodeParams tokenId(final String value) {
-            put("token_id", value);
-            return this;
-        }
-
-        public GetAuthorizationCodeParams realm(final String value) {
-            put("realm", value);
-            return this;
-        }
-
-        public GetAuthorizationCodeParams scope(final String value) {
-            put("scope", value);
-            return this;
-        }
-    }
+    // No convenience wrapper is provided here to keep this contract transport- and framework-neutral.
 
     /**
      * Request Access Token

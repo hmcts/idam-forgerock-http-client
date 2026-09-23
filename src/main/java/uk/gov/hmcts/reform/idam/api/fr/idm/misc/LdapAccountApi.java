@@ -4,7 +4,6 @@ import feign.Headers;
 import feign.Param;
 import feign.QueryMap;
 import feign.RequestLine;
-import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.EncodingUtils;
 import uk.gov.hmcts.reform.idam.api.fr.idm.misc.model.AccountQueryResultSet;
 
@@ -12,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.022Z")
-public interface LdapAccountApi extends ApiClient.Api {
+public interface LdapAccountApi {
 
   /**
    * Query by Expression
