@@ -22,6 +22,9 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
+      - name: Verify
+        run: ./gradlew clean check
+
       - name: Publish to Azure DevOps Artifacts
         run: |
           ./gradlew publish
