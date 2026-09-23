@@ -8,10 +8,10 @@ def javaReleaseVersion = 21
 
 
 project.ext {
-    swagger_annotations_version = "1.5.22"
+    swagger_annotations_version = "1.6.16"
     feign_version = "13.15"
-    jackson_annotations_version = "2.20"
-    junit_version = "4.12"
+    jackson_annotations_version = "2.22"
+    junit_version = "4.13.2"
 }
 
 def buildNumber = System.getenv("RELEASE_VERSION")?.replace("refs/tags/", "") ?: "DEV-SNAPSHOT"
@@ -44,7 +44,7 @@ dependencies {
     api "io.swagger:swagger-annotations:$swagger_annotations_version"
     api "io.github.openfeign:feign-core:$feign_version"
     testImplementation "junit:junit:$junit_version"
-    testImplementation 'org.mockito:mockito-core:5.11.0'
+    testImplementation 'org.mockito:mockito-core:5.24.0'
 }
 
 def publishedDependencyBaseline = [
