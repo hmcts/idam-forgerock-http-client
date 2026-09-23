@@ -7,14 +7,13 @@ import feign.Request;
 import feign.RequestLine;
 import uk.gov.hmcts.reform.idam.api.fr.am.agents.model.AmAgent;
 import uk.gov.hmcts.reform.idam.api.fr.am.agents.oauth2.model.OAuth2ClientsResultSet;
-import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.EncodingUtils;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:48:59.013Z")
-public interface OAuth2ClientAgentsApi extends ApiClient.Api {
+public interface OAuth2ClientAgentsApi {
 
   /**
    * Action: getAllTypes

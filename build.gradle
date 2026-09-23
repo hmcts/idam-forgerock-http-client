@@ -1,30 +1,16 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'io.swagger:swagger-codegen:2.4.32'
-    }
-}
-
 plugins {
-    id 'java'
+    id 'java-library'
     id 'maven-publish'
 }
 
-def javaToolchainVersion = 17
-def javaReleaseVersion = 11
+def javaToolchainVersion = 21
+def javaReleaseVersion = 21
 
 
 project.ext {
-    swaggerTargetFolder = 'src/generated/java'
     swagger_annotations_version = "1.5.22"
-    feign_version = "10.7.0"
-    feign_form_version = "3.8.0"
-    oltu_version = "1.0.1"
-    spring_data_version = "2.7.15"
-    spring_data_elasticsearch_version = "3.2.12.RELEASE"
-    jackson_version = "2.10.4"
+    feign_version = "13.15"
+    jackson_annotations_version = "2.20"
     junit_version = "4.12"
 }
 
@@ -54,117 +40,44 @@ repositories {
 }
 
 dependencies {
-    implementation "org.springframework.data:spring-data-elasticsearch:$spring_data_elasticsearch_version"
-    implementation "org.springframework.data:spring-data-commons:$spring_data_version"
-    implementation "org.springframework.boot:spring-boot-starter-web:$spring_data_version"
-    implementation "com.fasterxml.jackson.core:jackson-core:$jackson_version"
-    implementation "com.fasterxml.jackson.core:jackson-annotations:$jackson_version"
-    implementation "com.fasterxml.jackson.core:jackson-databind:$jackson_version"
-    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jackson_version"
-    implementation "io.swagger:swagger-annotations:$swagger_annotations_version"
-    implementation "io.github.openfeign:feign-core:$feign_version"
-    implementation "io.github.openfeign:feign-jackson:$feign_version"
-    implementation "io.github.openfeign:feign-slf4j:$feign_version"
-    implementation "io.github.openfeign.form:feign-form:$feign_form_version"
-    implementation "org.apache.oltu.oauth2:org.apache.oltu.oauth2.client:$oltu_version"
-    implementation "com.brsanthu:migbase64:2.2"
+    api "com.fasterxml.jackson.core:jackson-annotations:$jackson_annotations_version"
+    api "io.swagger:swagger-annotations:$swagger_annotations_version"
+    api "io.github.openfeign:feign-core:$feign_version"
     testImplementation "junit:junit:$junit_version"
-    testImplementation 'org.mockito:mockito-core:3.12.4'
-    testImplementation 'org.mockito:mockito-inline:3.12.4'
+    testImplementation 'org.mockito:mockito-core:5.11.0'
 }
 
-def loadBuildscriptClass(String className) {
-    Class.forName(className, true, this.class.classLoader)
-}
+def publishedDependencyBaseline = [
+        'com.fasterxml.jackson.core:jackson-annotations',
+        'io.github.openfeign:feign-core',
+        'io.swagger:swagger-annotations'
+] as Set
 
-def generateCodeFromSwagger(swaggerSourceFile, packageName, importMappings) {
-    def config = loadBuildscriptClass('io.swagger.codegen.config.CodegenConfigurator')
-        .getDeclaredConstructor()
-        .newInstance()
-    config.setInputSpec("file:///$projectDir/$swaggerSourceFile")
-    config.setOutputDir("$buildDir")
-    config.setLang('java')
-    config.setAdditionalProperties([
-            'generateApis'              : 'false',
-            'apiPackage'                : 'uk.gov.hmcts.reform.idam.api.fr.' + packageName,
-            'modelPackage'              : 'uk.gov.hmcts.reform.idam.api.fr.' + packageName + '.model',
-            'invokerPackage'            : 'uk.gov.hmcts.reform.idam.api.fr.client.invoker',
-            'sourceFolder'              : project.swaggerTargetFolder,
-            'library'                   : 'feign',
-            'dateLibrary'               : 'java8',
-            'generateModelDocumentation': 'false'
-    ])
-    if (importMappings != null) {
-        ((LinkedHashMap<String, String>) importMappings).each { k, v -> config.addImportMapping(k, v) }
-    }
-    loadBuildscriptClass('io.swagger.codegen.DefaultGenerator')
-        .getDeclaredConstructor()
-        .newInstance()
-        .opts(config.toClientOptInput())
-        .generate()
-}
-
-task generateApi {
-    outputs.dir("$buildDir")
+tasks.register('verifyDependencyBaseline') {
+    group = 'verification'
+    description = 'Guards the current declared and published dependencies while cleanup removes them deliberately.'
+    dependsOn 'generatePomFileForMainPublication'
     doLast {
-        generateCodeFromSwagger('src/main/resources/forgerock-shared.yaml', 'shared', null)
-        generateCodeFromSwagger('src/main/resources/forgerock-am-agents.yaml', 'am.agents', null)
-        generateCodeFromSwagger('src/main/resources/forgerock-am-authentication.yaml', 'am.oidc', [
-                'Response'  : 'feign.Response'
-        ])
-        generateCodeFromSwagger('src/main/resources/forgerock-am-oauth2-client.yaml', 'am.agents.oauth2', [
-                'AmAgent'   : 'uk.gov.hmcts.reform.idam.api.fr.am.agents.model.AmAgent'
-        ])
-        generateCodeFromSwagger('src/main/resources/forgerock-am-policies.yaml', 'am.policies', [
-                'ApiError'  : 'uk.gov.hmcts.reform.idam.api.fr.shared.model.ApiError'
-        ])
-        generateCodeFromSwagger('src/main/resources/forgerock-am-authentication-chain.yaml', 'am.authenticate', [
-                'ApiError'  : 'uk.gov.hmcts.reform.idam.api.fr.shared.model.ApiError'
-        ])
-        generateCodeFromSwagger('src/main/resources/forgerock-idm-managed-assignment.yaml', 'idm.manage.assignment', [
-                'PatchArray': 'uk.gov.hmcts.reform.idam.api.fr.shared.model.PatchArray',
-                'Status'    : 'uk.gov.hmcts.reform.idam.api.fr.shared.model.Status'
-        ])
-        generateCodeFromSwagger('src/main/resources/forgerock-idm-managed-user.yaml', 'idm.manage.user', [
-                'PatchArray': 'uk.gov.hmcts.reform.idam.api.fr.shared.model.PatchArray',
-                'Status'    : 'uk.gov.hmcts.reform.idam.api.fr.shared.model.Status'
-        ])
-        generateCodeFromSwagger('src/main/resources/forgerock-idm-miscellaneous.yaml', 'idm.misc', [
-                'ApiError'  : 'uk.gov.hmcts.reform.idam.api.fr.shared.model.ApiError'
-        ])
-        generateCodeFromSwagger('src/main/resources/forgerock-idm-roles.yaml', 'idm.manage.roles', [
-                'PatchArray': 'uk.gov.hmcts.reform.idam.api.fr.shared.model.PatchArray',
-                'Status'    : 'uk.gov.hmcts.reform.idam.api.fr.shared.model.Status'
-        ])
-        generateCodeFromSwagger('src/main/resources/forgerock-idm-selfservice-registration.yaml', 'idm.selfservice', [
-                'ApiError'  : 'uk.gov.hmcts.reform.idam.api.fr.shared.model.ApiError'
-        ])
-        generateCodeFromSwagger('src/main/resources/forgerock-idm-selfservice-reset.yaml', 'idm.selfservice', [
-                'ApiError'  : 'uk.gov.hmcts.reform.idam.api.fr.shared.model.ApiError',
-                'SubmitRequirementsRequest' : 'uk.gov.hmcts.reform.idam.api.fr.idm.selfservice.model.SubmitRequirementsRequest',
-                'SuccessObject' : 'uk.gov.hmcts.reform.idam.api.fr.idm.selfservice.model.SuccessObject'
-        ])
-        generateCodeFromSwagger('src/main/resources/forgerock-idm-login.yaml', 'idm.login', null)
-    }
-}
+        def declared = (configurations.api.dependencies + configurations.implementation.dependencies)
+                .collect { "${it.group}:${it.name}" }
+                .toSet()
+        if (declared != publishedDependencyBaseline) {
+            throw new GradleException("Direct dependencies changed. Expected ${publishedDependencyBaseline.sort()}, got ${declared.sort()}")
+        }
 
-sourceSets {
-    generated {
-        java {
-            srcDirs "$buildDir/$swaggerTargetFolder"
+        def pom = new groovy.xml.XmlSlurper().parse(file("$buildDir/publications/Main/pom-default.xml"))
+        def published = pom.dependencies.dependency
+                .collect { "${it.groupId}:${it.artifactId}" }
+                .toSet()
+        if (published != publishedDependencyBaseline) {
+            throw new GradleException("Published dependencies changed. Expected ${publishedDependencyBaseline.sort()}, got ${published.sort()}")
         }
     }
 }
 
-tasks.named('jar') {
-    // from sourceSets.generated.output
+tasks.named('check') {
+    dependsOn tasks.named('verifyDependencyBaseline')
 }
-
-/*
-    compileGeneratedJava.dependsOn generateApi
-    classes.dependsOn generatedClasses
-    compileJava.dependsOn compileGeneratedJava
-*/
 
 publishing {
     publications {

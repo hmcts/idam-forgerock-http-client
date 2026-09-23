@@ -1,6 +1,5 @@
 package uk.gov.hmcts.reform.idam.api.fr.idm.selfservice;
 
-import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.EncodingUtils;
 
 import uk.gov.hmcts.reform.idam.api.fr.idm.selfservice.model.GetInitialRequirementsResponse;
@@ -13,7 +12,7 @@ import java.util.Map;
 import feign.*;
 
 @javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-09-13T13:49:38.439+01:00")
-public interface SelfServiceResetApi extends ApiClient.Api {
+public interface SelfServiceResetApi {
 
 
   /**

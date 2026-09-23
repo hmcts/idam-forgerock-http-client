@@ -3,7 +3,6 @@ package uk.gov.hmcts.reform.idam.api.fr.idm.manage.user.model.es;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
-import org.springframework.data.elasticsearch.annotations.Document;
 import uk.gov.hmcts.reform.idam.api.fr.idm.manage.user.model.*;
 
 import java.util.ArrayList;
@@ -16,7 +15,6 @@ import java.util.stream.Collectors;
  * User
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@Document(indexName = "idmuser")
 public class IdmESUser extends IdmSearchableEntity<IdmESUser> {
 
     @JsonProperty("mail")
@@ -240,4 +238,3 @@ public class IdmESUser extends IdmSearchableEntity<IdmESUser> {
     }
 
 }
-

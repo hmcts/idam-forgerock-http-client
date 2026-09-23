@@ -3,13 +3,12 @@ package uk.gov.hmcts.reform.idam.api.fr.idm.selfservice;
 import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
-import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
 import uk.gov.hmcts.reform.idam.api.fr.idm.selfservice.model.GetInitialRequirementsResponse;
 import uk.gov.hmcts.reform.idam.api.fr.idm.selfservice.model.SelfServiceRegistrationResponse;
 import uk.gov.hmcts.reform.idam.api.fr.idm.selfservice.model.SubmitRequirementsRequest;
 
 @javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-25T13:49:00.636Z")
-public interface SelfServiceRegistrationApi extends ApiClient.Api {
+public interface SelfServiceRegistrationApi {
 
   /**
    * Read

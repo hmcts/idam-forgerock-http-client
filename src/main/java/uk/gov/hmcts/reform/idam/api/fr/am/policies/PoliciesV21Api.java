@@ -13,14 +13,13 @@ import uk.gov.hmcts.reform.idam.api.fr.am.policies.model.PostResponse;
 import uk.gov.hmcts.reform.idam.api.fr.am.policies.model.PutRequest;
 import uk.gov.hmcts.reform.idam.api.fr.am.policies.model.PutResponse;
 import uk.gov.hmcts.reform.idam.api.fr.am.policies.model.QueryResponse;
-import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.EncodingUtils;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-11-04T13:43:51.856Z")
-public interface PoliciesV21Api extends ApiClient.Api {
+public interface PoliciesV21Api {
 
 
   /**

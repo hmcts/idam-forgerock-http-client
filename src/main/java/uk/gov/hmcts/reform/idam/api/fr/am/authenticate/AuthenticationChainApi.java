@@ -1,6 +1,5 @@
 package uk.gov.hmcts.reform.idam.api.fr.am.authenticate;
 
-import uk.gov.hmcts.reform.idam.api.fr.client.invoker.ApiClient;
 import uk.gov.hmcts.reform.idam.api.fr.client.invoker.EncodingUtils;
 
 import uk.gov.hmcts.reform.idam.api.fr.shared.model.ApiError;
@@ -13,7 +12,7 @@ import java.util.Map;
 import feign.*;
 
 @javax.annotation.processing.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-10-16T15:12:54.143+01:00")
-public interface AuthenticationChainApi extends ApiClient.Api {
+public interface AuthenticationChainApi {
 
 
     /**
